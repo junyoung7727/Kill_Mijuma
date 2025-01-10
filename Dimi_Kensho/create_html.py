@@ -182,36 +182,38 @@ def create_kr_html(data_dir):
         
         # roots 순서대로 처리
         for root in section_data.get('roots', []):
-            items = section_data['tree'].get(root, [])
-            if items:
+            root_data = section_data['tree'].get(root, {})
+            if root_data:
                 # 루트 항목 생성
                 html += f'<div class="item">\n'
                 html += f'<div class="item-header" onclick="toggleContent(\'{root}\')">'
-                html += f'<span id="btn-{root}" class="toggle-btn">▶</span>{root}</div>\n'
+                html += f'<span id="btn-{root}" class="toggle-btn">▶</span>{root_data["korean_name"]}</div>\n'
                 html += f'<div id="{root}" class="item-content">\n'
                 
+                # 루트 항목 정보 표시
+                html += f'<div class="description">{root_data["description"]}</div>\n'
+                html += f'<div class="category">카테고리: {root_data["category"]}</div>\n'
+                
                 # 하위 항목들 처리
-                for item in sorted(items, key=lambda x: x.get('order', 0)):
+                for item in sorted(root_data.get('items', []), key=lambda x: x.get('order', 0)):
                     korean_name = item.get('korean_name', '')
                     description = item.get('description', '')
                     category = item.get('category', '')
-                    data_list = item.get('data', [])
-                    
-                    if data_list:
-                        values_html = '<br>'.join([
-                            f"값: {d.get('display_value', '')}, "
-                            f"컨텍스트: {d.get('context', '')}, "
-                            f"단위: {d.get('unit', '')}"
-                            for d in data_list
-                        ])
-                    else:
-                        values_html = "데이터 없음"
+                    data_info = item.get('data', {})
                     
                     html += f'<div class="item">\n'
                     html += f'<div><strong>{korean_name}</strong></div>\n'
                     html += f'<div class="description">{description}</div>\n'
                     html += f'<div class="category">카테고리: {category}</div>\n'
-                    html += f'<div class="value">{values_html}</div>\n'
+                    
+                    if data_info:
+                        value_html = (f"값: {data_info.get('display_value', '')}, "
+                                    f"컨텍스트: {data_info.get('context', '')}, "
+                                    f"단위: {data_info.get('unit', '')}")
+                        html += f'<div class="value">{value_html}</div>\n'
+                    else:
+                        html += '<div class="value">데이터 없음</div>\n'
+                    
                     html += '</div>\n'
                 
                 html += '</div>\n'

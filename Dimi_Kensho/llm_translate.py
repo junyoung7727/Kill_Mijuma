@@ -5,334 +5,165 @@ import os
 from time import sleep
 from typing import Optional
 import time
+from datetime import datetime
 
 load_dotenv()
 
-def get_latest_context_data(data_list):
-    """데이터 리스트에서 가장 최근 컨텍스트의 데이터만 반환"""
+def get_latest_context_data(data_list, data_dir):
+    """데이터 리스트에서 가장 최근 3개월 기간의 데이터만 반환"""
     if not data_list or not isinstance(data_list, list):
         return None
     
-    # 먼저 'c-1' context 찾기
-    c1_data = next((item for item in data_list 
-                   if item.get('attributes', {}).get('contextref') == 'c-1'), None)
-    if c1_data:
-        return c1_data
-    
-    # 'c-1'이 없으면 가장 작은 숫자의 context 선택
-    sorted_data = sorted(data_list, 
-                       key=lambda x: int(x.get('attributes', {}).get('contextref', '').split('-')[-1]) 
-                       if x.get('attributes', {}).get('contextref', '').split('-')[-1].isdigit() 
-                       else float('inf'))
-    
-    return sorted_data[0] if sorted_data else None
-
-def extract_all_tags(data_dir):
-    """hierarchy.json에서 모든 태그를 순서대로 추출"""
+    # context_data.json 파일 읽기
+    context_file = os.path.join(data_dir, 'context_data.json')
     try:
-        hierarchy_path = os.path.join(data_dir, 'hierarchy.json')
-        print(f"\nJSON 파일 읽기: {hierarchy_path}")
-        with open(hierarchy_path, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-        
-        print("\n데이터 구조:")
-        for section in data.keys():
-            print(f"- 섹션: {section}")
-        
-        tags_list = []
-        filtered_hierarchy = {}
-        
-        for section, section_data in data.items():
-            print(f"\n섹션 처리 중: {section}")
-            filtered_hierarchy[section] = {
-                "roots": section_data.get("roots", []),
-                "tree": {}
-            }
-            
-            tree_data = section_data.get("tree", {})
-            print(f"트리 데이터 키: {list(tree_data.keys())}")
-            
-            for parent, items in tree_data.items():
-                print(f"\n부모 태그 처리 중: {parent}")
-                filtered_hierarchy[section]["tree"][parent] = []
-                
-                if not isinstance(items, list):
-                    print(f"Warning: items is not a list for parent {parent}")
-                    continue
-                
-                for item in items:
-                    if not isinstance(item, dict):
-                        print(f"Warning: item is not a dict: {item}")
-                        continue
-                    
-                    concept = parent
-                    print(f"태그 처리 중: {concept}")
-                    
-                    # 데이터에서 가장 작은 컨텍스트 번호 선택
-                    context = ""
-                    if "data" in item and item["data"]:
-                        contexts = []
-                        for d in item["data"]:
-                            if isinstance(d, dict) and "context" in d:
-                                ctx = d["context"]
-                                if ctx.startswith("c-"):
-                                    try:
-                                        num = int(ctx.split("-")[1])
-                                        contexts.append((num, ctx))
-                                    except ValueError:
-                                        continue
-                        if contexts:
-                            # 가장 작은 번호의 컨텍스트 선택
-                            context = min(contexts, key=lambda x: x[0])[1]
-                    
-                    # 태그 정보 저장
-                    tag_info = {
-                        "concept": concept,
-                        "tag": concept,
-                        "context": context,
-                        "section": section,
-                        "parent": parent
-                    }
-                    
-                    # 중복 방지를 위해 태그가 없을 때만 추가
-                    if not any(t["tag"] == concept for t in tags_list):
-                        tags_list.append(tag_info)
-                        print(f"태그 추가됨: {concept} (컨텍스트: {context})")
-                    
-                    # 필터링된 계층 구조에 추가
-                    filtered_item = {
-                        "concept": concept,
-                        "order": item.get("order", 0),
-                        "data": item.get("data", [])
-                    }
-                    filtered_hierarchy[section]["tree"][parent].append(filtered_item)
-        
-        print(f"\n총 {len(tags_list)}개의 태그를 추출했습니다.")
-        
-        # 파일 저장
-        filtered_path = os.path.join(data_dir, 'hierarchy_filtered.json')
-        with open(filtered_path, 'w', encoding='utf-8') as f:
-            json.dump(filtered_hierarchy, f, indent=2, ensure_ascii=False)
-        
-        tags_path = os.path.join(data_dir, 'tags_for_translation.json')
-        with open(tags_path, 'w', encoding='utf-8') as f:
-            json.dump(tags_list, f, indent=2, ensure_ascii=False)
-        
-        return tags_list, filtered_hierarchy
-        
+        with open(context_file, 'r', encoding='utf-8') as f:
+            context_data = json.load(f)
     except Exception as e:
-        print(f"태그 추출 중 오류 발생: {str(e)}")
-        import traceback
-        traceback.print_exc()
-        return [], {}
-
-def get_llm_translations(tags_list, data_dir):
-    """태그 리스트를 LLM으로 번역 (배치 처리)"""
-    translations = {}
+        print(f"Error: context_data.json 파일을 읽을 수 없습니다 - {str(e)}")
+        return None
     
-    # 이전 번역 결과가 있다면 로드
+    # 3개월(분기) 데이터만 필터링
+    quarterly_data = []
+    for item in data_list:
+        context_id = item.get('context')
+        if context_id in context_data:
+            context_info = context_data[context_id]
+            if context_info['type'] == 'period':
+                start_date = datetime.strptime(context_info['start_date'], '%Y-%m-%d')
+                end_date = datetime.strptime(context_info['end_date'], '%Y-%m-%d')
+                duration = (end_date - start_date).days
+                
+                # 약 3개월(90일) 기간의 데이터만 선택
+                if 85 <= duration <= 95 and item.get('value'):
+                    quarterly_data.append({
+                        'item': item,
+                        'end_date': end_date
+                    })
+    
+    # 데이터가 없으면 None 반환
+    if not quarterly_data:
+        return None
+    
+    # 가장 최근 분기 데이터 선택
+    latest_data = max(quarterly_data, key=lambda x: x['end_date'])
+    return latest_data['item']
+
+def extract_all_tags(hierarchy):
+    """계층 구조에서 값이 있는 태그만 추출"""
+    tags = set()
+    
+    def extract_from_node(node):
+        if isinstance(node, dict):
+            for key, value in node.items():
+                if isinstance(value, list):
+                    for item in value:
+                        if isinstance(item, dict) and "concept" in item:
+                            # data가 있고, 그 중에 value가 있는 데이터가 있는 경우만 추가
+                            if item.get("data") and any(d.get('value') for d in item["data"]):
+                                tag = item["concept"]
+                                if ':' in tag:
+                                    tag = tag.split(':')[-1]
+                                tags.add(tag)
+                        extract_from_node(item)
+                else:
+                    extract_from_node(value)
+        elif isinstance(node, list):
+            for item in node:
+                extract_from_node(item)
+    
+    for section_data in hierarchy.values():
+        extract_from_node(section_data)
+    
+    return list(tags)
+
+def get_llm_translations(tags, data_dir):
+    """LLM을 사용하여 태그 번역"""
     translations_path = os.path.join(data_dir, 'translated_tags.json')
+    
+    # 이미 번역된 태그 불러오기
+    existing_translations = {}
     if os.path.exists(translations_path):
-        try:
-            with open(translations_path, 'r', encoding='utf-8') as f:
-                translations = json.load(f)
-            print("기존 번역 데이터를 로드했습니다.")
-        except:
-            print("기존 번역 파일을 로드하는데 실패했습니다. 새로 시작합니다.")
+        with open(translations_path, 'r', encoding='utf-8') as f:
+            existing_translations = json.load(f)
     
-    # OpenAI 클라이언트 초기화
-    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+    # 새로운 태그만 번역
+    new_tags = [tag for tag in tags if tag not in existing_translations]
     
-    # 번역이 필요한 태그 수집
-    tags_to_translate = []
-    for tag_info in tags_list:
-        tag = tag_info["tag"]
-        if tag not in translations:
-            tags_to_translate.append(tag_info)
-    
-    print(f"총 {len(tags_to_translate)}개의 태그를 번역해야 합니다.")
-    
-    # 배치 크기 설정
-    batch_size = 40
-    
-    # 배치 단위로 처리
-    for i in range(0, len(tags_to_translate), batch_size):
-        batch = tags_to_translate[i:i + batch_size]
-        print(f"\n배치 처리 중: {i+1}~{min(i+batch_size, len(tags_to_translate))} / {len(tags_to_translate)}")
+    if new_tags:
+        print(f"\n새로운 태그 {len(new_tags)}개 번역 중...")
         
-        # 배치의 모든 태그를 하나의 프롬프트로 구성
-        tags_prompt = "\n".join([
-            f"{idx+1}. {tag_info['tag']} (섹션: {tag_info['section']}, 컨텍스트: {tag_info.get('context', '')})"
-            for idx, tag_info in enumerate(batch)
-        ])
-        
-        prompt = f"""당신은 재무제표 전문가입니다. 
-다음 US-GAAP 태그들을 분석해주세요:
-
-{tags_prompt}
-
-각 태그에 대해 다음 정보를 JSON 배열 형식으로 제공해주세요:
-1. tag: 원본 태그명 (입력된 순서대로)
-2. korean_name: 이 항목의 공식적이고 전문적인 한글 명칭
-3. description: 이 항목이 재무제표에서 가지는 의미와 중요성 (2-3줄로 상세히 설명)
-4. category: 이 항목의 정확한 카테고리 (자산, 부채, 자본, 수익, 비용, 기타 중 하나)
-
-응답은 다음과 같은 JSON 형식이어야 합니다:
-{{
-    "translations": [
-        {{
-            "tag": "첫번째태그",
-            "korean_name": "한글명1",
-            "description": "설명1",
-            "category": "카테고리1"
-        }},
-        {{
-            "tag": "두번째태그",
-            "korean_name": "한글명2",
-            "description": "설명2",
-            "category": "카테고리2"
-        }}
-    ]
-}}"""
-
-        max_retries = 3
-        retry_count = 0
-        
-        while retry_count < max_retries:
+        # 태그를 50개씩 나누어 처리
+        batch_size = 40
+        for i in range(0, len(new_tags), batch_size):
+            batch_tags = new_tags[i:i + batch_size]
+            
+            # 프롬프트 생성
+            prompt = "다음 XBRL 태그들을 한국어로 번역해주세요. 태그의 CamelCase를 분석하여 의미를 파악하고, 금융/회계 용어에 맞게 전문적으로 번역해주세요:\n\n"
+            for tag in batch_tags:
+                prompt += f"- {tag}\n"
+            
             try:
-                response = client.chat.completions.create(
-                    model="gpt-4o-mini",
-                    messages=[
-                        {"role": "system", "content": "당신은 한국의 재무제표 및 회계 전문가입니다. 모든 설명은 한국어로 제공해주세요."},
-                        {"role": "user", "content": prompt}
-                    ],
-                    response_format={"type": "json_object"},
-                    temperature=0.7
+                # LLM API 호출
+                response = openai.ChatCompletion.create(
+                    model="gpt-4",
+                    messages=[{"role": "user", "content": prompt}],
+                    temperature=0.1
                 )
                 
-                # JSON 응답 파싱
-                response_data = json.loads(response.choices[0].message.content)
-                print(response_data)
-                batch_translations = response_data.get("translations", [])
-                
-                # 번역 결과를 translations 딕셔너리에 추가
-                for translation in batch_translations:
-                    tag = translation["tag"]
-                    translations[tag] = {
-                        "korean_name": translation["korean_name"],
-                        "description": translation["description"],
-                        "category": translation["category"]
-                    }
-                
-                print(f"배치 번역 완료")
+                # 응답 파싱 및 저장
+                translations = parse_llm_response(response.choices[0].message.content)
+                existing_translations.update(translations)
                 
                 # 중간 저장
                 with open(translations_path, 'w', encoding='utf-8') as f:
-                    json.dump(translations, f, indent=2, ensure_ascii=False)
+                    json.dump(existing_translations, f, indent=2, ensure_ascii=False)
                 
-                # API 레이트 리밋 방지
-                time.sleep(1)
-                break
+                print(f"배치 {i//batch_size + 1} 번역 완료")
                 
             except Exception as e:
-                retry_count += 1
-                print(f"배치 번역 중 오류 발생 (시도 {retry_count}/{max_retries}): {str(e)}")
-                if retry_count == max_retries:
-                    # 배치의 각 태그에 대해 오류 처리
-                    for tag_info in batch:
-                        tag = tag_info["tag"]
-                        translations[tag] = {
-                            "korean_name": f"{tag}",
-                            "description": "번역 중 오류가 발생했습니다",
-                            "category": "기타"
-                        }
-                time.sleep(1)
+                print(f"Error: 번역 중 오류 발생 - {str(e)}")
+                continue
     
-    print("\n번역 완료!")
-    print(f"총 {len(translations)}개의 태그가 번역되었습니다.")
-    
-    # 최종 결과 저장
-    with open(translations_path, 'w', encoding='utf-8') as f:
-        json.dump(translations, f, indent=2, ensure_ascii=False)
-    
-    return translations
+    return existing_translations
 
-def create_structured_json(translations, filtered_hierarchy, data_dir):
-    """번역 결과와 필터링된 계층 구조를 결합하여 구조화된 JSON 생성"""
+def create_structured_json(translations, hierarchy, data_dir):
+    """번역 결과와 계층 구조를 결합하여 구조화된 JSON 생성"""
     structured_data = {}
     
-    for section, section_data in filtered_hierarchy.items():
-        structured_data[section] = {
-            "roots": [],  # 실제 데이터가 있는 루트만 포함할 예정
-            "tree": {}
-        }
+    for section, section_data in hierarchy.items():
+        section_items = {}
         
-        # 각 루트 항목 처리
-        for root in section_data["roots"]:
-            items = section_data["tree"].get(root, [])
-            valid_items = []
-            
-            for item in items:
-                concept = item["concept"]
-                data_list = item.get("data", [])
+        # 섹션의 각 태그 처리
+        for tag, items in section_data.items():
+            if isinstance(items, list):
+                structured_items = []
+                for item in items:
+                    if isinstance(item, dict) and "concept" in item:
+                        # 최신 컨텍스트 데이터만 가져오기
+                        latest_data = get_latest_context_data(item.get("data", []), data_dir)
+                        
+                        # 값이 있는 최신 데이터만 처리
+                        if latest_data and latest_data.get('value'):
+                            concept = item["concept"]
+                            # 네임스페이스 제거
+                            if ':' in concept:
+                                concept = concept.split(':')[-1]
+                            
+                            structured_item = {
+                                "tag": concept,
+                                "translation": translations.get(concept, ""),
+                                "data": [latest_data]  # 최신 데이터만 포함
+                            }
+                            structured_items.append(structured_item)
                 
-                # 가장 작은 컨텍스트 번호를 가진 데이터 선택
-                selected_data = None
-                min_context_num = float('inf')
-                
-                for d in data_list:
-                    if isinstance(d, dict):
-                        context = d.get('context', '')
-                        if context.startswith('c-'):
-                            try:
-                                num = int(context.split('-')[1])
-                                if num < min_context_num:
-                                    min_context_num = num
-                                    selected_data = d
-                            except ValueError:
-                                continue
-                
-                # 데이터가 있는 경우만 처리
-                if selected_data:
-                    # 번역 정보 가져오기
-                    translation = translations.get(concept, {
-                        "korean_name": concept,
-                        "description": "번역 정보 없음",
-                        "category": "기타"
-                    })
-                    
-                    # 숫자 값을 표시 형식으로 변환
-                    value = selected_data.get('value', 0)
-                    if isinstance(value, (int, float)):
-                        display_value = f"${value:,.2f}"
-                    else:
-                        display_value = str(value)
-                    
-                    processed_data = {
-                        "value": value,
-                        "display_value": display_value,
-                        "context": selected_data.get('context', ''),
-                        "unit": selected_data.get('unit', '')
-                    }
-                    
-                    valid_items.append({
-                        "concept": concept,
-                        "korean_name": translation["korean_name"],
-                        "description": translation["description"],
-                        "category": translation["category"],
-                        "order": item.get("order", 0),
-                        "data": processed_data
-                    })
-            
-            # 유효한 항목이 있는 경우만 트리에 추가
-            if valid_items:
-                structured_data[section]["tree"][root] = valid_items
-                if root not in structured_data[section]["roots"]:
-                    structured_data[section]["roots"].append(root)
+                # 구조화된 아이템이 있는 경우만 추가
+                if structured_items:
+                    section_items[tag] = structured_items
         
-        # 데이터가 없는 섹션 제거
-        if not structured_data[section]["roots"]:
-            del structured_data[section]
+        # 섹션에 데이터가 있는 경우만 추가
+        if section_items:
+            structured_data[section] = section_items
     
     # 구조화된 데이터를 파일로 저장
     structured_path = os.path.join(data_dir, 'structured_kr_data.json')

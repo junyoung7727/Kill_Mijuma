@@ -5,6 +5,7 @@ import traceback
 import json
 from collections import defaultdict
 import os
+import xml.etree.ElementTree as ET
 
 class SECFetcher:
     def __init__(self, user_agent, data_dir):
@@ -48,7 +49,7 @@ class SECFetcher:
                 if form_type == '10-Q':
                     accession_number = accession_numbers[i].replace('-', '')
                     primary_doc = primary_documents[i]
-                    url = f"https://www.sec.gov/ix?doc=/Archives/edgar/data/{int(cik)}/{accession_number}/{primary_doc}"
+                    url = f"https://www.sec.gov/ix?doc=/Archives/edgar/data/{cik}/{accession_number}/{primary_doc}"
                     print(f"10-Q URL 찾음: {url}")
                     return url
                     
@@ -77,36 +78,56 @@ class SECFetcher:
             # XML 파싱
             soup = BeautifulSoup(response.content, 'lxml')
             
+            # context 정보 수집
+            context_data = {}
+            for context in soup.find_all('context'):
+                context_id = context.get('id', '')
+                period = context.find('period')
+                if period:
+                    instant = period.find('instant')
+                    if instant:
+                        context_data[context_id] = {
+                            "type": "instant",
+                            "date": instant.text
+                        }
+                    else:
+                        start_date = period.find('startdate')
+                        end_date = period.find('enddate')
+                        if start_date and end_date:
+                            context_data[context_id] = {
+                                "type": "period",
+                                "start_date": start_date.text,
+                                "end_date": end_date.text
+                            }
+            
+            # Context 정보를 JSON 파일로 저장
+            context_file = os.path.join(self.data_dir, 'context_data.json')
+            with open(context_file, 'w', encoding='utf-8') as f:
+                json.dump(context_data, f, indent=2, ensure_ascii=False)
+            
+            print("\n=== Context 정보 ===")
+            for context_id, info in context_data.items():
+                if info["type"] == "instant":
+                    print(f"Context ID: {context_id}, Date: {info['date']}")
+                else:
+                    print(f"Context ID: {context_id}, Period: {info['start_date']} to {info['end_date']}")
+            
             # 모든 태그 수집
             self.xbrl_data = defaultdict(list)
             
             # us-gaap: 태그 찾기
             for element in soup.find_all(lambda tag: isinstance(tag.name, str) and tag.name.startswith('us-gaap:')):
-                tag_name = element.name.split(':')[1]  # 'us-gaap:Revenue' -> 'Revenue'
-                context_ref = element.get('contextRef', '')
-                unit_ref = element.get('unitRef', '')
+                tag_name = element.name.split(':')[1].lower()  # 태그 이름을 소문자로 변환
+                context_ref = element.get('contextref', '')  # contextRef 대신 contextref 사용
+                unit_ref = element.get('unitref', '')
                 decimals = element.get('decimals', '0')
                 value = element.text.strip()
                 
+                # 값 처리
                 try:
-                    if decimals and value:
-                        numeric_value = float(value)
-                        if decimals.startswith('-'):
-                            # 음수 decimals는 스케일을 의미
-                            scale = abs(int(decimals))
-                            if scale == 6:  # 백만 단위
-                                adjusted_value = numeric_value / 1_000_000  # 백만 단위로 변환
-                                display_value = f"${adjusted_value:,.0f}M"
-                            elif scale == 9:  # 십억 단위
-                                adjusted_value = numeric_value / 1_000_000_000  # 십억 단위로 변환
-                                display_value = f"${adjusted_value:,.0f}B"
-                            else:
-                                adjusted_value = numeric_value
-                                display_value = f"${numeric_value:,.0f}"
-                        else:
-                            # 양수 decimals는 소수점 자리수를 의미
-                            adjusted_value = numeric_value
-                            display_value = f"${numeric_value:,.2f}"
+                    if decimals and decimals != 'INF':
+                        adjusted_value = float(value) if value else 0
+                        display_value = f"{adjusted_value:,.0f}" if adjusted_value else "0"
                     else:
                         adjusted_value = value
                         display_value = value
@@ -114,53 +135,33 @@ class SECFetcher:
                     adjusted_value = value
                     display_value = value
                 
+                # 속성 정보 수집
+                attributes = {}
+                for attr, val in element.attrs.items():
+                    # 속성 이름을 소문자로 변환
+                    attr_lower = attr.lower()
+                    attributes[attr_lower] = val
+                
                 self.xbrl_data[tag_name].append({
                     'value': adjusted_value,
                     'display_value': display_value,
-                    'context': context_ref,
+                    'context': context_ref,  # contextRef 값 저장
                     'unit': unit_ref,
                     'decimals': decimals,
                     'raw_value': value,
                     'source': 'xbrl',
-                    'attributes': element.attrs
+                    'attributes': attributes  # 모든 속성 저장
                 })
             
-            # 통계 출력
-            num_tags = sum(1 for items in self.xbrl_data.values() 
-                          for item in items 
-                          if isinstance(item.get('value'), (int, float)))
-            text_tags = sum(1 for items in self.xbrl_data.values() 
-                           for item in items 
-                           if isinstance(item.get('value'), str))
+            # 파일로 저장
+            output_file = os.path.join(self.data_dir, 'xbrl_data.json')
+            with open(output_file, 'w', encoding='utf-8') as f:
+                json.dump(dict(self.xbrl_data), f, indent=2, ensure_ascii=False)
             
-            print(f"\n=== XBRL 데이터 통계 ===")
-            print(f"총 태그 수: {len(self.xbrl_data)}")
-            print(f"숫자 데이터: {num_tags}")
-            print(f"텍스트 데이터: {text_tags}")
-            
-            # 주요 재무 지표 출력
-            important_tags = [
-                'Revenue',
-                'NetIncomeLoss',
-                'Assets',
-                'Liabilities',
-                'StockholdersEquity'
-            ]
-            
-            print("\n=== 주요 재무 지표 ===")
-            for tag in important_tags:
-                if tag in self.xbrl_data:
-                    print(f"\n{tag}:")
-                    for value in self.xbrl_data[tag]:
-                        print(f"  Context: {value['context']}")
-                        print(f"  Value: {value['display_value']}")
-                        print("  ---")
-            
-            return self.xbrl_data
+            return dict(self.xbrl_data)
             
         except Exception as e:
-            print(f"XBRL 데이터 가져오기 실패: {str(e)}")
-            traceback.print_exc()
+            print(f"Error: XBRL 데이터 처리 중 오류 발생 - {str(e)}")
             return None
 
     def get_custom_tags(self, url):
@@ -209,111 +210,207 @@ class SECFetcher:
         
         return self.integrated_data
 
-    def print_hierarchy(self, hierarchy, xbrl_data):
-        """계층 구조 출력 (통합 데이터 사용)"""
+    def print_hierarchy(self, section_data, xbrl_data):
+        """계층 구조 출력"""
         def print_node(node, depth=0):
             indent = "  " * depth
             
             if isinstance(node, dict):
-                if 'concept' in node:
-                    full_tag = node['concept']
-                    tag_name = full_tag.split(':')[1]  # 네임스페이스 제거
-                    
-                    # 통합 객체에서 값 찾기
-                    value = get_latest_value(tag_name)
-                    
-                    if value is not None:
-                        print(f"{indent}- {full_tag}: {value}")
-                    else:
-                        print(f"{indent}- {full_tag}")
-                
                 for key, value in node.items():
-                    if key not in ['concept', 'order', 'data']:
-                        print(f"{indent}{key}:")
+                    # 태그 처리 개선
+                    tag_name = self.remove_namespace(key)
+                    print(f"{indent}{tag_name}:")
+                    if isinstance(value, (dict, list)):
                         print_node(value, depth + 1)
-            
-            elif isinstance(node, list):
-                sorted_nodes = sorted(node, key=lambda x: x.get('order', 0) if isinstance(x, dict) else 0)
-                for item in sorted_nodes:
-                    print_node(item, depth)
-        
-        def get_latest_value(tag_name):
-            """태그에서 가장 최근 컨텍스트의 값을 찾음"""
-            if tag_name in self.integrated_data:
-                # 숫자 값을 가진 항목만 필터링
-                numeric_items = [
-                    item for item in self.integrated_data[tag_name]
-                    if isinstance(item.get('value'), (int, float))
-                ]
-                
-                if numeric_items:
-                    # 컨텍스트 번호로 정렬하여 가장 최근 값 사용
-                    sorted_items = sorted(
-                        numeric_items,
-                        key=lambda x: int(x['context'].split('-')[1]) 
-                        if x.get('context', '').startswith('c-') 
-                        else float('inf')
-                    )
+                    else:
+                        print(f"{indent}  {value}")
                     
-                    item = sorted_items[0]
-                    value = item['value']
-                    unit = item.get('unit', '').lower()
-                    return f"{value:,.0f} {unit}".strip()
-            
-            return None
-
-        print("\n=== 계층 구조 출력 ===")
-        for section_name, section_data in hierarchy.items():
-            print(f"\n[{section_name}]")
-            print_node(section_data)
+            elif isinstance(node, list):
+                for item in node:
+                    if isinstance(item, dict) and "concept" in item:
+                        # concept 태그 처리
+                        tag_name = self.remove_namespace(item["concept"])
+                        print(f"{indent}{tag_name}:")
+                        if item.get("data"):
+                            for data in item["data"]:
+                                print(f"{indent}  값: {data.get('value', '')}")
+                    else:
+                        print_node(item, depth)
+                
+            else:
+                print(f"{indent}{node}")
+        
+        print("\n=== 계층 구조 출력 ===\n")
+        print_node(section_data)
 
     def create_hierarchy_json(self, xbrl_data, integrated_data):
-        """XBRL 데이터에서 계층 구조 생성 및 데이터 채우기"""
-        result = {}
+        """계층 구조 JSON 생성"""
+        hierarchy = {}
         
-        # XBRL 데이터에서 섹션과 태그 추출
-        for tag, values in xbrl_data.items():
-            if not values:  # 값이 없는 태그는 건너뛰기
-                continue
+        # pre.xml 파싱
+        pre_tree = ET.parse(os.path.join(self.data_dir, 'pre.xml'))
+        pre_root = pre_tree.getroot()
+        
+        ns = {
+            'link': 'http://www.xbrl.org/2003/linkbase',
+            'xlink': 'http://www.w3.org/1999/xlink'
+        }
+        
+        # presentationLink 별로 처리
+        for link in pre_root.findall('.//link:presentationLink', ns):
+            # 섹션 이름 가져오기
+            role = link.get('{http://www.w3.org/1999/xlink}role')
+            section_name = self.get_section_name(role)
             
-            # 첫 번째 값의 컨텍스트 정보로 섹션 결정
-            first_value = values[0]
-            section = first_value.get('section', 'Other')  # 섹션 정보가 없으면 'Other'로
+            if section_name not in hierarchy:
+                hierarchy[section_name] = {}
             
-            # 섹션이 없으면 생성
-            if section not in result:
-                result[section] = {
-                    "roots": [],
-                    "tree": {}
-                }
+            # 태그 매핑 정보 수집
+            tag_map = {}
+            for loc in link.findall('.//link:loc', ns):
+                label = loc.get('{http://www.w3.org/1999/xlink}label')
+                href = loc.get('{http://www.w3.org/1999/xlink}href')
+                tag = href.split('#')[-1]  # 네임스페이스 유지
+                tag_map[label] = tag
             
-            # 태그 정보 추가
-            tag_info = {
-                "concept": tag,
-                "order": len(result[section]["tree"]) + 1,  # 순서는 추가된 순서대로
-                "data": integrated_data.get(tag.lower(), [])  # 통합 데이터에서 값 가져오기
-            }
-            
-            # 태그를 트리에 추가
-            parent = tag.split(':')[-1]  # 네임스페이스 제거
-            if parent not in result[section]["tree"]:
-                result[section]["tree"][parent] = []
-                result[section]["roots"].append(parent)
-            
-            result[section]["tree"][parent].append(tag_info)
-            
-            if tag_info["data"]:
-                print(f"\n찾은 데이터 - {tag}:")
-                print(f"데이터 수: {len(tag_info['data'])}")
-                print(f"첫 번째 항목: {tag_info['data'][0]}")
+            # 계층 구조 수집
+            current_section = hierarchy[section_name]
+            for arc in link.findall('.//link:presentationArc', ns):
+                from_label = arc.get('{http://www.w3.org/1999/xlink}from')
+                to_label = arc.get('{http://www.w3.org/1999/xlink}to')
+                order = float(arc.get('order', '1.0'))
+                
+                if from_label in tag_map and to_label in tag_map:
+                    from_tag = tag_map[from_label]
+                    to_tag = tag_map[to_label]
+                    
+                    if from_tag not in current_section:
+                        current_section[from_tag] = []
+                    
+                    # 값 검색을 위해 네임스페이스만 제거
+                    search_tag = self.remove_namespace(to_tag).lower()
+                    
+                    # 검색 과정 로깅
+                    print(f"\n=== 태그 검색 ===")
+                    print(f"원본 태그: {to_tag}")
+                    print(f"xbrl_data: {xbrl_data.keys()}")
+
+                    print(f"검색 태그: {search_tag}")
+                    print(f"xbrl_data에 존재: {search_tag in xbrl_data}")
+                    if search_tag in xbrl_data:
+                        print(f"값 개수: {len(xbrl_data[search_tag])}")
+                    
+                    # XBRL 데이터에서 값 가져오기
+                    xbrl_values = []
+                    if search_tag in xbrl_data:
+                        xbrl_values = xbrl_data[search_tag]
+                    
+                    # 자식 노드 추가
+                    child_node = {
+                        "concept": to_tag,
+                        "order": order,
+                        "data": []
+                    }
+                    
+                    # XBRL 값들 추가
+                    for value in xbrl_values:
+                        data_point = {
+                            "value": value.get("value", ""),
+                            "display_value": value.get("display_value", ""),
+                            "context": value.get("context", ""),
+                            "unit": value.get("unit", ""),
+                            "decimals": value.get("decimals", "0"),
+                            "raw_value": value.get("raw_value", ""),
+                            "source": "xbrl",
+                            "attributes": {
+                                "contextref": value.get("contextref", ""),
+                                "id": value.get("id", "")
+                            }
+                        }
+                        child_node["data"].append(data_point)
+                    
+                    current_section[from_tag].append(child_node)
         
         # JSON 파일로 저장
-        hierarchy_path = os.path.join(self.data_dir, 'hierarchy.json')
-        with open(hierarchy_path, 'w', encoding='utf-8') as f:
-            json.dump(result, f, indent=4, ensure_ascii=False)
+        output_file = os.path.join(self.data_dir, 'hierarchy.json')
+        with open(output_file, 'w', encoding='utf-8') as f:
+            json.dump(hierarchy, f, indent=2, ensure_ascii=False)
         
-        print(f"계층 구조가 저장되었습니다: {hierarchy_path}")
-        return result
+        return hierarchy
+
+    def get_section_name(self, role):
+        """role URI에서 섹션 이름 추출"""
+        # 기업별 커스텀 role 패턴
+        company_patterns = [
+            'apple.com/role/',          # 애플
+            'microsoft.com/role/',      # 마이크로소프트
+            'amazon.com/role/',         # 아마존
+            'google.com/role/',         # 구글
+            'meta.com/role/',           # 메타
+            'nvidia.com/role/',         # 엔비디아
+            '/role/'                    # 기타 기업 (일반적인 패턴)
+        ]
+        
+        # role에서 섹션 이름 추출
+        section = None
+        for pattern in company_patterns:
+            if pattern in role.lower():
+                section = role.split(pattern)[-1]
+                break
+        
+        if section:
+            # Details, Information, Disclosure 등의 접미사 제거
+            suffixes = ['Details', 'Information', 'Disclosure', 'Table']
+            for suffix in suffixes:
+                if section.endswith(suffix):
+                    section = section[:-len(suffix)]
+            
+            # CamelCase를 공백으로 분리
+            import re
+            
+            # 1. 대문자로 시작하는 단어들 분리
+            words = re.findall('[A-Z][^A-Z]*|[a-z]+', section)
+            
+            # 2. 숫자와 문자 사이에 공백 추가
+            processed_words = []
+            for word in words:
+                sub_words = re.findall('[0-9]+|[^0-9]+', word)
+                processed_words.extend(sub_words)
+            
+            # 3. 특수문자 제거 및 공백으로 변환
+            cleaned_words = [re.sub('[^a-zA-Z0-9]', ' ', word).strip() for word in processed_words]
+            
+            # 4. 빈 문자열 제거 및 단어 결합
+            final_words = [word for word in cleaned_words if word]
+            return ' '.join(final_words)
+            
+        return 'Other'
+
+    def remove_namespace(self, tag):
+        
+        # 1. 콜론(:)으로 분리된 네임스페이스 처리
+        if ':' in tag:
+            tag = tag.split(':')[-1]
+        
+        # 2. 언더스코어(_)로 분리된 네임스페이스 처리
+        if '_' in tag:
+            parts = tag.split('_', 1)  # 최대 1번만 분리
+            if parts[0].lower() in [
+                'us-gaap', 'usgaap', 'us', 'gaap',  # GAAP 관련
+                'dei', 'aapl', 'ecd', 'srt',        # 기본 패턴
+                'msft', 'amzn', 'googl', 'meta',    # 기업 관련
+                'ifrs', 'country', 'currency',       # 국제 표준
+                'invest', 'risk', 'ref'             # 기타
+            ]:
+                return parts[1]
+        
+        # 3. 하이픈(-)으로 분리된 네임스페이스 처리
+        if '-' in tag:
+            parts = tag.split('-', 1)
+            if parts[0].lower() in ['us', 'gaap']:
+                return tag.replace('us-gaap_', '')
+        
+        return tag
 
 # 사용 예시
 if __name__ == "__main__":
@@ -345,5 +442,4 @@ if __name__ == "__main__":
                         print(f"값: {value['value']}")
                     print(f"컨텍스트: {value['context']}")
                     print(f"단위: {value['unit']}")
-
 

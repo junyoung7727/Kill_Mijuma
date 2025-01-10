@@ -22,61 +22,48 @@ def main():
     # SEC Fetcher 초기화
     fetcher = SECFetcher('junghae2017@gmail.com', data_dir)
     
-    # URL 설정
-    url = "https://www.sec.gov/ix?doc=/Archives/edgar/data/320193/000032019324000006/aapl-20231230.htm"
+    # Apple의 CIK
+    apple_cik = "320193"
     
-    # XBRL 데이터 가져오기
-    print("\n1. XBRL 데이터 가져오기...")
-    xbrl_data = fetcher.get_xbrl_data(url)
-    if not xbrl_data:
-        print("XBRL 데이터 가져오기 실패")
-        return
-    print("XBRL 데이터 가져오기 완료")
-    
-    # 데이터 통합
-    integrated_data = fetcher.integrate_data()
-    
-    # 계층 구조 생성 및 저장
-    print("\n2. 계층 구조 생성...")
-    hierarchy = fetcher.create_hierarchy_json(xbrl_data, integrated_data)
-    if not hierarchy:
-        print("계층 구조 생성 실패")
-        return
-    print("계층 구조 생성 완료")
-    
-    try:
-        # 태그 추출 및 필터링
-        print("\n3. 태그 추출 및 필터링 시작...")
-        tags_list, filtered_hierarchy = extract_all_tags(data_dir)
-        print("태그 추출 완료")
+    # 최신 10-Q URL 가져오기
+    url = fetcher.get_latest_10q_url(apple_cik)
+    if url:
+        # URL에서 분기 정보 추출 (예: aapl-20240629.htm)
+        filing_date = url.split('/')[-1].split('.')[0].split('-')[1]  # 20240629
+        year = filing_date[:4]
+        month = filing_date[4:6]
         
-        # LLM 번역 수행
-        print("\n4. LLM 번역 시작...")
-        translations = get_llm_translations(tags_list, data_dir)
-        print("번역 완료")
+        print(f"\n=== Apple(AAPL)의 {year}년 {month}월 분기 보고서 ===")
+        print(f"10-Q URL: {url}")
         
-        # 구조화된 JSON 생성
-        print("\n5. 구조화된 JSON 생성 시작...")
-        structured_data = create_structured_json(translations, filtered_hierarchy, data_dir)
-        print("JSON 생성 완료")
-        
-        # HTML 생성
-        print("\n6. HTML 생성 시작...")
-        create_kr_html(data_dir)
-        print("HTML 생성 완료")
-        
-        print("\n모든 프로세스가 성공적으로 완료되었습니다.")
-        print("생성된 파일:")
-        print(f"- {os.path.join(data_dir, 'hierarchy.json')}")
-        print(f"- {os.path.join(data_dir, 'hierarchy_filtered.json')}")
-        print(f"- {os.path.join(data_dir, 'tags_for_translation.json')}")
-        print(f"- {os.path.join(data_dir, 'translated_tags.json')}")
-        print(f"- {os.path.join(data_dir, 'structured_kr_data.json')}")
-        print(f"- {os.path.join(data_dir, 'xbrl_visualization_kr.html')}")
-        
-    except Exception as e:
-        print(f"\n처리 중 오류 발생: {str(e)}")
-        return
+        # XBRL 데이터 가져오기
+        xbrl_data = fetcher.get_xbrl_data(url)
+        if xbrl_data:
+            # 커스텀 태그 가져오기
+            custom_tags = fetcher.get_custom_tags(url)
+            
+            # 데이터 통합
+            integrated_data = fetcher.integrate_data()
+            
+            # 계층 구조 생성 (섹션 정보 포함)
+            hierarchy = fetcher.create_hierarchy_json(xbrl_data, integrated_data)
+            # 계층 구조 출력 (섹션별로)
+            print("\n=== 섹션별 계층 구조 ===")
+            for section, data in hierarchy.items():
+                print(f"\n섹션: {section}")
+                fetcher.print_hierarchy(data, xbrl_data)
+            
+            # 모든 태그 추출
+            all_tags = extract_all_tags(hierarchy)
+            
+            # LLM 번역 가져오기
+            translations = get_llm_translations(all_tags, data_dir)
+            
+            # 구조화된 JSON 생성
+            structured_json = create_structured_json(translations, hierarchy, data_dir)
+            
+            # HTML 생성
+            create_kr_html(data_dir)
 
 if __name__ == "__main__":
     main()

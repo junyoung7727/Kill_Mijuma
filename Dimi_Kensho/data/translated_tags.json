@@ -1,757 +1,2272 @@
 {
   "revenueremainingperformanceobligationexpectedtimingofsatisfactionstartdateaxis.domain": {
-    "korean_name": "수익 잔여 성과 의무 기대 만족 시점 시작일 축",
-    "description": "이 항목은 계약에 따른 성과 의무의 기대되는 만족 시점의 시작일을 정의합니다. 이는 수익 인정의 시점을 명확히 하여 재무제표 사용자에게 중요한 정보를 제공합니다.",
+    "korean_name": "수익 잔여 성과 의무 예상 이행 시작일 축",
+    "description": "이 항목은 고객과의 계약에서 남아 있는 성과 의무의 예상 이행 시작일을 나타내며, 해당 수익의 인식 시점을 결정하는 데 중요한 역할을 합니다.",
     "category": "기타"
   },
   "revenueremainingperformanceobligationexpectedtimingofsatisfactionperiod1": {
-    "korean_name": "수익 잔여 성과 의무 기대 만족 시점 기간 1",
-    "description": "이 항목은 성과 의무에 대한 기대되는 만족 기간을 나타냅니다. 이는 기업이 고객과의 계약에 따라 수익을 인식하는 방식에 영향을 미치므로 중요합니다.",
+    "korean_name": "수익 잔여 성과 의무 예상 이행 기간1",
+    "description": "이 항목은 고객 계약에서 남아 있는 성과 의무의 예상 이행 기간을 나타내며, 수익 인식과 관련된 중요한 정보를 제공합니다.",
     "category": "기타"
   },
   "hedgedassetstatementoffinancialpositionextensibleenumeration": {
-    "korean_name": "헤지 자산 재무상태표 확장 가능한 열거형",
-    "description": "헤지 자산은 파생상품 등의 헤지 회계에 따라 재무상태표에 표시되는 자산을 의미합니다. 이는 재무적 위험을 관리하기 위한 중요한 요소입니다.",
-    "category": "자산"
+    "korean_name": "헤지 자산 재무 상태표 확장 가능한 열거형",
+    "description": "이 항목은 헤지 회계에 따라 재무 상태표에서 보고되는 자산의 유형을 정의하는 데 사용됩니다.",
+    "category": "기타"
   },
   "hedgedliabilitystatementoffinancialpositionextensibleenumeration": {
-    "korean_name": "헤지 부채 재무상태표 확장 가능한 열거형",
-    "description": "헤지 부채는 파생상품을 사용하여 관리하는 부채를 나타냅니다. 이는 기업의 재무 위험을 줄이는 데 중요한 역할을 합니다.",
-    "category": "부채"
+    "korean_name": "헤지 부채 재무 상태표 확장 가능한 열거형",
+    "description": "이 항목은 헤지 회계에 따라 재무 상태표에서 보고되는 부채의 유형을 정의하는 데 사용됩니다.",
+    "category": "기타"
   },
   "revenuefromcontractwithcustomerexcludingassessedtax": {
-    "korean_name": "고객과의 계약에 따른 세금 제외 수익",
-    "description": "이 항목은 고객과의 계약에서 발생하는 수익을 나타내며, 세금이 포함되지 않은 순수익을 설명합니다. 이는 기업의 실제 수익성을 반영합니다.",
+    "korean_name": "고객과의 계약에서 발생한 수익 (세금 제외)",
+    "description": "이 항목은 고객과의 계약에서 발생한 수익을 나타내며, 세금을 제외한 실제 수익을 보여줍니다.",
     "category": "수익"
   },
   "costofgoodsandservicessold": {
-    "korean_name": "판매된 상품 및 서비스의 원가",
-    "description": "이 항목은 특정 기간 동안 판매된 상품 및 서비스의 원가를 나타냅니다. 이는 기업의 수익성 분석에 필수적인 요소입니다.",
+    "korean_name": "매출원가",
+    "description": "이 항목은 판매된 상품과 서비스의 원가를 나타내며, 기업의 수익성을 평가하는 데 중요한 지표입니다.",
     "category": "비용"
   },
   "grossprofit": {
-    "korean_name": "총 이익",
-    "description": "총 이익은 수익에서 판매된 상품 및 서비스의 원가를 차감한 금액을 나타냅니다. 이는 기업의 기본적인 수익성을 평가하는 중요한 지표입니다.",
+    "korean_name": "매출총이익",
+    "description": "이 항목은 총 수익에서 매출원가를 차감한 값으로, 기업의 기본적인 수익성을 나타냅니다.",
     "category": "기타"
   },
   "researchanddevelopmentexpense": {
-    "korean_name": "연구 및 개발 비용",
-    "description": "이 항목은 기업의 연구 및 개발 활동에 소요된 비용을 나타냅니다. 이는 기업의 혁신성과 미래 성장 가능성을 평가하는 데 중요한 요소입니다.",
+    "korean_name": "연구개발비",
+    "description": "이 항목은 연구 및 개발에 소요된 비용을 나타내며, 기업의 혁신 역량과 미래 성장 가능성을 평가하는 데 중요한 요소입니다.",
     "category": "비용"
   },
   "sellinggeneralandadministrativeexpense": {
-    "korean_name": "판매, 일반 및 관리 비용",
-    "description": "판매, 일반 및 관리 비용은 기업 운영에 관련된 모든 비용을 포함합니다. 이는 기업의 전체적인 비용 구조를 이해하는 데 중요합니다.",
+    "korean_name": "판매비와 관리비",
+    "description": "이 항목은 기업의 운영을 위해 소요되는 판매 및 관리 관련 비용을 나타내며, 전체 운영 효율성을 평가하는 데 도움을 줍니다.",
     "category": "비용"
   },
   "operatingexpenses": {
-    "korean_name": "영업 비용",
-    "description": "영업 비용은 기업의 운영을 위해 발생하는 모든 비용을 포함합니다. 이는 수익과 비교하여 기업의 운영 효율성을 평가하는 데 중요한 역할을 합니다.",
+    "korean_name": "영업비용",
+    "description": "이 항목은 기업의 주 영업 활동과 관련된 모든 비용을 포함하며, 수익성 분석에 중요한 역할을 합니다.",
     "category": "비용"
   },
   "operatingincomeloss": {
     "korean_name": "영업 이익(손실)",
-    "description": "영업 이익(손실)은 총 이익에서 영업 비용을 차감한 금액을 나타냅니다. 이는 기업의 주된 영업활동에서 발생하는 수익성을 측정하는 데 중요한 지표입니다.",
+    "description": "이 항목은 영업 수익에서 영업 비용을 차감한 값으로, 기업의 기본적인 운영 성과를 나타냅니다.",
     "category": "기타"
   },
   "nonoperatingincomeexpense": {
     "korean_name": "비영업 수익(비용)",
-    "description": "비영업 수익(비용)은 영업 활동 외에서 발생하는 수익과 비용을 포함합니다. 이는 기업의 전체적인 재무 성과를 평가하는 데 도움이 됩니다.",
+    "description": "이 항목은 비영업 활동에서 발생한 수익과 비용을 나타내며, 기업의 전체 재무 성과를 평가하는 데 중요한 요소입니다.",
     "category": "기타"
   },
   "incomelossfromcontinuingoperationsbeforeincometaxesextraordinaryitemsnoncontrollinginterest": {
-    "korean_name": "소득세, 특별항목 및 비지배지분 이전의 계속 운영에서의 소득(손실)",
-    "description": "이 항목은 세금 및 특별 항목을 제외한 계속 운영에서의 순소득(손실)을 나타냅니다. 이는 기업의 지속 가능성을 평가하는 데 중요합니다.",
+    "korean_name": "계속 영업에서의 손익 (법인세, 특별항목, 비지배지분 제외)",
+    "description": "이 항목은 계속 영업에서 발생한 손익을 나타내며, 법인세 및 기타 특별 항목을 제외한 순이익을 평가하는 데 유용합니다.",
     "category": "기타"
   },
   "incometaxexpensebenefit": {
-    "korean_name": "소득세 비용(세금 혜택)",
-    "description": "이 항목은 기업의 소득세 비용 또는 세금 혜택을 나타냅니다. 이는 기업의 순이익에 직접적인 영향을 미치므로 중요합니다.",
+    "korean_name": "법인세 비용(혜택)",
+    "description": "이 항목은 기업의 소득에 대해 발생한 법인세 비용 또는 세금 혜택을 나타내며, 순이익 계산에 중요한 영향을 미칩니다.",
     "category": "비용"
   },
   "netincomeloss": {
     "korean_name": "순이익(손실)",
-    "description": "순이익(손실)은 총 수익에서 총 비용을 차감한 최종 금액을 나타냅니다. 이는 기업의 전반적인 재무 성과를 평가하는 핵심 지표입니다.",
+    "description": "이 항목은 총 수익에서 모든 비용을 차감한 결과로, 기업의 최종 재무 성과를 나타냅니다.",
     "category": "기타"
   },
   "earningspersharebasic": {
-    "korean_name": "기본 주당 순이익",
-    "description": "기본 주당 순이익은 기업의 순이익을 발행주식 수로 나눈 값으로, 주주에게 돌아가는 이익을 나타냅니다.",
+    "korean_name": "주당순이익(기본)",
+    "description": "이 항목은 기업의 순이익을 발행된 주식 수로 나눈 값으로, 주주에게 돌아가는 이익을 평가하는 데 사용됩니다.",
     "category": "기타"
   },
   "earningspersharediluted": {
-    "korean_name": "희석 주당 순이익",
-    "description": "희석 주당 순이익은 기본 주당 순이익에 비해 잠재적으로 발행될 수 있는 주식까지 고려하여 계산된 값입니다. 이는 기업의 주식 가치를 평가하는 데 중요합니다.",
+    "korean_name": "주당순이익(희석)",
+    "description": "이 항목은 기본 주당순이익을 계산할 때 잠재적 주식(예: 옵션, 전환사채 등)을 고려하여 계산한 값입니다.",
     "category": "기타"
   },
   "weightedaveragenumberofsharesoutstandingbasic": {
-    "korean_name": "기본 가중 평균 발행 주식 수",
-    "description": "기본 가중 평균 발행 주식 수는 특정 기간 동안의 평균 발행 주식 수를 나타냅니다. 이는 주당 이익 계산에 필요한 데이터를 제공합니다.",
+    "korean_name": "발행주식수(기본) 가중평균",
+    "description": "이 항목은 회계 기간 동안 발행된 기본 주식의 가중 평균 수를 나타내며, 주당순이익 계산에 사용됩니다.",
     "category": "기타"
   },
   "weightedaveragenumberofdilutedsharesoutstanding": {
-    "korean_name": "희석 가중 평균 발행 주식 수",
-    "description": "희석 가중 평균 발행 주식 수는 잠재적인 주식 발행을 포함한 평균 발행 주식 수를 나타냅니다. 이는 희석 주당 순이익 계산에 필수적입니다.",
+    "korean_name": "발행주식수(희석) 가중평균",
+    "description": "이 항목은 회계 기간 동안 발행된 희석 주식의 가중 평균 수를 나타내며, 희석 주당순이익 계산에 사용됩니다.",
     "category": "기타"
   },
   "othercomprehensiveincomelossforeigncurrencytransactionandtranslationadjustmentnetoftax": {
-    "korean_name": "기타 포괄 손익 외화 거래 및 번역 조정(세금 차감 후)",
-    "description": "이 항목은 외화 거래 및 번역 조정으로 인한 기타 포괄 손익을 나타냅니다. 이는 환율 변동에 따른 기업의 재무 상태에 영향을 미칠 수 있습니다.",
+    "korean_name": "기타포괄손익(외화거래 및 환산조정) 세금 차감 후",
+    "description": "이 항목은 외화 거래에서 발생한 손익과 환산 조정으로 인한 손익을 포함하며, 기업의 재무 상태를 포괄적으로 평가하는 데 중요한 역할을 합니다.",
     "category": "기타"
   },
   "othercomprehensiveincomeunrealizedholdinggainlossonsecuritiesarisingduringperiodnetoftax": {
-    "korean_name": "기타 포괄 손익 기간 중 발생한 유가증권의 미실현 보유 이익(손실)(세금 차감 후)",
-    "description": "이 항목은 기간 동안 발생한 유가증권의 미실현 이익 또는 손실을 나타냅니다. 이는 기업의 자산 가치 변동을 반영합니다.",
+    "korean_name": "기타포괄손익(기간 중 발생한 증권의 미실현 보유 손익) 세금 차감 후",
+    "description": "이 항목은 기간 중 발생한 미실현 보유 손익을 나타내며, 기업의 자본에 대한 중요한 정보를 제공합니다.",
     "category": "기타"
   },
   "othercomprehensiveincomelossreclassificationadjustmentfromaociforsaleofsecuritiesnetoftax": {
-    "korean_name": "기타 포괄 손익 유가증권 판매로 인한 재분류 조정(세금 차감 후)",
-    "description": "이 항목은 유가증권 판매에 따른 기타 포괄 손익의 재분류 조정을 나타냅니다. 이는 기업의 재무 상태에 중요한 영향을 미칩니다.",
+    "korean_name": "기타포괄손익(증권 매각으로 인한 재분류 조정) 세금 차감 후",
+    "description": "이 항목은 증권 매각 시 발생하는 재분류 조정을 나타내며, 포괄손익 계산에 중요한 영향을 미칩니다.",
     "category": "기타"
   },
   "othercomprehensiveincomelossavailableforsalesecuritiesadjustmentnetoftax": {
-    "korean_name": "기타 포괄 손익 매각 가능한 유가증권 조정(세금 차감 후)",
-    "description": "이 항목은 매각 가능한 유가증권의 가치 변동으로 인한 기타 포괄 손익 조정을 나타냅니다. 이는 기업의 자본 구조에 영향을 미칠 수 있습니다.",
+    "korean_name": "기타포괄손익(매도가능 증권 조정) 세금 차감 후",
+    "description": "이 항목은 매도 가능 증권의 가치 조정으로 인한 손익을 나타내며, 기업의 재무 건전성을 평가하는 데 중요합니다.",
     "category": "기타"
   },
   "othercomprehensiveincomelossnetoftaxportionattributabletoparent": {
-    "korean_name": "기타 포괄 손익(세금 차감 후) 모회사 귀속 부분",
-    "description": "이 항목은 기타 포괄 손익 중 모회사에 귀속되는 부분을 나타냅니다. 이는 모회사의 재무 성과를 이해하는 데 중요합니다.",
+    "korean_name": "기타포괄손익(세금 차감 후 모기업 귀속 부분)",
+    "description": "이 항목은 전체 기타 포괄손익에서 모기업에 귀속되는 부분을 나타내며, 자본 구조를 평가하는 데 기여합니다.",
     "category": "기타"
   },
   "comprehensiveincomenetoftax": {
-    "korean_name": "포괄 손익(세금 차감 후)",
-    "description": "포괄 손익은 순이익에 기타 포괄 손익을 더한 값으로, 기업의 전체적인 재무 성과를 종합적으로 나타냅니다.",
+    "korean_name": "총포괄손익(세금 차감 후)",
+    "description": "이 항목은 순이익과 기타 포괄손익을 합산한 값으로, 기업의 전체적인 재무 성과를 포괄적으로 나타냅니다.",
     "category": "기타"
   },
   "cashandcashequivalentsatcarryingvalue": {
-    "korean_name": "장부가 기준 현금 및 현금성 자산",
-    "description": "이 항목은 기업의 현금 및 현금성 자산의 장부 가치를 나타냅니다. 이는 기업의 유동성을 평가하는 데 중요한 요소입니다.",
+    "korean_name": "현금 및 현금성 자산(장부가치)",
+    "description": "이 항목은 기업이 보유한 현금 및 현금성 자산의 장부가치를 나타내며, 유동성을 평가하는 데 중요한 역할을 합니다.",
     "category": "자산"
   },
   "marketablesecuritiescurrent": {
-    "korean_name": "유가증권(유동 자산)",
-    "description": "이 항목은 기업이 단기적으로 매도할 수 있는 유가증권의 가치를 나타냅니다. 이는 기업의 유동성을 평가하는 데 중요합니다.",
+    "korean_name": "유동시장성 증권",
+    "description": "이 항목은 1년 이내에 현금화할 수 있는 시장성 증권을 나타내며, 기업의 유동성 및 자산 구조를 평가하는 데 중요한 요소입니다.",
     "category": "자산"
   },
   "accountsreceivablenetcurrent": {
-    "korean_name": "매출채권(순액) (유동 자산)",
-    "description": "이 항목은 기업이 고객으로부터 받을 것으로 예상되는 금액을 나타냅니다. 유동성을 분석하는 데 중요한 지표입니다.",
+    "korean_name": "유동 채권(순액)",
+    "description": "이 항목은 기업이 고객으로부터 받을 것으로 예상되는 금액을 나타내며, 유동성 관리와 수익성 분석에 중요합니다.",
     "category": "자산"
   },
   "nontradereceivablescurrent": {
-    "korean_name": "비거래채권(유동 자산)",
-    "description": "비거래채권은 일반 거래 외의 채권을 나타냅니다. 이는 기업의 유동성을 평가하는 데 중요한 요소입니다.",
+    "korean_name": "비거래성 유동채권",
+    "description": "이 항목은 거래 외에서 발생한 유동채권을 나타내며, 기업의 자산 구조와 유동성 분석에 중요한 정보를 제공합니다.",
     "category": "자산"
   },
   "inventorynet": {
     "korean_name": "재고 자산(순액)",
-    "description": "재고 자산은 기업이 판매를 위해 보유하고 있는 자산의 가치를 나타냅니다. 이는 기업의 운영 효율성을 평가하는 데 필수적입니다.",
+    "description": "이 항목은 기업이 보유한 재고의 장부가치를 나타내며, 매출 원가 및 자산 회전율 분석에 중요한 요소입니다.",
     "category": "자산"
   },
   "otherassetscurrent": {
-    "korean_name": "기타 자산(유동 자산)",
-    "description": "이 항목은 유동 자산 중 기타 자산을 나타내며, 기업의 유동성 분석에 도움이 됩니다.",
+    "korean_name": "기타 유동 자산",
+    "description": "이 항목은 유동 자산 중 기타 항목을 포함하며, 기업의 유동성 및 자산 구조를 평가하는 데 중요합니다.",
     "category": "자산"
   },
   "assetscurrent": {
     "korean_name": "유동 자산",
-    "description": "유동 자산은 1년 이내에 현금으로 전환될 수 있는 자산을 나타냅니다. 이는 기업의 단기 재무 건전성을 평가하는 데 중요합니다.",
+    "description": "이 항목은 1년 이내에 현금화할 수 있는 자산의 총합을 나타내며, 기업의 유동성을 평가하는 데 중요한 지표입니다.",
     "category": "자산"
   },
   "marketablesecuritiesnoncurrent": {
-    "korean_name": "유가증권(비유동 자산)",
-    "description": "비유동 자산으로 분류되는 유가증권을 나타내며, 장기 투자 목적의 자산입니다. 이는 기업의 장기 재무 전략을 이해하는 데 중요합니다.",
+    "korean_name": "비유동시장성 증권",
+    "description": "이 항목은 1년 이상 보유할 증권을 나타내며, 기업의 장기 투자 전략을 반영합니다.",
     "category": "자산"
   },
   "propertyplantandequipmentnet": {
-    "korean_name": "유형 자산(순액)",
-    "description": "유형 자산은 물리적으로 존재하는 자산을 나타내며, 기업의 운영에 필수적입니다. 이는 자산의 가치를 평가하는 데 중요한 지표입니다.",
+    "korean_name": "유형자산(순액)",
+    "description": "이 항목은 기업이 보유한 유형 자산의 장부가치를 나타내며, 자산의 안정성과 운영 능력을 평가하는 데 중요합니다.",
     "category": "자산"
   },
   "otherassetsnoncurrent": {
-    "korean_name": "기타 자산(비유동 자산)",
-    "description": "비유동 자산 중 기타 자산을 나타내며, 기업의 장기 재무 분석에 중요합니다.",
+    "korean_name": "기타 비유동 자산",
+    "description": "이 항목은 비유동 자산 중 기타 항목을 포함하며, 기업의 장기 재무 건전성 평가에 중요한 정보를 제공합니다.",
     "category": "자산"
   },
   "assetsnoncurrent": {
     "korean_name": "비유동 자산",
-    "description": "비유동 자산은 1년 이상 보유될 자산을 나타내며, 기업의 장기 재무 안정성을 평가하는 데 중요합니다.",
+    "description": "이 항목은 1년 이상 보유할 자산의 총합을 나타내며, 기업의 장기 재무 구조를 평가하는 데 중요한 지표입니다.",
     "category": "자산"
   },
   "assets": {
     "korean_name": "자산",
-    "description": "자산은 기업이 소유하고 있는 모든 자산의 총합을 나타냅니다. 이는 기업의 재무 건전성을 이해하는 데 기본적인 요소입니다.",
+    "description": "이 항목은 기업이 보유하고 있는 모든 자산의 총합을 나타내며, 재무 상태를 평가하는 데 필수적인 정보입니다.",
     "category": "자산"
   },
   "accountspayablecurrent": {
-    "korean_name": "매입채무(유동)",
-    "description": "이 항목은 기업이 공급자에게 지급해야 할 금액을 나타냅니다. 이는 기업의 단기적인 재무 의무를 평가하는 데 필수적입니다.",
+    "korean_name": "유동 채무",
+    "description": "이 항목은 기업이 단기 내에 지급해야 할 채무를 나타내며, 유동성 관리 및 재무 건전성 분석에 중요합니다.",
     "category": "부채"
   },
   "otherliabilitiescurrent": {
-    "korean_name": "기타 부채(유동)",
-    "description": "유동 부채 중 기타 부채를 나타내며, 기업의 단기 재무 부담을 이해하는 데 중요합니다.",
+    "korean_name": "기타 유동 부채",
+    "description": "이 항목은 유동 부채 중 기타 항목을 포함하며, 기업의 단기 재무 의무를 평가하는 데 중요한 정보를 제공합니다.",
     "category": "부채"
   },
   "contractwithcustomerliabilitycurrent": {
-    "korean_name": "고객과의 계약 부채(유동)",
-    "description": "이 항목은 고객과의 계약에 따른 의무를 나타내며, 단기적인 부채로 평가됩니다. 이는 기업의 유동성을 분석하는 데 중요합니다.",
+    "korean_name": "고객 계약 부채(유동)",
+    "description": "이 항목은 고객과의 계약에 따라 발생한 유동 부채를 나타내며, 수익 인식 및 유동성 관리에 중요합니다.",
     "category": "부채"
   },
   "commercialpaper": {
     "korean_name": "상업어음",
-    "description": "상업어음은 기업이 단기 자금 조달을 위해 발행하는 무담보 증권입니다. 보통 만기가 270일 이하이며, 기업의 유동성을 개선하는 데 중요한 역할을 합니다.",
+    "description": "상업어음은 단기 자금을 조달하기 위해 발행되는 무담보 증권으로, 일반적으로 9개월 이내에 만료됩니다. 기업의 유동성을 높이고 자금 조달 비용을 줄이는 데 중요한 역할을 합니다.",
     "category": "부채"
   },
   "longtermdebtcurrent": {
-    "korean_name": "장기부채(현재)",
-    "description": "장기부채 중에서 한 회계 연도 내에 상환해야 하는 부분을 나타냅니다. 이는 기업의 유동성 위험을 평가하는 데 중요한 요소입니다.",
+    "korean_name": "현재 장기 부채",
+    "description": "현재 장기 부채는 장기 부채 중 만기가 1년 이내인 부분을 의미합니다. 기업의 자금 흐름을 이해하는 데 중요한 요소로, 단기적인 유동성 위험을 나타냅니다.",
     "category": "부채"
   },
   "liabilitiescurrent": {
-    "korean_name": "현재부채",
-    "description": "현재부채는 기업이 1년 이내에 상환해야 하는 의무를 나타냅니다. 이는 기업의 단기 재정 건전성을 판단하는 데 중요한 지표입니다.",
+    "korean_name": "현재 부채",
+    "description": "현재 부채는 기업이 1년 이내에 상환해야 할 모든 부채를 포함합니다. 이는 기업의 단기 재무 건전성을 평가하는 데 필수적입니다.",
     "category": "부채"
   },
   "longtermdebtnoncurrent": {
-    "korean_name": "장기부채(비현재)",
-    "description": "장기부채 중에서 현재 회계 연도 이후에 상환될 부분을 나타냅니다. 기업의 장기 재정 안정성을 평가하는 데 중요합니다.",
+    "korean_name": "비현재 장기 부채",
+    "description": "비현재 장기 부채는 만기가 1년 이상 남아 있는 장기 부채를 의미합니다. 기업의 장기적인 재무 구조를 이해하는 데 중요한 지표입니다.",
     "category": "부채"
   },
   "otherliabilitiesnoncurrent": {
     "korean_name": "기타 비현재 부채",
-    "description": "기타 비현재 부채는 장기적으로 상환해야 할 다양한 부채를 포함합니다. 이는 기업의 장기적인 재정 의무를 나타냅니다.",
+    "description": "기타 비현재 부채는 특정하지 않은 장기 부채를 포함하며, 일반적으로 장기적인 재무 의무를 나타냅니다. 이는 기업의 장기적인 재무 계획에 영향을 미칠 수 있습니다.",
     "category": "부채"
   },
   "liabilitiesnoncurrent": {
     "korean_name": "비현재 부채",
-    "description": "비현재 부채는 기업이 1년 이후에 상환해야 할 부채를 나타냅니다. 이는 기업의 장기 재정 계획과 안정성에 중요한 정보를 제공합니다.",
+    "description": "비현재 부채는 기업의 총 부채 중에서 만기가 1년 이상 남은 부채를 의미합니다. 이는 기업의 장기적인 재무 안정성을 평가하는 데 중요한 지표로 작용합니다.",
     "category": "부채"
   },
   "liabilities": {
     "korean_name": "부채",
-    "description": "부채는 기업이 외부에 지고 있는 모든 재정적 의무를 나타냅니다. 이는 기업의 재정 구조와 건전성을 평가하는 데 필수적인 요소입니다.",
+    "description": "부채는 기업이 외부에 지고 있는 모든 재무적 의무를 나타냅니다. 이는 기업의 재무 건전성과 유동성 분석에 핵심적인 요소가 됩니다.",
     "category": "부채"
   },
   "commitmentsandcontingencies": {
     "korean_name": "약정 및 우발사항",
-    "description": "약정 및 우발사항은 기업이 미래에 발생할 수 있는 재정적 의무를 나타냅니다. 이는 잠재적인 위험 요소를 평가하는 데 중요합니다.",
+    "description": "약정 및 우발사항은 기업이 미래에 발생할 수 있는 잠재적인 의무를 나타냅니다. 이는 재무제표에서 기업의 리스크를 평가하는 데 중요합니다.",
     "category": "기타"
   },
   "commonstockparorstatedvaluepershare": {
-    "korean_name": "보통주 액면가 또는 고정 가치",
-    "description": "보통주가 발행될 때 설정된 액면가 또는 고정 가치를 나타냅니다. 이는 주식의 기본 가치를 이해하는 데 도움이 됩니다.",
+    "korean_name": "주식의 액면가 또는 기재가",
+    "description": "주식의 액면가는 주식이 발행될 때 설정된 고정된 금액으로, 주주에게 주어지는 기본적인 권리를 나타냅니다. 기업 자본 구조의 중요한 요소입니다.",
     "category": "자본"
   },
   "commonstocksharesauthorized": {
-    "korean_name": "허가된 보통주 주식 수",
-    "description": "회사가 발행할 수 있는 보통주 주식의 최대 수를 나타냅니다. 이는 기업의 자본 구조 및 성장 가능성을 평가하는 데 중요합니다.",
+    "korean_name": "허가된 주식 수",
+    "description": "허가된 주식 수는 기업이 발행할 수 있는 최대 주식 수를 의미합니다. 이는 기업의 자본 조달 능력에 영향을 미치는 중요한 요소입니다.",
     "category": "자본"
   },
   "commonstocksharesissued": {
-    "korean_name": "발행된 보통주 주식 수",
-    "description": "실제로 발행된 보통주 주식의 수를 나타냅니다. 이는 기업의 자본 조달 현황을 반영하는 중요한 지표입니다.",
+    "korean_name": "발행된 주식 수",
+    "description": "발행된 주식 수는 기업이 실제로 투자자에게 발행한 주식의 수를 나타냅니다. 이는 기업의 자본 구조와 주주 지분을 이해하는 데 중요한 정보입니다.",
     "category": "자본"
   },
   "commonstocksharesoutstanding": {
-    "korean_name": "유통 중인 보통주 주식 수",
-    "description": "현재 시장에서 유통되고 있는 보통주 주식의 수를 나타냅니다. 이는 주주 권리와 기업 가치 평가에 중요한 역할을 합니다.",
+    "korean_name": "유통주식 수",
+    "description": "유통주식 수는 시장에서 거래 가능한 주식의 수를 말합니다. 이는 기업의 시장 가치를 평가하는 데 핵심적인 요소입니다.",
     "category": "자본"
   },
   "commonstocksincludingadditionalpaidincapital": {
     "korean_name": "추가 납입 자본을 포함한 보통주",
-    "description": "보통주와 추가로 납입된 자본을 합친 총액을 나타냅니다. 이는 기업의 자본 조달 구조를 이해하는 데 도움이 됩니다.",
+    "description": "이 항목은 보통주와 추가 납입 자본을 포함하며, 기업의 자본 조달 구조를 이해하는 데 도움을 줍니다.",
     "category": "자본"
   },
   "retainedearningsaccumulateddeficit": {
-    "korean_name": "유보이익(누적 적자)",
-    "description": "기업이 발생시킨 이익 중 배당금으로 지급하지 않고 남겨둔 금액을 나타냅니다. 누적 적자는 기업의 재무 건강성을 평가하는 데 중요한 지표입니다.",
+    "korean_name": "이익잉여금 또는 누적 적자",
+    "description": "이익잉여금은 기업이 과거에 벌어들인 이익 중 배당금으로 지급되지 않고 재투자된 부분을 의미합니다. 누적 적자는 손실이 누적된 경우를 나타냅니다.",
     "category": "자본"
   },
   "accumulatedothercomprehensiveincomelossnetoftax": {
-    "korean_name": "세금 차감 기타 포괄적 손익 누적액",
-    "description": "세금 영향이 반영된 기타 포괄적 손익의 누적액을 나타냅니다. 이는 기업의 전체적인 재무 성과를 평가하는 데 필수적입니다.",
+    "korean_name": "세금 공제가 적용된 기타 포괄 손익 누적액",
+    "description": "기타 포괄 손익은 특정 항목들이 세후로 누적된 값을 나타내며, 기업의 재무 성과를 종합적으로 평가하는 데 중요한 역할을 합니다.",
     "category": "자본"
   },
   "stockholdersequity": {
     "korean_name": "주주 자본",
-    "description": "주주가 기업에 투자한 자본과 기업의 이익이 누적된 금액을 나타냅니다. 이는 기업의 재무 건전성을 나타내는 중요한 지표입니다.",
+    "description": "주주 자본은 기업의 자산에서 부채를 차감한 순자산을 나타내며, 이는 기업의 재무 건전성을 평가하는 데 중요한 요소입니다.",
     "category": "자본"
   },
   "liabilitiesandstockholdersequity": {
     "korean_name": "부채 및 주주 자본",
-    "description": "기업의 총 부채와 주주 자본을 합친 총액을 나타냅니다. 이는 기업의 재정 구조를 이해하는 데 중요한 지표입니다.",
+    "description": "부채와 주주 자본의 합계는 기업의 총 자본 구조를 나타내며, 이는 기업의 재무 상태를 종합적으로 평가하는 데 필수적입니다.",
     "category": "기타"
   },
   "adjustmentsrelatedtotaxwithholdingforsharebasedcompensation": {
     "korean_name": "주식 기반 보상에 대한 세금 원천징수 관련 조정",
-    "description": "주식 기반 보상에 대해 원천징수된 세금의 조정을 나타냅니다. 이는 기업의 세무 관리와 관련이 있습니다.",
+    "description": "이 항목은 주식 기반 보상에 대한 세금 원천징수와 관련된 조정을 나타냅니다. 이는 기업의 세무 리스크를 관리하는 데 중요한 역할을 합니다.",
     "category": "기타"
   },
   "adjustmentstoadditionalpaidincapitalsharebasedcompensationrequisiteserviceperiodrecognitionv": {
     "korean_name": "주식 기반 보상에 대한 추가 납입 자본 조정",
-    "description": "주식 기반 보상의 서비스 기간 인식을 위한 추가 납입 자본에 대한 조정을 나타냅니다. 이는 보상 비용 인식에 영향을 미칩니다.",
+    "description": "이 항목은 주식 기반 보상 프로그램에서 서비스 기간에 따른 추가 납입 자본의 조정을 나타냅니다. 이는 주주 가치를 평가하는 데 중요한 요소입니다.",
     "category": "기타"
   },
   "dividends": {
     "korean_name": "배당금",
-    "description": "주주에게 지급되는 이익의 분배를 나타냅니다. 이는 기업의 재정 정책 및 주주 관계를 나타내는 중요한 요소입니다.",
+    "description": "배당금은 기업이 주주에게 이익을 분배하는 금액을 의미합니다. 이는 주주의 투자 수익을 직접적으로 반영하는 중요한 요소입니다.",
     "category": "자본"
   },
   "stockrepurchasedandretiredduringperiodvalue": {
-    "korean_name": "기간 동안 자사주 매입 및 소각된 가치",
-    "description": "회사가 매입하고 소각한 자사주의 가치를 나타냅니다. 이는 기업의 자본 구조 조정 및 주가에 영향을 미칠 수 있습니다.",
+    "korean_name": "기간 중 자사주 매입 및 퇴직 가치",
+    "description": "이 항목은 기업이 자사주를 매입하고 퇴직시킨 총 가치를 나타냅니다. 이는 주주 가치를 증대시키는 전략으로 사용됩니다.",
     "category": "자본"
   },
   "commonstockdividendspersharedeclared": {
-    "korean_name": "주당 선언된 보통주 배당금",
-    "description": "주당 지급될 보통주 배당금의 금액을 나타냅니다. 이는 주주에게 지급되는 수익을 평가하는 데 중요한 지표입니다.",
+    "korean_name": "선언된 보통주 배당금",
+    "description": "선언된 보통주 배당금은 주주에게 지급하기로 결정된 배당금의 양을 나타냅니다. 이는 기업의 현금 흐름 관리와 주주 관계에 중요합니다.",
     "category": "자본"
   },
   "cashcashequivalentsrestrictedcashandrestrictedcashequivalents": {
     "korean_name": "현금 및 현금성 자산, 제한된 현금 및 제한된 현금성 자산",
-    "description": "제한된 현금을 포함한 기업의 유동성을 나타냅니다. 이는 기업의 단기 재무 건전성을 평가하는 데 필수적입니다.",
+    "description": "이 항목은 기업이 보유한 현금 및 현금성 자산을 포함하며, 유동성을 평가하는 데 중요한 지표가 됩니다.",
     "category": "자산"
   },
   "depreciationdepletionandamortization": {
     "korean_name": "감가상각, 고갈 및 상각",
-    "description": "고정 자산의 가치 감소를 회계적으로 반영하는 항목입니다. 이는 기업의 비용 구조와 수익성을 평가하는 데 중요한 요소입니다.",
+    "description": "이 항목은 자산의 가치 감소를 반영하는 비용으로, 기업의 재무 성과를 평가하는 데 중요한 역할을 합니다.",
     "category": "비용"
   },
   "sharebasedcompensation": {
     "korean_name": "주식 기반 보상",
-    "description": "직원에게 주식 또는 주식 기반 수당을 통해 제공되는 보상입니다. 이는 기업의 인사 정책 및 비용 구조에 큰 영향을 미칩니다.",
+    "description": "주식 기반 보상은 직원에게 주식이나 주식 옵션을 지급하는 방식의 보상으로, 인재 유치와 유지에 중요한 역할을 합니다.",
     "category": "비용"
   },
   "othernoncashincomeexpense": {
     "korean_name": "기타 비현금 수익/비용",
-    "description": "현금 거래가 아닌 기타 수익 및 비용을 나타냅니다. 이는 기업의 재무 성과 분석에 중요한 요소입니다.",
+    "description": "기타 비현금 수익/비용은 현금 흐름에 영향을 미치지 않는 수익 및 비용을 포함합니다. 이는 기업의 재무 상태를 종합적으로 평가하는 데 필요합니다.",
     "category": "기타"
   },
   "increasedecreaseinaccountsreceivable": {
-    "korean_name": "외상매출금의 증가/감소",
-    "description": "외상매출금의 변동을 나타내며, 기업의 현금 흐름과 신용 관리 상황을 반영합니다.",
+    "korean_name": "채권의 증가/감소",
+    "description": "채권의 증가는 기업의 판매 증가를 나타내며, 감소는 매출 회수의 문제를 나타낼 수 있습니다. 이는 기업의 유동성에 중요한 영향을 미칩니다.",
     "category": "기타"
   },
   "increasedecreaseinotherreceivables": {
     "korean_name": "기타 채권의 증가/감소",
-    "description": "기타 채권의 변동을 나타내며, 기업의 유동성 관리와 관련이 있습니다.",
+    "description": "기타 채권의 증가는 기업의 기타 수익원에서 발생하는 변화를 나타냅니다. 이는 기업의 재무 건전성을 평가하는 데 도움이 됩니다.",
     "category": "기타"
   },
   "increasedecreaseininventories": {
     "korean_name": "재고의 증가/감소",
-    "description": "재고 자산의 변동을 나타내며, 이는 기업의 운영 효율성과 수익성에 중요한 영향을 미칩니다.",
+    "description": "재고의 증가는 생산 및 판매 계획의 변화를 나타내며, 감소는 판매 증가의 신호일 수 있습니다. 이는 기업의 운영 효율성을 평가하는 데 중요합니다.",
     "category": "기타"
   },
   "increasedecreaseinotheroperatingassets": {
     "korean_name": "기타 운영 자산의 증가/감소",
-    "description": "기타 운영 자산의 변동을 나타내며, 기업의 자산 관리 효율성을 평가하는 데 중요합니다.",
+    "description": "기타 운영 자산의 변동은 기업의 운영 효율성과 자원 활용에 대한 인사이트를 제공합니다. 이는 재무 상태 분석에 중요한 요소입니다.",
     "category": "기타"
   },
   "increasedecreaseinaccountspayable": {
-    "korean_name": "외상매출금의 증가/감소",
-    "description": "외상매출금의 변동을 나타내며, 기업의 현금 흐름과 운영 자산 관리 상황을 반영합니다.",
+    "korean_name": "매입채무의 증가/감소",
+    "description": "매입채무의 증가는 기업의 지급 의무 증가를 나타내며, 감소는 기업의 현금 흐름 개선을 나타낼 수 있습니다. 이는 유동성 관리에 중요한 요소입니다.",
     "category": "기타"
   },
   "increasedecreaseinotheroperatingliabilities": {
     "korean_name": "기타 운영 부채의 증가/감소",
-    "description": "기타 운영 부채의 변동을 나타내며, 기업의 재무 건전성과 유동성 관리에 중요한 역할을 합니다.",
+    "description": "기타 운영 부채의 변동은 기업의 단기 지급 의무를 평가하는 데 중요한 역할을 합니다. 이는 기업의 유동성 상태를 반영합니다.",
     "category": "기타"
   },
   "netcashprovidedbyusedinoperatingactivities": {
-    "korean_name": "영업활동으로 인한 현금흐름",
-    "description": "영업활동에서 발생한 순현금 흐름을 나타내며, 기업의 수익성 및 운영 효율성을 평가하는 데 중요합니다.",
+    "korean_name": "영업 활동에서 제공되거나 사용된 순현금",
+    "description": "영업 활동에서 발생한 순현금은 기업의 기본적인 수익 창출 능력을 평가하는 지표로, 재무 건전성을 반영합니다.",
     "category": "기타"
   },
   "paymentstoacquireavailableforsalesecuritiesdebt": {
-    "korean_name": "매도가능증권(채무) 취득을 위한 지급",
-    "description": "매도가능증권을 구매하기 위해 지출한 현금을 나타냅니다. 이는 기업의 투자 전략과 자본 운용에 영향을 미칩니다.",
+    "korean_name": "매도 가능 증권(부채) 취득을 위한 지출",
+    "description": "매도 가능 증권을 취득하는 데 소요되는 지출을 나타내며, 이는 기업의 투자 전략을 평가하는 데 중요한 요소입니다.",
     "category": "기타"
   },
   "proceedsfrommaturitiesprepaymentsandcallsofavailableforsalesecurities": {
-    "korean_name": "매도가능증권의 만기, 선지급 및 콜로부터의 수익",
-    "description": "매도가능증권의 만기 및 선지급으로부터 발생한 현금을 나타냅니다. 이는 투자 수익성과 유동성을 평가하는 데 중요한 지표입니다.",
+    "korean_name": "매도 가능 증권의 만기, 선불 및 콜로부터의 수익",
+    "description": "이 항목은 만기된 매도 가능 증권과 관련된 현금 유입을 나타내며, 기업의 투자 성과를 평가하는 데 중요한 역할을 합니다.",
     "category": "기타"
   },
   "proceedsfromsaleofavailableforsalesecuritiesdebt": {
-    "korean_name": "매도가능증권(채무) 매각으로 인한 수익",
-    "description": "매도가능증권 매각을 통해 발생한 현금을 나타냅니다. 이는 기업의 투자 성과 및 자본 관리를 평가하는 데 중요합니다.",
+    "korean_name": "매도 가능 증권(부채) 판매로 인한 수익",
+    "description": "매도 가능 증권을 판매하여 발생한 현금 유입을 나타내며, 이는 기업의 투자 및 재무 전략을 평가하는 데 중요한 요소입니다.",
     "category": "기타"
   },
   "paymentstoacquirepropertyplantandequipment": {
-    "korean_name": "유형자산 취득을 위한 지급",
-    "description": "유형자산을 구매하기 위해 지출한 현금을 나타냅니다. 이는 기업의 장기적 성장 전략과 자산 관리에 중요한 역할을 합니다.",
+    "korean_name": "유형 자산 취득을 위한 지출",
+    "description": "유형 자산 취득에 소요되는 지출을 나타내며, 이는 기업의 장기적인 성장 잠재력을 평가하는 데 중요한 요소입니다.",
     "category": "기타"
   },
   "paymentsforproceedsfromotherinvestingactivities": {
-    "korean_name": "기타 투자활동으로 인한 수익에 대한 지급",
-    "description": "기타 투자활동에서 발생한 수익에 대한 지급을 나타냅니다. 이는 기업의 전반적인 투자 성과를 평가하는 데 중요합니다.",
+    "korean_name": "기타 투자 활동으로 인한 수익 지출",
+    "description": "기타 투자 활동에서 발생한 현금 유출을 나타내며, 이는 기업의 투자 전략을 평가하는 데 유용합니다.",
     "category": "기타"
   },
   "netcashprovidedbyusedininvestingactivities": {
-    "korean_name": "투자활동으로 인한 순현금 흐름",
-    "description": "투자활동에서 발생한 현금의 순흐름을 나타내며, 이는 기업의 성장 잠재력 및 자본 운용 효율성을 평가하는 데 중요합니다.",
+    "korean_name": "투자 활동에서 제공되거나 사용된 순현금",
+    "description": "투자 활동에서 발생한 순현금은 기업의 투자 성과를 측정하는 지표로, 장기적인 재무 건전성을 반영합니다.",
     "category": "기타"
   },
   "paymentsrelatedtotaxwithholdingforsharebasedcompensation": {
     "korean_name": "주식 기반 보상에 대한 세금 원천징수 관련 지급",
-    "description": "주식 기반 보상에 대해 원천징수된 세금을 지급한 금액을 나타냅니다. 이는 기업의 세무 관리와 관련이 있습니다.",
+    "description": "주식 기반 보상과 관련된 세금 원천징수의 지급을 나타내며, 이는 기업의 세무 운영을 평가하는 데 중요한 요소입니다.",
     "category": "기타"
   },
   "paymentsofdividends": {
     "korean_name": "배당금 지급",
-    "description": "배당금 지급은 회사가 주주에게 이익의 일부를 분배하는 금액을 나타냅니다. 이는 주주의 투자 수익을 제공하며, 기업의 자본 배분 결정에 중요한 영향을 미칩니다.",
+    "description": "배당금 지급은 기업이 주주에게 이익을 분배하는 과정을 나타냅니다. 이는 기업의 현금 흐름에 중요한 영향을 미치며, 주주에 대한 수익 배분의 일환으로 간주됩니다.",
     "category": "기타"
   },
   "paymentsforrepurchaseofcommonstock": {
     "korean_name": "자사주 매입에 대한 지급",
-    "description": "자사주 매입은 회사가 자사의 주식을 다시 구입하는 데 사용되는 자금을 나타냅니다. 이는 주주 가치를 높이기 위한 전략으로, 주식의 수를 줄여주가를 상승시키는 효과가 있습니다.",
+    "description": "자사주 매입은 기업이 자사의 보통주를 다시 구매하는 것을 의미합니다. 이는 주가를 안정시키고 주주 가치를 증가시키는 방법으로 사용되며, 현금 흐름에도 큰 영향을 미칩니다.",
     "category": "기타"
   },
   "repaymentsoflongtermdebt": {
-    "korean_name": "장기 부채 상환",
-    "description": "장기 부채 상환은 회사가 만기가 도래한 장기 채무를 상환하는 금액을 의미합니다. 이는 기업의 재무 건전성을 유지하는 데 중요한 요소입니다.",
-    "category": "기타"
+    "korean_name": "장기부채 상환",
+    "description": "장기부채 상환은 기업이 만기가 도래한 장기부채를 갚는 과정을 나타냅니다. 이는 기업의 부채 관리와 재무 안정성을 유지하는 데 중요한 요소입니다.",
+    "category": "부채"
   },
   "proceedsfromrepaymentsofcommercialpaper": {
     "korean_name": "상업어음 상환으로 인한 수익",
-    "description": "상업어음 상환으로 인한 수익은 기업이 상업어음을 상환받아 얻는 자금을 의미합니다. 이는 단기 자금 조달에 중요한 역할을 합니다.",
+    "description": "상업어음 상환으로 인한 수익은 기업이 만기가 도래한 상업어음을 상환한 후 발생하는 현금을 나타냅니다. 이는 단기 유동성을 관리하는 데 중요한 역할을 합니다.",
     "category": "기타"
   },
   "proceedsfrompaymentsforotherfinancingactivities": {
     "korean_name": "기타 금융 활동에 대한 지급으로 인한 수익",
-    "description": "기타 금융 활동에 대한 지급으로 인한 수익은 다양한 금융 거래에서 발생하는 수익을 포함합니다. 이는 기업의 자금 조달 구조를 다양화하는 데 기여합니다.",
+    "description": "기타 금융 활동에 대한 지급으로 인한 수익은 기업이 다양한 금융 거래에서 발생하는 현금을 나타냅니다. 이는 재무제표의 유동성을 평가하는 데 중요한 정보입니다.",
     "category": "기타"
   },
   "netcashprovidedbyusedinfinancingactivities": {
     "korean_name": "재무 활동에서 제공되거나 사용된 순 현금",
-    "description": "재무 활동에서 제공되거나 사용된 순 현금은 기업의 자금 조달 활동에서 발생한 현금 흐름을 나타냅니다. 이는 재무 건전성과 자본 구조를 이해하는 데 중요합니다.",
+    "description": "재무 활동에서 제공되거나 사용된 순 현금은 기업의 자본 조달 및 상환 활동에서 발생한 순 현금을 나타냅니다. 이는 기업의 재무 건전성을 평가하는 데 중요한 지표입니다.",
     "category": "기타"
   },
   "cashcashequivalentsrestrictedcashandrestrictedcashequivalentsperiodincreasedecreaseincluding": {
-    "korean_name": "현금 및 현금성 자산, 제한된 현금 및 제한된 현금성 자산의 증가와 감소",
-    "description": "현금 및 현금성 자산의 변동은 기업의 유동성 관리 및 재무 건전성을 평가하는 데 필수적인 정보를 제공합니다. 제한된 현금은 특정 목적에 사용되기 위해 제한된 자금을 의미합니다.",
+    "korean_name": "현금 및 현금성 자산, 제한된 현금 및 제한된 현금성 자산의 증가/감소",
+    "description": "현금 및 현금성 자산의 변동은 기업의 유동성을 평가하는 중요한 요소입니다. 이 항목은 제한된 현금이 포함된 총 현금 흐름을 나타냅니다.",
     "category": "자산"
   },
   "incometaxespaidnet": {
-    "korean_name": "소득세 지급(순)",
-    "description": "소득세 지급(순)은 기업이 세무 당국에 납부한 소득세의 총액을 의미합니다. 이는 세금 전략과 기업의 순이익에 큰 영향을 미칩니다.",
-    "category": "비용"
+    "korean_name": "소득세 지급(순액)",
+    "description": "소득세 지급(순액)은 기업이 특정 기간 동안 실제로 지급한 소득세의 총액을 나타냅니다. 이는 기업의 세무 관리와 현금 흐름에 직접적인 영향을 미칩니다.",
+    "category": "기타"
   },
   "basisofpresentationandsignificantaccountingpoliciestextblock": {
-    "korean_name": "재무제표 작성의 기초 및 중요 회계 정책",
-    "description": "재무제표 작성의 기초 및 중요 회계 정책은 재무제표가 어떻게 작성되었는지, 어떤 회계 기준이 적용되었는지를 설명합니다. 이는 재무제표의 투명성을 높이고, 이해관계자에게 신뢰를 제공합니다.",
+    "korean_name": "재무제표 작성 기준 및 주요 회계 정책",
+    "description": "이 항목은 재무제표를 작성하는 데 사용된 기준과 주요 회계 정책을 설명합니다. 이는 사용자에게 재무제표의 신뢰성과 일관성을 평가하는 데 중요한 정보를 제공합니다.",
     "category": "기타"
   },
   "basisofaccountingpolicypolicytextblock": {
     "korean_name": "회계 정책의 기초",
-    "description": "회계 정책의 기초는 기업이 선택한 회계 기준과 정책을 자세히 설명합니다. 이는 재무제표의 신뢰성과 일관성을 보장하는 데 중요한 역할을 합니다.",
+    "description": "회계 정책의 기초는 기업이 재무제표를 작성하는 데 적용하는 특정 회계 기준과 정책을 설명합니다. 이는 재무제표의 신뢰성과 투명성을 보장하는 데 중요합니다.",
     "category": "기타"
   },
   "fiscalperiod": {
     "korean_name": "회계 기간",
-    "description": "회계 기간은 재무제표가 작성된 특정 기간을 나타냅니다. 이는 기업의 성과를 평가하는 기준이 됩니다.",
+    "description": "회계 기간은 재무제표가 작성된 특정 기간을 나타냅니다. 이는 기업의 재무 성과를 평가하는 데 중요한 기초 정보를 제공합니다.",
     "category": "기타"
   },
   "revenuefromcontractwithcustomertextblock": {
-    "korean_name": "고객과의 계약에 따른 수익",
-    "description": "고객과의 계약에 따른 수익은 고객과 체결한 계약에서 발생하는 수익을 설명합니다. 이는 기업의 수익원과 성장을 이해하는 데 핵심 요소입니다.",
+    "korean_name": "고객과의 계약에서 발생하는 수익",
+    "description": "고객과의 계약에서 발생하는 수익은 기업이 고객과 체결한 계약에 따라 발생한 수익을 나타냅니다. 이는 기업의 수익성을 평가하는 데 중요한 요소입니다.",
     "category": "수익"
   },
   "disaggregationofrevenuetabletextblock": {
-    "korean_name": "수익의 분리 보고",
-    "description": "수익의 분리 보고는 다양한 수익 원천을 세분화하여 보고하는 내용을 포함합니다. 이는 수익의 구조와 변동성을 이해하는 데 도움을 줍니다.",
+    "korean_name": "수익의 세분화",
+    "description": "수익의 세분화는 기업이 다양한 수익 원천에 따라 수익을 분류하여 제공하는 정보를 의미합니다. 이는 투자자에게 수익 구조를 명확히 이해하는 데 도움이 됩니다.",
     "category": "수익"
   },
   "contractwithcustomerliabilityrevenuerecognized": {
-    "korean_name": "고객 계약 부채 수익 인식",
-    "description": "고객 계약 부채 수익 인식은 고객과의 계약에 따라 발생한 부채를 수익으로 인식하는 과정을 설명합니다. 이는 기업의 수익 인식 원칙에 대한 이해를 돕습니다.",
+    "korean_name": "고객과의 계약에서 인식된 수익에 대한 부채",
+    "description": "고객과의 계약에서 인식된 수익에 대한 부채는 기업이 고객의 계약에 따라 향후 제공해야 할 의무를 나타냅니다. 이는 수익 인식 원칙과 관련이 있습니다.",
     "category": "부채"
   },
   "contractwithcustomerliability": {
-    "korean_name": "고객 계약 부채",
-    "description": "고객 계약 부채는 고객으로부터 받은 대가에 대해 아직 수익으로 인식되지 않은 금액을 나타냅니다. 이는 기업의 미래 수익을 나타내며, 재무제표에서 중요한 역할을 합니다.",
+    "korean_name": "고객과의 계약 부채",
+    "description": "고객과의 계약 부채는 기업이 고객과의 계약에 따라 향후 제품이나 서비스를 제공해야 하는 의무를 나타냅니다. 이는 재무 건전성을 평가하는 데 중요한 요소입니다.",
     "category": "부채"
   },
   "revenueremainingperformanceobligationpercentage": {
-    "korean_name": "남은 성과 의무의 수익 비율",
-    "description": "남은 성과 의무의 수익 비율은 아직 이행되지 않은 계약의 수익을 비율로 나타냅니다. 이는 고객 계약의 이행 진행 상황을 평가하는 데 도움을 줍니다.",
+    "korean_name": "남은 성과 의무 비율",
+    "description": "남은 성과 의무 비율은 기업이 고객과의 계약에서 남아 있는 성과 의무의 비율을 나타냅니다. 이는 수익 인식의 정확성을 평가하는 데 도움이 됩니다.",
     "category": "수익"
   },
   "earningspersharetextblock": {
     "korean_name": "주당 순이익",
-    "description": "주당 순이익은 기업의 순이익을 발행된 주식 수로 나눈 값으로, 주주에게 제공되는 수익을 나타냅니다. 이는 투자자에게 중요한 재무 성과 지표입니다.",
+    "description": "주당 순이익은 기업의 순이익을 발행된 주식 수로 나눈 값으로, 기업의 수익성을 측정하는 중요한 지표입니다. 이는 투자자에게 기업의 성과를 평가하는 데 중요한 정보를 제공합니다.",
     "category": "기타"
   },
   "scheduleofearningspersharebasicanddilutedtabletextblock": {
     "korean_name": "기본 및 희석 주당 순이익 일정",
-    "description": "기본 및 희석 주당 순이익 일정은 기본 주당 순이익과 희석 주당 순이익을 비교하여 보여줍니다. 이는 투자자에게 기업의 주식 성과를 평가하는 데 도움이 됩니다.",
+    "description": "기본 및 희석 주당 순이익 일정은 기업의 기본 및 희석 주당 순이익을 비교하여 나타내는 표입니다. 이는 투자자에게 기업의 주식 가치를 평가하는 데 도움이 됩니다.",
     "category": "기타"
   },
   "incrementalcommonsharesattributabletosharebasedpaymentarrangements": {
-    "korean_name": "주식 기반 지급 약정에 따른 추가 보통주",
-    "description": "주식 기반 지급 약정에 따른 추가 보통주는 주식 옵션 및 주식 지급 계획으로 인해 발생하는 추가 주식 수를 나타냅니다. 이는 주식의 희석 효과를 평가하는 데 중요한 정보입니다.",
+    "korean_name": "주식 기반 지급 약정에 귀속되는 추가 보통주",
+    "description": "주식 기반 지급 약정에 귀속되는 추가 보통주는 기업이 주식 기반 보상 프로그램을 통해 발행할 수 있는 추가 주식의 수를 나타냅니다. 이는 주식 희석의 영향을 파악하는 데 중요한 정보입니다.",
     "category": "기타"
   },
   "antidilutivesecuritiesexcludedfromcomputationofearningspershareamount": {
-    "korean_name": "주당 순이익 계산에서 제외된 희석 방지 증권",
-    "description": "주당 순이익 계산에서 제외된 희석 방지 증권은 주식의 희석 효과를 줄이는 데 기여하는 증권을 의미합니다. 이는 주식의 가치를 평가하는 데 중요합니다.",
+    "korean_name": "주당 순이익 계산에서 제외된 항희석 증권",
+    "description": "주당 순이익 계산에서 제외된 항희석 증권은 주식 희석을 방지하기 위해 계산에서 제외된 특정 증권을 나타냅니다. 이는 기업의 주당 순이익을 보다 정확하게 평가하는 데 도움이 됩니다.",
     "category": "기타"
   },
   "financialinstrumentsdisclosuretextblock": {
-    "korean_name": "재무 상품 공시",
-    "description": "재무 상품 공시는 기업이 보유한 재무 상품의 특성과 위험을 설명합니다. 이는 투자자에게 기업의 재무 리스크를 이해하는 데 필수적인 정보를 제공합니다.",
+    "korean_name": "금융 상품 공시",
+    "description": "금융 상품 공시는 기업이 보유하고 있는 금융 상품에 대한 정보를 제공하는 항목입니다. 이는 투자자에게 기업의 재무 위험을 이해하는 데 중요한 정보를 제공합니다.",
     "category": "기타"
   },
   "scheduleofcashcashequivalentsandshortterminvestmentstabletextblock": {
-    "korean_name": "현금 및 현금성 자산과 단기 투자 일정",
-    "description": "현금 및 현금성 자산과 단기 투자의 일정은 기업의 유동성을 관리하는 방법을 보여줍니다. 이는 재무 건전성을 평가하는 데 중요합니다.",
+    "korean_name": "현금 및 현금성 자산, 단기 투자 일정",
+    "description": "현금 및 현금성 자산, 단기 투자 일정은 기업의 현금, 현금성 자산 및 단기 투자에 대한 상세한 정보를 나타냅니다. 이는 유동성 관리를 평가하는 데 중요한 자료입니다.",
     "category": "자산"
   },
   "cash": {
     "korean_name": "현금",
-    "description": "현금은 기업이 보유하고 있는 실질적인 화폐를 의미합니다. 이는 기업의 유동성을 나타내며, 운영 자금의 확보에 핵심적인 역할을 합니다.",
+    "description": "현금은 기업이 보유하고 있는 실제 화폐를 나타내며, 가장 유동적인 자산입니다. 이는 기업의 즉각적인 지급 능력을 평가하는 데 중요한 요소입니다.",
     "category": "자산"
   },
   "equitysecuritiesfvnicost": {
-    "korean_name": "공정가치 또는 원가로 측정된 자본 증권",
-    "description": "공정가치 또는 원가로 측정된 자본 증권은 기업이 보유한 자본 증권의 가치를 나타냅니다. 이는 투자 자산의 실질적인 가치를 평가하는 데 중요합니다.",
+    "korean_name": "공정가치 및 원가로 평가된 자본증권",
+    "description": "공정가치 및 원가로 평가된 자본증권은 기업이 보유한 자본증권의 가치를 평가하는 방법을 나타냅니다. 이는 투자자에게 자산의 가치 변동을 이해하는 데 중요한 정보를 제공합니다.",
     "category": "자산"
   },
   "equitysecuritiesfvnicurrentandnoncurrent": {
-    "korean_name": "공정가치로 측정된 자본 증권(유동 및 비유동)",
-    "description": "공정가치로 측정된 자본 증권은 유동 자산과 비유동 자산으로 분류될 수 있으며, 이는 기업의 자산 구조를 이해하는 데 중요한 정보를 제공합니다.",
+    "korean_name": "공정가치 및 원가로 평가된 자본증권(현재 및 비유동)",
+    "description": "현재 및 비유동 자본증권은 기업이 보유한 자본증권을 현재와 비유동으로 분류하여 나타냅니다. 이는 자산의 유동성을 평가하는 데 도움이 됩니다.",
     "category": "자산"
   },
   "availableforsaledebtsecuritiesamortizedcostbasis": {
-    "korean_name": "매도 가능 채무 증권의 상각 원가 기준",
-    "description": "매도 가능 채무 증권의 상각 원가 기준은 해당 증권의 원가를 상각하여 재무제표에 반영하는 방식을 설명합니다. 이는 자산의 실질 가치를 평가하는 데 중요합니다.",
+    "korean_name": "매도가능 채권의 상각원가 기준",
+    "description": "매도가능 채권의 상각원가 기준은 기업이 보유한 매도가능 채권의 가치를 상각원가로 평가하는 방법을 나타냅니다. 이는 재무제표의 정확성을 높이는 데 기여합니다.",
     "category": "자산"
   },
   "availableforsaledebtsecuritiesaccumulatedgrossunrealizedgainbeforetax": {
-    "korean_name": "매도 가능 채무 증권의 세전 누적 총 미실현 이익",
-    "description": "매도 가능 채무 증권의 세전 누적 총 미실현 이익은 해당 증권의 현재 가치가 원가를 초과하는 금액을 나타냅니다. 이는 자산의 잠재적 가치를 평가하는 데 도움을 줍니다.",
+    "korean_name": "매도가능 채권의 세전 누적 총 미실현 이익",
+    "description": "매도가능 채권의 세전 누적 총 미실현 이익은 기업이 보유한 매도가능 채권에서 발생한 총 미실현 이익을 나타냅니다. 이는 자산 가치의 변동을 파악하는 데 유용합니다.",
     "category": "자산"
   },
   "availableforsaledebtsecuritiesaccumulatedgrossunrealizedlossbeforetax": {
-    "korean_name": "매도 가능 채무 증권의 세전 누적 총 미실현 손실",
-    "description": "매도 가능 채무 증권의 세전 누적 총 미실현 손실은 해당 증권의 현재 가치가 원가를 하회하는 금액을 나타냅니다. 이는 자산의 손실 위험을 평가하는 데 중요합니다.",
+    "korean_name": "매도가능 채권의 세전 누적 총 미실현 손실",
+    "description": "매도가능 채권의 세전 누적 총 미실현 손실은 기업이 보유한 매도가능 채권에서 발생한 총 미실현 손실을 나타냅니다. 이는 투자자의 의사결정에 중요한 요소로 작용합니다.",
     "category": "자산"
   },
   "availableforsalesecuritiesdebtsecurities": {
-    "korean_name": "매도 가능 증권(채무 증권)",
-    "description": "매도 가능 증권(채무 증권)은 기업이 보유한 채무 증권으로, 이는 필요시 매각할 수 있는 자산으로 분류됩니다. 이는 유동성을 높이는 데 기여합니다.",
+    "korean_name": "매도가능 증권 채권",
+    "description": "매도가능 증권 채권은 기업이 보유한 매도가능 채권의 총액을 나타냅니다. 이는 기업의 자산 구성과 유동성을 평가하는 데 중요합니다.",
     "category": "자산"
   },
   "fairvaluemeasurementpolicypolicytextblock": {
-    "korean_name": "공정 가치 측정 정책",
-    "description": "공정 가치 측정 정책은 자산과 부채의 공정 가치를 측정하는 기준과 방법을 설명합니다. 이는 재무제표의 투명성과 신뢰성을 높이는 데 기여합니다.",
+    "korean_name": "공정가치 측정 정책",
+    "description": "공정가치 측정 정책은 기업이 자산과 부채의 공정가치를 어떻게 평가하는지를 설명합니다. 이는 재무제표의 신뢰성을 높이는 데 기여합니다.",
     "category": "기타"
   },
   "debtsecuritiesavailableforsalerestricted": {
-    "korean_name": "매도 가능 채무 증권(제한적)",
-    "description": "매도 가능 채무 증권(제한적)은 특정 조건이나 기간에 따라 매각이 제한된 채무 증권을 의미합니다. 이는 자산의 유동성에 영향을 미칠 수 있습니다.",
+    "korean_name": "매도가능 채권(제한됨)",
+    "description": "매도가능 채권(제한됨)은 특정 제한이 있는 매도가능 채권을 나타냅니다. 이는 자산의 유동성과 접근성을 평가하는 데 중요한 정보입니다.",
     "category": "자산"
   },
   "investmentsclassifiedbycontractualmaturitydatetabletextblock": {
     "korean_name": "계약 만기일에 따라 분류된 투자 일정",
-    "description": "계약 만기일에 따라 분류된 투자 일정은 투자 자산의 만기를 기준으로 분류하여 보고합니다. 이는 자산 관리 및 현금 흐름 예측에 중요합니다.",
+    "description": "계약 만기일에 따라 분류된 투자는 기업이 보유한 투자의 만기일에 따라 분류한 정보를 제공합니다. 이는 자산의 유동성을 평가하는 데 도움이 됩니다.",
     "category": "자산"
   },
   "availableforsalesecuritiesdebtmaturitiesrollingyeartwothroughfivefairvalue": {
-    "korean_name": "매도 가능 증권의 채무 만기(2~5년) 공정 가치",
-    "description": "매도 가능 증권의 채무 만기(2~5년) 공정 가치는 해당 만기 기간에 있는 채무 증권의 현재 가치를 나타냅니다. 이는 자산의 평가 및 관리에 중요합니다.",
+    "korean_name": "매도가능 증권 채권 만기(2~5년) 공정가치",
+    "description": "매도가능 증권 채권 만기(2~5년) 공정가치는 해당 기간 동안 만기가 도래하는 채권의 공정가치를 나타냅니다. 이는 투자자의 포트폴리오 관리에 중요한 정보를 제공합니다.",
     "category": "자산"
   },
   "availableforsalesecuritiesdebtmaturitiesrollingyearsixthroughtenfairvalue": {
-    "korean_name": "매도 가능 증권의 채무 만기(6~10년) 공정 가치",
-    "description": "매도 가능 증권의 채무 만기(6~10년) 공정 가치는 해당 만기 기간에 있는 채무 증권의 가치 변동을 보여줍니다. 이는 장기 자산 관리에 중요한 정보를 제공합니다.",
+    "korean_name": "매도가능 증권 채권 만기(6~10년) 공정가치",
+    "description": "매도가능 증권 채권 만기(6~10년) 공정가치는 해당 기간 동안 만기가 도래하는 채권의 공정가치를 나타냅니다. 이는 장기 투자 전략을 수립하는 데 유용합니다.",
     "category": "자산"
   },
   "availableforsalesecuritiesdebtmaturitiesrollingafteryeartenfairvalue": {
-    "korean_name": "매도 가능 증권의 채무 만기(1년 이후) 공정 가치",
-    "description": "매도 가능 증권의 채무 만기(1년 이후) 공정 가치는 장기 투자 자산의 가치를 나타냅니다. 이는 기업의 장기 재무 전략을 이해하는 데 중요합니다.",
+    "korean_name": "매도가능 증권 채권 만기(1년 이후) 공정가치",
+    "description": "매도가능 증권 채권 만기(1년 이후) 공정가치는 해당 기간 동안 만기가 도래하는 채권의 공정가치를 나타냅니다. 이는 기업의 장기적인 재무 계획 수립에 중요한 정보를 제공합니다.",
     "category": "자산"
   },
   "availableforsalesecuritiesdebtmaturitiessinglematuritydate": {
-    "korean_name": "매도 가능 증권의 채무 만기(단일 만기일)",
-    "description": "매도 가능 증권의 채무 만기(단일 만기일)는 특정 만기일에 만기가 도래하는 채무 증권을 의미합니다. 이는 자산의 유동성을 평가하는 데 도움을 줍니다.",
+    "korean_name": "매도가능 증권 채권 만기일 단일",
+    "description": "매도가능 증권 채권 만기일 단일은 특정 만기일을 가진 매도가능 채권을 나타냅니다. 이는 자산의 유동성과 만기 관리를 평가하는 데 중요한 정보입니다.",
     "category": "자산"
   },
   "maximumlengthoftimeforeigncurrencycashflowhedge": {
-    "korean_name": "외화 현금 흐름 헤지의 최대 기간",
-    "description": "외화 현금 흐름 헤지의 최대 기간은 외환 리스크를 관리하기 위해 설정된 헤지 계약의 최대 유효 기간을 나타냅니다. 이는 기업의 외환 위험 관리 전략에 중요한 요소입니다.",
+    "korean_name": "외화 현금흐름 헤지의 최대 기간",
+    "description": "외화 현금흐름 헤지의 최대 기간은 외화 변동성에 대한 위험을 관리하기 위해 설정된 최대 기간을 나타냅니다. 이는 기업의 리스크 관리 전략에 중요한 요소입니다.",
     "category": "기타"
   },
   "scheduleofnotionalamountsofoutstandingderivativepositionstabletextblock": {
-    "korean_name": "미결제 파생 상품 포지션의 명목 금액 일정",
-    "description": "미결제 파생 상품 포지션의 명목 금액 일정은 기업이 보유한 파생 상품의 명목 금액을 나타냅니다. 이는 파생 상품의 위험 노출을 평가하는 데 중요합니다.",
+    "korean_name": "유효한 파생상품의 명목 금액 일정",
+    "description": "유효한 파생상품의 명목 금액 일정은 기업이 보유한 파생상품의 총액을 나타냅니다. 이는 재무 리스크 관리 및 전략 수립에 중요한 정보를 제공합니다.",
     "category": "기타"
   },
   "derivativenotionalamount": {
-    "korean_name": "파생 상품의 명목 금액",
-    "description": "파생 상품의 명목 금액은 거래의 규모를 나타내며, 이는 파생 상품의 가치와 위험을 평가하는 데 중요한 지표입니다.",
+    "korean_name": "파생상품 명목 금액",
+    "description": "파생상품 명목 금액은 기업이 보유한 파생상품의 명목 가치를 나타냅니다. 이는 금융 리스크를 평가하는 데 중요한 지표입니다.",
     "category": "기타"
   },
   "scheduleoffairvaluehedginginstrumentsstatementsoffinancialperformanceandfinancialpositionloc": {
-    "korean_name": "공정 가치 헤지 상품의 재무 성과 및 재무 위치 일정",
-    "description": "공정 가치 헤지 상품의 재무 성과 및 재무 위치 일정은 헤지 거래의 성과를 분석하고 보고하는 내용을 포함합니다. 이는 기업의 리스크 관리 효율성을 평가하는 데 중요합니다.",
+    "korean_name": "공정가치 헤지 도구의 일정 및 재무 성과 및 재무 상태",
+    "description": "공정가치 헤지 도구의 일정은 기업이 사용하고 있는 헤지 도구의 성과와 재무 상태를 나타냅니다. 이는 기업의 리스크 관리 전략을 이해하는 데 도움이 됩니다.",
     "category": "기타"
   },
-  "hedgedassetfairvaluehedge": {
+  "dei_CoverAbstract": {
+    "korean_name": "표지 요약",
+    "description": "재무제표의 표지 섹션을 요약하여 회사의 주요 정보와 보고서의 개요를 제공합니다. 이는 투자자와 이해관계자에게 중요한 정보를 전달하는 첫 번째 단계입니다.",
+    "category": "기타"
+  },
+  "dei_EntitiesTable": {
+    "korean_name": "엔티티 테이블",
+    "description": "회사의 법적 지위나 구조를 나타내는 정보를 포함하는 테이블입니다. 이 정보는 투자자들이 기업의 조직 및 관계를 이해하는 데 도움을 줍니다.",
+    "category": "기타"
+  },
+  "us-gaap_StatementClassOfStockAxis": {
+    "korean_name": "주식 종류 축",
+    "description": "발행된 주식의 종류를 구분하는 축으로, 회사의 자본 구조를 이해하는 데 중요한 요소입니다. 이는 주주들에게 각 클래스의 권리와 의무를 명확히 합니다.",
+    "category": "자본"
+  },
+  "us-gaap_ClassOfStockDomain": {
+    "korean_name": "주식 종류 도메인",
+    "description": "주식의 특정 클래스를 정의하는 영역으로, 다양한 주식의 특성과 권리를 명확히 하기 위해 사용됩니다. 이는 주주 및 투자자에게 중요한 정보를 제공합니다.",
+    "category": "자본"
+  },
+  "dei_EntityInformationLineItems": {
+    "korean_name": "엔티티 정보 항목",
+    "description": "회사의 기본적인 정보를 나열하는 항목으로, 기업의 법적 이름, 주소, 등록 번호 등을 포함합니다. 이는 투자자들이 회사를 식별하는 데 유용합니다.",
+    "category": "기타"
+  },
+  "us-gaap_IncomeStatementAbstract": {
+    "korean_name": "손익계산서 요약",
+    "description": "회사의 수익성과 운영 성과를 종합적으로 나타내는 요약입니다. 이는 투자자들이 회사의 재무 성과를 평가하는 데 중요한 역할을 합니다.",
+    "category": "수익"
+  },
+  "us-gaap_StatementTable": {
+    "korean_name": "재무제표 테이블",
+    "description": "재무제표의 각 항목을 체계적으로 나열한 테이블로, 중요한 재무 정보에 대한 명확한 시각화를 제공합니다. 이는 투자자와 이해관계자가 정보를 쉽게 접근할 수 있도록 돕습니다.",
+    "category": "기타"
+  },
+  "srt_ProductOrServiceAxis": {
+    "korean_name": "제품 또는 서비스 축",
+    "description": "회사가 제공하는 제품이나 서비스의 범주를 정의합니다. 이는 매출원과 관련된 정보를 세분화하여 회사의 수익 구조를 명확히 합니다.",
+    "category": "수익"
+  },
+  "srt_ProductsAndServicesDomain": {
+    "korean_name": "제품 및 서비스 도메인",
+    "description": "회사에서 제공하는 다양한 제품 및 서비스의 특성을 정의하는 영역입니다. 이는 투자자들이 회사의 비즈니스 모델을 이해하는 데 기여합니다.",
+    "category": "수익"
+  },
+  "us-gaap_StatementLineItems": {
+    "korean_name": "재무제표 항목",
+    "description": "재무제표의 각 세부 항목을 나타내며, 수익, 비용, 자산 등 다양한 재무 데이터를 포함합니다. 이는 재무 분석의 기초 자료로 활용됩니다.",
+    "category": "기타"
+  },
+  "us-gaap_OperatingExpensesAbstract": {
+    "korean_name": "운영비용 요약",
+    "description": "회사의 운영과 관련된 모든 비용을 집계한 요약입니다. 이는 기업의 효율성을 평가하는 데 중요한 지표로 작용합니다.",
+    "category": "비용"
+  },
+  "us-gaap_EarningsPerShareAbstract": {
+    "korean_name": "주당순이익 요약",
+    "description": "회사의 순이익을 발행된 주식 수로 나눈 값을 나타내는 요약입니다. 이는 투자자들이 회사의 수익성을 평가하는 데 필수적인 지표입니다.",
+    "category": "수익"
+  },
+  "us-gaap_WeightedAverageNumberOfSharesOutstandingAbstract": {
+    "korean_name": "가중평균 발행 주식 수 요약",
+    "description": "회사가 발행한 주식의 가중 평균 수를 나타내며, 주당순이익을 계산하는 데 사용됩니다. 이는 주주들에게 회사의 가치를 평가하는 데 필요한 정보를 제공합니다.",
+    "category": "자본"
+  },
+  "us-gaap_StatementOfIncomeAndComprehensiveIncomeAbstract": {
+    "korean_name": "손익 및 포괄손익계산서 요약",
+    "description": "회사의 총 수익과 포괄손익을 종합적으로 나타내는 요약입니다. 이는 회사의 전반적인 재무 성과를 종합적으로 평가하는 데 필수적입니다.",
+    "category": "수익"
+  },
+  "us-gaap_ComprehensiveIncomeNetOfTaxAbstract": {
+    "korean_name": "세후 포괄손익 요약",
+    "description": "세금을 차감한 후의 포괄손익을 나타내며, 이는 회사의 재무 상태를 보다 정확하게 반영합니다. 투자자들에게 중요한 재무 지표입니다.",
+    "category": "수익"
+  },
+  "us-gaap_OtherComprehensiveIncomeDerivativesQualifyingAsHedgesNetOfTaxPeriodIncreaseDecreaseAbstract": {
+    "korean_name": "세후 파생상품 기타 포괄손익 요약",
+    "description": "세금 효과를 고려한 파생상품 관련 기타 포괄손익의 변화를 나타내며, 이는 리스크 관리 전략의 효과를 평가하는 데 중요한 정보를 제공합니다.",
+    "category": "기타"
+  },
+  "us-gaap_OtherComprehensiveIncomeAvailableForSaleSecuritiesAdjustmentNetOfTaxPeriodIncreaseDecreaseAbstract": {
+    "korean_name": "세후 매도 가능 증권 기타 포괄손익 요약",
+    "description": "세금 차감 후 매도 가능 증권의 조정으로 발생한 기타 포괄손익을 나타내며, 이는 투자 성과에 대한 중요한 정보를 제공합니다.",
+    "category": "기타"
+  },
+  "us-gaap_StatementOfFinancialPositionAbstract": {
+    "korean_name": "재무상태표 요약",
+    "description": "회사의 자산, 부채 및 자본을 종합적으로 나타내는 요약입니다. 이는 회사의 재무 건전성을 평가하는 데 필수적인 자료입니다.",
+    "category": "자산"
+  },
+  "us-gaap_AssetsAbstract": {
+    "korean_name": "자산 요약",
+    "description": "회사가 보유한 모든 자산을 요약하여 나타내며, 이는 회사의 자산 구조를 이해하는 데 중요한 역할을 합니다.",
+    "category": "자산"
+  },
+  "us-gaap_AssetsCurrentAbstract": {
+    "korean_name": "유동자산 요약",
+    "description": "1년 이내에 현금화가 가능한 자산을 나타내며, 회사의 유동성을 평가하는 데 중요한 지표입니다.",
+    "category": "자산"
+  },
+  "us-gaap_AssetsNoncurrentAbstract": {
+    "korean_name": "비유동자산 요약",
+    "description": "1년 이상 보유되는 자산을 나타내며, 회사의 장기적인 재무 상태를 평가하는 데 중요한 역할을 합니다.",
+    "category": "자산"
+  },
+  "us-gaap_LiabilitiesAndStockholdersEquityAbstract": {
+    "korean_name": "부채 및 자본 요약",
+    "description": "회사의 전체 부채와 주주 자본을 종합적으로 나타내며, 이는 회사의 재무 건전성을 평가하는 데 필수적인 정보입니다.",
+    "category": "부채"
+  },
+  "us-gaap_LiabilitiesCurrentAbstract": {
+    "korean_name": "유동부채 요약",
+    "description": "1년 이내에 상환해야 할 부채를 나타내며, 회사의 유동성을 평가하는 데 중요한 지표입니다.",
+    "category": "부채"
+  },
+  "us-gaap_LiabilitiesNoncurrentAbstract": {
+    "korean_name": "비유동부채 요약",
+    "description": "1년 이상 상환하지 않아도 되는 부채를 나타내며, 회사의 장기적인 재무 구조를 이해하는 데 필수적입니다.",
+    "category": "부채"
+  },
+  "us-gaap_StockholdersEquityAbstract": {
+    "korean_name": "주주자본 요약",
+    "description": "주주들이 보유한 자본을 나타내며, 회사의 자본 구조와 재무 건전성을 평가하는 데 중요한 요소입니다.",
+    "category": "자본"
+  },
+  "us-gaap_StatementOfStockholdersEquityAbstract": {
+    "korean_name": "주주자본변동표 요약",
+    "description": "주주 자본의 변화를 나타내는 표로, 회사의 자본 구조 변화를 이해하는 데 필수적인 정보를 제공합니다.",
+    "category": "자본"
+  },
+  "us-gaap_StatementEquityComponentsAxis": {
+    "korean_name": "자본 구성 요소 축",
+    "description": "주주 자본의 세부 항목을 정의하는 축으로, 각 자본의 구성 요소를 명확하게 파악할 수 있도록 돕습니다.",
+    "category": "자본"
+  },
+  "us-gaap_EquityComponentDomain": {
+    "korean_name": "자본 구성 요소 도메인",
+    "description": "주주 자본의 각 구성 요소를 정의하는 영역으로, 자본의 구조와 변화를 이해하는 데 중요한 역할을 합니다.",
+    "category": "자본"
+  },
+  "us-gaap_IncreaseDecreaseInStockholdersEquityRollForward": {
+    "korean_name": "주주자본 증가 감소 롤포워드",
+    "description": "주주 자본의 변화를 시간에 따라 추적하는 항목으로, 주주 자본의 변동 원인을 파악하는 데 유용합니다.",
+    "category": "자본"
+  },
+  "us-gaap_StatementOfCashFlowsAbstract": {
+    "korean_name": "현금흐름표 요약",
+    "description": "회사의 현금 유입과 유출을 종합적으로 나타내는 요약입니다. 이는 회사의 재무 건전성과 운영 효율성을 평가하는 데 필수적입니다.",
+    "category": "기타"
+  },
+  "us-gaap_NetCashProvidedByUsedInOperatingActivitiesContinuingOperationsAbstract": {
+    "korean_name": "영업활동으로 인한 순현금흐름 요약",
+    "description": "영업활동에서 발생한 현금의 유입과 유출을 나타내며, 회사의 실제 운영 성과를 평가하는 데 중요한 지표입니다.",
+    "category": "기타"
+  },
+  "us-gaap_AdjustmentsToReconcileNetIncomeLossToCashProvidedByUsedInOperatingActivitiesAbstract": {
+    "korean_name": "순이익과 영업활동 현금흐름 조정 요약",
+    "description": "순이익을 영업활동에서의 현금흐름으로 조정하는 항목으로, 비현금 항목의 영향을 반영합니다. 이는 투자자들에게 중요한 분석 자료입니다.",
+    "category": "기타"
+  },
+  "us-gaap_IncreaseDecreaseInOperatingCapitalAbstract": {
+    "korean_name": "운영 자본의 증가 감소 요약",
+    "description": "운영 자본의 변동을 나타내며, 기업의 유동성과 재무 건전성을 평가하는 데 중요한 역할을 합니다.",
+    "category": "기타"
+  },
+  "us-gaap_NetCashProvidedByUsedInInvestingActivitiesContinuingOperationsAbstract": {
+    "korean_name": "투자활동으로 인한 순현금흐름 요약",
+    "description": "투자활동에서 발생한 현금의 유입과 유출을 나타내며, 회사의 자산 관리 및 투자 전략을 평가하는 데 중요합니다.",
+    "category": "기타"
+  },
+  "us-gaap_NetCashProvidedByUsedInFinancingActivitiesContinuingOperationsAbstract": {
+    "korean_name": "재무활동으로 인한 순현금흐름 요약",
+    "description": "재무활동에서 발생한 현금의 유입과 유출을 나타내며, 자본 조달 및 재무 관리 전략을 평가하는 데 중요합니다.",
+    "category": "기타"
+  },
+  "us-gaap_SupplementalCashFlowInformationAbstract": {
+    "korean_name": "보충 현금흐름 정보 요약",
+    "description": "현금흐름과 관련된 추가적인 정보를 제공하며, 회사의 재무 상태를 보다 명확하게 이해하는 데 기여합니다.",
+    "category": "기타"
+  },
+  "us-gaap_AccountingPoliciesAbstract": {
+    "korean_name": "회계정책 요약",
+    "description": "회사가 사용하는 회계 원칙과 정책을 요약하여 설명하는 항목으로, 재무제표의 해석에 중요한 정보를 제공합니다.",
+    "category": "기타"
+  },
+  "us-gaap_RevenueFromContractWithCustomerAbstract": {
+    "korean_name": "고객과의 계약에서 발생한 수익 요약",
+    "description": "고객과의 계약에서 발생한 수익을 요약하여 나타내며, 이는 회사의 수익 인식 전략을 평가하는 데 중요한 자료입니다.",
+    "category": "수익"
+  },
+  "aapl_FinancialInstrumentsAbstract": {
+    "korean_name": "재무상품 요약",
+    "description": "회사가 보유한 재무 상품의 특성과 관련 정보를 요약하여 나타내며, 이는 투자자들에게 중요합니다.",
+    "category": "기타"
+  },
+  "us-gaap_OrganizationConsolidationAndPresentationOfFinancialStatementsAbstract": {
+    "korean_name": "재무제표의 조직 및 통합 요약",
+    "description": "재무제표의 구성 및 통합 방법을 설명하며, 이는 회사의 재무 정보를 명확하게 전달하는 데 필수적입니다.",
+    "category": "기타"
+  },
+  "CoverAbstract": {
+    "korean_name": "표지 개요",
+    "description": "표지 개요는 재무제표의 기본 정보를 간략하게 설명하며, 주주와 투자자에게 회사의 전반적인 정보를 제공합니다. 이 정보는 투자 결정에 중요한 기초 자료가 됩니다.",
+    "category": "기타"
+  },
+  "EntitiesTable": {
+    "korean_name": "기업 목록",
+    "description": "기업 목록은 재무제표에 포함된 모든 법인 및 자회사의 정보와 관계를 나열합니다. 이는 이해관계자들이 기업 구조를 이해하는 데 도움을 줍니다.",
+    "category": "기타"
+  },
+  "EntityInformationLineItems": {
+    "korean_name": "기업 정보 항목",
+    "description": "기업 정보 항목은 특정 기업에 대한 구체적인 데이터를 제공하며, 각 기업의 재무 상태나 운영 성과를 분석하는 데 중요한 정보를 포함합니다.",
+    "category": "기타"
+  },
+  "FinancialInstrumentsAbstract": {
+    "korean_name": "재무상품 개요",
+    "description": "재무상품 개요는 기업이 보유하고 있는 다양한 재무상품에 대한 정보를 요약합니다. 이는 투자자에게 기업의 재무 리스크 및 수익 가능성을 이해하는 데 중요합니다.",
+    "category": "자산"
+  },
+  "us-gaap_DebtDisclosureAbstract": {
+    "korean_name": "부채 공시 개요",
+    "description": "부채 공시 개요는 기업의 부채 구조와 관련된 주요 정보를 제공합니다. 이는 기업의 재무 건전성을 평가하는 데 필수적인 요소입니다.",
+    "category": "부채"
+  },
+  "us-gaap_EquityAbstract": {
+    "korean_name": "자본 개요",
+    "description": "자본 개요는 기업의 자본 구조를 나타내며, 주주에게 기업의 소유권 및 자본 변동 사항을 설명합니다. 이는 투자자에게 중요한 재무 지표입니다.",
+    "category": "자본"
+  },
+  "us-gaap_DisclosureOfCompensationRelatedCostsSharebasedPaymentsAbstract": {
+    "korean_name": "주식기반 보상 비용 공시 개요",
+    "description": "주식기반 보상 비용 공시 개요는 임직원에게 지급된 주식기반 보상에 대한 정보를 제공합니다. 이는 기업의 인건비 및 경영 전략을 이해하는 데 중요합니다.",
+    "category": "비용"
+  },
+  "us-gaap_CommitmentsAndContingenciesDisclosureAbstract": {
+    "korean_name": "약정 및 우발채무 공시 개요",
+    "description": "약정 및 우발채무 공시 개요는 기업의 미래 의무와 잠재적 리스크를 나타냅니다. 이는 투자자들이 기업의 재무 위험을 평가하는 데 중요한 정보입니다.",
+    "category": "기타"
+  },
+  "us-gaap_SegmentReportingAbstract": {
+    "korean_name": "세그먼트 보고 개요",
+    "description": "세그먼트 보고 개요는 기업의 다양한 사업 부문에 대한 성과를 나타내며, 각 세그먼트의 수익성과 리스크를 분석할 수 있습니다.",
+    "category": "기타"
+  },
+  "us-gaap_DisaggregationOfRevenueTable": {
+    "korean_name": "수익의 세분화 테이블",
+    "description": "수익의 세분화 테이블은 기업의 총 수익을 다양한 제품 및 서비스별로 나누어 제공합니다. 이는 매출원이 어떻게 구성되어 있는지를 파악하는 데 유용합니다.",
+    "category": "수익"
+  },
+  "us-gaap_DisaggregationOfRevenueLineItems": {
+    "korean_name": "수익의 세분화 항목",
+    "description": "수익의 세분화 항목은 특정 제품이나 서비스에 대한 수익을 구체적으로 나열하여, 각 항목의 기여도를 평가할 수 있도록 합니다.",
+    "category": "수익"
+  },
+  "us-gaap_RevenueRemainingPerformanceObligationExpectedTimingOfSatisfactionTable": {
+    "korean_name": "남은 이행 의무의 수익 예상 시기 테이블",
+    "description": "남은 이행 의무의 수익 예상 시기 테이블은 계약에 따른 수익 인식 시기를 보여주며, 기업의 수익 발생 전망을 이해하는 데 중요합니다.",
+    "category": "수익"
+  },
+  "us-gaap_RevenueRemainingPerformanceObligationExpectedTimingOfSatisfactionLineItems": {
+    "korean_name": "남은 이행 의무의 수익 예상 시기 항목",
+    "description": "남은 이행 의무의 수익 예상 시기 항목은 각 이행 의무별로 예상되는 수익 인식 시기를 나열하여, 계약의 이행 현황을 명확히 합니다.",
+    "category": "수익"
+  },
+  "us-gaap_NetIncomeLossAbstract": {
+    "korean_name": "순이익/순손실 개요",
+    "description": "순이익/순손실 개요는 일정 기간 동안 기업이 발생한 전체 수익에서 비용을 차감한 결과를 요약합니다. 이는 기업의 재무 성과를 평가하는 핵심 지표입니다.",
+    "category": "수익"
+  },
+  "us-gaap_ScheduleOfAntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareTable": {
+    "korean_name": "주당순이익 계산에서 제외된 항희증권 일정",
+    "description": "주당순이익 계산에서 제외된 항희증권 일정은 잠재적으로 주식 희석을 초래할 수 있는 증권 목록을 제공합니다. 이는 투자자들이 주가의 변동성을 이해하는 데 도움을 줍니다.",
+    "category": "기타"
+  },
+  "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareByAntidilutiveSecuritiesAxis": {
+    "korean_name": "주당순이익 계산에서 제외된 항희증권 축",
+    "description": "주당순이익 계산에서 제외된 항희증권 축은 특정 항희증권의 유형에 따라 주당순이익 계산에서 제외된 내용을 분류합니다.",
+    "category": "기타"
+  },
+  "us-gaap_AntidilutiveSecuritiesNameDomain": {
+    "korean_name": "주당순이익 계산에서 제외된 항희증권 명칭 도메인",
+    "description": "주당순이익 계산에서 제외된 항희증권 명칭 도메인은 특정 증권의 이름을 나열하여, 투자자들에게 해당 증권의 내용을 명확히 합니다.",
+    "category": "기타"
+  },
+  "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareLineItems": {
+    "korean_name": "주당순이익 계산에서 제외된 항희증권 항목",
+    "description": "주당순이익 계산에서 제외된 항희증권 항목은 각각의 증권을 나열하여, 기업의 주식 희석 가능성을 평가하는 데 도움을 줍니다.",
+    "category": "기타"
+  },
+  "us-gaap_InvestmentsDebtAndEquitySecuritiesAbstract": {
+    "korean_name": "부채 및 자본 증권 투자 개요",
+    "description": "부채 및 자본 증권 투자 개요는 기업이 보유하고 있는 다양한 투자 자산에 대한 정보를 제공합니다. 이는 기업의 재무 상태와 투자 전략을 이해하는 데 필수적입니다.",
+    "category": "자산"
+  },
+  "us-gaap_MarketableSecuritiesTable": {
+    "korean_name": "유가증권 테이블",
+    "description": "유가증권 테이블은 시장에서 거래 가능한 증권의 종류와 가치를 나열하여, 투자자들이 기업의 유동성을 평가하는 데 도움을 줍니다.",
+    "category": "자산"
+  },
+  "us-gaap_FinancialInstrumentAxis": {
+    "korean_name": "재무상품 축",
+    "description": "재무상품 축은 다양한 재무상품의 유형에 따라 정보를 분류하여, 투자자들이 기업의 금융 구조를 이해하는 데 도움을 줍니다.",
+    "category": "자산"
+  },
+  "us-gaap_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain": {
+    "korean_name": "재무상품의 이전 및 서비스 유형 도메인",
+    "description": "재무상품의 이전 및 서비스 유형 도메인은 기업이 보유한 재무상품의 이전 방식과 관련된 정보를 제공합니다.",
+    "category": "자산"
+  },
+  "us-gaap_FairValueByFairValueHierarchyLevelAxis": {
+    "korean_name": "공정가치 공정가치 계층 수준 축",
+    "description": "공정가치 공정가치 계층 수준 축은 공정가치 측정의 신뢰성을 나타내며, 다양한 자산이나 부채의 공정가치를 평가하는 데 중요한 요소입니다.",
+    "category": "자산"
+  },
+  "us-gaap_FairValueMeasurementsFairValueHierarchyDomain": {
+    "korean_name": "공정가치 측정 공정가치 계층 도메인",
+    "description": "공정가치 측정 공정가치 계층 도메인은 자산의 공정가치를 측정하는 방법을 분류하여, 투자자들에게 자산의 가치를 평가하는 데 도움을 줍니다.",
+    "category": "자산"
+  },
+  "us-gaap_MarketableSecuritiesLineItems": {
+    "korean_name": "유가증권 항목",
+    "description": "유가증권 항목은 개별 유가증권의 상세 정보를 제공하여, 투자자들이 각 증권의 성과를 분석하는 데 도움을 줍니다.",
+    "category": "자산"
+  },
+  "us-gaap_AvailableForSaleSecuritiesDebtMaturitiesSingleMaturityDateRollingMaturityAbstract": {
+    "korean_name": "매도가능 증권 부채 만기 단일 만기일 롤링 만기 개요",
+    "description": "매도가능 증권 부채 만기 단일 만기일 롤링 만기 개요는 만기 구조가 다양한 매도가능 증권의 정보를 요약하여, 투자자들이 만기 리스크를 평가하는 데 중요합니다.",
+    "category": "자산"
+  },
+  "FinancialInstrumentsTable": {
+    "korean_name": "재무상품 테이블",
+    "description": "재무상품 테이블은 다양한 재무상품의 상세 정보를 제공하여, 투자자들이 기업의 재무 구조를 분석하는 데 도움을 줍니다.",
+    "category": "자산"
+  },
+  "us-gaap_DerivativeInstrumentRiskAxis": {
+    "korean_name": "파생상품 리스크 축",
+    "description": "파생상품 리스크 축은 기업이 보유한 파생상품의 리스크 특성을 분류하여, 투자자들이 리스크 관리 전략을 이해하는 데 도움을 줍니다.",
+    "category": "기타"
+  },
+  "us-gaap_DerivativeContractTypeDomain": {
+    "korean_name": "파생계약 유형 도메인",
+    "description": "파생계약 유형 도메인은 기업이 체결한 다양한 파생계약의 유형을 나열하여, 투자자들에게 파생상품의 성격을 이해시키는 데 도움을 줍니다.",
+    "category": "기타"
+  },
+  "us-gaap_ConcentrationRiskByBenchmarkAxis": {
+    "korean_name": "벤치마크별 집중 리스크 축",
+    "description": "벤치마크별 집중 리스크 축은 특정 벤치마크에 대한 집중 리스크를 나타내며, 투자자들이 리스크를 평가하는 데 중요한 정보를 제공합니다.",
+    "category": "기타"
+  },
+  "us-gaap_ConcentrationRiskBenchmarkDomain": {
+    "korean_name": "집중 리스크 벤치마크 도메인",
+    "description": "집중 리스크 벤치마크 도메인은 특정 벤치마크와 관련된 집중 리스크를 나열하여, 투자자들이 해당 리스크를 이해하는 데 도움을 줍니다.",
+    "category": "기타"
+  },
+  "us-gaap_ConcentrationRiskByTypeAxis": {
+    "korean_name": "유형별 집중 리스크 축",
+    "description": "유형별 집중 리스크 축은 자산의 유형에 따른 집중 리스크를 분류하여, 투자자들이 자산 포트폴리오의 리스크를 평가하는 데 유용합니다.",
+    "category": "기타"
+  },
+  "us-gaap_ConcentrationRiskTypeDomain": {
+    "korean_name": "집중 리스크 유형 도메인",
+    "description": "집중 리스크 유형 도메인은 특정 유형에 대한 집중 리스크를 나열하여, 투자자들이 해당 자산의 리스크를 평가하는 데 도움을 줍니다.",
+    "category": "기타"
+  },
+  "srt_MajorCustomersAxis": {
+    "korean_name": "주요 고객 축",
+    "description": "주요 고객 축은 기업의 매출에 기여하는 주요 고객을 식별하여, 고객 의존도를 분석하는 데 도움을 줍니다.",
+    "category": "기타"
+  },
+  "srt_NameOfMajorCustomerDomain": {
+    "korean_name": "주요 고객 명칭 도메인",
+    "description": "주요 고객 명칭 도메인은 기업의 주요 고객 목록을 제공하여, 고객 기반을 이해하는 데 도움을 줍니다.",
+    "category": "기타"
+  },
+  "FinancialInstrumentsLineItems": {
+    "korean_name": "재무상품 항목",
+    "description": "재무상품 항목은 각 재무상품의 상세 정보를 제공하여, 기업의 재무 구조와 리스크를 분석하는 데 유용합니다.",
+    "category": "자산"
+  },
+  "us-gaap_DerivativeInstrumentsAndHedgingActivitiesDisclosureAbstract": {
+    "korean_name": "파생상품 및 헤지 활동 공시 개요",
+    "description": "파생상품 및 헤지 활동 공시 개요는 기업의 파생상품 거래 및 헤지 활동에 대한 정보를 제공합니다. 이는 투자자들이 리스크 관리 전략을 이해하는 데 중요합니다.",
+    "category": "기타"
+  },
+  "us-gaap_FairValuesDerivativesBalanceSheetLocationByDerivativeContractTypeByHedgingDesignationTable": {
+    "korean_name": "파생상품의 공정가치 대차대조표 위치 테이블",
+    "description": "파생상품의 공정가치 대차대조표 위치 테이블은 파생상품의 공정가치를 대차대조표의 위치별로 나열하여, 투자자들이 자산과 부채의 공정가치를 평가하는 데 도움을 줍니다.",
+    "category": "자산"
+  },
+  "us-gaap_HedgingDesignationAxis": {
+    "korean_name": "헤지 지정 축",
+    "description": "헤지 지정 축은 특정 파생상품의 헤지 유형을 분류하여, 투자자들이 해당 파생상품의 리스크 관리 기능을 이해하는 데 도움을 줍니다.",
+    "category": "기타"
+  },
+  "us-gaap_HedgingDesignationDomain": {
+    "korean_name": "헤지 지정 도메인",
+    "description": "헤지 지정 도메인은 특정 파생상품의 헤지 목적을 명시하여, 투자자들이 해당 상품의 사용 목적을 이해하는 데 도움을 줍니다.",
+    "category": "기타"
+  },
+  "us-gaap_DerivativesFairValueLineItems": {
+    "korean_name": "파생상품 공정가치 항목",
+    "description": "이 항목은 파생상품의 공정가치를 나타내며, 기업의 재무 상태를 평가하는 데 중요한 역할을 합니다. 파생상품은 미래의 가격 변동에 대한 위험을 관리하기 위해 사용되며, 이 항목은 이러한 파생상품의 가치를 재무제표에 반영합니다.",
+    "category": "자산"
+  },
+  "us-gaap_HedgedAssetFairValueHedge": {
     "korean_name": "헤지된 자산 공정가치 헤지",
-    "description": "헤지된 자산의 공정가치를 반영하는 항목으로, 특정 자산에 대한 공정가치 변동을 헤지하기 위해 사용하는 금융 도구와 관련이 있습니다. 이는 자산의 가치 변동성을 줄이고, 재무제표상 안정성을 높이는 데 중요한 역할을 합니다.",
+    "description": "이 항목은 공정가치 헤지 회계 기준에 따라 헤지된 자산의 공정가치를 기록합니다. 이는 자산의 가치 변동 위험을 관리하기 위한 헤지 전략의 결과로, 기업의 재무 성과에 직접적인 영향을 미칠 수 있습니다.",
     "category": "자산"
   },
-  "hedgedliabilityfairvaluehedge": {
+  "us-gaap_HedgedLiabilityFairValueHedge": {
     "korean_name": "헤지된 부채 공정가치 헤지",
-    "description": "헤지된 부채의 공정가치를 반영하는 항목으로, 특정 부채에 대한 공정가치 변동을 헤지하기 위해 사용하는 금융 도구와 관련이 있습니다. 이는 부채의 가치 변동성을 줄이고, 재무제표상 안정성을 높이는 데 중요한 역할을 합니다.",
+    "description": "이 항목은 공정가치 헤지 회계 기준에 따라 헤지된 부채의 공정가치를 반영합니다. 이는 부채의 가치 변동 위험을 관리하고, 기업의 재무 건전성을 높이기 위한 전략의 일환입니다.",
     "category": "부채"
   },
-  "concentrationriskpercentage1": {
-    "korean_name": "집중 리스크 비율 1",
-    "description": "특정 자산 또는 부채의 집합이 전체 자산 또는 부채에 대해 차지하는 비율을 나타내며, 위험 관리 및 투자 결정을 위한 중요 지표입니다. 이는 기업의 재무 건전성을 평가하는 데 중요한 역할을 합니다.",
-    "category": "기타"
-  },
-  "additionalfinancialinformationdisclosuretextblock": {
-    "korean_name": "추가 재무 정보 공시 블록",
-    "description": "재무제표에 포함되지 않는 추가적인 재무 정보를 제공하는 섹션으로, 투자자와 이해관계자에게 기업의 재무 상태를 보다 명확히 이해할 수 있도록 돕습니다.",
-    "category": "기타"
-  },
-  "propertyplantandequipmenttextblock": {
-    "korean_name": "유형 자산 텍스트 블록",
-    "description": "유형 자산에 대한 정보를 제공하는 섹션으로, 기업의 물리적 자산의 가치와 사용 현황을 설명합니다. 이는 자산 관리 및 재무 성과 분석에 필수적입니다.",
-    "category": "자산"
-  },
-  "propertyplantandequipmentgross": {
-    "korean_name": "유형 자산 총액",
-    "description": "유형 자산의 총액을 나타내며, 해당 자산의 원가를 기준으로 평가됩니다. 이는 기업의 자산 규모 및 투자 수준을 이해하는 데 중요한 지표입니다.",
-    "category": "자산"
-  },
-  "accumulateddepreciationdepletionandamortizationpropertyplantandequipment": {
-    "korean_name": "유형 자산의 감가상각, 고갈 및 상각 누적액",
-    "description": "유형 자산의 감가상각, 고갈 및 상각의 누적액을 나타내며, 자산의 가치 감소를 반영합니다. 이는 자산의 실제 가치를 파악하는 데 중요합니다.",
-    "category": "자산"
-  },
-  "debtdisclosuretextblock": {
-    "korean_name": "부채 공시 텍스트 블록",
-    "description": "부채에 대한 상세 정보를 제공하는 섹션으로, 기업의 부채 구조와 상환 계획에 대한 이해를 돕습니다. 이는 투자자에게 기업의 재무 리스크를 평가하는 데 필요한 정보를 제공합니다.",
+  "us-gaap_DebtInstrumentTable": {
+    "korean_name": "부채 상품 테이블",
+    "description": "이 테이블은 기업이 발행한 부채 상품의 상세 정보를 제공합니다. 이는 투자자와 이해관계자가 기업의 부채 구조와 리스크를 이해하는 데 필수적인 정보를 제공합니다.",
     "category": "부채"
   },
-  "proceedsfromrepaymentsofshorttermdebtmaturinginthreemonthsorless": {
-    "korean_name": "3개월 이내 만기가 도래하는 단기 부채의 상환으로 인한 수익",
-    "description": "3개월 이내에 만기가 도래하는 단기 부채의 상환에서 발생하는 현금 흐름을 나타내며, 기업의 유동성 관리를 평가하는 데 중요한 지표입니다.",
-    "category": "기타"
-  },
-  "repaymentsofshorttermdebtmaturinginmorethanthreemonths": {
-    "korean_name": "3개월 초과 만기가 도래하는 단기 부채의 상환",
-    "description": "3개월 초과 만기가 도래하는 단기 부채의 상환을 나타내며, 기업의 재무적 의무 이행 능력을 평가하는 데 중요한 정보를 제공합니다.",
+  "us-gaap_ShortTermDebtTypeAxis": {
+    "korean_name": "단기 부채 유형 축",
+    "description": "이 축은 단기 부채의 유형을 구분하여 나타내며, 각 유형별로 부채의 특성과 리스크를 평가하는 데 도움을 줍니다.",
     "category": "부채"
   },
-  "longtermdebt": {
+  "us-gaap_ShortTermDebtTypeDomain": {
+    "korean_name": "단기 부채 유형 도메인",
+    "description": "단기 부채의 다양한 유형을 정의하는 도메인으로, 각 부채의 성격을 구체적으로 설명합니다. 이는 재무제표 사용자가 부채의 구조를 이해하는 데 중요한 역할을 합니다.",
+    "category": "부채"
+  },
+  "us-gaap_DebtInstrumentLineItems": {
+    "korean_name": "부채 상품 항목",
+    "description": "이 항목은 각 부채 상품의 개별적 정보를 나열하며, 기업의 부채 상황을 명확히 이해할 수 있도록 돕습니다.",
+    "category": "부채"
+  },
+  "us-gaap_ProceedsFromRepaymentsOfShortTermDebtMaturingInThreeMonthsOrLessAlternativeAbstract": {
+    "korean_name": "3개월 이내 만기 단기 부채 상환으로 인한 수익",
+    "description": "이 항목은 3개월 이내에 만기가 도래하는 단기 부채의 상환으로 인해 발생하는 현금 유입을 기록합니다. 이는 기업의 유동성 관리에 중요한 지표가 됩니다.",
+    "category": "수익"
+  },
+  "us-gaap_ProceedsFromRepaymentsOfShortTermDebtMaturingInMoreThanThreeMonthsAlternativeAbstract": {
+    "korean_name": "3개월 초과 만기 단기 부채 상환으로 인한 수익",
+    "description": "이 항목은 3개월을 초과하여 만기가 도래하는 단기 부채의 상환으로 인한 현금 유입을 나타냅니다. 이는 기업의 재무 상태와 유동성에 대한 중요한 정보를 제공합니다.",
+    "category": "수익"
+  },
+  "us-gaap_StockholdersEquityNoteAbstract": {
+    "korean_name": "주주 자본 주석 요약",
+    "description": "이 항목은 주주 자본에 대한 주요 정보를 요약하여 제공합니다. 주주 자본의 변동 사항을 이해하고, 기업의 재무 건전성을 평가하는 데 필요한 정보를 포함합니다.",
+    "category": "자본"
+  },
+  "us-gaap_ScheduleOfShareBasedCompensationArrangementsByShareBasedPaymentAwardTable": {
+    "korean_name": "주식 기반 보상 약정 일정",
+    "description": "이 테이블은 주식 기반 보상에 대한 약정의 세부 정보를 나열하며, 기업의 보상 정책과 관련된 투명성을 제공합니다.",
+    "category": "기타"
+  },
+  "us-gaap_AwardTypeAxis": {
+    "korean_name": "보상 유형 축",
+    "description": "이 축은 보상의 다양한 유형을 구분하여 나타내며, 각 보상 유형의 성격을 이해하는 데 도움을 줍니다.",
+    "category": "기타"
+  },
+  "us-gaap_ShareBasedCompensationArrangementsByShareBasedPaymentAwardAwardTypeAndPlanNameDomain": {
+    "korean_name": "주식 기반 보상 약정 유형 및 계획 이름 도메인",
+    "description": "주식 기반 보상의 약정 유형과 관련된 정보를 정의하는 도메인으로, 기업의 보상 구조를 이해하는 데 기여합니다.",
+    "category": "기타"
+  },
+  "us-gaap_ShareBasedCompensationArrangementByShareBasedPaymentAwardLineItems": {
+    "korean_name": "주식 기반 보상 약정 항목",
+    "description": "이 항목은 주식 기반 보상 약정의 세부 내용을 나열하여, 보상의 세부 사항을 투명하게 제공합니다.",
+    "category": "기타"
+  },
+  "us-gaap_ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedRollForward": {
+    "korean_name": "주식 기반 보상 비상환 주식 기타 자산 변동 내역",
+    "description": "비상환 주식 형태의 보상에 대한 변동 내역을 기록하여, 보상 구조의 변화를 이해하는 데 도움을 줍니다.",
+    "category": "기타"
+  },
+  "us-gaap_ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedWeightedAverageGrantDateFairValueRollForward": {
+    "korean_name": "주식 기반 보상 비상환 주식 평균 부여일 공정가치 변동 내역",
+    "description": "비상환 주식의 평균 부여일 공정가치의 변동 내역을 기록하여, 기업의 보상 정책을 이해하는 데 도움을 줍니다.",
+    "category": "기타"
+  },
+  "us-gaap_SharebasedCompensationArrangementBySharebasedPaymentAwardEquityInstrumentsOtherThanOptionsAggregateIntrinsicValueAbstract": {
+    "korean_name": "주식 기반 보상 비상환 주식 총 내재 가치 요약",
+    "description": "비상환 주식의 총 내재 가치를 요약하여 제공하며, 보상 구조에 대한 중요한 정보를 제공합니다.",
+    "category": "기타"
+  },
+  "us-gaap_ScheduleOfSegmentReportingInformationBySegmentTable": {
+    "korean_name": "영업 부문 보고 정보 일정",
+    "description": "이 테이블은 각 영업 부문에 대한 재무 정보를 나열하여, 기업의 성과를 부문별로 분석할 수 있도록 합니다.",
+    "category": "기타"
+  },
+  "us-gaap_StatementBusinessSegmentsAxis": {
+    "korean_name": "사업 부문 축",
+    "description": "이 축은 사업 부문을 구분하여 나타내며, 각 부문의 성과를 평가하는 데 도움을 줍니다.",
+    "category": "기타"
+  },
+  "us-gaap_SegmentDomain": {
+    "korean_name": "부문 도메인",
+    "description": "각 부문의 특성을 정의하는 도메인으로, 기업의 부문별 성과를 이해하는 데 중요한 역할을 합니다.",
+    "category": "기타"
+  },
+  "us-gaap_SegmentReportingInformationLineItems": {
+    "korean_name": "부문 보고 정보 항목",
+    "description": "각 사업 부문에 대한 세부 정보를 나열하여, 부문의 성과 분석을 지원합니다.",
+    "category": "기타"
+  },
+  "us-gaap_ReconciliationOfOperatingProfitLossFromSegmentsToConsolidatedTable": {
+    "korean_name": "부문별 운영 손익의 통합 조정 테이블",
+    "description": "부문별 운영 손익을 통합 재무제표로 조정하는 정보를 제공하여, 전체 기업 성과를 이해하는 데 중요한 역할을 합니다.",
+    "category": "기타"
+  },
+  "srt_ConsolidationItemsAxis": {
+    "korean_name": "통합 항목 축",
+    "description": "통합 재무제표에서의 항목을 구분하여 나타내며, 기업의 재무 상태를 보다 명확히 이해할 수 있도록 돕습니다.",
+    "category": "기타"
+  },
+  "srt_ConsolidationItemsDomain": {
+    "korean_name": "통합 항목 도메인",
+    "description": "통합 재무제표에서 사용되는 다양한 항목을 정의하는 도메인으로, 기업의 재무 상태를 분석하는 데 기여합니다.",
+    "category": "기타"
+  },
+  "us-gaap_SegmentReportingReconcilingItemForOperatingProfitLossFromSegmentToConsolidatedLineItems": {
+    "korean_name": "부문별 운영 손익과 통합 손익의 조정 항목",
+    "description": "부문별 운영 손익과 통합 손익 간의 조정을 나타내며, 기업 성과를 정확히 평가하는 데 필수적입니다.",
+    "category": "기타"
+  },
+  "AwardTmgDiscLineItems": {
+    "korean_name": "보상 타이밍 공시 항목",
+    "description": "보상 지급 시점에 대한 정보를 기록하여, 기업의 보상 정책 투명성을 높이는 역할을 합니다.",
+    "category": "기타"
+  },
+  "AwardsCloseToMnpiDiscTable": {
+    "korean_name": "중요한 공시 시점에 가까운 보상 공시 테이블",
+    "description": "중요한 공시 시점에 가까운 보상 정보를 나열하여, 보상의 적시성을 평가하는 데 도움을 줍니다.",
+    "category": "기타"
+  },
+  "IndividualAxis": {
+    "korean_name": "개인별 축",
+    "description": "보상 관련 정보를 개인별로 구분하여 나타내며, 보상 투명성을 높이는 데 기여합니다.",
+    "category": "기타"
+  },
+  "AllIndividualsMember": {
+    "korean_name": "모든 개인 구성원",
+    "description": "모든 개인에 대한 정보를 포함하여, 보상 및 관련 정책을 이해하는 데 도움을 줍니다.",
+    "category": "기타"
+  },
+  "InsiderTradingArrLineItems": {
+    "korean_name": "내부자 거래 약정 항목",
+    "description": "내부자 거래와 관련된 약정의 세부 정보를 나열하여, 기업의 투명성을 높이는 데 기여합니다.",
+    "category": "기타"
+  },
+  "TradingArrByIndTable": {
+    "korean_name": "개인별 거래 약정 테이블",
+    "description": "각 개인에 따른 거래 약정을 정리하여, 기업의 내부 거래 활동에 대한 이해를 돕습니다.",
+    "category": "기타"
+  },
+  "TradingArrAxis": {
+    "korean_name": "거래 약정 축",
+    "description": "거래 약정을 구분하여 나타내며, 기업의 거래 구조를 이해하는 데 도움을 줍니다.",
+    "category": "기타"
+  },
+  "RecoveryOfErrCompDisclosureLineItems": {
+    "korean_name": "오류 보상 회복 공시 항목",
+    "description": "오류로 인해 발생한 손실 회복과 관련된 정보를 기록하여, 기업의 재무 건전성을 평가하는 데 기여합니다.",
+    "category": "기타"
+  },
+  "ErrCompRecoveryTable": {
+    "korean_name": "오류 보상 회복 테이블",
+    "description": "오류로 인한 손실 회복에 대한 정보를 나열하여, 기업의 투명성을 높이는 역할을 합니다.",
+    "category": "기타"
+  },
+  "PayVsPerformanceDisclosureLineItems": {
+    "korean_name": "보수 대 성과 공시 항목",
+    "description": "보수와 성과 간의 관계를 기록하여, 기업의 보상 정책의 효과성을 평가하는 데 도움을 줍니다.",
+    "category": "기타"
+  },
+  "PvpTable": {
+    "korean_name": "보수 대 성과 테이블",
+    "description": "보수와 성과 간의 관계를 나열하여, 경영진의 성과를 평가하는 데 중요한 정보를 제공합니다.",
+    "category": "기타"
+  },
+  "ExecutiveCategoryAxis": {
+    "korean_name": "경영진 분류 축",
+    "description": "경영진의 분류를 구분하여 나타내며, 경영진의 보상 구조를 이해하는 데 기여합니다.",
+    "category": "기타"
+  },
+  "AllExecutiveCategoriesMember": {
+    "korean_name": "모든 경영진 분류 구성원",
+    "description": "모든 경영진 분류에 대한 정보를 포함하여, 보상 정책을 평가하는 데 도움을 줍니다.",
+    "category": "기타"
+  },
+  "AdjToCompAxis": {
+    "korean_name": "보상 조정 축",
+    "description": "보상의 조정 항목을 구분하여 나타내며, 경영진 보상에 대한 투명성을 높이는 역할을 합니다.",
+    "category": "기타"
+  },
+  "InsiderTradingPoliciesProcLineItems": {
+    "korean_name": "내부자 거래 정책 및 절차 공시 항목",
+    "description": "내부자 거래와 관련된 정책 및 절차에 대한 정보를 기록하여, 기업의 투명성을 높이는 데 기여합니다.",
+    "category": "기타"
+  },
+  "ProductOrServiceAxis": {
+    "korean_name": "제품 또는 서비스 축",
+    "description": "이 항목은 기업이 제공하는 다양한 제품 또는 서비스의 종류를 구분하여 표기하는 데 사용됩니다. 이는 기업의 수익원 분석 및 성과 평가에 중요한 역할을 합니다.",
+    "category": "수익"
+  },
+  "ProductsAndServicesDomain": {
+    "korean_name": "제품 및 서비스 도메인",
+    "description": "이 항목은 특정 제품 또는 서비스의 세부 정보를 그룹화하여 나타내며, 각 제품 또는 서비스가 기업의 재무 성과에 미치는 영향을 분석하는 데 도움이 됩니다.",
+    "category": "수익"
+  },
+  "MajorCustomersAxis": {
+    "korean_name": "주요 고객 축",
+    "description": "이 항목은 기업의 주요 고객을 구분하는 데 사용되며, 특정 고객으로부터 발생하는 수익의 중요성을 강조합니다. 이는 고객 의존도를 분석하는 데 필수적입니다.",
+    "category": "수익"
+  },
+  "NameOfMajorCustomerDomain": {
+    "korean_name": "주요 고객 이름 도메인",
+    "description": "이 항목은 주요 고객의 구체적인 이름을 나타내며, 고객별 수익 흐름을 추적하고 분석하는 데 중요한 정보를 제공합니다.",
+    "category": "수익"
+  },
+  "ConsolidationItemsAxis": {
+    "korean_name": "통합 항목 축",
+    "description": "이 항목은 여러 사업 부문의 운영 수익을 통합하기 위해 사용되는 요소들을 나타내며, 전체적인 재무 성과를 정확하게 보고하기 위해 필요합니다.",
+    "category": "기타"
+  },
+  "ConsolidationItemsDomain": {
+    "korean_name": "통합 항목 도메인",
+    "description": "이 항목은 통합 항목의 세부 사항을 제공하며, 다양한 사업 부문 간의 재무 데이터 조정을 통해 전체 재무 제표의 정확성을 높이는 역할을 합니다.",
+    "category": "기타"
+  },
+  "ecd_NonRule10b51ArrTrmntdFlag": {
+    "korean_name": "비규칙 10b51 거래 종료 플래그",
+    "description": "이 태그는 비규칙 10b51 거래의 종료 여부를 나타내며, 해당 거래가 종료되었음을 나타내는 플래그입니다. 이는 SEC의 규정에 따라 기업의 거래를 투명하게 보고하는 데 중요합니다.",
+    "category": "기타"
+  },
+  "us-gaap_NetCashProvidedByUsedInFinancingActivities": {
+    "korean_name": "재무활동으로 인한 현금의 순공급(사용)",
+    "description": "이 항목은 기업이 재무활동을 통해 얻거나 사용한 현금의 순액을 나타냅니다. 이는 기업의 자본 조달 및 상환 활동을 파악하는 데 중요합니다.",
+    "category": "기타"
+  },
+  "ecd_NonPeoNeoMember": {
+    "korean_name": "비인적 비공식 회원",
+    "description": "이 태그는 비인적 자원으로 구성된 비공식 회원을 나타내며, 특정 그룹이나 조직에서의 회원 자격을 정의합니다.",
+    "category": "기타"
+  },
+  "us-gaap_ProductMember": {
+    "korean_name": "제품 회원",
+    "description": "이 태그는 특정 제품군 또는 카테고리에 속하는 항목을 정의합니다. 제품의 성과를 평가하고 보고하는 데 유용합니다.",
+    "category": "기타"
+  },
+  "dei_NoTradingSymbolFlag": {
+    "korean_name": "거래 기호 없음 플래그",
+    "description": "이 플래그는 기업이 거래 기호를 보유하고 있지 않음을 나타냅니다. 이는 상장되지 않은 기업이나 비상장 회사에 해당할 수 있습니다.",
+    "category": "기타"
+  },
+  "ecd_PeoTotalCompAmt": {
+    "korean_name": "총 보상 금액",
+    "description": "이 항목은 특정 개인에게 지급된 총 보상 금액을 나타냅니다. 이는 임금 및 기타 보상 요소를 포함하여 직원의 보상 구조를 이해하는 데 중요합니다.",
+    "category": "비용"
+  },
+  "ecd_IndividualAxis": {
+    "korean_name": "개별 축",
+    "description": "이 태그는 특정 개인 또는 그룹에 대한 데이터를 표시하는 데 사용되는 축을 정의합니다. 이는 개인별 성과 분석에 유용합니다.",
+    "category": "기타"
+  },
+  "us-gaap_IncreaseDecreaseInInventories": {
+    "korean_name": "재고의 증가(감소)",
+    "description": "이 항목은 회계 기간 동안 재고의 변동을 나타냅니다. 이는 기업의 운영 효율성과 자산 관리를 평가하는 데 중요한 지표입니다.",
+    "category": "자산"
+  },
+  "us-gaap_ScheduleOfEmployeeServiceShareBasedCompensationAllocationOfRecognizedPeriodCostsTextBlock": {
+    "korean_name": "주식 기반 보상 비용 인식 기간 할당 일정",
+    "description": "이 태그는 주식 기반 보상 비용의 인식 기간 할당에 대한 일정을 나타냅니다. 이는 주주와 직원의 보상 구조를 이해하는 데 중요합니다.",
+    "category": "비용"
+  },
+  "dei_DocumentFiscalPeriodFocus": {
+    "korean_name": "회계 기간 초점 문서",
+    "description": "이 태그는 보고되는 재무제표의 회계 기간을 명시합니다. 회계 기간을 명확히 하는 것은 재무 제표 분석에 필수적입니다.",
+    "category": "기타"
+  },
+  "us-gaap_IncreaseDecreaseInOtherOperatingLiabilities": {
+    "korean_name": "기타 운영 부채의 증가(감소)",
+    "description": "이 항목은 기타 운영 부채의 변동을 나타내며, 기업의 재무 건전성과 운영 효율성을 평가하는 데 중요한 요소입니다.",
+    "category": "부채"
+  },
+  "dei_EntityIncorporationStateCountryCode": {
+    "korean_name": "법인 설립 주 및 국가 코드",
+    "description": "이 태그는 기업이 설립된 주 및 국가의 코드를 나타냅니다. 이는 법적 및 세무적 요구 사항을 이해하는 데 중요합니다.",
+    "category": "기타"
+  },
+  "us-gaap_LongTermDebt": {
     "korean_name": "장기 부채",
-    "description": "장기적으로 상환해야 하는 부채를 나타내며, 기업의 재무 건전성과 채무 이행 능력을 평가하는 데 중요한 항목입니다.",
+    "description": "이 항목은 1년 이상 만기가 남은 부채를 나타냅니다. 기업의 재무 구조와 장기적인 지급 능력을 평가하는 데 중요한 지표입니다.",
     "category": "부채"
   },
-  "longtermdebtfairvalue": {
-    "korean_name": "장기 부채 공정가치",
-    "description": "장기 부채의 공정가치를 나타내며, 현재 시장에서의 가치 평가를 통해 기업의 재무 상태를 보다 정확히 반영합니다.",
+  "us-gaap_ProceedsFromIssuanceOfLongTermDebt": {
+    "korean_name": "장기 부채 발행으로 인한 수익",
+    "description": "이 항목은 장기 부채를 발행하여 얻은 자금을 나타냅니다. 이는 기업의 자금 조달 활동을 평가하는 데 중요한 정보를 제공합니다.",
+    "category": "기타"
+  },
+  "ecd_AllAdjToCompMember": {
+    "korean_name": "모든 보상 조정 회원",
+    "description": "이 태그는 모든 보상 조정 항목을 포함하는 회원을 정의합니다. 이는 보상 보고의 투명성을 높이는 데 기여합니다.",
+    "category": "기타"
+  },
+  "aapl_RestOfAsiaPacificSegmentMember": {
+    "korean_name": "아시아 태평양 지역 나머지 세그먼트 회원",
+    "description": "이 태그는 아시아 태평양 지역 내에서 특정 기업의 비즈니스 세그먼트를 나타냅니다. 지역별 성과 분석에 유용합니다.",
+    "category": "기타"
+  },
+  "us-gaap_LongTermDebtNoncurrent": {
+    "korean_name": "비유동 장기 부채",
+    "description": "이 항목은 비유동 장기 부채를 나타내며, 1년 이상 만기가 남은 부채 중에서 비유동적인 부분을 포함합니다.",
     "category": "부채"
   },
-  "stockholdersequitynotedisclosuretextblock": {
-    "korean_name": "주주 자본 노트 공시 텍스트 블록",
-    "description": "주주 자본에 대한 상세 정보를 제공하는 섹션으로, 기업의 자본 구조와 변동 사항을 이해하는 데 도움을 줍니다.",
+  "us-gaap_CommercialPaper": {
+    "korean_name": "상업 어음",
+    "description": "이 항목은 단기 자금 조달을 위한 상업 어음을 나타냅니다. 기업의 유동성을 관리하는 데 중요한 역할을 합니다.",
+    "category": "부채"
+  },
+  "us-gaap_AvailableForSaleDebtSecuritiesAccumulatedGrossUnrealizedLossBeforeTax": {
+    "korean_name": "매도 가능 채무 증권의 세전 총 미실현 손실",
+    "description": "이 항목은 매도 가능 채무 증권에 대한 세전 미실현 손실을 나타냅니다. 이는 기업의 자산 가치 변동을 평가하는 데 중요합니다.",
+    "category": "자산"
+  },
+  "ecd_AwardTmgMnpiCnsdrdFlag": {
+    "korean_name": "보상 시기 고려 플래그",
+    "description": "이 플래그는 보상 지급 시기를 고려할 것인지 여부를 나타냅니다. 이는 보상 계획의 운영에 있어 중요한 요소입니다.",
+    "category": "기타"
+  },
+  "aapl_WearablesHomeandAccessoriesMember": {
+    "korean_name": "웨어러블, 홈 및 액세서리 회원",
+    "description": "이 태그는 특정 기업의 웨어러블 및 액세서리 제품 범주를 나타냅니다. 제품 라인의 성과를 분석하는 데 유용합니다.",
+    "category": "기타"
+  },
+  "us-gaap_IncomeTaxExpenseBenefit": {
+    "korean_name": "법인세 비용(이익)",
+    "description": "이 항목은 기업의 법인세 관련 비용 또는 이익을 나타냅니다. 세무 계획 및 재무 성과 분석에 필수적입니다.",
+    "category": "비용"
+  },
+  "us-gaap_CommonStockParOrStatedValuePerShare": {
+    "korean_name": "보통주 액면가 또는 기재된 가치",
+    "description": "이 항목은 보통주의 액면가 또는 기재된 가치를 나타냅니다. 이는 자본 구조 및 주주 권리를 이해하는 데 중요합니다.",
     "category": "자본"
   },
-  "stockrepurchasedandretiredduringperiodshares": {
-    "korean_name": "기간 동안 매입 및 소각된 주식 수",
-    "description": "회사가 기간 동안 매입하고 소각한 주식의 수를 나타내며, 주주 가치를 증가시키기 위한 전략적 결정의 일환으로 볼 수 있습니다.",
+  "aapl_AmericasSegmentMember": {
+    "korean_name": "미주 세그먼트 회원",
+    "description": "이 태그는 미주 지역 내에서 특정 기업의 비즈니스 세그먼트를 나타냅니다. 지역별 시장 성과 분석에 유용합니다.",
+    "category": "기타"
+  },
+  "ecd_MnpiDiscTimedForCompValFlag": {
+    "korean_name": "보상 가치 평가를 위한 정보 공개 시기 플래그",
+    "description": "이 플래그는 보상 가치 평가를 위한 정보 공개 시기를 고려하는지를 나타냅니다. 이는 보상 계획의 투명성을 높이는 데 기여합니다.",
+    "category": "기타"
+  },
+  "us-gaap_ContractWithCustomerLiabilityRevenueRecognized": {
+    "korean_name": "고객 계약 부채 수익 인식",
+    "description": "이 항목은 고객 계약에 따른 부채와 인식된 수익을 나타냅니다. 이는 수익 인식의 투명성을 높이는 데 중요합니다.",
+    "category": "부채"
+  },
+  "ecd_AllTradingArrangementsMember": {
+    "korean_name": "모든 거래 방식 회원",
+    "description": "이 태그는 다양한 거래 방식의 회원을 정의합니다. 이는 거래 방식의 다양성과 관련된 보고를 용이하게 합니다.",
+    "category": "기타"
+  },
+  "us-gaap_AvailableForSaleSecuritiesDebtSecurities": {
+    "korean_name": "매도 가능 증권(채무 증권)",
+    "description": "이 항목은 매도 가능 증권으로 분류된 채무 증권을 나타내며, 이는 기업의 투자 자산을 평가하는 데 중요합니다.",
+    "category": "자산"
+  },
+  "us-gaap_RevenueFromContractWithCustomerTextBlock": {
+    "korean_name": "고객 계약으로 인한 수익",
+    "description": "이 태그는 고객과의 계약에서 발생한 수익을 설명하는 텍스트 블록입니다. 수익인식 기준을 이해하는 데 필수적입니다.",
+    "category": "수익"
+  },
+  "us-gaap_ProceedsFromRepaymentsOfShortTermDebtMaturingInThreeMonthsOrLess": {
+    "korean_name": "3개월 이내 만기 단기 부채 상환으로 인한 수익",
+    "description": "이 항목은 3개월 이내에 만기가 도래하는 단기 부채의 상환으로 인해 발생한 수익을 나타냅니다. 이는 유동성 관리에 중요한 정보입니다.",
+    "category": "기타"
+  },
+  "us-gaap_AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount": {
+    "korean_name": "주당 순이익 계산에서 제외된 항희성 증권",
+    "description": "이 항목은 주당 순이익 계산에서 제외된 항희성 증권을 나타냅니다. 이는 주식의 희석 효과를 이해하는 데 중요합니다.",
+    "category": "기타"
+  },
+  "ecd_OtherPerfMeasureAmt": {
+    "korean_name": "기타 성과 측정 금액",
+    "description": "이 태그는 기업의 성과를 측정하기 위한 기타 지표를 나타냅니다. 이는 다양한 성과 측정 방법론을 통합하는 데 중요합니다.",
+    "category": "기타"
+  },
+  "us-gaap_IncreaseDecreaseInAccountsPayable": {
+    "korean_name": "미지급금의 증가(감소)",
+    "description": "이 항목은 회계 기간 동안 미지급금의 변동을 나타냅니다. 이는 기업의 유동성과 지급 능력 분석에 중요한 요소입니다.",
+    "category": "부채"
+  },
+  "us-gaap_AccountsReceivableNetCurrent": {
+    "korean_name": "순 현재 미수금",
+    "description": "이 항목은 현재 미수금의 순액을 나타냅니다. 이는 기업의 유동성을 평가하는 데 중요한 지표입니다.",
+    "category": "자산"
+  },
+  "us-gaap_IncreaseDecreaseInOtherReceivables": {
+    "korean_name": "기타 미수금의 증가(감소)",
+    "description": "이 항목은 기타 미수금의 변동을 나타내며, 기업의 자산 관리 및 유동성 분석에 중요합니다.",
+    "category": "자산"
+  },
+  "aapl_VendorTwoMember": {
+    "korean_name": "벤더 2 회원",
+    "description": "이 태그는 특정 기업의 벤더 2 그룹을 나타내며, 공급망 관리 분석에 유용합니다.",
+    "category": "기타"
+  },
+  "dei_EntityRegistrantName": {
+    "korean_name": "법인 등록 이름",
+    "description": "이 태그는 기업의 공식 등록 이름을 나타냅니다. 법적 및 행정적 요구 사항을 준수하는 데 중요합니다.",
+    "category": "기타"
+  },
+  "ecd_PeoActuallyPaidCompAmt": {
+    "korean_name": "실제 지급된 보상 금액",
+    "description": "이 항목은 특정 개인에게 실제로 지급된 보상 금액을 나타냅니다. 이는 보상 구조의 투명성을 높이는 데 기여합니다.",
+    "category": "비용"
+  },
+  "ecd_MeasureName": {
+    "korean_name": "측정 이름",
+    "description": "이 태그는 특정 성과 측정 항목의 이름을 정의합니다. 이는 성과 분석의 일관성을 유지하는 데 중요합니다.",
+    "category": "기타"
+  },
+  "ecd_Rule10b51ArrAdoptedFlag": {
+    "korean_name": "규칙 10b51 거래 채택 플래그",
+    "description": "이 플래그는 기업이 규칙 10b51 거래를 채택했는지를 나타냅니다. 이는 특정 거래의 투명성을 높이는 데 기여합니다.",
+    "category": "기타"
+  },
+  "us-gaap_EquitySecuritiesFvNiCost": {
+    "korean_name": "공정가치로 평가된 주식 증권",
+    "description": "공정가치로 평가된 주식 증권은 기업이 보유하고 있는 주식 증권의 공정 가치와 원가를 나타내며, 이를 통해 투자 성과를 평가하는 데 중요한 역할을 합니다.",
+    "category": "자산"
+  },
+  "us-gaap_WeightedAverageNumberOfSharesOutstandingBasic": {
+    "korean_name": "기본 주당 가중 평균 주식 수",
+    "description": "기본 주당 가중 평균 주식 수는 특정 기간 동안 발행된 주식의 평균 수를 계산하여 주당 순이익(EPS)을 산출하는 데 사용됩니다.",
+    "category": "기타"
+  },
+  "ecd_AdjToCompAxis": {
+    "korean_name": "보상 조정 축",
+    "description": "보상 조정 축은 직원 보상과 관련된 변동 요소를 설명하는 데 사용되며, 이는 기업의 재무 성과에 영향을 미칠 수 있습니다.",
+    "category": "기타"
+  },
+  "us-gaap_ScheduleOfEarningsPerShareBasicAndDilutedTableTextBlock": {
+    "korean_name": "기본 및 희석 주당순이익 일정",
+    "description": "기본 및 희석 주당순이익 일정은 기본 및 희석 주당 순이익을 구체적으로 나타내며, 투자자에게 기업의 수익성을 평가할 수 있는 중요한 정보를 제공합니다.",
+    "category": "기타"
+  },
+  "ecd_AwardTmgMethodTextBlock": {
+    "korean_name": "보상 시기 방법",
+    "description": "보상 시기 방법은 기업이 직원에게 제공하는 보상의 시점과 방식에 대한 정보를 제공하여 보상 정책을 이해하는 데 도움이 됩니다.",
+    "category": "기타"
+  },
+  "us-gaap_OperatingSegmentsMember": {
+    "korean_name": "운영 세그먼트",
+    "description": "운영 세그먼트는 기업이 운영하는 주요 사업 부문을 정의하며, 각 세그먼트의 성과를 분석하는 데 중요한 역할을 합니다.",
+    "category": "기타"
+  },
+  "ecd_CoSelectedMeasureAmt": {
+    "korean_name": "선택된 측정치 금액",
+    "description": "선택된 측정치 금액은 기업이 특정 성과 지표에 대해 선택한 금액을 나타내며, 이는 투자자 및 분석가에게 유용한 정보를 제공합니다.",
+    "category": "기타"
+  },
+  "ecd_ForgoneRecoveryDueToDisqualificationOfTaxBenefitsAmt": {
+    "korean_name": "세금 혜택 자격 상실로 인한 회수 포기 금액",
+    "description": "세금 혜택 자격 상실로 인한 회수 포기 금액은 기업이 세금 혜택을 받을 수 없어 포기한 금액을 나타내며, 이는 기업의 재무 상태에 영향을 줄 수 있습니다.",
+    "category": "비용"
+  },
+  "ecd_StkPrcOrTsrEstimationMethodTextBlock": {
+    "korean_name": "주식 가격 또는 TSR 추정 방법",
+    "description": "주식 가격 또는 총 주주 수익률(TSR) 추정 방법은 기업이 주식 가격 또는 TSR을 산정하는 방식을 설명하며, 주식 평가에 중요한 정보를 제공합니다.",
+    "category": "기타"
+  },
+  "ecd_OutstandingRecoveryIndName": {
+    "korean_name": "미결 회수 지표 이름",
+    "description": "미결 회수 지표 이름은 기업이 회수 가능한 자산의 상태를 평가하는 데 사용하는 지표의 이름을 나타내며, 재무 분석에 유용합니다.",
+    "category": "기타"
+  },
+  "ecd_MtrlTermsOfTrdArrTextBlock": {
+    "korean_name": "거래 조건의 주요 사항",
+    "description": "거래 조건의 주요 사항은 특정 거래와 관련된 중요한 조건들을 설명하며, 이는 기업의 재무 성과에 영향을 줄 수 있습니다.",
+    "category": "기타"
+  },
+  "us-gaap_Cash": {
+    "korean_name": "현금",
+    "description": "현금은 기업의 유동성을 나타내며, 기업의 운영 및 투자 활동에 필수적인 자산입니다.",
+    "category": "자산"
+  },
+  "us-gaap_LossContingencyDisclosures": {
+    "korean_name": "손실 우발 사항 공시",
+    "description": "손실 우발 사항 공시는 기업이 발생할 수 있는 손실을 관리하고 있는 상황을 설명하며, 이는 투자자에게 리스크 정보를 제공합니다.",
+    "category": "기타"
+  },
+  "ecd_TabularListTableTextBlock": {
+    "korean_name": "표 형식 목록",
+    "description": "표 형식 목록은 특정 정보를 정리하여 제공하는 방식으로, 이해를 돕기 위해 사용됩니다.",
+    "category": "기타"
+  },
+  "ecd_AwardsCloseToMnpiDiscIndName": {
+    "korean_name": "MNPI에 근접한 보상 지표 이름",
+    "description": "MNPI에 근접한 보상 지표 이름은 중요한 비공식 정보를 포함할 가능성이 있는 보상을 나타내며, 이는 기업의 투명성에 영향을 줄 수 있습니다.",
+    "category": "기타"
+  },
+  "aapl_NonTradeReceivableMember": {
+    "korean_name": "비거래성 채권",
+    "description": "비거래성 채권은 기업이 거래 외에서 발생한 채권을 나타내며, 자산 관리에 중요한 요소입니다.",
+    "category": "자산"
+  },
+  "us-gaap_NetCashProvidedByUsedInOperatingActivities": {
+    "korean_name": "영업 활동으로 인한 순 현금 흐름",
+    "description": "영업 활동으로 인한 순 현금 흐름은 기업의 운영에서 발생하는 현금의 유입과 유출을 나타내며, 기업의 재무 건전성을 평가하는 데 중요한 지표입니다.",
+    "category": "자산"
+  },
+  "dei_SecurityExchangeName": {
+    "korean_name": "증권 거래소 이름",
+    "description": "증권 거래소 이름은 기업이 상장된 거래소의 이름을 나타내며, 투자자들에게 기업 정보의 출처를 제공합니다.",
+    "category": "기타"
+  },
+  "us-gaap_AccumulatedDepreciationDepletionAndAmortizationPropertyPlantAndEquipment": {
+    "korean_name": "유형 자산의 누적 감가상각 및 상각",
+    "description": "유형 자산의 누적 감가상각 및 상각은 기업이 보유한 자산의 가치 감소를 나타내며, 재무제표에서 자산 가치를 평가하는 데 중요한 요소입니다.",
+    "category": "자산"
+  },
+  "us-gaap_RestrictedStockUnitsRSUMember": {
+    "korean_name": "제한주식단위",
+    "description": "제한주식단위는 특정 조건을 충족해야만 행사할 수 있는 주식을 나타내며, 직원 보상 및 유인 전략에 중요한 역할을 합니다.",
     "category": "자본"
   },
-  "disclosureofcompensationrelatedcostssharebasedpaymentstextblock": {
-    "korean_name": "보상 관련 비용 공시 텍스트 블록 (주식 기반 지급)",
-    "description": "주식 기반 지급과 관련된 보상 비용에 대한 정보를 제공하는 섹션으로, 기업의 보상 구조와 관련된 비용을 이해하는 데 중요합니다.",
+  "ecd_TrdArrIndTitle": {
+    "korean_name": "거래 배열 지표 제목",
+    "description": "거래 배열 지표 제목은 특정 거래 조건과 관련된 지표의 제목을 나타내며, 이는 거래의 이해를 돕는 데 사용됩니다.",
     "category": "기타"
   },
-  "scheduleofnonvestedrestrictedstockunitsactivitytabletextblock": {
-    "korean_name": "비가치 제한 주식 단위 활동 일정 텍스트 블록",
-    "description": "비가치 제한 주식 단위의 활동을 정리한 일정으로, 직원에게 지급되는 주식 기반 보상의 변동 사항을 나타냅니다.",
+  "us-gaap_BasisOfAccountingPolicyPolicyTextBlock": {
+    "korean_name": "회계 정책의 기준",
+    "description": "회계 정책의 기준은 기업이 회계 처리를 수행하는 방법과 기준을 설명하며, 기업의 재무 상태를 이해하는 데 중요한 정보를 제공합니다.",
     "category": "기타"
   },
-  "sharebasedcompensationarrangementbysharebasedpaymentawardequityinstrumentsotherthanoptionsno": {
-    "korean_name": "주식 기반 지급 수단 (옵션 이외의 자산) - 아니오",
-    "description": "주식 기반 지급 수단으로 제공된 자산 중 옵션 이외의 자산을 나타내며, 기업의 보상 정책을 이해하는 데 중요한 정보를 제공합니다.",
+  "dei_CityAreaCode": {
+    "korean_name": "도시 지역 코드",
+    "description": "도시 지역 코드는 기업의 지리적 위치를 나타내며, 이는 기업 분석에 유용한 정보를 제공합니다.",
     "category": "기타"
   },
-  "sharebasedcompensationarrangementbysharebasedpaymentawardequityinstrumentsotherthanoptionsgr": {
-    "korean_name": "주식 기반 지급 수단 (옵션 이외의 자산) - 증가",
-    "description": "주식 기반 지급 수단으로 제공된 자산 중 옵션 이외의 자산의 증가를 나타내며, 이는 기업의 보상 정책과 인센티브 구조를 분석하는 데 중요한 정보를 제공합니다.",
+  "us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest": {
+    "korean_name": "세전 계속 운영에서의 손익",
+    "description": "세전 계속 운영에서의 손익은 기업의 정상 운영에서 발생한 손익을 나타내며, 이를 통해 기업의 지속 가능성을 평가할 수 있습니다.",
     "category": "기타"
   },
-  "sharebasedcompensationarrangementbysharebasedpaymentawardequityinstrumentsotherthanoptionsve": {
-    "korean_name": "주식 기반 지급 수단 (옵션 이외의 자산) - 감소",
-    "description": "주식 기반 지급 수단으로 제공된 자산 중 옵션 이외의 자산의 감소를 나타내며, 기업의 보상 정책 변화에 대한 신호로 해석될 수 있습니다.",
+  "us-gaap_PropertyPlantAndEquipmentGross": {
+    "korean_name": "유형 자산 총액",
+    "description": "유형 자산 총액은 기업이 보유하고 있는 모든 유형 자산의 총 가치를 나타내며, 자산의 규모를 평가하는 데 중요한 정보를 제공합니다.",
+    "category": "자산"
+  },
+  "aapl_A2.000NotesDue2027Member": {
+    "korean_name": "2027년 만기 A2.000 노트",
+    "description": "2027년 만기 A2.000 노트는 특정 채무의 만기를 나타내며, 기업의 부채 관리에 중요한 요소입니다.",
+    "category": "부채"
+  },
+  "ecd_AggtErrCompNotYetDeterminedTextBlock": {
+    "korean_name": "집계 오류 보상 미결정 텍스트 블록",
+    "description": "집계 오류 보상 미결정 텍스트 블록은 특정 오류에 대한 보상 여부가 결정되지 않은 상태를 나타내며, 이는 재무 제표의 신뢰성에 영향을 줄 수 있습니다.",
     "category": "기타"
   },
-  "sharebasedcompensationarrangementbysharebasedpaymentawardequityinstrumentsotherthanoptionsfo": {
-    "korean_name": "주식 기반 지급 수단 (옵션 이외의 자산) - 포기",
-    "description": "주식 기반 지급 수단으로 제공된 자산 중 옵션 이외의 자산의 포기를 나타내며, 이는 기업의 보상 정책과 직원 유인 전략에 대한 중요한 정보를 제공합니다.",
+  "us-gaap_AvailableForSaleSecuritiesDebtMaturitiesRollingAfterYearTenFairValue": {
+    "korean_name": "매각 가능한 채권 증권 공정 가치",
+    "description": "매각 가능한 채권 증권 공정 가치는 특정 기간 이후 만기가 되는 채권의 공정 가치를 나타내며, 이는 투자자에게 중요한 정보를 제공합니다.",
+    "category": "자산"
+  },
+  "ecd_AwardGrantDateFairValue": {
+    "korean_name": "보상 부여일 공정 가치",
+    "description": "보상 부여일 공정 가치는 직원에게 부여된 보상의 가치를 나타내며, 이는 기업의 보상 정책을 이해하는 데 중요한 요소입니다.",
+    "category": "자본"
+  },
+  "us-gaap_RepaymentsOfShortTermDebtMaturingInMoreThanThreeMonths": {
+    "korean_name": "3개월 이상 만기 단기 부채 상환",
+    "description": "3개월 이상 만기 단기 부채 상환은 단기 부채 중 만기가 3개월 이상 남은 부채의 상환액을 나타내며, 기업의 유동성 관리에 중요한 정보를 제공합니다.",
+    "category": "부채"
+  },
+  "dei_EntityTaxIdentificationNumber": {
+    "korean_name": "법인 세금 식별 번호",
+    "description": "법인 세금 식별 번호는 기업의 세금 식별을 위한 고유 번호를 나타내며, 이는 세무 관련 정보의 관리에 중요합니다.",
     "category": "기타"
   },
-  "sharebasedcompensationarrangementbysharebasedpaymentawardequityinstrumentsotherthanoptionsag": {
-    "korean_name": "주식 기반 지급 수단 (옵션 이외의 자산) - 조정",
-    "description": "주식 기반 지급 수단으로 제공된 자산 중 옵션 이외의 자산의 조정을 나타내며, 기업의 보상 정책과 관련된 변화를 반영합니다.",
+  "us-gaap_BankTimeDepositsMember": {
+    "korean_name": "은행 정기 예금",
+    "description": "은행 정기 예금은 기업이 금융 기관에 예치한 정기 예금으로, 유동 자산의 일부로 간주됩니다.",
+    "category": "자산"
+  },
+  "aapl_MacMember": {
+    "korean_name": "맥",
+    "description": "맥은 특정 제품 또는 서비스와 관련된 항목을 나타내며, 기업의 사업 부문을 이해하는 데 도움이 됩니다.",
     "category": "기타"
   },
-  "scheduleofemployeeservicesharebasedcompensationallocationofrecognizedperiodcoststextblock": {
-    "korean_name": "직원 서비스 기반 보상 인식 비용 배분 일정 텍스트 블록",
-    "description": "직원 서비스에 대한 주식 기반 보상의 인식 비용을 배분한 일정을 나타내며, 이는 기업의 보상 비용을 분석하는 데 유용합니다.",
+  "us-gaap_CorporateNonSegmentMember": {
+    "korean_name": "비세그먼트 기업",
+    "description": "비세그먼트 기업은 기업의 특정 사업 부문이 아닌 전체 기업을 나타내며, 재무 분석에서 중요한 역할을 합니다.",
     "category": "기타"
   },
-  "allocatedsharebasedcompensationexpense": {
+  "us-gaap_LongTermDebtFairValue": {
+    "korean_name": "장기 부채 공정 가치",
+    "description": "장기 부채 공정 가치는 기업의 장기 부채에 대한 공정 가치를 나타내며, 이는 기업의 재무 건전성을 평가하는 데 중요한 요소입니다.",
+    "category": "부채"
+  },
+  "ecd_ErrCompRecoveryTable": {
+    "korean_name": "오류 보상 회수 테이블",
+    "description": "오류 보상 회수 테이블은 특정 오류와 관련된 보상 회수 내역을 나타내며, 이는 기업의 재무 제표 신뢰성에 영향을 줄 수 있습니다.",
+    "category": "기타"
+  },
+  "ecd_AdjToPeoCompFnTextBlock": {
+    "korean_name": "인사 보상 조정 기능 텍스트 블록",
+    "description": "인사 보상 조정 기능 텍스트 블록은 직원 보상 조정에 대한 정보를 제공하며, 이는 보상 정책을 평가하는 데 도움이 됩니다.",
+    "category": "기타"
+  },
+  "us-gaap_USStatesAndPoliticalSubdivisionsMember": {
+    "korean_name": "미국 주 및 정치적 하위 구분",
+    "description": "미국 주 및 정치적 하위 구분은 기업이 운영되는 지역의 정치적 구분을 나타내며, 이는 기업 분석에 유용한 정보를 제공합니다.",
+    "category": "기타"
+  },
+  "ecd_AwardExrcPrice": {
+    "korean_name": "보상 행사 가격",
+    "description": "보상 행사 가격은 직원이 보상을 행사하기 위해 지불해야 하는 가격을 나타내며, 이는 보상 정책의 중요한 요소입니다.",
+    "category": "기타"
+  },
+  "aapl_OtherComprehensiveIncomeLossDerivativeInstrumentGainLossafterReclassificationandTax": {
+    "korean_name": "재분류 및 세후 파생상품 손익",
+    "description": "재분류 및 세후 파생상품 손익은 파생상품의 손익을 재무제표에 반영한 것으로, 기업의 포괄 손익에 중요한 영향을 미칩니다.",
+    "category": "기타"
+  },
+  "us-gaap_Assets": {
+    "korean_name": "자산",
+    "description": "자산은 기업이 소유하고 있는 경제적 자원으로, 미래의 경제적 효익을 제공할 것으로 기대되는 항목입니다. 자산은 유동자산과 비유동자산으로 나누어지며, 기업의 재무 건전성을 평가하는 데 중요한 역할을 합니다.",
+    "category": "자산"
+  },
+  "us-gaap_AssetsCurrent": {
+    "korean_name": "유동자산",
+    "description": "유동자산은 기업이 1년 이내에 현금으로 전환할 수 있는 자산을 의미합니다. 일반적으로 현금, 매출채권, 재고자산 등이 포함되며, 기업의 단기 재무 상태를 평가하는 데 중요한 지표가 됩니다.",
+    "category": "자산"
+  },
+  "us-gaap_MaterialReconcilingItemsMember": {
+    "korean_name": "중요 조정 항목",
+    "description": "중요 조정 항목은 재무제표의 항목 간의 차이를 조정하기 위해 필요한 항목으로, 주로 회계 처리의 일관성을 유지하기 위해 사용됩니다. 이러한 조정은 투자자에게 보다 정확한 재무 정보를 제공하는 데 기여합니다.",
+    "category": "기타"
+  },
+  "aapl_OtherComprehensiveIncomeLossDerivativeInstrumentGainLossbeforeReclassificationafterTax": {
+    "korean_name": "기타 포괄 손익 파생상품 이익/손실",
+    "description": "기타 포괄 손익 항목은 세후 재분류 전 파생상품의 손익을 나타내며, 기업의 재무 성과에 대한 통합적 이해를 제공합니다. 이는 주주에게 잠재적인 위험 요소와 기회를 보여줍니다.",
+    "category": "기타"
+  },
+  "aapl_A3.600NotesDue2042Member": {
+    "korean_name": "2042년 만기 노트",
+    "description": "2042년 만기 노트는 특정 시점에 만기되는 채무를 나타내며, 기업의 장기 재무 계획과 유동성 관리에 중요한 역할을 합니다. 이러한 채무의 관리는 기업의 재무 안정성에 영향을 미칠 수 있습니다.",
+    "category": "부채"
+  },
+  "ecd_NonGaapMeasureDescriptionTextBlock": {
+    "korean_name": "비GAAP 측정 설명",
+    "description": "비GAAP 측정은 일반적으로 인정된 회계 원칙(GAAP) 외의 재무 성과를 나타내는 지표로, 기업의 운영 성과를 보다 명확히 이해하기 위해 사용됩니다. 투자자에게 추가적인 정보 제공을 목적으로 합니다.",
+    "category": "기타"
+  },
+  "ecd_CompActuallyPaidVsNetIncomeTextBlock": {
+    "korean_name": "실제 지급된 보상 대 순이익 비교",
+    "description": "이 항목은 기업의 실제 지급된 보상과 순이익 간의 관계를 분석하여, 경영진의 보상이 회사 성과에 어떻게 연계되어 있는지를 보여줍니다. 이는 주주들에게 중요한 정보가 될 수 있습니다.",
+    "category": "기타"
+  },
+  "us-gaap_IncrementalCommonSharesAttributableToShareBasedPaymentArrangements": {
+    "korean_name": "주식 기반 지급 약정에 따른 증가분 보통주",
+    "description": "주식 기반 지급 약정에서 발생하는 추가적인 보통주 수를 나타내며, 이는 주주 가치를 희석시키는 요소가 될 수 있습니다. 이러한 정보는 투자자에게 주식의 가치 변동성을 이해하는 데 도움이 됩니다.",
+    "category": "자본"
+  },
+  "us-gaap_IncreaseDecreaseInAccountsReceivable": {
+    "korean_name": "매출채권 증가/감소",
+    "description": "매출채권의 증가는 기업이 고객에게 상품이나 서비스를 제공한 후 아직 받지 못한 금액을 의미하며, 이는 기업의 유동성 관리에 중요한 영향을 미칩니다. 반대로 감소는 수익 회수의 효율성을 나타냅니다.",
+    "category": "기타"
+  },
+  "us-gaap_AvailableForSaleSecuritiesDebtMaturitiesRollingYearTwoThroughFiveFairValue": {
+    "korean_name": "매각 가능 채권 증권의 만기(2~5년) 공정 가치",
+    "description": "이 항목은 매각 가능 채권 증권의 만기 기간이 2년에서 5년 사이인 경우에 대한 공정 가치를 나타내며, 투자자의 포트폴리오 관리 및 자산 배분 전략에 중요한 정보를 제공합니다.",
+    "category": "자산"
+  },
+  "aapl_NumberOfSignificantVendors": {
+    "korean_name": "주요 공급업체 수",
+    "description": "기업의 주요 공급업체 수는 공급망의 의존도를 나타내며, 이는 기업의 운영 리스크를 평가하는 데 중요한 요소입니다. 공급업체의 다양성은 기업의 안정성을 반영합니다.",
+    "category": "기타"
+  },
+  "ecd_PeerGroupTotalShareholderRtnAmt": {
+    "korean_name": "동종 그룹 총 주주 수익",
+    "description": "동종 그룹의 총 주주 수익은 특정 기업이 속한 산업 내에서의 상대적인 성과를 비교하는 데 사용되며, 이는 투자자에게 기업의 경쟁력을 평가하는 데 유용한 정보를 제공합니다.",
+    "category": "기타"
+  },
+  "us-gaap_AvailableForSaleDebtSecuritiesAccumulatedGrossUnrealizedGainBeforeTax": {
+    "korean_name": "매각 가능 채권 증권의 세전 누적 미실현 이익",
+    "description": "이 항목은 매각 가능 채권 증권에서 발생한 누적 미실현 이익을 나타내며, 이는 기업의 자산 가치 변화에 대한 인사이트를 제공합니다. 이는 투자자에게 재무 성과를 이해하는 데 중요한 요소입니다.",
+    "category": "자산"
+  },
+  "us-gaap_CreditConcentrationRiskMember": {
+    "korean_name": "신용 집중 위험",
+    "description": "신용 집중 위험은 특정 고객이나 지역에 대한 의존도가 높을 때 발생하는 위험을 나타내며, 이는 기업의 재무 건전성에 영향을 미칠 수 있습니다. 이러한 위험 관리는 투자자에게 중요한 고려 사항입니다.",
+    "category": "기타"
+  },
+  "us-gaap_OperatingIncomeLoss": {
+    "korean_name": "영업 이익/손실",
+    "description": "영업 이익/손실은 기업의 본업에서 발생한 수익과 비용의 차이를 나타내며, 이는 기업의 운영 성과를 평가하는 핵심 지표입니다. 긍정적인 영업 이익은 기업의 지속 가능성을 시사합니다.",
+    "category": "수익"
+  },
+  "us-gaap_AssetBackedSecuritiesMember": {
+    "korean_name": "자산 담보 증권",
+    "description": "자산 담보 증권은 특정 자산의 현금 흐름을 담보로 하여 발행된 증권으로, 투자자에게 추가적인 수익 기회를 제공합니다. 이는 자산의 안정성과 수익성을 반영합니다.",
+    "category": "자산"
+  },
+  "us-gaap_StockholdersEquity": {
+    "korean_name": "주주 자본",
+    "description": "주주 자본은 기업의 총 자산에서 총 부채를 차감한 잔여 가치를 나타내며, 이는 기업의 재무 건전성을 평가하는 데 중요한 지표입니다. 주주 자본의 변화는 기업의 성장 가능성을 시사합니다.",
+    "category": "자본"
+  },
+  "us-gaap_ResearchAndDevelopmentExpense": {
+    "korean_name": "연구 개발 비용",
+    "description": "연구 개발 비용은 새로운 제품이나 기술 개발에 투자한 비용을 의미하며, 이는 기업의 혁신 능력과 미래 성장 가능성을 평가하는 데 중요한 지표입니다. 높은 연구 개발 비용은 미래 수익 창출의 잠재력을 나타냅니다.",
+    "category": "비용"
+  },
+  "us-gaap_SellingGeneralAndAdministrativeExpense": {
+    "korean_name": "판매, 일반 및 관리 비용",
+    "description": "판매, 일반 및 관리 비용은 기업의 운영에 필요한 모든 비용을 포함하며, 이는 기업의 수익성 분석에 중요한 요소입니다. 이러한 비용의 효율적인 관리는 기업의 재무 성과에 직접적인 영향을 미칩니다.",
+    "category": "비용"
+  },
+  "us-gaap_OperatingExpenses": {
+    "korean_name": "영업 비용",
+    "description": "영업 비용은 기업의 주된 영업 활동에서 발생하는 비용을 포함하며, 이는 기업의 수익성과 효율성을 평가하는 데 필수적인 지표입니다. 영업 비용의 변화는 기업의 운영 전략을 반영합니다.",
+    "category": "비용"
+  },
+  "us-gaap_LiabilitiesAndStockholdersEquity": {
+    "korean_name": "부채 및 주주 자본",
+    "description": "부채 및 주주 자본은 기업의 자산을 금융하는 방법을 나타내며, 이는 기업의 재무 구조를 이해하는 데 중요한 요소입니다. 이 항목은 기업의 재무 건전성을 평가하는 데 필수적입니다.",
+    "category": "부채"
+  },
+  "us-gaap_DisclosureOfCompensationRelatedCostsShareBasedPaymentsTextBlock": {
+    "korean_name": "주식 기반 지급과 관련된 비용 공시",
+    "description": "주식 기반 지급과 관련된 비용의 공시는 기업의 경영진 보상 체계의 투명성을 높여 주주에게 중요한 정보를 제공합니다. 이는 기업의 성과와 보상이 어떻게 연계되는지를 보여줍니다.",
+    "category": "기타"
+  },
+  "us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent": {
+    "korean_name": "세후 기타 포괄 손익 중 모회사 귀속 부분",
+    "description": "이 항목은 세후 기타 포괄 손익 중 모회사에 귀속되는 부분을 나타내며, 이는 투자자에게 기업의 총체적인 재무 성과를 이해하는 데 도움이 됩니다.",
+    "category": "기타"
+  },
+  "us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax": {
+    "korean_name": "고객과의 계약에서 발생한 수익(세금 제외)",
+    "description": "이 항목은 고객과의 계약에서 발생한 수익을 세금 제외하고 표시하며, 이는 기업의 실제 수익성을 평가하는 데 중요한 정보를 제공합니다. 계약 수익의 변화는 기업 성장의 중요한 지표입니다.",
+    "category": "수익"
+  },
+  "us-gaap_ComprehensiveIncomeNetOfTax": {
+    "korean_name": "세후 포괄 손익",
+    "description": "세후 포괄 손익은 기업의 모든 수익과 비용을 포함한 총 체적 재무 성과를 나타내며, 이는 투자자에게 기업의 전체적인 재무 상태를 보여줍니다.",
+    "category": "기타"
+  },
+  "us-gaap_NetCashProvidedByUsedInInvestingActivities": {
+    "korean_name": "투자 활동으로 인한 현금 순유입/유출",
+    "description": "투자 활동으로 인한 현금 순유입/유출은 기업의 투자 결정이 현금 흐름에 미치는 영향을 나타내며, 이는 기업의 성장 및 재무 건전성 분석에 중요한 요소입니다.",
+    "category": "기타"
+  },
+  "us-gaap_EarningsPerShareBasic": {
+    "korean_name": "기본 주당 순이익",
+    "description": "기본 주당 순이익은 기업의 순이익을 발행된 보통주 수로 나눈 값으로, 이는 투자자가 기업의 수익성을 평가하는 데 중요한 지표입니다. 주당 순이익의 증가는 기업의 재무 성과 개선을 나타냅니다.",
+    "category": "수익"
+  },
+  "ecd_ChangedPeerGroupFnTextBlock": {
+    "korean_name": "변경된 동종 그룹 기능 설명",
+    "description": "변경된 동종 그룹 기능 설명은 기업이 비교하는 동종 기업 그룹의 변경 사항을 설명하며, 이는 기업의 상대적 성과를 분석하는 데 필요한 정보를 제공합니다.",
+    "category": "기타"
+  },
+  "us-gaap_FinancialInstrumentsDisclosureTextBlock": {
+    "korean_name": "재무 상품 공시",
+    "description": "재무 상품 공시는 기업이 보유한 다양한 재무 상품의 성격과 위험을 설명하며, 이는 투자자에게 기업의 재무 상태와 리스크를 이해하는 데 중요한 정보를 제공합니다.",
+    "category": "기타"
+  },
+  "us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect": {
+    "korean_name": "현금 및 현금성 자산, 제한된 현금 및 제한된 현금성 자산의 기간별 증가/감소(환율 효과 포함)",
+    "description": "이 항목은 현금 및 현금성 자산의 변동을 나타내며, 기업의 유동성 관리와 재무 건강성을 평가하는 데 중요한 정보를 제공합니다. 환율 변동의 영향을 포함하여 분석됩니다.",
+    "category": "자산"
+  },
+  "aapl_CashCashEquivalentsAndMarketableSecurities": {
+    "korean_name": "현금, 현금성 자산 및 매각 가능한 증권",
+    "description": "현금, 현금성 자산 및 매각 가능한 증권은 기업의 유동성 상황을 보여주는 항목으로, 이는 기업의 단기 재무 안정성을 평가하는 데 중요한 지표입니다.",
+    "category": "자산"
+  },
+  "dei_Security12bTitle": {
+    "korean_name": "증권 12b 제목",
+    "description": "증권 12b 제목은 특정 증권에 대한 정보를 제공하며, 이는 투자자에게 해당 증권의 법적 및 재무적 상태를 이해하는 데 도움이 됩니다.",
+    "category": "기타"
+  },
+  "us-gaap_FairValueInputsLevel2Member": {
+    "korean_name": "공정 가치 입력 수준 2",
+    "description": "공정 가치 입력 수준 2는 시장에서 관찰된 가격을 기반으로 한 공정 가치를 측정하는 데 사용되는 입력을 나타내며, 이는 기업의 자산 및 부채 평가에 중요한 역할을 합니다.",
+    "category": "기타"
+  },
+  "ecd_ForgoneRecoveryIndName": {
+    "korean_name": "회수 포기 지표 이름",
+    "description": "회수 포기 지표 이름은 기업의 회수 가능성이 낮은 자산에 대한 정보를 제공하며, 이는 재무 건전성을 평가하는 데 중요한 요소가 됩니다.",
+    "category": "기타"
+  },
+  "us-gaap_OtherLiabilitiesNoncurrent": {
+    "korean_name": "기타 비유동 부채",
+    "description": "기타 비유동 부채는 1년 이상 만기가 남아 있는 부채를 포함하며, 이는 기업의 장기 재무 계획 및 위험 관리를 평가하는 데 중요한 지표입니다.",
+    "category": "부채"
+  },
+  "us-gaap_FiscalPeriod": {
+    "korean_name": "회계 기간",
+    "description": "회계 기간은 기업의 재무 성과를 측정하는 특정 기간을 나타내며, 이는 재무제표 작성의 기초가 됩니다. 회계 기간의 정의는 기업의 재무 분석에 필수적입니다.",
+    "category": "기타"
+  },
+  "ecd_TrdArrAdoptionDate": {
+    "korean_name": "TRD ARR 채택 날짜",
+    "description": "TRD ARR 채택 날짜는 특정 회계 기준이나 정책의 적용 시작일을 나타내며, 이는 회계 변경의 영향을 이해하는 데 중요한 정보를 제공합니다.",
+    "category": "기타"
+  },
+  "us-gaap_StockAppreciationRightsSARSMember": {
+    "korean_name": "주식 가치 상승 권리",
+    "description": "주식 가치 상승 권리는 주식의 가치 상승에 따른 이익을 받을 수 있는 권리를 의미하며, 이는 직원 보상 및 주주 가치 증대에 기여합니다.",
+    "category": "기타"
+  },
+  "ecd_RestatementDeterminationDate": {
+    "korean_name": "재작성 결정 날짜",
+    "description": "재작성 결정 날짜는 재무제표의 수정이 필요한 시점을 나타내며, 이는 기업의 회계 신뢰성과 투명성을 평가하는 데 중요한 정보가 됩니다.",
+    "category": "기타"
+  },
+  "aapl_CommercialPaperCashFlowSummaryTableTextBlock": {
+    "korean_name": "상업 어음 현금 흐름 요약표",
+    "description": "상업 어음 현금 흐름 요약표는 기업의 단기 자금 조달 수단인 상업 어음의 현금 흐름을 요약하여 보여주며, 이는 기업의 유동성 관리에 중요한 정보를 제공합니다.",
+    "category": "기타"
+  },
+  "us-gaap_ScheduleOfCashCashEquivalentsAndShortTermInvestmentsTableTextBlock": {
+    "korean_name": "현금, 현금성 자산 및 단기 투자 일정",
+    "description": "이 항목은 기업이 보유한 현금, 현금성 자산 및 단기 투자에 대한 정보를 제공합니다. 이는 기업의 유동성을 평가하는 데 중요한 요소입니다.",
+    "category": "자산"
+  },
+  "us-gaap_EarningsPerShareTextBlock": {
+    "korean_name": "주당순이익",
+    "description": "주당순이익은 기업이 주식 한 주당 얼마나 많은 순이익을 올렸는지를 나타내는 지표입니다. 이는 투자자들이 기업의 수익성을 평가하는 데 중요한 역할을 합니다.",
+    "category": "수익"
+  },
+  "us-gaap_CommonStockSharesOutstanding": {
+    "korean_name": "발행 보통주 수",
+    "description": "발행된 보통주의 총 수량을 나타내며, 이는 기업의 자본 구조를 이해하는 데 필수적입니다. 주주가 기업의 의사결정에 참여할 수 있는 권리를 갖는 주식 수입니다.",
+    "category": "자본"
+  },
+  "us-gaap_AssetsNoncurrent": {
+    "korean_name": "비유동 자산",
+    "description": "비유동 자산은 1년 이상 보유할 것으로 예상되는 자산을 의미합니다. 이는 기업의 장기적인 재무 건전성을 평가하는 데 중요한 요소입니다.",
+    "category": "자산"
+  },
+  "us-gaap_PaymentsRelatedToTaxWithholdingForShareBasedCompensation": {
+    "korean_name": "주식 기반 보상에 대한 세금 원천징수 관련 지급",
+    "description": "주식 기반 보상으로 지급된 보상에 대해 세금 원천징수로 지급된 금액을 나타냅니다. 기업의 세금 부담을 이해하는 데 중요한 정보를 제공합니다.",
+    "category": "비용"
+  },
+  "us-gaap_RepaymentsOfLongTermDebt": {
+    "korean_name": "장기 부채 상환",
+    "description": "장기 부채의 상환 금액을 나타내며, 기업이 장기적으로 지고 있는 부채를 얼마나 잘 관리하고 있는지를 평가하는 데 중요합니다.",
+    "category": "부채"
+  },
+  "us-gaap_PaymentsOfDividends": {
+    "korean_name": "배당금 지급",
+    "description": "주주에게 지급되는 배당금의 총액을 나타냅니다. 이는 기업의 수익 분배 정책과 주주 환원 전략을 이해하는 데 중요한 요소입니다.",
+    "category": "자본"
+  },
+  "us-gaap_AccountsPayableCurrent": {
+    "korean_name": "유동 채무",
+    "description": "기업이 단기적으로 지급해야 할 채무를 나타내며, 이는 기업의 유동성 관리 및 재무 건전성을 평가하는 데 중요한 역할을 합니다.",
+    "category": "부채"
+  },
+  "us-gaap_CostOfGoodsAndServicesSold": {
+    "korean_name": "판매된 상품 및 서비스의 원가",
+    "description": "판매된 상품 및 서비스의 생산 또는 구매에 소요된 총 비용을 나타냅니다. 이는 기업의 수익성 분석에 있어 중요한 지표입니다.",
+    "category": "비용"
+  },
+  "us-gaap_LiabilitiesNoncurrent": {
+    "korean_name": "비유동 부채",
+    "description": "비유동 부채는 1년 이상 상환할 의무가 있는 부채를 의미합니다. 기업의 장기적인 재무 안정성을 평가하는 데 중요합니다.",
+    "category": "부채"
+  },
+  "us-gaap_PropertyPlantAndEquipmentNet": {
+    "korean_name": "순 자산, 유형 자산 및 설비",
+    "description": "부동산, 설비 및 장비의 순 가치를 나타내며, 이는 기업의 장기 자산 투자 및 운영 효율성을 평가하는 데 중요한 지표입니다.",
+    "category": "자산"
+  },
+  "us-gaap_StockRepurchasedAndRetiredDuringPeriodValue": {
+    "korean_name": "기간 동안 자사주 매입 및 반환 가치",
+    "description": "기업이 자사주를 매입하고 이를 퇴출시킨 총 가치를 나타냅니다. 이는 기업의 자본 구조 조정 및 주주 가치를 위한 전략을 반영합니다.",
+    "category": "자본"
+  },
+  "us-gaap_StockIssuedDuringPeriodValueNewIssues": {
+    "korean_name": "기간 동안 발행된 주식 가치",
+    "description": "기업이 새롭게 발행한 주식의 총 가치를 나타내며, 이는 자본 조달 활동을 평가하는 데 중요한 정보입니다.",
+    "category": "자본"
+  },
+  "us-gaap_CashAndCashEquivalentsAtCarryingValue": {
+    "korean_name": "장부가 기준 현금 및 현금성 자산",
+    "description": "기업의 장부에서 기록된 현금 및 현금성 자산의 가치를 나타내며, 이는 유동성 평가에 중요한 요소입니다.",
+    "category": "자산"
+  },
+  "us-gaap_CommonStockSharesAuthorized": {
+    "korean_name": "허가된 보통주 수",
+    "description": "회사가 발행할 수 있는 보통주의 최대 수량을 나타내며, 이는 자본 구조와 관련된 중요한 정보를 제공합니다.",
+    "category": "자본"
+  },
+  "us-gaap_ContractWithCustomerLiability": {
+    "korean_name": "고객과의 계약에 따른 부채",
+    "description": "고객과의 계약에 따라 발생한 의무를 나타내며, 이는 기업의 미래 수익 인식을 관리하는 데 중요합니다.",
+    "category": "부채"
+  },
+  "us-gaap_ScheduleOfNotionalAmountsOfOutstandingDerivativePositionsTableTextBlock": {
+    "korean_name": "파생상품의 미결제 약정 금액 일정",
+    "description": "기업의 파생상품에 대한 미결제 약정 금액을 나타내며, 이는 위험 관리 및 재무 전략을 이해하는 데 중요한 정보를 제공합니다.",
+    "category": "기타"
+  },
+  "us-gaap_Dividends": {
+    "korean_name": "배당금",
+    "description": "주주에게 지급되는 배당금의 총액을 나타내며, 기업의 수익 분배 및 주주에 대한 책임을 이해하는 데 중요한 요소입니다.",
+    "category": "자본"
+  },
+  "us-gaap_OtherAssetsNoncurrent": {
+    "korean_name": "기타 비유동 자산",
+    "description": "기타 비유동 자산은 일반적으로 장기적으로 보유되는 자산으로, 기업의 자산 구성의 다양성을 이해하는 데 중요합니다.",
+    "category": "자산"
+  },
+  "us-gaap_MarketableSecuritiesCurrent": {
+    "korean_name": "유동 가능한 증권",
+    "description": "단기적으로 매각이 가능한 증권의 가치를 나타내며, 이는 기업의 유동성 및 자산 관리 전략을 평가하는 데 중요합니다.",
+    "category": "자산"
+  },
+  "us-gaap_PropertyPlantAndEquipmentTextBlock": {
+    "korean_name": "유형 자산 및 설비",
+    "description": "유형 자산의 상세 정보를 제공하는 항목으로, 기업의 자산 투자 및 운영 효율성을 평가하는 데 중요한 역할을 합니다.",
+    "category": "자산"
+  },
+  "us-gaap_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentNetOfTax": {
+    "korean_name": "매도가능증권 조정세금 차감 기타포괄손익",
+    "description": "매도가능증권에서 발생한 기타포괄손익을 조정한 후의 세금 차감 금액을 나타내며, 이는 기업의 재무 상태를 종합적으로 평가하는 데 중요합니다.",
+    "category": "기타"
+  },
+  "us-gaap_CommonStockSharesIssued": {
+    "korean_name": "발행된 보통주 수",
+    "description": "현재 발행된 보통주의 총 수를 나타내며, 이는 기업의 자본 구조와 주주 권리 이해에 중요한 정보를 제공합니다.",
+    "category": "자본"
+  },
+  "us-gaap_Liabilities": {
+    "korean_name": "부채",
+    "description": "기업이 지고 있는 모든 부채의 총액을 나타내며, 이는 재무 건전성 및 유동성 분석에 필수적인 요소입니다.",
+    "category": "부채"
+  },
+  "us-gaap_RetainedEarningsAccumulatedDeficit": {
+    "korean_name": "유보이익 누적 적자",
+    "description": "유보이익의 누적 적자를 나타내며, 이는 기업의 이전 손실을 반영하여 주주 자본에 미치는 영향을 평가하는 데 중요합니다.",
+    "category": "자본"
+  },
+  "us-gaap_AvailableForSaleDebtSecuritiesAmortizedCostBasis": {
+    "korean_name": "매도가능채권의 상각원가",
+    "description": "매도가능채권의 상각된 원가를 나타내며, 이는 기업의 투자 자산의 가치를 평가하는 데 중요한 요소입니다.",
+    "category": "자산"
+  },
+  "us-gaap_PaymentsForRepurchaseOfCommonStock": {
+    "korean_name": "자사주 매입에 대한 지급",
+    "description": "자사주를 매입하기 위해 지급된 금액을 나타내며, 기업의 자본 구조 조정 및 주주 환원 정책을 반영합니다.",
+    "category": "자본"
+  },
+  "us-gaap_CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents": {
+    "korean_name": "제한된 현금 및 현금성 자산",
+    "description": "기업이 특정 용도로 제한된 현금과 현금성 자산을 나타내며, 이는 유동성 및 자산 관리에 중요한 정보를 제공합니다.",
+    "category": "자산"
+  },
+  "us-gaap_AccumulatedOtherComprehensiveIncomeLossNetOfTax": {
+    "korean_name": "세금 차감 기타포괄손익 누적액",
+    "description": "세금 차감 후 기타포괄손익의 누적액을 나타내며, 이는 기업의 재무 상태를 종합적으로 평가하는 데 중요합니다.",
+    "category": "기타"
+  },
+  "us-gaap_AvailableForSaleSecuritiesDebtMaturitiesRollingYearSixThroughTenFairValue": {
+    "korean_name": "매도가능증권의 만기 6-10년 공정가치",
+    "description": "매도가능증권 중 만기가 6년에서 10년 사이인 증권의 공정가치를 나타내며, 이는 투자 포트폴리오의 가치를 이해하는 데 중요합니다.",
+    "category": "자산"
+  },
+  "us-gaap_CommitmentsAndContingencies": {
+    "korean_name": "약정 및 우발사항",
+    "description": "기업이 향후 발생할 의무를 나타내며, 이는 재무 상태의 불확실성을 평가하는 데 중요합니다.",
+    "category": "기타"
+  },
+  "us-gaap_AdjustmentsRelatedToTaxWithholdingForShareBasedCompensation": {
+    "korean_name": "주식 기반 보상에 대한 세금 원천징수 관련 조정",
+    "description": "주식 기반 보상에 대한 세금 원천징수와 관련된 조정을 나타내며, 이는 기업의 세금 효율성을 이해하는 데 도움이 됩니다.",
+    "category": "비용"
+  },
+  "us-gaap_SegmentReportingDisclosureTextBlock": {
+    "korean_name": "세그먼트 보고 공시",
+    "description": "기업의 여러 사업 부문에 대한 재무 정보를 제공하는 항목으로, 이는 투자자와 이해관계자들이 기업의 성과를 분석하는 데 중요합니다.",
+    "category": "기타"
+  },
+  "us-gaap_OtherLiabilitiesCurrent": {
+    "korean_name": "기타 유동 부채",
+    "description": "유동 부채 중 기타 항목을 포함하며, 이는 기업의 단기 재무 의무를 이해하는 데 중요한 정보를 제공합니다.",
+    "category": "부채"
+  },
+  "us-gaap_PaymentsToAcquireAvailableForSaleSecuritiesDebt": {
+    "korean_name": "매도가능증권 채무 취득에 대한 지급",
+    "description": "매도가능증권을 취득하기 위해 지급된 금액을 나타내며, 이는 기업의 투자 활동을 평가하는 데 중요합니다.",
+    "category": "자산"
+  },
+  "us-gaap_AvailableForSaleSecuritiesDebtMaturitiesSingleMaturityDate": {
+    "korean_name": "매도가능증권의 단일 만기일",
+    "description": "단일 만기일이 있는 매도가능증권의 만기를 나타내며, 이는 기업의 투자 포트폴리오 관리에 중요한 역할을 합니다.",
+    "category": "자산"
+  },
+  "us-gaap_WeightedAverageNumberOfDilutedSharesOutstanding": {
+    "korean_name": "희석주당 평균 발행 주식 수",
+    "description": "희석 효과를 고려한 평균 발행 주식 수를 나타내며, 이는 주당 순이익 계산에 필수적인 요소입니다.",
+    "category": "수익"
+  },
+  "us-gaap_ProceedsFromMaturitiesPrepaymentsAndCallsOfAvailableForSaleSecurities": {
+    "korean_name": "매도가능증권의 만기, 선지급 및 콜 수익",
+    "description": "매도가능증권의 만기, 선지급 및 콜 옵션 행사로 인한 수익을 나타내며, 이는 기업의 투자 성과를 평가하는 데 중요한 정보입니다.",
+    "category": "수익"
+  },
+  "us-gaap_NetIncomeLoss": {
+    "korean_name": "순이익(손실)",
+    "description": "회계 기간 동안의 순이익 또는 손실을 나타내며, 이는 기업의 전반적인 수익성을 평가하는 가장 중요한 지표 중 하나입니다.",
+    "category": "수익"
+  },
+  "us-gaap_MarketableSecuritiesNoncurrent": {
+    "korean_name": "비유동 가능한 증권",
+    "description": "장기적으로 보유할 수 있는 비유동 가능한 증권의 가치를 나타내며, 이는 기업의 자산 포트폴리오를 이해하는 데 중요합니다.",
+    "category": "자산"
+  },
+  "us-gaap_HedgedAssetStatementOfFinancialPositionExtensibleEnumeration": {
+    "korean_name": "헤지 자산 재무상태표 확장Enumeration",
+    "description": "헤지 자산은 특정 위험으로부터 보호하기 위해 사용되는 자산으로, 이러한 자산의 재무상태를 명확히 하기 위해 사용되는 태그입니다. 이는 위험 관리의 일환으로 회계 처리됩니다.",
+    "category": "자산"
+  },
+  "us-gaap_EquitySecuritiesFvNiCurrentAndNoncurrent": {
+    "korean_name": "공정가치 변동 손익을 통한 평가의 주식증권 현재 및 비현재",
+    "description": "공정가치 변동 손익을 통해 평가되는 주식증권은 단기 및 장기 자산으로 분류되며, 이는 투자자에게 투자 가치 변동을 반영합니다.",
+    "category": "자산"
+  },
+  "us-gaap_DebtSecuritiesAvailableForSaleRestricted": {
+    "korean_name": "매도가능부채증권 제한",
+    "description": "매도가능 부채증권은 특정 조건하에 판매될 수 있는 증권으로, 제한 조건이 붙어 있을 경우 이 태그가 사용됩니다. 이는 자산의 유동성을 평가하는 데 중요합니다.",
+    "category": "자산"
+  },
+  "us-gaap_DerivativeNotionalAmount": {
+    "korean_name": "파생상품 명목 금액",
+    "description": "파생상품의 명목 금액은 해당 파생상품 계약의 잠재적 가치를 나타내며, 위험 평가 및 관리에 있어 중요한 요소입니다.",
+    "category": "기타"
+  },
+  "us-gaap_PaymentsForProceedsFromOtherInvestingActivities": {
+    "korean_name": "기타 투자활동으로 인한 수익 지불",
+    "description": "기타 투자활동에서 발생한 수익 지불은 재무제표에서 현금 흐름을 나타내며, 기업의 투자 활동의 성과를 평가하는 데 중요한 정보입니다.",
+    "category": "기타"
+  },
+  "us-gaap_EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized": {
+    "korean_name": "종업원 서비스 주식 기반 보상 비상환 상여 총 보상 비용 미인식",
+    "description": "종업원에게 지급되는 주식 기반 보상의 총 비용 중 아직 인식되지 않은 부분을 나타내며, 이는 향후 재무제표에 영향을 미칠 수 있습니다.",
+    "category": "비용"
+  },
+  "us-gaap_IncreaseDecreaseInOtherOperatingAssets": {
+    "korean_name": "기타 운영 자산의 증가 감소",
+    "description": "기타 운영 자산의 변화는 운영 자산의 흐름을 나타내며, 기업의 운영 효율성을 분석하는 데 중요합니다.",
+    "category": "자산"
+  },
+  "us-gaap_HedgedLiabilityStatementOfFinancialPositionExtensibleEnumeration": {
+    "korean_name": "헤지 부채 재무상태표 확장 Enumeration",
+    "description": "헤지 부채는 특정 위험으로부터 보호하기 위해 사용되는 부채로, 이러한 부채의 재무상태를 명확히 하기 위해 사용되는 태그입니다.",
+    "category": "부채"
+  },
+  "us-gaap_ProceedsFromRepaymentsOfCommercialPaper": {
+    "korean_name": "상업어음 상환으로 인한 수익",
+    "description": "상업어음의 상환에서 발생한 수익은 기업의 단기 유동성 관리를 반영하며, 현금 흐름의 중요한 요소입니다.",
+    "category": "기타"
+  },
+  "us-gaap_AllocatedShareBasedCompensationExpense": {
     "korean_name": "배분된 주식 기반 보상 비용",
-    "description": "회계 기간 동안 인식된 주식 기반 보상 비용을 나타내며, 이는 기업의 비용 구조와 인센티브 정책을 평가하는 데 중요합니다.",
+    "description": "주식 기반 보상 비용은 기업이 종업원에게 지급한 보상의 비용을 반영하며, 기업의 총 비용 구조에 중요한 영향을 미칩니다.",
     "category": "비용"
   },
-  "employeeservicesharebasedcompensationtaxbenefitfromcompensationexpense": {
-    "korean_name": "직원 서비스 주식 기반 보상 비용 관련 세금 혜택",
-    "description": "직원 서비스에 대한 주식 기반 보상에서 발생하는 세금 혜택을 나타내며, 이는 기업의 세무 전략과 비용 관리에 중요한 요소입니다.",
+  "us-gaap_IncomeTaxesPaidNet": {
+    "korean_name": "지급된 소득세 순액",
+    "description": "지급된 소득세는 기업이 실제로 납부한 세금을 나타내며, 재무제표에서 세무 관리를 평가하는 데 중요한 지표입니다.",
+    "category": "비용"
+  },
+  "us-gaap_ProceedsFromPaymentsForOtherFinancingActivities": {
+    "korean_name": "기타 자금 조달 활동에 대한 수익",
+    "description": "기타 자금 조달 활동에서 발생한 수익은 기업의 자본 조달 전략을 평가하는 데 중요한 정보를 제공합니다.",
     "category": "기타"
   },
-  "employeeservicesharebasedcompensationnonvestedawardstotalcompensationcostnotyetrecognized": {
-    "korean_name": "직원 서비스 주식 기반 보상 비가치 부여 총 보상 비용 (미인식)",
-    "description": "비가치 부여에 대해 아직 인식되지 않은 총 보상 비용을 나타내며, 이는 미래의 재무 성과에 영향을 미칠 수 있는 중요한 요소입니다.",
+  "us-gaap_RevenueRemainingPerformanceObligationExpectedTimingOfSatisfactionPeriod1": {
+    "korean_name": "남아있는 성과 의무 수익 예상 이행 시점 기간 1",
+    "description": "남아있는 성과 의무는 향후 수익 인식을 위한 중요한 요소로, 이행 시점은 기업의 매출을 예측하는 데 영향을 미칩니다.",
+    "category": "수익"
+  },
+  "us-gaap_RevenueRemainingPerformanceObligationPercentage": {
+    "korean_name": "남아있는 성과 의무 비율",
+    "description": "남아있는 성과 의무의 비율은 기업의 향후 수익 인식을 나타내며, 이는 투자자에게 중요한 정보입니다.",
+    "category": "수익"
+  },
+  "us-gaap_GrossProfit": {
+    "korean_name": "총 이익",
+    "description": "총 이익은 매출에서 매출원가를 차감한 금액으로, 기업의 기본적인 수익성을 평가하는 데 중요한 지표입니다.",
+    "category": "수익"
+  },
+  "us-gaap_PaymentsToAcquirePropertyPlantAndEquipment": {
+    "korean_name": "유형 자산 취득을 위한 지불",
+    "description": "유형 자산을 취득하기 위한 지불은 기업의 자본적 지출을 나타내며, 이는 장기적인 투자 계획을 반영합니다.",
+    "category": "비용"
+  },
+  "us-gaap_EarningsPerShareDiluted": {
+    "korean_name": "희석 주당순이익",
+    "description": "희석 주당순이익은 모든 잠재적 주식 변환을 고려한 주당 이익을 나타내며, 투자자에게 기업의 수익성을 보다 정확히 평가할 수 있게 합니다.",
+    "category": "수익"
+  },
+  "us-gaap_DisaggregationOfRevenueTableTextBlock": {
+    "korean_name": "수익의 분리 표시 테이블 텍스트 블록",
+    "description": "수익의 분리는 다양한 수익원에서 발생한 수익을 보다 명확히 하기 위한 태그로, 기업의 수익 구조를 이해하는 데 중요합니다.",
+    "category": "수익"
+  },
+  "us-gaap_AdditionalFinancialInformationDisclosureTextBlock": {
+    "korean_name": "추가 재무 정보 공시 텍스트 블록",
+    "description": "재무제표와 관련된 추가적인 정보를 제공하는 태그로, 투자자와 이해관계자에게 더 많은 맥락을 제공합니다.",
     "category": "기타"
   },
-  "employeeservicesharebasedcompensationnonvestedawardstotalcompensationcostnotyetrecognizedper": {
-    "korean_name": "직원 서비스 주식 기반 보상 비가치 부여 총 보상 비용 (미인식) 비율",
-    "description": "비가치 부여에 대해 아직 인식되지 않은 총 보상 비용의 비율을 나타내며, 이는 기업의 미래 재무 성과를 예측하는 데 중요한 지표입니다.",
+  "us-gaap_StockholdersEquityNoteDisclosureTextBlock": {
+    "korean_name": "주주 자본 주석 공시 텍스트 블록",
+    "description": "주주 자본 관련 정보를 제공하며, 이는 주주에게 기업의 자본 구조를 이해하는 데 도움이 됩니다.",
+    "category": "자본"
+  },
+  "us-gaap_ConcentrationRiskPercentage1": {
+    "korean_name": "집중 위험 비율 1",
+    "description": "특정 자산이나 부채에 대한 집중 위험을 나타내며, 이는 기업의 재무 안정성 평가에 중요한 정보를 제공합니다.",
     "category": "기타"
   },
-  "losscontingencydisclosures": {
-    "korean_name": "손실 우발 상황 공시",
-    "description": "발생 가능성이 있는 손실에 대한 정보를 제공하는 섹션으로, 기업의 리스크 관리 및 재무 건전성 평가에 중요한 역할을 합니다.",
+  "us-gaap_InvestmentsClassifiedByContractualMaturityDateTableTextBlock": {
+    "korean_name": "계약 만기일별 분류된 투자 테이블 텍스트 블록",
+    "description": "투자의 만기일에 따라 분류된 정보를 제공하며, 이는 투자자의 유동성 관리에 중요한 역할을 합니다.",
+    "category": "자산"
+  },
+  "us-gaap_LiabilitiesCurrent": {
+    "korean_name": "유동 부채",
+    "description": "유동 부채는 향후 1년 내에 상환해야 하는 부채로, 기업의 단기 재무 건전성을 평가하는 데 중요한 요소입니다.",
+    "category": "부채"
+  },
+  "us-gaap_InventoryNet": {
+    "korean_name": "순 재고 자산",
+    "description": "재고 자산의 순액은 기업의 재고 관리 효율성을 나타내며, 이는 매출 및 비용 구조에 큰 영향을 미칩니다.",
+    "category": "자산"
+  },
+  "us-gaap_MaximumLengthOfTimeForeignCurrencyCashFlowHedge": {
+    "korean_name": "외화 현금흐름 헤지의 최대 기간",
+    "description": "외화 현금흐름 헤지의 최대 기간은 기업의 외환 리스크 관리를 평가하는 데 중요한 요소입니다.",
     "category": "기타"
   },
-  "segmentreportingdisclosuretextblock": {
-    "korean_name": "세그먼트 보고 공시 텍스트 블록",
-    "description": "기업의 다양한 사업 부문에 대한 보고 정보를 제공하는 섹션으로, 각 부문의 성과를 분석하는 데 중요한 역할을 합니다.",
+  "us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax": {
+    "korean_name": "기타 포괄 손익 외환 거래 및 번역 조정 세후",
+    "description": "외환 거래 및 번역 조정으로 인한 기타 포괄 손익을 나타내며, 이는 기업의 국제적 활동에 따른 재무 성과를 반영합니다.",
     "category": "기타"
   },
-  "scheduleofsegmentreportinginformationbysegmenttextblock": {
-    "korean_name": "세그먼트별 보고 정보 일정 텍스트 블록",
-    "description": "각 사업 부문별 보고 정보를 정리한 일정으로, 기업의 다양한 사업 부문의 성과를 비교하고 분석하는 데 유용합니다.",
+  "us-gaap_EmployeeServiceShareBasedCompensationTaxBenefitFromCompensationExpense": {
+    "korean_name": "종업원 서비스 주식 기반 보상 세금 혜택",
+    "description": "주식 기반 보상에 따른 세금 혜택은 기업의 세금 부담을 줄이는 데 기여하며, 이는 재무제표에 긍정적인 영향을 미칩니다.",
     "category": "기타"
   },
-  "reconciliationofoperatingprofitlossfromsegmentstoconsolidatedtextblock": {
-    "korean_name": "세그먼트별 운영 이익/손실과 통합 재무제표의 조정 텍스트 블록",
-    "description": "각 사업 부문의 운영 이익 또는 손실을 통합 재무제표와 조정하는 과정을 나타내며, 이는 기업의 전체적인 재무 성과를 이해하는 데 중요합니다.",
+  "us-gaap_BasisOfPresentationAndSignificantAccountingPoliciesTextBlock": {
+    "korean_name": "표시 기준 및 주요 회계 정책 텍스트 블록",
+    "description": "회계 정책의 기초와 중요한 회계 원칙을 설명하며, 이는 재무제표의 해석에 있어 중요한 정보를 제공합니다.",
     "category": "기타"
   },
-  "othergeneralandadministrativeexpense": {
+  "us-gaap_LongTermDebtCurrent": {
+    "korean_name": "현재 장기 부채",
+    "description": "현재 장기 부채는 향후 12개월 이내에 상환해야 하는 장기 부채를 나타내며, 이는 유동성 측면에서 기업의 재무 건전성을 평가하는 데 중요합니다.",
+    "category": "부채"
+  },
+  "us-gaap_DepreciationDepletionAndAmortization": {
+    "korean_name": "감가상각, 고갈 및 무형자산 상각",
+    "description": "자산의 가치를 감소시키는 비용으로, 기업의 수익성을 평가하는 데 중요한 역할을 합니다.",
+    "category": "비용"
+  },
+  "us-gaap_ProceedsFromSaleOfAvailableForSaleSecuritiesDebt": {
+    "korean_name": "매도가능증권 판매로 인한 수익",
+    "description": "매도가능증권의 판매에서 발생한 수익은 기업의 자산 관리 성과를 나타내며, 이는 현금 흐름에 직접적인 영향을 미칩니다.",
+    "category": "기타"
+  },
+  "us-gaap_OtherGeneralAndAdministrativeExpense": {
     "korean_name": "기타 일반 및 관리 비용",
-    "description": "일반 운영과 관리와 관련된 비용을 포함하며, 기업의 운영 효율성을 평가하는 데 중요한 항목입니다.",
+    "description": "기타 일반 및 관리 비용은 기업 운영에 필요한 다양한 비용을 포함하며, 총 비용 구조를 평가하는 데 중요합니다.",
     "category": "비용"
+  },
+  "us-gaap_NonoperatingIncomeExpense": {
+    "korean_name": "비운영 수익/비용",
+    "description": "비운영 수익과 비용은 주 운영 활동 외의 수익과 비용을 반영하며, 기업의 전체적인 재무 성과를 이해하는 데 중요합니다.",
+    "category": "기타"
+  },
+  "us-gaap_ShareBasedCompensation": {
+    "korean_name": "주식 기반 보상",
+    "description": "주식 기반 보상은 종업원에게 지급되는 주식이나 옵션으로, 기업의 인센티브 체계와 관련이 있습니다.",
+    "category": "비용"
+  },
+  "us-gaap_DebtDisclosureTextBlock": {
+    "korean_name": "부채 공시 텍스트 블록",
+    "description": "부채에 관한 자세한 정보를 제공하며, 이는 이해관계자에게 기업의 재무 위험을 평가하는 데 도움이 됩니다.",
+    "category": "부채"
+  },
+  "us-gaap_NontradeReceivablesCurrent": {
+    "korean_name": "비거래성 채권 현재",
+    "description": "비거래성 채권은 기업의 비즈니스와 관련 없는 채권을 나타내며, 이는 유동성 관리에서 중요한 역할을 합니다.",
+    "category": "자산"
+  },
+  "us-gaap_OtherComprehensiveIncomeLossReclassificationAdjustmentFromAOCIForSaleOfSecuritiesNetOfTax": {
+    "korean_name": "기타 포괄 손익 재분류 조정 세후 증권 매각",
+    "description": "증권 매각에 따른 재분류 조정은 기업의 포괄 손익을 이해하는 데 중요한 요소입니다.",
+    "category": "기타"
+  },
+  "us-gaap_OtherNoncashIncomeExpense": {
+    "korean_name": "기타 비현금 수익/비용",
+    "description": "비현금 수익 및 비용은 현금 흐름에 직접적이지 않는 항목으로, 기업의 재무 상태를 보다 정확히 평가하는 데 필요합니다.",
+    "category": "기타"
+  },
+  "us-gaap_ReconciliationOfOperatingProfitLossFromSegmentsToConsolidatedTextBlock": {
+    "korean_name": "부문별 운영 손익과 연결 손익의 조정 텍스트 블록",
+    "description": "부문별 손익을 연결 손익으로 조정하는 과정을 설명하며, 이는 기업의 전반적인 성과를 평가하는 데 중요합니다.",
+    "category": "기타"
+  },
+  "us-gaap_ScheduleOfNonvestedRestrictedStockUnitsActivityTableTextBlock": {
+    "korean_name": "비상환 제한 주식 단위 활동 일정 테이블 텍스트 블록",
+    "description": "비상환 제한 주식 단위의 활동 내역을 제공하며, 이는 기업의 주식 기반 보상 프로그램을 이해하는 데 도움이 됩니다.",
+    "category": "기타"
+  },
+  "us-gaap_ScheduleOfSegmentReportingInformationBySegmentTextBlock": {
+    "korean_name": "부문별 보고 정보 일정",
+    "description": "부문별 보고 정보는 기업이 운영하는 다양한 부문에 대한 재무 성과 및 자산 정보를 제공하는 항목입니다. 이는 투자자와 이해관계자가 각 부문의 기여도를 평가하는 데 중요한 역할을 합니다.",
+    "category": "기타"
+  },
+  "us-gaap_OtherAssetsCurrent": {
+    "korean_name": "기타 유동 자산",
+    "description": "기타 유동 자산은 현금 및 현금성 자산 외의 유동 자산으로, 일반적으로 1년 이내에 현금으로 전환될 것으로 예상되는 자산을 포함합니다. 이는 기업의 단기 재무 상태를 평가하는 데 중요합니다.",
+    "category": "자산"
+  },
+  "us-gaap_CommonStocksIncludingAdditionalPaidInCapital": {
+    "korean_name": "보통주 및 추가 납입 자본",
+    "description": "보통주 및 추가 납입 자본은 주주가 기업에 투자한 자본의 총액을 나타내며, 기업의 자본 구조와 재무 건전성을 평가하는 데 중요한 요소입니다.",
+    "category": "자본"
+  },
+  "us-gaap_FairValueMeasurementPolicyPolicyTextBlock": {
+    "korean_name": "공정 가치 측정 정책",
+    "description": "공정 가치 측정 정책은 기업이 자산과 부채의 공정 가치를 측정하는 방법과 기준을 설명합니다. 이는 투자자에게 재무제표의 투명성과 신뢰성을 제공하는 데 필수적입니다.",
+    "category": "기타"
+  },
+  "us-gaap_CommonStockDividendsPerShareDeclared": {
+    "korean_name": "선언된 보통주 배당금 주당 금액",
+    "description": "선언된 보통주 배당금 주당 금액은 주주에게 지급될 배당금의 금액을 주당으로 나타내며, 기업의 수익성과 주주 환원 정책을 평가하는 중요한 지표입니다.",
+    "category": "자본"
+  },
+  "us-gaap_ContractWithCustomerLiabilityCurrent": {
+    "korean_name": "고객과의 계약에 따른 유동 부채",
+    "description": "고객과의 계약에 따른 유동 부채는 고객으로부터 미리 받은 금액이나, 향후 제공해야 할 서비스나 상품에 대한 의무를 나타냅니다. 이는 기업의 단기 부채 부담을 이해하는 데 도움이 됩니다.",
+    "category": "부채"
+  },
+  "us-gaap_OtherComprehensiveIncomeUnrealizedHoldingGainLossOnSecuritiesArisingDuringPeriodNetOfTax": {
+    "korean_name": "세후 발생한 증권의 미실현 보유 손익",
+    "description": "세후 발생한 증권의 미실현 보유 손익은 기업이 보유한 증권의 가치 변화로 인한 손익을 나타내며, 이는 기타 포괄손익에 포함되어 기업의 전체적인 재무 성과를 반영합니다.",
+    "category": "기타"
+  },
+  "us-gaap_StockRepurchasedAndRetiredDuringPeriodShares": {
+    "korean_name": "기간 중 자사주 매입 및 소각 주식 수",
+    "description": "기간 중 자사주 매입 및 소각 주식 수는 기업이 시장에서 자사주를 매입하여 소각한 주식의 수를 나타내며, 이는 주주 가치를 증가시키고 자본 구조를 최적화하는 전략의 일환으로 중요한 지표입니다.",
+    "category": "자본"
   }
 }
