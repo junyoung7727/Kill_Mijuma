@@ -1,238 +1,198 @@
-import json
 import os
+import json
 
-def create_kr_html(data_dir):
-    """한글 XBRL 시각화 HTML 생성"""
-    
-    # JSON 데이터 로드
-    json_path = os.path.join(data_dir, 'structured_kr_data.json')
-    with open(json_path, 'r', encoding='utf-8') as f:
-        data = json.load(f)
-    
-    # HTML 템플릿 시작
-    html = """
+def create_html_report():
+    """한글 구조 기반 HTML 리포트 생성"""
+    # kr_structure.json 읽기
+    with open('Dimi_Kensho/data/structured_kr_data.json', 'r', encoding='utf-8') as f:
+        kr_data = json.load(f)
+
+    html = '''
     <!DOCTYPE html>
-    <html>
+    <html lang="ko">
     <head>
         <meta charset="UTF-8">
-        <title>XBRL 재무제표 시각화</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>XBRL 구조 분석</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
         <style>
             body {
-                font-family: 'Noto Sans KR', sans-serif;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background-color: #f5f5f5;
                 margin: 0;
                 padding: 20px;
-                background-color: #f8fafc;
-                color: #1a202c;
-                line-height: 1.6;
             }
-            
-            .section {
-                background-color: white;
-                border-radius: 12px;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                margin-bottom: 24px;
-                padding: 24px;
+            .container {
+                max-width: 1400px;
+                margin: 0 auto;
             }
-            
-            .section-title {
-                font-size: 28px;
-                font-weight: 700;
-                color: #2d3748;
+            .header {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
                 margin-bottom: 20px;
-                padding-bottom: 12px;
-                border-bottom: 2px solid #e2e8f0;
             }
-            
-            .item {
-                margin: 16px 0;
-                padding-left: 20px;
+            .section {
+                background-color: #fff;
+                border-radius: 10px;
+                padding: 20px;
+                margin-bottom: 20px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             }
-            
-            .item-header {
-                font-weight: 600;
-                cursor: pointer;
-                padding: 12px;
-                background-color: #f7fafc;
-                border-radius: 8px;
-                transition: all 0.2s ease;
-                display: flex;
-                align-items: center;
+            .section-title {
+                font-size: 1.2em;
+                font-weight: bold;
+                color: #2c3e50;
+                margin-bottom: 15px;
+                padding-bottom: 10px;
+                border-bottom: 2px solid #e9ecef;
             }
-            
-            .item-header:hover {
-                background-color: #edf2f7;
+            .concept-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+                gap: 20px;
             }
-            
-            .item-content {
-                display: none;
-                margin: 12px 0;
-                padding: 16px;
+            .concept-card {
                 background-color: #fff;
                 border-radius: 8px;
-                border-left: 3px solid #4299e1;
+                padding: 15px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                border: 1px solid #e9ecef;
+                transition: transform 0.2s;
             }
-            
-            .toggle-btn {
-                display: inline-block;
-                width: 24px;
-                height: 24px;
-                line-height: 24px;
-                text-align: center;
-                margin-right: 8px;
-                color: #4299e1;
+            .concept-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            }
+            .concept-header {
+                margin-bottom: 15px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #e9ecef;
+            }
+            .korean-name {
                 font-weight: bold;
-            }
-            
-            .value {
-                color: #2b6cb0;
-                background-color: #ebf8ff;
-                padding: 12px;
-                border-radius: 6px;
-                margin: 8px 0;
-                font-family: 'Courier New', monospace;
-            }
-            
-            .description {
-                color: #4a5568;
-                font-style: italic;
-                margin: 8px 0;
-                padding: 8px;
-                background-color: #f7fafc;
-                border-radius: 6px;
-            }
-            
-            .category {
-                display: inline-block;
-                color: #718096;
-                font-size: 0.9em;
-                padding: 4px 8px;
-                background-color: #edf2f7;
-                border-radius: 4px;
-                margin: 8px 0;
-            }
-            
-            strong {
-                color: #2d3748;
+                color: #1976d2;
                 font-size: 1.1em;
-                display: block;
-                margin-bottom: 8px;
+                margin-bottom: 5px;
             }
-            
-            /* 스크롤바 스타일링 */
-            ::-webkit-scrollbar {
-                width: 8px;
-                height: 8px;
+            .tag-name {
+                color: #757575;
+                font-size: 0.9em;
+                font-family: monospace;
             }
-            
-            ::-webkit-scrollbar-track {
-                background: #f1f1f1;
-                border-radius: 4px;
+            .description {
+                color: #666;
+                font-size: 0.9em;
+                margin-bottom: 15px;
+                line-height: 1.4;
             }
-            
-            ::-webkit-scrollbar-thumb {
-                background: #cbd5e0;
-                border-radius: 4px;
+            .data-value {
+                background-color: #f8f9fa;
+                padding: 10px;
+                border-radius: 5px;
+                margin-top: 10px;
             }
-            
-            ::-webkit-scrollbar-thumb:hover {
-                background: #a0aec0;
+            .value {
+                color: #2196f3;
+                font-weight: bold;
+                font-size: 1.1em;
             }
-            
-            /* 반응형 디자인 */
-            @media (max-width: 768px) {
-                body {
-                    padding: 12px;
-                }
-                
-                .section {
-                    padding: 16px;
-                }
-                
-                .section-title {
-                    font-size: 24px;
-                }
-                
-                .item {
-                    padding-left: 12px;
-                }
+            .context {
+                color: #757575;
+                font-size: 0.9em;
+                margin-top: 5px;
+            }
+            .category-badge {
+                display: inline-block;
+                padding: 3px 8px;
+                border-radius: 12px;
+                font-size: 0.8em;
+                margin-left: 10px;
+                background-color: #e3f2fd;
+                color: #1976d2;
+            }
+            .icon {
+                margin-right: 8px;
+                color: #1976d2;
+            }
+            .group-title {
+                color: #666;
+                font-size: 0.9em;
+                margin: 10px 0;
+                padding: 5px 0;
+                border-bottom: 1px dashed #e9ecef;
             }
         </style>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-        <script>
-            function toggleContent(elementId) {
-                var content = document.getElementById(elementId);
-                var btn = document.getElementById('btn-' + elementId);
-                if (content.style.display === 'none') {
-                    content.style.display = 'block';
-                    btn.textContent = '▼';
-                } else {
-                    content.style.display = 'none';
-                    btn.textContent = '▶';
-                }
-            }
-        </script>
     </head>
     <body>
-    """
+        <div class="container">
+            <div class="header">
+                <h1><i class="fas fa-project-diagram icon"></i> XBRL 구조 분석</h1>
+                <p>총 섹션 수: ''' + str(len(kr_data)) + '''</p>
+            </div>
+    '''
     
-    # 각 섹션에 대해 HTML 생성
-    for section, section_data in data.items():
-        html += f'<div class="section">\n'
-        html += f'<div class="section-title">{section}</div>\n'
+    for section_name, section_data in kr_data.items():
+        html += f'''
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-folder icon"></i>
+                    {section_name}
+                </div>
+                <div class="concept-grid">
+        '''
         
-        # roots 순서대로 처리
-        for root in section_data.get('roots', []):
-            root_data = section_data['tree'].get(root, {})
-            if root_data:
-                # 루트 항목 생성
-                html += f'<div class="item">\n'
-                html += f'<div class="item-header" onclick="toggleContent(\'{root}\')">'
-                html += f'<span id="btn-{root}" class="toggle-btn">▶</span>{root_data["korean_name"]}</div>\n'
-                html += f'<div id="{root}" class="item-content">\n'
+        for group_name, items in section_data.items():
+            for item in items:
+                html += f'''
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                {item.get('translation', {}).get('korean_name', '')}
+                                <span class="category-badge">{item.get('translation', {}).get('category', '')}</span>
+                            </div>
+                            <div class="tag-name">{item.get('tag', '')}</div>
+                        </div>
+                        <div class="description">
+                            {item.get('translation', {}).get('description', '')}
+                        </div>
+                '''
                 
-                # 루트 항목 정보 표시
-                html += f'<div class="description">{root_data["description"]}</div>\n'
-                html += f'<div class="category">카테고리: {root_data["category"]}</div>\n'
+                if item.get('data'):
+                    for data in item['data']:
+                        html += f'''
+                            <div class="data-value">
+                                <div class="value">
+                                    {data.get('display_value', '')} {data.get('unit', '')}
+                                </div>
+                                <div class="context">
+                                    Context: {data.get('context', '')}<br>
+                                    Decimals: {data.get('decimals', '')}
+                                </div>
+                            </div>
+                        '''
                 
-                # 하위 항목들 처리
-                for item in sorted(root_data.get('items', []), key=lambda x: x.get('order', 0)):
-                    korean_name = item.get('korean_name', '')
-                    description = item.get('description', '')
-                    category = item.get('category', '')
-                    data_info = item.get('data', {})
-                    
-                    html += f'<div class="item">\n'
-                    html += f'<div><strong>{korean_name}</strong></div>\n'
-                    html += f'<div class="description">{description}</div>\n'
-                    html += f'<div class="category">카테고리: {category}</div>\n'
-                    
-                    if data_info:
-                        value_html = (f"값: {data_info.get('display_value', '')}, "
-                                    f"컨텍스트: {data_info.get('context', '')}, "
-                                    f"단위: {data_info.get('unit', '')}")
-                        html += f'<div class="value">{value_html}</div>\n'
-                    else:
-                        html += '<div class="value">데이터 없음</div>\n'
-                    
-                    html += '</div>\n'
-                
-                html += '</div>\n'
-                html += '</div>\n'
+                html += '''
+                    </div>
+                '''
         
-        html += '</div>\n'
+        html += '''
+                </div>
+            </div>
+        '''
     
-    # HTML 템플릿 종료
-    html += """
+    html += '''
+        </div>
     </body>
     </html>
-    """
+    '''
     
     # HTML 파일 저장
-    html_path = os.path.join(data_dir, 'xbrl_visualization_kr.html')
-    with open(html_path, 'w', encoding='utf-8') as f:
+    with open('Dimi_Kensho/data/xbrl_visualization_kr.html', 'w', encoding='utf-8') as f:
         f.write(html)
     
-    print(f"HTML 파일이 생성되었습니다: {html_path}")
+    print("\nHTML 리포트가 생성되었습니다: Dimi_Kensho/data/xbrl_visualization_kr.html")
 
 if __name__ == "__main__":
-    create_kr_html() 
+    create_html_report() 

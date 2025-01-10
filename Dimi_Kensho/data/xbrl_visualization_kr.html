@@ -1,203 +1,1353 @@
 
     <!DOCTYPE html>
-    <html>
+    <html lang="ko">
     <head>
         <meta charset="UTF-8">
-        <title>XBRL 재무제표 시각화</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>XBRL 구조 분석</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
         <style>
             body {
-                font-family: 'Noto Sans KR', sans-serif;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background-color: #f5f5f5;
                 margin: 0;
                 padding: 20px;
-                background-color: #f8fafc;
-                color: #1a202c;
-                line-height: 1.6;
             }
-            
-            .section {
-                background-color: white;
-                border-radius: 12px;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                margin-bottom: 24px;
-                padding: 24px;
+            .container {
+                max-width: 1400px;
+                margin: 0 auto;
             }
-            
-            .section-title {
-                font-size: 28px;
-                font-weight: 700;
-                color: #2d3748;
+            .header {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
                 margin-bottom: 20px;
-                padding-bottom: 12px;
-                border-bottom: 2px solid #e2e8f0;
             }
-            
-            .item {
-                margin: 16px 0;
-                padding-left: 20px;
+            .section {
+                background-color: #fff;
+                border-radius: 10px;
+                padding: 20px;
+                margin-bottom: 20px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             }
-            
-            .item-header {
-                font-weight: 600;
-                cursor: pointer;
-                padding: 12px;
-                background-color: #f7fafc;
-                border-radius: 8px;
-                transition: all 0.2s ease;
-                display: flex;
-                align-items: center;
+            .section-title {
+                font-size: 1.2em;
+                font-weight: bold;
+                color: #2c3e50;
+                margin-bottom: 15px;
+                padding-bottom: 10px;
+                border-bottom: 2px solid #e9ecef;
             }
-            
-            .item-header:hover {
-                background-color: #edf2f7;
+            .concept-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+                gap: 20px;
             }
-            
-            .item-content {
-                display: none;
-                margin: 12px 0;
-                padding: 16px;
+            .concept-card {
                 background-color: #fff;
                 border-radius: 8px;
-                border-left: 3px solid #4299e1;
+                padding: 15px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+                border: 1px solid #e9ecef;
+                transition: transform 0.2s;
             }
-            
-            .toggle-btn {
-                display: inline-block;
-                width: 24px;
-                height: 24px;
-                line-height: 24px;
-                text-align: center;
-                margin-right: 8px;
-                color: #4299e1;
+            .concept-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            }
+            .concept-header {
+                margin-bottom: 15px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #e9ecef;
+            }
+            .korean-name {
                 font-weight: bold;
-            }
-            
-            .value {
-                color: #2b6cb0;
-                background-color: #ebf8ff;
-                padding: 12px;
-                border-radius: 6px;
-                margin: 8px 0;
-                font-family: 'Courier New', monospace;
-            }
-            
-            .description {
-                color: #4a5568;
-                font-style: italic;
-                margin: 8px 0;
-                padding: 8px;
-                background-color: #f7fafc;
-                border-radius: 6px;
-            }
-            
-            .category {
-                display: inline-block;
-                color: #718096;
-                font-size: 0.9em;
-                padding: 4px 8px;
-                background-color: #edf2f7;
-                border-radius: 4px;
-                margin: 8px 0;
-            }
-            
-            strong {
-                color: #2d3748;
+                color: #1976d2;
                 font-size: 1.1em;
-                display: block;
-                margin-bottom: 8px;
+                margin-bottom: 5px;
             }
-            
-            /* 스크롤바 스타일링 */
-            ::-webkit-scrollbar {
-                width: 8px;
-                height: 8px;
+            .tag-name {
+                color: #757575;
+                font-size: 0.9em;
+                font-family: monospace;
             }
-            
-            ::-webkit-scrollbar-track {
-                background: #f1f1f1;
-                border-radius: 4px;
+            .description {
+                color: #666;
+                font-size: 0.9em;
+                margin-bottom: 15px;
+                line-height: 1.4;
             }
-            
-            ::-webkit-scrollbar-thumb {
-                background: #cbd5e0;
-                border-radius: 4px;
+            .data-value {
+                background-color: #f8f9fa;
+                padding: 10px;
+                border-radius: 5px;
+                margin-top: 10px;
             }
-            
-            ::-webkit-scrollbar-thumb:hover {
-                background: #a0aec0;
+            .value {
+                color: #2196f3;
+                font-weight: bold;
+                font-size: 1.1em;
             }
-            
-            /* 반응형 디자인 */
-            @media (max-width: 768px) {
-                body {
-                    padding: 12px;
-                }
-                
-                .section {
-                    padding: 16px;
-                }
-                
-                .section-title {
-                    font-size: 24px;
-                }
-                
-                .item {
-                    padding-left: 12px;
-                }
+            .context {
+                color: #757575;
+                font-size: 0.9em;
+                margin-top: 5px;
+            }
+            .category-badge {
+                display: inline-block;
+                padding: 3px 8px;
+                border-radius: 12px;
+                font-size: 0.8em;
+                margin-left: 10px;
+                background-color: #e3f2fd;
+                color: #1976d2;
+            }
+            .icon {
+                margin-right: 8px;
+                color: #1976d2;
+            }
+            .group-title {
+                color: #666;
+                font-size: 0.9em;
+                margin: 10px 0;
+                padding: 5px 0;
+                border-bottom: 1px dashed #e9ecef;
             }
         </style>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
-        <script>
-            function toggleContent(elementId) {
-                var content = document.getElementById(elementId);
-                var btn = document.getElementById('btn-' + elementId);
-                if (content.style.display === 'none') {
-                    content.style.display = 'block';
-                    btn.textContent = '▼';
-                } else {
-                    content.style.display = 'none';
-                    btn.textContent = '▶';
-                }
-            }
-        </script>
     </head>
     <body>
-    <div class="section">
-<div class="section-title">C O N D E N S E D C O N S O L I D A T E D S T A T E M E N T S O F O P E R A T I O N S Unaudited</div>
-</div>
-<div class="section">
-<div class="section-title">C O N D E N S E D C O N S O L I D A T E D S T A T E M E N T S O F C O M P R E H E N S I V E I N C O M E Unaudited</div>
-</div>
-<div class="section">
-<div class="section-title">C O N D E N S E D C O N S O L I D A T E D S T A T E M E N T S O F S H A R E H O L D E R S E Q U I T Y Unaudited</div>
-</div>
-<div class="section">
-<div class="section-title">C O N D E N S E D C O N S O L I D A T E D S T A T E M E N T S O F C A S H F L O W S Unaudited</div>
-</div>
-<div class="section">
-<div class="section-title">Revenue Net Sales Disaggregatedby Significant Productsand Services</div>
-</div>
-<div class="section">
-<div class="section-title">Revenue Additional</div>
-</div>
-<div class="section">
-<div class="section-title">Earnings Per Share Computationof Basicand Diluted Earnings Per Share</div>
-</div>
-<div class="section">
-<div class="section-title">Shareholders Equity Additional</div>
-</div>
-<div class="section">
-<div class="section-title">Share Based Compensation Summaryof Share Based Compensation Expenseandthe Related Income Tax Benefit</div>
-</div>
-<div class="section">
-<div class="section-title">Segment Informationand Geographic Data Informationby Reportable Segment</div>
-</div>
-<div class="section">
-<div class="section-title">Segment Informationand Geographic Data Reconciliationof Segment Operating Incometothe Condensed Consolidated Statementsof Operations</div>
-</div>
-<div class="section">
-<div class="section-title">Pvp</div>
-</div>
-
+        <div class="container">
+            <div class="header">
+                <h1><i class="fas fa-project-diagram icon"></i> XBRL 구조 분석</h1>
+                <p>총 섹션 수: 12</p>
+            </div>
+    
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-folder icon"></i>
+                    C O N D E N S E D C O N S O L I D A T E D S T A T E M E N T S O F O P E R A T I O N S Unaudited
+                </div>
+                <div class="concept-grid">
+        
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                고객과의 계약에서 발생한 수익(세금 제외)
+                                <span class="category-badge">수익</span>
+                            </div>
+                            <div class="tag-name">us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax</div>
+                        </div>
+                        <div class="description">
+                            이 항목은 고객과의 계약에서 발생한 수익을 세금 제외하고 표시하며, 이는 기업의 실제 수익성을 평가하는 데 중요한 정보를 제공합니다. 계약 수익의 변화는 기업 성장의 중요한 지표입니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    61,564,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-12<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                판매된 상품 및 서비스의 원가
+                                <span class="category-badge">비용</span>
+                            </div>
+                            <div class="tag-name">us-gaap_CostOfGoodsAndServicesSold</div>
+                        </div>
+                        <div class="description">
+                            판매된 상품 및 서비스의 생산 또는 구매에 소요된 총 비용을 나타냅니다. 이는 기업의 수익성 분석에 있어 중요한 지표입니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    39,803,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-12<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                총 이익
+                                <span class="category-badge">수익</span>
+                            </div>
+                            <div class="tag-name">us-gaap_GrossProfit</div>
+                        </div>
+                        <div class="description">
+                            총 이익은 매출에서 매출원가를 차감한 금액으로, 기업의 기본적인 수익성을 평가하는 데 중요한 지표입니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    39,678,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                영업 이익/손실
+                                <span class="category-badge">수익</span>
+                            </div>
+                            <div class="tag-name">us-gaap_OperatingIncomeLoss</div>
+                        </div>
+                        <div class="description">
+                            영업 이익/손실은 기업의 본업에서 발생한 수익과 비용의 차이를 나타내며, 이는 기업의 운영 성과를 평가하는 핵심 지표입니다. 긍정적인 영업 이익은 기업의 지속 가능성을 시사합니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    25,352,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                비운영 수익/비용
+                                <span class="category-badge">기타</span>
+                            </div>
+                            <div class="tag-name">us-gaap_NonoperatingIncomeExpense</div>
+                        </div>
+                        <div class="description">
+                            비운영 수익과 비용은 주 운영 활동 외의 수익과 비용을 반영하며, 기업의 전체적인 재무 성과를 이해하는 데 중요합니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    142,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                세전 계속 운영에서의 손익
+                                <span class="category-badge">기타</span>
+                            </div>
+                            <div class="tag-name">us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest</div>
+                        </div>
+                        <div class="description">
+                            세전 계속 운영에서의 손익은 기업의 정상 운영에서 발생한 손익을 나타내며, 이를 통해 기업의 지속 가능성을 평가할 수 있습니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    25,494,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                법인세 비용(이익)
+                                <span class="category-badge">비용</span>
+                            </div>
+                            <div class="tag-name">us-gaap_IncomeTaxExpenseBenefit</div>
+                        </div>
+                        <div class="description">
+                            이 항목은 기업의 법인세 관련 비용 또는 이익을 나타냅니다. 세무 계획 및 재무 성과 분석에 필수적입니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    4,046,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                순이익(손실)
+                                <span class="category-badge">수익</span>
+                            </div>
+                            <div class="tag-name">us-gaap_NetIncomeLoss</div>
+                        </div>
+                        <div class="description">
+                            회계 기간 동안의 순이익 또는 손실을 나타내며, 이는 기업의 전반적인 수익성을 평가하는 가장 중요한 지표 중 하나입니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    21,448,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                연구 개발 비용
+                                <span class="category-badge">비용</span>
+                            </div>
+                            <div class="tag-name">us-gaap_ResearchAndDevelopmentExpense</div>
+                        </div>
+                        <div class="description">
+                            연구 개발 비용은 새로운 제품이나 기술 개발에 투자한 비용을 의미하며, 이는 기업의 혁신 능력과 미래 성장 가능성을 평가하는 데 중요한 지표입니다. 높은 연구 개발 비용은 미래 수익 창출의 잠재력을 나타냅니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    8,006,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                판매, 일반 및 관리 비용
+                                <span class="category-badge">비용</span>
+                            </div>
+                            <div class="tag-name">us-gaap_SellingGeneralAndAdministrativeExpense</div>
+                        </div>
+                        <div class="description">
+                            판매, 일반 및 관리 비용은 기업의 운영에 필요한 모든 비용을 포함하며, 이는 기업의 수익성 분석에 중요한 요소입니다. 이러한 비용의 효율적인 관리는 기업의 재무 성과에 직접적인 영향을 미칩니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    6,320,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                영업 비용
+                                <span class="category-badge">비용</span>
+                            </div>
+                            <div class="tag-name">us-gaap_OperatingExpenses</div>
+                        </div>
+                        <div class="description">
+                            영업 비용은 기업의 주된 영업 활동에서 발생하는 비용을 포함하며, 이는 기업의 수익성과 효율성을 평가하는 데 필수적인 지표입니다. 영업 비용의 변화는 기업의 운영 전략을 반영합니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    14,326,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                기본 주당 순이익
+                                <span class="category-badge">수익</span>
+                            </div>
+                            <div class="tag-name">us-gaap_EarningsPerShareBasic</div>
+                        </div>
+                        <div class="description">
+                            기본 주당 순이익은 기업의 순이익을 발행된 보통주 수로 나눈 값으로, 이는 투자자가 기업의 수익성을 평가하는 데 중요한 지표입니다. 주당 순이익의 증가는 기업의 재무 성과 개선을 나타냅니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    1 usdPerShare
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: 2
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                희석 주당순이익
+                                <span class="category-badge">수익</span>
+                            </div>
+                            <div class="tag-name">us-gaap_EarningsPerShareDiluted</div>
+                        </div>
+                        <div class="description">
+                            희석 주당순이익은 모든 잠재적 주식 변환을 고려한 주당 이익을 나타내며, 투자자에게 기업의 수익성을 보다 정확히 평가할 수 있게 합니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    1 usdPerShare
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: 2
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                기본 주당 가중 평균 주식 수
+                                <span class="category-badge">기타</span>
+                            </div>
+                            <div class="tag-name">us-gaap_WeightedAverageNumberOfSharesOutstandingBasic</div>
+                        </div>
+                        <div class="description">
+                            기본 주당 가중 평균 주식 수는 특정 기간 동안 발행된 주식의 평균 수를 계산하여 주당 순이익(EPS)을 산출하는 데 사용됩니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    15,287,521,000 shares
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -3
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                희석주당 평균 발행 주식 수
+                                <span class="category-badge">수익</span>
+                            </div>
+                            <div class="tag-name">us-gaap_WeightedAverageNumberOfDilutedSharesOutstanding</div>
+                        </div>
+                        <div class="description">
+                            희석 효과를 고려한 평균 발행 주식 수를 나타내며, 이는 주당 순이익 계산에 필수적인 요소입니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    15,348,175,000 shares
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -3
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                </div>
+            </div>
+        
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-folder icon"></i>
+                    C O N D E N S E D C O N S O L I D A T E D S T A T E M E N T S O F C O M P R E H E N S I V E I N C O M E Unaudited
+                </div>
+                <div class="concept-grid">
+        
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                순이익(손실)
+                                <span class="category-badge">수익</span>
+                            </div>
+                            <div class="tag-name">us-gaap_NetIncomeLoss</div>
+                        </div>
+                        <div class="description">
+                            회계 기간 동안의 순이익 또는 손실을 나타내며, 이는 기업의 전반적인 수익성을 평가하는 가장 중요한 지표 중 하나입니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    21,448,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                세후 포괄 손익
+                                <span class="category-badge">기타</span>
+                            </div>
+                            <div class="tag-name">us-gaap_ComprehensiveIncomeNetOfTax</div>
+                        </div>
+                        <div class="description">
+                            세후 포괄 손익은 기업의 모든 수익과 비용을 포함한 총 체적 재무 성과를 나타내며, 이는 투자자에게 기업의 전체적인 재무 상태를 보여줍니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    21,992,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                기타 포괄 손익 외환 거래 및 번역 조정 세후
+                                <span class="category-badge">기타</span>
+                            </div>
+                            <div class="tag-name">us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax</div>
+                        </div>
+                        <div class="description">
+                            외환 거래 및 번역 조정으로 인한 기타 포괄 손익을 나타내며, 이는 기업의 국제적 활동에 따른 재무 성과를 반영합니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    -73,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                세후 기타 포괄 손익 중 모회사 귀속 부분
+                                <span class="category-badge">기타</span>
+                            </div>
+                            <div class="tag-name">us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent</div>
+                        </div>
+                        <div class="description">
+                            이 항목은 세후 기타 포괄 손익 중 모회사에 귀속되는 부분을 나타내며, 이는 투자자에게 기업의 총체적인 재무 성과를 이해하는 데 도움이 됩니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    544,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                세후 발생한 증권의 미실현 보유 손익
+                                <span class="category-badge">기타</span>
+                            </div>
+                            <div class="tag-name">us-gaap_OtherComprehensiveIncomeUnrealizedHoldingGainLossOnSecuritiesArisingDuringPeriodNetOfTax</div>
+                        </div>
+                        <div class="description">
+                            세후 발생한 증권의 미실현 보유 손익은 기업이 보유한 증권의 가치 변화로 인한 손익을 나타내며, 이는 기타 포괄손익에 포함되어 기업의 전체적인 재무 성과를 반영합니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    268,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                기타 포괄 손익 재분류 조정 세후 증권 매각
+                                <span class="category-badge">기타</span>
+                            </div>
+                            <div class="tag-name">us-gaap_OtherComprehensiveIncomeLossReclassificationAdjustmentFromAOCIForSaleOfSecuritiesNetOfTax</div>
+                        </div>
+                        <div class="description">
+                            증권 매각에 따른 재분류 조정은 기업의 포괄 손익을 이해하는 데 중요한 요소입니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    -30,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                매도가능증권 조정세금 차감 기타포괄손익
+                                <span class="category-badge">기타</span>
+                            </div>
+                            <div class="tag-name">us-gaap_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentNetOfTax</div>
+                        </div>
+                        <div class="description">
+                            매도가능증권에서 발생한 기타포괄손익을 조정한 후의 세금 차감 금액을 나타내며, 이는 기업의 재무 상태를 종합적으로 평가하는 데 중요합니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    298,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                </div>
+            </div>
+        
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-folder icon"></i>
+                    C O N D E N S E D C O N S O L I D A T E D S T A T E M E N T S O F S H A R E H O L D E R S E Q U I T Y Unaudited
+                </div>
+                <div class="concept-grid">
+        
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                선언된 보통주 배당금 주당 금액
+                                <span class="category-badge">자본</span>
+                            </div>
+                            <div class="tag-name">us-gaap_CommonStockDividendsPerShareDeclared</div>
+                        </div>
+                        <div class="description">
+                            선언된 보통주 배당금 주당 금액은 주주에게 지급될 배당금의 금액을 주당으로 나타내며, 기업의 수익성과 주주 환원 정책을 평가하는 중요한 지표입니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    0.25 usdPerShare
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: INF
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                주식 기반 보상에 대한 세금 원천징수 관련 조정
+                                <span class="category-badge">비용</span>
+                            </div>
+                            <div class="tag-name">us-gaap_AdjustmentsRelatedToTaxWithholdingForShareBasedCompensation</div>
+                        </div>
+                        <div class="description">
+                            주식 기반 보상에 대한 세금 원천징수와 관련된 조정을 나타내며, 이는 기업의 세금 효율성을 이해하는 데 도움이 됩니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    1,920,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-32<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                순이익(손실)
+                                <span class="category-badge">수익</span>
+                            </div>
+                            <div class="tag-name">us-gaap_NetIncomeLoss</div>
+                        </div>
+                        <div class="description">
+                            회계 기간 동안의 순이익 또는 손실을 나타내며, 이는 기업의 전반적인 수익성을 평가하는 가장 중요한 지표 중 하나입니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    21,448,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                배당금
+                                <span class="category-badge">자본</span>
+                            </div>
+                            <div class="tag-name">us-gaap_Dividends</div>
+                        </div>
+                        <div class="description">
+                            주주에게 지급되는 배당금의 총액을 나타내며, 기업의 수익 분배 및 주주에 대한 책임을 이해하는 데 중요한 요소입니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    3,864,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-42<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                기간 동안 자사주 매입 및 반환 가치
+                                <span class="category-badge">자본</span>
+                            </div>
+                            <div class="tag-name">us-gaap_StockRepurchasedAndRetiredDuringPeriodValue</div>
+                        </div>
+                        <div class="description">
+                            기업이 자사주를 매입하고 이를 퇴출시킨 총 가치를 나타냅니다. 이는 기업의 자본 구조 조정 및 주주 가치를 위한 전략을 반영합니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    26,221,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-42<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                세후 기타 포괄 손익 중 모회사 귀속 부분
+                                <span class="category-badge">기타</span>
+                            </div>
+                            <div class="tag-name">us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent</div>
+                        </div>
+                        <div class="description">
+                            이 항목은 세후 기타 포괄 손익 중 모회사에 귀속되는 부분을 나타내며, 이는 투자자에게 기업의 총체적인 재무 성과를 이해하는 데 도움이 됩니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    544,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                </div>
+            </div>
+        
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-folder icon"></i>
+                    C O N D E N S E D C O N S O L I D A T E D S T A T E M E N T S O F C A S H F L O W S Unaudited
+                </div>
+                <div class="concept-grid">
+        
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                순이익(손실)
+                                <span class="category-badge">수익</span>
+                            </div>
+                            <div class="tag-name">us-gaap_NetIncomeLoss</div>
+                        </div>
+                        <div class="description">
+                            회계 기간 동안의 순이익 또는 손실을 나타내며, 이는 기업의 전반적인 수익성을 평가하는 가장 중요한 지표 중 하나입니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    21,448,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                </div>
+            </div>
+        
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-folder icon"></i>
+                    Revenue Net Sales Disaggregatedby Significant Productsand Services
+                </div>
+                <div class="concept-grid">
+        
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                고객과의 계약에서 발생한 수익(세금 제외)
+                                <span class="category-badge">수익</span>
+                            </div>
+                            <div class="tag-name">us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax</div>
+                        </div>
+                        <div class="description">
+                            이 항목은 고객과의 계약에서 발생한 수익을 세금 제외하고 표시하며, 이는 기업의 실제 수익성을 평가하는 데 중요한 정보를 제공합니다. 계약 수익의 변화는 기업 성장의 중요한 지표입니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    61,564,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-12<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                </div>
+            </div>
+        
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-folder icon"></i>
+                    Revenue Additional
+                </div>
+                <div class="concept-grid">
+        
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                고객 계약 부채 수익 인식
+                                <span class="category-badge">부채</span>
+                            </div>
+                            <div class="tag-name">us-gaap_ContractWithCustomerLiabilityRevenueRecognized</div>
+                        </div>
+                        <div class="description">
+                            이 항목은 고객 계약에 따른 부채와 인식된 수익을 나타냅니다. 이는 수익 인식의 투명성을 높이는 데 중요합니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    3,400,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -8
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                </div>
+            </div>
+        
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-folder icon"></i>
+                    Earnings Per Share Computationof Basicand Diluted Earnings Per Share
+                </div>
+                <div class="concept-grid">
+        
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                기본 주당 순이익
+                                <span class="category-badge">수익</span>
+                            </div>
+                            <div class="tag-name">us-gaap_EarningsPerShareBasic</div>
+                        </div>
+                        <div class="description">
+                            기본 주당 순이익은 기업의 순이익을 발행된 보통주 수로 나눈 값으로, 이는 투자자가 기업의 수익성을 평가하는 데 중요한 지표입니다. 주당 순이익의 증가는 기업의 재무 성과 개선을 나타냅니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    1 usdPerShare
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: 2
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                희석 주당순이익
+                                <span class="category-badge">수익</span>
+                            </div>
+                            <div class="tag-name">us-gaap_EarningsPerShareDiluted</div>
+                        </div>
+                        <div class="description">
+                            희석 주당순이익은 모든 잠재적 주식 변환을 고려한 주당 이익을 나타내며, 투자자에게 기업의 수익성을 보다 정확히 평가할 수 있게 합니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    1 usdPerShare
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: 2
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                순이익(손실)
+                                <span class="category-badge">수익</span>
+                            </div>
+                            <div class="tag-name">us-gaap_NetIncomeLoss</div>
+                        </div>
+                        <div class="description">
+                            회계 기간 동안의 순이익 또는 손실을 나타내며, 이는 기업의 전반적인 수익성을 평가하는 가장 중요한 지표 중 하나입니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    21,448,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                기본 주당 가중 평균 주식 수
+                                <span class="category-badge">기타</span>
+                            </div>
+                            <div class="tag-name">us-gaap_WeightedAverageNumberOfSharesOutstandingBasic</div>
+                        </div>
+                        <div class="description">
+                            기본 주당 가중 평균 주식 수는 특정 기간 동안 발행된 주식의 평균 수를 계산하여 주당 순이익(EPS)을 산출하는 데 사용됩니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    15,287,521,000 shares
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -3
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                주식 기반 지급 약정에 따른 증가분 보통주
+                                <span class="category-badge">자본</span>
+                            </div>
+                            <div class="tag-name">us-gaap_IncrementalCommonSharesAttributableToShareBasedPaymentArrangements</div>
+                        </div>
+                        <div class="description">
+                            주식 기반 지급 약정에서 발생하는 추가적인 보통주 수를 나타내며, 이는 주주 가치를 희석시키는 요소가 될 수 있습니다. 이러한 정보는 투자자에게 주식의 가치 변동성을 이해하는 데 도움이 됩니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    60,654,000 shares
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -3
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                희석주당 평균 발행 주식 수
+                                <span class="category-badge">수익</span>
+                            </div>
+                            <div class="tag-name">us-gaap_WeightedAverageNumberOfDilutedSharesOutstanding</div>
+                        </div>
+                        <div class="description">
+                            희석 효과를 고려한 평균 발행 주식 수를 나타내며, 이는 주당 순이익 계산에 필수적인 요소입니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    15,348,175,000 shares
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -3
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                </div>
+            </div>
+        
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-folder icon"></i>
+                    Shareholders Equity Additional
+                </div>
+                <div class="concept-grid">
+        
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                기간 동안 자사주 매입 및 반환 가치
+                                <span class="category-badge">자본</span>
+                            </div>
+                            <div class="tag-name">us-gaap_StockRepurchasedAndRetiredDuringPeriodValue</div>
+                        </div>
+                        <div class="description">
+                            기업이 자사주를 매입하고 이를 퇴출시킨 총 가치를 나타냅니다. 이는 기업의 자본 구조 조정 및 주주 가치를 위한 전략을 반영합니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    26,221,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-42<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                </div>
+            </div>
+        
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-folder icon"></i>
+                    Share Based Compensation Summaryof Share Based Compensation Expenseandthe Related Income Tax Benefit
+                </div>
+                <div class="concept-grid">
+        
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                배분된 주식 기반 보상 비용
+                                <span class="category-badge">비용</span>
+                            </div>
+                            <div class="tag-name">us-gaap_AllocatedShareBasedCompensationExpense</div>
+                        </div>
+                        <div class="description">
+                            주식 기반 보상 비용은 기업이 종업원에게 지급한 보상의 비용을 반영하며, 기업의 총 비용 구조에 중요한 영향을 미칩니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    2,869,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                종업원 서비스 주식 기반 보상 세금 혜택
+                                <span class="category-badge">기타</span>
+                            </div>
+                            <div class="tag-name">us-gaap_EmployeeServiceShareBasedCompensationTaxBenefitFromCompensationExpense</div>
+                        </div>
+                        <div class="description">
+                            주식 기반 보상에 따른 세금 혜택은 기업의 세금 부담을 줄이는 데 기여하며, 이는 재무제표에 긍정적인 영향을 미칩니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    764,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                </div>
+            </div>
+        
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-folder icon"></i>
+                    Segment Informationand Geographic Data Informationby Reportable Segment
+                </div>
+                <div class="concept-grid">
+        
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                고객과의 계약에서 발생한 수익(세금 제외)
+                                <span class="category-badge">수익</span>
+                            </div>
+                            <div class="tag-name">us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax</div>
+                        </div>
+                        <div class="description">
+                            이 항목은 고객과의 계약에서 발생한 수익을 세금 제외하고 표시하며, 이는 기업의 실제 수익성을 평가하는 데 중요한 정보를 제공합니다. 계약 수익의 변화는 기업 성장의 중요한 지표입니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    61,564,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-12<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                영업 이익/손실
+                                <span class="category-badge">수익</span>
+                            </div>
+                            <div class="tag-name">us-gaap_OperatingIncomeLoss</div>
+                        </div>
+                        <div class="description">
+                            영업 이익/손실은 기업의 본업에서 발생한 수익과 비용의 차이를 나타내며, 이는 기업의 운영 성과를 평가하는 핵심 지표입니다. 긍정적인 영업 이익은 기업의 지속 가능성을 시사합니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    25,352,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                </div>
+            </div>
+        
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-folder icon"></i>
+                    Segment Informationand Geographic Data Reconciliationof Segment Operating Incometothe Condensed Consolidated Statementsof Operations
+                </div>
+                <div class="concept-grid">
+        
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                영업 이익/손실
+                                <span class="category-badge">수익</span>
+                            </div>
+                            <div class="tag-name">us-gaap_OperatingIncomeLoss</div>
+                        </div>
+                        <div class="description">
+                            영업 이익/손실은 기업의 본업에서 발생한 수익과 비용의 차이를 나타내며, 이는 기업의 운영 성과를 평가하는 핵심 지표입니다. 긍정적인 영업 이익은 기업의 지속 가능성을 시사합니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    25,352,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                연구 개발 비용
+                                <span class="category-badge">비용</span>
+                            </div>
+                            <div class="tag-name">us-gaap_ResearchAndDevelopmentExpense</div>
+                        </div>
+                        <div class="description">
+                            연구 개발 비용은 새로운 제품이나 기술 개발에 투자한 비용을 의미하며, 이는 기업의 혁신 능력과 미래 성장 가능성을 평가하는 데 중요한 지표입니다. 높은 연구 개발 비용은 미래 수익 창출의 잠재력을 나타냅니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    8,006,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                기타 일반 및 관리 비용
+                                <span class="category-badge">비용</span>
+                            </div>
+                            <div class="tag-name">us-gaap_OtherGeneralAndAdministrativeExpense</div>
+                        </div>
+                        <div class="description">
+                            기타 일반 및 관리 비용은 기업 운영에 필요한 다양한 비용을 포함하며, 총 비용 구조를 평가하는 데 중요합니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    1,737,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-159<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                </div>
+            </div>
+        
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-folder icon"></i>
+                    Pvp
+                </div>
+                <div class="concept-grid">
+        
+                    <div class="concept-card">
+                        <div class="concept-header">
+                            <div class="korean-name">
+                                순이익(손실)
+                                <span class="category-badge">수익</span>
+                            </div>
+                            <div class="tag-name">us-gaap_NetIncomeLoss</div>
+                        </div>
+                        <div class="description">
+                            회계 기간 동안의 순이익 또는 손실을 나타내며, 이는 기업의 전반적인 수익성을 평가하는 가장 중요한 지표 중 하나입니다.
+                        </div>
+                
+                            <div class="data-value">
+                                <div class="value">
+                                    21,448,000,000 usd
+                                </div>
+                                <div class="context">
+                                    Context: c-20<br>
+                                    Decimals: -6
+                                </div>
+                            </div>
+                        
+                    </div>
+                
+                </div>
+            </div>
+        
+        </div>
     </body>
     </html>
     

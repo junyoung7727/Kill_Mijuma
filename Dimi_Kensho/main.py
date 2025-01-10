@@ -47,6 +47,10 @@ def main():
             
             # 계층 구조 생성 (섹션 정보 포함)
             hierarchy = fetcher.create_hierarchy_json(xbrl_data, integrated_data)
+            
+            # context 정보가 포함된 새로운 hierarchy 생성
+            hierarchy_with_context = fetcher.create_hierarchy_with_context(hierarchy)
+
             # 계층 구조 출력 (섹션별로)
             print("\n=== 섹션별 계층 구조 ===")
             for section, data in hierarchy.items():
