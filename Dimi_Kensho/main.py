@@ -2,8 +2,9 @@ import json
 import os
 from sec_fetcher import SECFetcher
 from llm_translate import extract_all_tags, get_llm_translations, create_structured_json
-from create_html import create_kr_html
+from create_html import create_html_report
 from setup import setup_project_structure
+from utils import get_cik_from_ticker
 
 def ensure_data_directory():
     """데이터 디렉토리 생성"""
@@ -23,10 +24,12 @@ def main():
     fetcher = SECFetcher('junghae2017@gmail.com', data_dir)
     
     # Apple의 CIK
-    apple_cik = "320193"
+    ticker = 'aapl'
+    cik = get_cik_from_ticker(ticker.upper())
     
     # 최신 10-Q URL 가져오기
-    url = fetcher.get_latest_10q_url(apple_cik)
+    url = fetcher.get_latest_10q_url(cik)
+
     if url:
         # URL에서 분기 정보 추출 (예: aapl-20240629.htm)
         filing_date = url.split('/')[-1].split('.')[0].split('-')[1]  # 20240629
@@ -37,8 +40,8 @@ def main():
         print(f"10-Q URL: {url}")
         
         # XBRL 데이터 가져오기
-        xbrl_data = fetcher.get_xbrl_data(url)
-        if xbrl_data:
+        xbrl_data, soup = fetcher.get_xbrl_data(url)
+        if xbrl_data and soup:
             # 커스텀 태그 가져오기
             custom_tags = fetcher.get_custom_tags(url)
             
@@ -46,10 +49,10 @@ def main():
             integrated_data = fetcher.integrate_data()
             
             # 계층 구조 생성 (섹션 정보 포함)
-            hierarchy = fetcher.create_hierarchy_json(xbrl_data, integrated_data)
+            hierarchy = fetcher.create_hierarchy_json(xbrl_data, integrated_data, soup, url)
             
             # context 정보가 포함된 새로운 hierarchy 생성
-            hierarchy_with_context = fetcher.create_hierarchy_with_context(hierarchy)
+            #hierarchy_with_context = fetcher.create_hierarchy_with_context(hierarchy)
 
             # 계층 구조 출력 (섹션별로)
             print("\n=== 섹션별 계층 구조 ===")
@@ -67,7 +70,7 @@ def main():
             structured_json = create_structured_json(translations, hierarchy, data_dir)
             
             # HTML 생성
-            create_kr_html(data_dir)
+            create_html_report()
 
 if __name__ == "__main__":
     main()

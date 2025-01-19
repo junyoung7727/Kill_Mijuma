@@ -16,6 +16,7 @@ class SECFetcher:
         self.xbrl_data = {}
         self.custom_tags = {}
         self.integrated_data = {}
+        self.current_url = None
 
     def get_latest_10q_url(self, cik):
         """특정 기업의 최신 10-Q 보고서 URL 찾기"""
@@ -62,107 +63,107 @@ class SECFetcher:
             return None
 
     def get_xbrl_data(self, url):
-        """URL에서 XBRL 데이터 가져오기"""
-        try:
-            # URL에서 파일명 추출
-            base_url = url.split('ix?doc=/')[1]
-            xml_url = f"https://www.sec.gov/{base_url.replace('.htm', '_htm.xml')}"
-            
-            print(f"\nXML 파일 다운로드 중: {xml_url}")
-            response = requests.get(xml_url, headers=self.headers)
-            
-            if response.status_code != 200:
-                print(f"Error: XML 파일 접근 실패 (Status: {response.status_code})")
-                return None
-            
-            # XML 파싱
-            soup = BeautifulSoup(response.content, 'lxml')
-            
-            # context 정보 수집
-            context_data = {}
-            for context in soup.find_all('context'):
-                context_id = context.get('id', '')
-                period = context.find('period')
-                if period:
-                    instant = period.find('instant')
-                    if instant:
-                        context_data[context_id] = {
-                            "type": "instant",
-                            "date": instant.text
-                        }
-                    else:
-                        start_date = period.find('startdate')
-                        end_date = period.find('enddate')
-                        if start_date and end_date:
-                            context_data[context_id] = {
-                                "type": "period",
-                                "start_date": start_date.text,
-                                "end_date": end_date.text
-                            }
-            
-            # Context 정보를 JSON 파일로 저장
-            context_file = os.path.join(self.data_dir, 'context_data.json')
-            with open(context_file, 'w', encoding='utf-8') as f:
-                json.dump(context_data, f, indent=2, ensure_ascii=False)
-            
-            print("\n=== Context 정보 ===")
-            for context_id, info in context_data.items():
-                if info["type"] == "instant":
-                    print(f"Context ID: {context_id}, Date: {info['date']}")
-                else:
-                    print(f"Context ID: {context_id}, Period: {info['start_date']} to {info['end_date']}")
-            
-            # 모든 태그 수집
-            self.xbrl_data = defaultdict(list)
-            
-            # us-gaap: 태그 찾기
-            for element in soup.find_all(lambda tag: isinstance(tag.name, str) and tag.name.startswith('us-gaap:')):
-                tag_name = element.name.split(':')[1].lower()  # 태그 이름을 소문자로 변환
-                context_ref = element.get('contextref', '')  # contextRef 대신 contextref 사용
-                unit_ref = element.get('unitref', '')
-                decimals = element.get('decimals', '0')
-                value = element.text.strip()
+            """URL에서 XBRL 데이터 가져오기"""
+            try:
+                # URL에서 파일명 추출
+                base_url = url.split('ix?doc=/')[1]
+                xml_url = f"https://www.sec.gov/{base_url.replace('.htm', '_htm.xml')}"
                 
-                # 값 처리
-                try:
-                    if decimals and decimals != 'INF':
-                        adjusted_value = float(value) if value else 0
-                        display_value = f"{adjusted_value:,.0f}" if adjusted_value else "0"
+                print(f"\nXML 파일 다운로드 중: {xml_url}")
+                response = requests.get(xml_url, headers=self.headers)
+                
+                if response.status_code != 200:
+                    print(f"Error: XML 파일 접근 실패 (Status: {response.status_code})")
+                    return None
+                
+                # XML 파싱
+                soup = BeautifulSoup(response.content, 'lxml')
+                
+                # context 정보 수집
+                context_data = {}
+                for context in soup.find_all('context'):
+                    context_id = context.get('id', '')
+                    period = context.find('period')
+                    if period:
+                        instant = period.find('instant')
+                        if instant:
+                            context_data[context_id] = {
+                                "type": "instant",
+                                "date": instant.text
+                            }
+                        else:
+                            start_date = period.find('startdate')
+                            end_date = period.find('enddate')
+                            if start_date and end_date:
+                                context_data[context_id] = {
+                                    "type": "period",
+                                    "start_date": start_date.text,
+                                    "end_date": end_date.text
+                                }
+                
+                # Context 정보를 JSON 파일로 저장
+                context_file = os.path.join(self.data_dir, 'context_data.json')
+                with open(context_file, 'w', encoding='utf-8') as f:
+                    json.dump(context_data, f, indent=2, ensure_ascii=False)
+                
+                print("\n=== Context 정보 ===")
+                for context_id, info in context_data.items():
+                    if info["type"] == "instant":
+                        print(f"Context ID: {context_id}, Date: {info['date']}")
                     else:
+                        print(f"Context ID: {context_id}, Period: {info['start_date']} to {info['end_date']}")
+                
+                # 모든 태그 수집
+                self.xbrl_data = defaultdict(list)
+                
+                # us-gaap: 태그 찾기
+                for element in soup.find_all(lambda tag: isinstance(tag.name, str) and tag.name.startswith('us-gaap:')):
+                    tag_name = element.name.split(':')[1].lower()  # 태그 이름을 소문자로 변환
+                    context_ref = element.get('contextref', '')  # contextRef 대신 contextref 사용
+                    unit_ref = element.get('unitref', '')
+                    decimals = element.get('decimals', '0')
+                    value = element.text.strip()
+                    
+                    # 값 처리
+                    try:
+                        if decimals and decimals != 'INF':
+                            adjusted_value = float(value) if value else 0
+                            display_value = f"{adjusted_value:,.0f}" if adjusted_value else "0"
+                        else:
+                            adjusted_value = value
+                            display_value = value
+                    except ValueError:
                         adjusted_value = value
                         display_value = value
-                except ValueError:
-                    adjusted_value = value
-                    display_value = value
+                    
+                    # 속성 정보 수집
+                    attributes = {}
+                    for attr, val in element.attrs.items():
+                        # 속성 이름을 소문자로 변환
+                        attr_lower = attr.lower()
+                        attributes[attr_lower] = val
+                    
+                    self.xbrl_data[tag_name].append({
+                        'value': adjusted_value,
+                        'display_value': display_value,
+                        'context': context_ref,  # contextRef 값 저장
+                        'unit': unit_ref,
+                        'decimals': decimals,
+                        'raw_value': value,
+                        'source': 'xbrl',
+                        'attributes': attributes  # 모든 속성 저장
+                    })
                 
-                # 속성 정보 수집
-                attributes = {}
-                for attr, val in element.attrs.items():
-                    # 속성 이름을 소문자로 변환
-                    attr_lower = attr.lower()
-                    attributes[attr_lower] = val
+                # 파일로 저장
+                output_file = os.path.join(self.data_dir, 'xbrl_data.json')
+                with open(output_file, 'w', encoding='utf-8') as f:
+                    json.dump(dict(self.xbrl_data), f, indent=2, ensure_ascii=False)
                 
-                self.xbrl_data[tag_name].append({
-                    'value': adjusted_value,
-                    'display_value': display_value,
-                    'context': context_ref,  # contextRef 값 저장
-                    'unit': unit_ref,
-                    'decimals': decimals,
-                    'raw_value': value,
-                    'source': 'xbrl',
-                    'attributes': attributes  # 모든 속성 저장
-                })
-            
-            # 파일로 저장
-            output_file = os.path.join(self.data_dir, 'xbrl_data.json')
-            with open(output_file, 'w', encoding='utf-8') as f:
-                json.dump(dict(self.xbrl_data), f, indent=2, ensure_ascii=False)
-            
-            return dict(self.xbrl_data)
-            
-        except Exception as e:
-            print(f"Error: XBRL 데이터 처리 중 오류 발생 - {str(e)}")
-            return None
+                return dict(self.xbrl_data), soup
+                
+            except Exception as e:
+                print(f"Error: XBRL 데이터 처리 중 오류 발생 - {str(e)}")
+                return None, None
 
     def get_custom_tags(self, url):
         """URL에서 커스텀 태그 정보 가져오기"""
@@ -243,100 +244,258 @@ class SECFetcher:
         print("\n=== 계층 구조 출력 ===\n")
         print_node(section_data)
 
-    def create_hierarchy_json(self, xbrl_data, integrated_data):
+    def add_dimension_info(self, soup, data_point):
+        """데이터 포인트에 축과 멤버 정보 추가"""
+        context_ref = data_point.get('context')
+        if not context_ref:
+            return data_point
+        
+        # XML 네임스페이스 정의
+        namespaces = {
+            'xbrli': 'http://www.xbrl.org/2003/instance',
+            'xbrldi': 'http://xbrl.org/2006/xbrldi',
+            'srt': 'http://fasb.org/srt/2021-01-31',
+            'us-gaap': 'http://fasb.org/us-gaap/2021-01-31',
+            'aapl': 'http://apple.com/20240127'
+        }
+        
+        # context 찾기 (네임스페이스 고려)
+        context = soup.find('xbrli:context', {'id': context_ref}, namespaces=namespaces)
+        if not context:
+            # 네임스페이스 없이 다시 시도
+            context = soup.find('context', id=context_ref)
+        if not context:
+            return data_point
+        
+        # 기본 정보 초기화
+        data_point['axis'] = []
+        data_point['members'] = []
+        data_point['explicit_members'] = []
+        
+        # entity/segment 정보 찾기 (네임스페이스 고려)
+        segment = context.find('.//xbrli:segment', namespaces=namespaces)
+        if not segment:
+            segment = context.find('segment')
+        
+        if segment:
+            # explicitMember 태그에서 축과 멤버 정보 추출
+            explicit_members = segment.find_all('xbrldi:explicitMember', namespaces=namespaces)
+            if not explicit_members:
+                explicit_members = segment.find_all('explicitMember')
+            
+            for member in explicit_members:
+                dimension = member.get('dimension', '')
+                member_value = member.text.strip()
+                
+                # 네임스페이스 처리
+                if ':' in dimension:
+                    prefix, axis = dimension.split(':')
+                    data_point['axis'].append(axis)
+                else:
+                    data_point['axis'].append(dimension)
+                
+                # 멤버 값 처리
+                if ':' in member_value:
+                    prefix, member_name = member_value.split(':')
+                    data_point['members'].append(member_name)
+                    if member_name.endswith('Member'):
+                        data_point['explicit_members'].append(member_name)
+                else:
+                    data_point['members'].append(member_value)
+                    if member_value.endswith('Member'):
+                        data_point['explicit_members'].append(member_value)
+        
+        # period 정보 추가 (네임스페이스 고려)
+        period = context.find('.//xbrli:period', namespaces=namespaces)
+        if not period:
+            period = context.find('period')
+        
+        if period:
+            instant = period.find('instant')
+            if instant:
+                data_point['period'] = {
+                    'type': 'instant',
+                    'date': instant.text.strip()
+                }
+            else:
+                start_date = period.find('startDate')
+                end_date = period.find('endDate')
+                if start_date and end_date:
+                    data_point['period'] = {
+                        'type': 'duration',
+                        'start_date': start_date.text.strip(),
+                        'end_date': end_date.text.strip()
+                    }
+        
+        return data_point
+
+    def parse_context_members(self, soup):
+        """XBRL 파일에서 context별 멤버 정보 파싱"""
+
+        if not soup.find('xbrl'):
+            print("Warning: XBRL 루트 요소를 찾을 수 없습니다. XML 재파싱 시도...")
+            soup = BeautifulSoup(str(soup), 'xml')
+
+        context_members = defaultdict(dict)
+        print(soup)
+        
+        # 모든 context 찾기
+        contexts = soup.find_all('context')
+        print(f"\n총 {len(contexts)}개의 context 발견")
+        
+        for context in contexts:
+            context_id = context.get('id', '')
+            if not context_id:
+                continue
+            
+            # entity/segment 찾기
+            entity = context.find('entity')
+            if not entity:
+                continue
+            
+            segment = entity.find('segment')
+            if not segment:
+                continue
+            
+            members_info = {
+                'axis': [],
+                'members': [],
+                'explicit_members': []
+            }
+            
+            # explicitMember 태그 찾기
+            explicit_members = segment.find_all(['explicitMember', 'xbrldi:explicitMember'])
+            
+            for member in explicit_members:
+                dimension = member.get('dimension', '')
+                member_value = member.text.strip()
+                
+                # 네임스페이스 처리
+                if ':' in dimension:
+                    prefix, axis = dimension.split(':')
+                    members_info['axis'].append(axis)
+                else:
+                    members_info['axis'].append(dimension)
+                
+                # 멤버 값 처리
+                if ':' in member_value:
+                    prefix, member_name = member_value.split(':')
+                    members_info['members'].append(member_name)
+                    if member_name.endswith('Member'):
+                        members_info['explicit_members'].append(member_name)
+                else:
+                    members_info['members'].append(member_value)
+                    if member_value.endswith('Member'):
+                        members_info['explicit_members'].append(member_value)
+            
+            if members_info['axis'] or members_info['members'] or members_info['explicit_members']:
+                context_members[context_id] = members_info
+        print(context_members)
+        exit()
+        return context_members
+
+    def create_hierarchy_json(self, xbrl_data, integrated_data, soup, url):
         """계층 구조 JSON 생성"""
         hierarchy = {}
         
-        # pre.xml 파싱
-        pre_tree = ET.parse(os.path.join(self.data_dir, 'pre.xml'))
-        pre_root = pre_tree.getroot()
-        
-        ns = {
-            'link': 'http://www.xbrl.org/2003/linkbase',
-            'xlink': 'http://www.w3.org/1999/xlink'
-        }
-        
-        # presentationLink 별로 처리
-        for link in pre_root.findall('.//link:presentationLink', ns):
-            # 섹션 이름 가져오기
-            role = link.get('{http://www.w3.org/1999/xlink}role')
-            section_name = self.get_section_name(role)
+        try:
+            # context 멤버 정보 파싱
+            context_members = self.parse_context_members(soup)
             
-            if section_name not in hierarchy:
-                hierarchy[section_name] = {}
+            # pre.xml URL 생성
+            base_url = url.split('ix?doc=/')[1]
+            pre_url = f"https://www.sec.gov/{base_url.replace('.htm', '_pre.xml')}"
             
-            # 태그 매핑 정보 수집
-            tag_map = {}
-            for loc in link.findall('.//link:loc', ns):
-                label = loc.get('{http://www.w3.org/1999/xlink}label')
-                href = loc.get('{http://www.w3.org/1999/xlink}href')
-                tag = href.split('#')[-1]  # 네임스페이스 유지
-                tag_map[label] = tag
+            print(f"\nPresentation 파일 다운로드 중: {pre_url}")
+            response = requests.get(pre_url, headers=self.headers)
             
-            # 계층 구조 수집
-            current_section = hierarchy[section_name]
-            for arc in link.findall('.//link:presentationArc', ns):
-                from_label = arc.get('{http://www.w3.org/1999/xlink}from')
-                to_label = arc.get('{http://www.w3.org/1999/xlink}to')
-                order = float(arc.get('order', '1.0'))
+            if response.status_code != 200:
+                print(f"Error: Presentation 파일 접근 실패 (Status: {response.status_code})")
+                return None
+            
+            # pre.xml 파싱
+            pre_soup = BeautifulSoup(response.content, 'xml')
+            
+            # presentationLink 별로 처리
+            for link in pre_soup.find_all('link:presentationLink'):
+                # 섹션 이름 가져오기
+                role = link.get('xlink:role')
+                section_name = self.get_section_name(role)
                 
-                if from_label in tag_map and to_label in tag_map:
-                    from_tag = tag_map[from_label]
-                    to_tag = tag_map[to_label]
+                if section_name not in hierarchy:
+                    hierarchy[section_name] = {}
+                
+                # 태그 매핑 정보 수집
+                tag_map = {}
+                for loc in link.find_all('link:loc'):
+                    label = loc.get('xlink:label')
+                    href = loc.get('xlink:href')
+                    tag = href.split('#')[-1]
+                    tag_map[label] = tag
+                
+                # 계층 구조 수집
+                current_section = hierarchy[section_name]
+                for arc in link.find_all('link:presentationArc'):
+                    from_label = arc.get('xlink:from')
+                    to_label = arc.get('xlink:to')
+                    order = float(arc.get('order', '1.0'))
                     
-                    if from_tag not in current_section:
-                        current_section[from_tag] = []
-                    
-                    # 값 검색을 위해 네임스페이스만 제거
-                    search_tag = self.remove_namespace(to_tag).lower()
-                    
-                    # 검색 과정 로깅
-                    print(f"\n=== 태그 검색 ===")
-                    print(f"원본 태그: {to_tag}")
-                    print(f"xbrl_data: {xbrl_data.keys()}")
-
-                    print(f"검색 태그: {search_tag}")
-                    print(f"xbrl_data에 존재: {search_tag in xbrl_data}")
-                    if search_tag in xbrl_data:
-                        print(f"값 개수: {len(xbrl_data[search_tag])}")
-                    
-                    # XBRL 데이터에서 값 가져오기
-                    xbrl_values = []
-                    if search_tag in xbrl_data:
-                        xbrl_values = xbrl_data[search_tag]
-                    
-                    # 자식 노드 추가
-                    child_node = {
-                        "concept": to_tag,
-                        "order": order,
-                        "data": []
-                    }
-                    
-                    # XBRL 값들 추가
-                    for value in xbrl_values:
-                        data_point = {
-                            "value": value.get("value", ""),
-                            "display_value": value.get("display_value", ""),
-                            "context": value.get("context", ""),
-                            "unit": value.get("unit", ""),
-                            "decimals": value.get("decimals", "0"),
-                            "raw_value": value.get("raw_value", ""),
-                            "source": "xbrl",
-                            "attributes": {
-                                "contextref": value.get("contextref", ""),
-                                "id": value.get("id", "")
-                            }
+                    if from_label in tag_map and to_label in tag_map:
+                        from_tag = tag_map[from_label]
+                        to_tag = tag_map[to_label]
+                        
+                        # 상위 태그 처리
+                        if from_tag not in current_section:
+                            current_section[from_tag] = []
+                        
+                        # 하위 태그 추가
+                        child_node = {
+                            'concept': to_tag,
+                            'order': order,
+                            'data': []
                         }
-                        child_node["data"].append(data_point)
-                    
-                    current_section[from_tag].append(child_node)
-        
-        # JSON 파일로 저장
-        output_file = os.path.join(self.data_dir, 'hierarchy.json')
-        with open(output_file, 'w', encoding='utf-8') as f:
-            json.dump(hierarchy, f, indent=2, ensure_ascii=False)
-        
-        return hierarchy
+                        
+                        # XBRL 데이터에서 값 가져오기
+                        search_tag = self.remove_namespace(to_tag).lower()
+                        if search_tag in xbrl_data:
+                            xbrl_values = xbrl_data[search_tag]
+                            if isinstance(xbrl_values, list):
+                                values_to_process = xbrl_values
+                            else:
+                                values_to_process = xbrl_values.get('data', [])
+                            
+                            # XBRL 값들 추가
+                            for value in values_to_process:
+                                data_point = {
+                                    "value": value.get("value", ""),
+                                    "display_value": value.get("display_value", ""),
+                                    "context": value.get("context", ""),
+                                    "unit": value.get("unit", ""),
+                                    "decimals": value.get("decimals", "0"),
+                                    "raw_value": value.get("raw_value", ""),
+                                    "source": "xbrl",
+                                    "attributes": value.get("attributes", {}),
+                                    "axis": context_members.get(value.get("context", ""), {}).get("axis", []),
+                                    "members": context_members.get(value.get("context", ""), {}).get("members", []),
+                                    "explicit_members": context_members.get(value.get("context", ""), {}).get("explicit_members", [])
+                                }
+                                # 축과 멤버 정보 추가
+                                data_point = self.add_dimension_info(soup, data_point)
+                                child_node['data'].append(data_point)
+                        
+                        current_section[from_tag].append(child_node)
+            
+            # JSON 파일로 저장
+            output_file = os.path.join(self.data_dir, 'hierarchy.json')
+            with open(output_file, 'w', encoding='utf-8') as f:
+                json.dump(hierarchy, f, indent=2, ensure_ascii=False)
+            
+            return hierarchy
+            
+        except Exception as e:
+            print(f"Error: 계층 구조 생성 중 오류 발생 - {str(e)}")
+            traceback.print_exc()
+            return None
 
     def get_section_name(self, role):
         """role URI에서 섹션 이름 추출"""
@@ -442,4 +601,3 @@ if __name__ == "__main__":
                         print(f"값: {value['value']}")
                     print(f"컨텍스트: {value['context']}")
                     print(f"단위: {value['unit']}")
-
