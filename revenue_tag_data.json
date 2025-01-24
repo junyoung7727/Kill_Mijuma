@@ -1,0 +1,740 @@
+{
+  "RevenueFromContractWithCustomerExcludingAssessedTax": [
+    {
+      "값": "61564000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "ProductMember"
+      ],
+      "Explicit Members": [
+        "ProductMember"
+      ]
+    },
+    {
+      "값": "60584000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "ProductMember"
+      ],
+      "Explicit Members": [
+        "ProductMember"
+      ]
+    },
+    {
+      "값": "224908000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "ProductMember"
+      ],
+      "Explicit Members": [
+        "ProductMember"
+      ]
+    },
+    {
+      "값": "230901000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "ProductMember"
+      ],
+      "Explicit Members": [
+        "ProductMember"
+      ]
+    },
+    {
+      "값": "24213000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "ServiceMember"
+      ],
+      "Explicit Members": [
+        "ServiceMember"
+      ]
+    },
+    {
+      "값": "21213000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "ServiceMember"
+      ],
+      "Explicit Members": [
+        "ServiceMember"
+      ]
+    },
+    {
+      "값": "71197000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "ServiceMember"
+      ],
+      "Explicit Members": [
+        "ServiceMember"
+      ]
+    },
+    {
+      "값": "62886000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "ServiceMember"
+      ],
+      "Explicit Members": [
+        "ServiceMember"
+      ]
+    },
+    {
+      "값": "85777000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [],
+      "멤버": [],
+      "Explicit Members": []
+    },
+    {
+      "값": "81797000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [],
+      "멤버": [],
+      "Explicit Members": []
+    },
+    {
+      "값": "296105000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [],
+      "멤버": [],
+      "Explicit Members": []
+    },
+    {
+      "값": "293787000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [],
+      "멤버": [],
+      "Explicit Members": []
+    },
+    {
+      "값": "39296000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "IPhoneMember"
+      ],
+      "Explicit Members": [
+        "IPhoneMember"
+      ]
+    },
+    {
+      "값": "39669000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "IPhoneMember"
+      ],
+      "Explicit Members": [
+        "IPhoneMember"
+      ]
+    },
+    {
+      "값": "154961000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "IPhoneMember"
+      ],
+      "Explicit Members": [
+        "IPhoneMember"
+      ]
+    },
+    {
+      "값": "156778000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "IPhoneMember"
+      ],
+      "Explicit Members": [
+        "IPhoneMember"
+      ]
+    },
+    {
+      "값": "7009000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "MacMember"
+      ],
+      "Explicit Members": [
+        "MacMember"
+      ]
+    },
+    {
+      "값": "6840000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "MacMember"
+      ],
+      "Explicit Members": [
+        "MacMember"
+      ]
+    },
+    {
+      "값": "22240000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "MacMember"
+      ],
+      "Explicit Members": [
+        "MacMember"
+      ]
+    },
+    {
+      "값": "21743000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "MacMember"
+      ],
+      "Explicit Members": [
+        "MacMember"
+      ]
+    },
+    {
+      "값": "7162000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "IPadMember"
+      ],
+      "Explicit Members": [
+        "IPadMember"
+      ]
+    },
+    {
+      "값": "5791000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "IPadMember"
+      ],
+      "Explicit Members": [
+        "IPadMember"
+      ]
+    },
+    {
+      "값": "19744000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "IPadMember"
+      ],
+      "Explicit Members": [
+        "IPadMember"
+      ]
+    },
+    {
+      "값": "21857000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "IPadMember"
+      ],
+      "Explicit Members": [
+        "IPadMember"
+      ]
+    },
+    {
+      "값": "8097000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "WearablesHomeandAccessoriesMember"
+      ],
+      "Explicit Members": [
+        "WearablesHomeandAccessoriesMember"
+      ]
+    },
+    {
+      "값": "8284000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "WearablesHomeandAccessoriesMember"
+      ],
+      "Explicit Members": [
+        "WearablesHomeandAccessoriesMember"
+      ]
+    },
+    {
+      "값": "27963000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "WearablesHomeandAccessoriesMember"
+      ],
+      "Explicit Members": [
+        "WearablesHomeandAccessoriesMember"
+      ]
+    },
+    {
+      "값": "30523000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "WearablesHomeandAccessoriesMember"
+      ],
+      "Explicit Members": [
+        "WearablesHomeandAccessoriesMember"
+      ]
+    },
+    {
+      "값": "24213000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "ServiceMember"
+      ],
+      "Explicit Members": [
+        "ServiceMember"
+      ]
+    },
+    {
+      "값": "21213000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "ServiceMember"
+      ],
+      "Explicit Members": [
+        "ServiceMember"
+      ]
+    },
+    {
+      "값": "71197000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "ServiceMember"
+      ],
+      "Explicit Members": [
+        "ServiceMember"
+      ]
+    },
+    {
+      "값": "62886000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "ProductOrServiceAxis"
+      ],
+      "멤버": [
+        "ServiceMember"
+      ],
+      "Explicit Members": [
+        "ServiceMember"
+      ]
+    },
+    {
+      "값": "85777000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [],
+      "멤버": [],
+      "Explicit Members": []
+    },
+    {
+      "값": "81797000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [],
+      "멤버": [],
+      "Explicit Members": []
+    },
+    {
+      "값": "296105000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [],
+      "멤버": [],
+      "Explicit Members": []
+    },
+    {
+      "값": "293787000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [],
+      "멤버": [],
+      "Explicit Members": []
+    },
+    {
+      "값": "37678000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "StatementBusinessSegmentsAxis"
+      ],
+      "멤버": [
+        "AmericasSegmentMember"
+      ],
+      "Explicit Members": [
+        "AmericasSegmentMember"
+      ]
+    },
+    {
+      "값": "35383000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "StatementBusinessSegmentsAxis"
+      ],
+      "멤버": [
+        "AmericasSegmentMember"
+      ],
+      "Explicit Members": [
+        "AmericasSegmentMember"
+      ]
+    },
+    {
+      "값": "125381000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "StatementBusinessSegmentsAxis"
+      ],
+      "멤버": [
+        "AmericasSegmentMember"
+      ],
+      "Explicit Members": [
+        "AmericasSegmentMember"
+      ]
+    },
+    {
+      "값": "122445000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "StatementBusinessSegmentsAxis"
+      ],
+      "멤버": [
+        "AmericasSegmentMember"
+      ],
+      "Explicit Members": [
+        "AmericasSegmentMember"
+      ]
+    },
+    {
+      "값": "21884000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "StatementBusinessSegmentsAxis"
+      ],
+      "멤버": [
+        "EuropeSegmentMember"
+      ],
+      "Explicit Members": [
+        "EuropeSegmentMember"
+      ]
+    },
+    {
+      "값": "20205000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "StatementBusinessSegmentsAxis"
+      ],
+      "멤버": [
+        "EuropeSegmentMember"
+      ],
+      "Explicit Members": [
+        "EuropeSegmentMember"
+      ]
+    },
+    {
+      "값": "76404000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "StatementBusinessSegmentsAxis"
+      ],
+      "멤버": [
+        "EuropeSegmentMember"
+      ],
+      "Explicit Members": [
+        "EuropeSegmentMember"
+      ]
+    },
+    {
+      "값": "71831000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "StatementBusinessSegmentsAxis"
+      ],
+      "멤버": [
+        "EuropeSegmentMember"
+      ],
+      "Explicit Members": [
+        "EuropeSegmentMember"
+      ]
+    },
+    {
+      "값": "14728000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "StatementBusinessSegmentsAxis"
+      ],
+      "멤버": [
+        "GreaterChinaSegmentMember"
+      ],
+      "Explicit Members": [
+        "GreaterChinaSegmentMember"
+      ]
+    },
+    {
+      "값": "15758000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "StatementBusinessSegmentsAxis"
+      ],
+      "멤버": [
+        "GreaterChinaSegmentMember"
+      ],
+      "Explicit Members": [
+        "GreaterChinaSegmentMember"
+      ]
+    },
+    {
+      "값": "51919000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "StatementBusinessSegmentsAxis"
+      ],
+      "멤버": [
+        "GreaterChinaSegmentMember"
+      ],
+      "Explicit Members": [
+        "GreaterChinaSegmentMember"
+      ]
+    },
+    {
+      "값": "57475000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "StatementBusinessSegmentsAxis"
+      ],
+      "멤버": [
+        "GreaterChinaSegmentMember"
+      ],
+      "Explicit Members": [
+        "GreaterChinaSegmentMember"
+      ]
+    },
+    {
+      "값": "5097000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "StatementBusinessSegmentsAxis"
+      ],
+      "멤버": [
+        "JapanSegmentMember"
+      ],
+      "Explicit Members": [
+        "JapanSegmentMember"
+      ]
+    },
+    {
+      "값": "4821000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "StatementBusinessSegmentsAxis"
+      ],
+      "멤버": [
+        "JapanSegmentMember"
+      ],
+      "Explicit Members": [
+        "JapanSegmentMember"
+      ]
+    },
+    {
+      "값": "19126000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "StatementBusinessSegmentsAxis"
+      ],
+      "멤버": [
+        "JapanSegmentMember"
+      ],
+      "Explicit Members": [
+        "JapanSegmentMember"
+      ]
+    },
+    {
+      "값": "18752000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "StatementBusinessSegmentsAxis"
+      ],
+      "멤버": [
+        "JapanSegmentMember"
+      ],
+      "Explicit Members": [
+        "JapanSegmentMember"
+      ]
+    },
+    {
+      "값": "6390000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "StatementBusinessSegmentsAxis"
+      ],
+      "멤버": [
+        "RestOfAsiaPacificSegmentMember"
+      ],
+      "Explicit Members": [
+        "RestOfAsiaPacificSegmentMember"
+      ]
+    },
+    {
+      "값": "5630000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "StatementBusinessSegmentsAxis"
+      ],
+      "멤버": [
+        "RestOfAsiaPacificSegmentMember"
+      ],
+      "Explicit Members": [
+        "RestOfAsiaPacificSegmentMember"
+      ]
+    },
+    {
+      "값": "23275000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "StatementBusinessSegmentsAxis"
+      ],
+      "멤버": [
+        "RestOfAsiaPacificSegmentMember"
+      ],
+      "Explicit Members": [
+        "RestOfAsiaPacificSegmentMember"
+      ]
+    },
+    {
+      "값": "23284000000",
+      "단위": "usd",
+      "소수점": "-6",
+      "축": [
+        "StatementBusinessSegmentsAxis"
+      ],
+      "멤버": [
+        "RestOfAsiaPacificSegmentMember"
+      ],
+      "Explicit Members": [
+        "RestOfAsiaPacificSegmentMember"
+      ]
+    }
+  ]
+}

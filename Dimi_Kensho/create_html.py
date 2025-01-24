@@ -123,6 +123,12 @@ def create_html_report():
                 padding: 5px 0;
                 border-bottom: 1px dashed #e9ecef;
             }
+            .specific-name {
+                color: #1976d2;
+                font-size: 1em;
+                margin: 5px 0;
+                font-style: italic;
+            }
         </style>
     </head>
     <body>
@@ -163,12 +169,16 @@ def create_html_report():
                     for data in item['data']:
                         html += f'''
                             <div class="data-value">
+                                <div class="specific-name">
+                                    {data.get('specific_name', '')}
+                                </div>
                                 <div class="value">
                                     {data.get('display_value', '')} {data.get('unit', '')}
                                 </div>
                                 <div class="context">
                                     Context: {data.get('context', '')}<br>
-                                    Decimals: {data.get('decimals', '')}
+                                    Decimals: {data.get('decimals', '')}<br>
+                                    멤버: {", ".join(data.get('member', []))}
                                 </div>
                             </div>
                         '''

@@ -1,187 +1,371 @@
 {
-  "C O N D E N S E D C O N S O L I D A T E D S T A T E M E N T S O F O P E R A T I O N S Unaudited": {
+  "Apple - 응축된 연결 운영 보고서 (감사받지 않음)": {
     "us-gaap_StatementLineItems": [
       {
         "tag": "us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax",
         "translation": {
           "korean_name": "고객과의 계약에서 발생한 수익(세금 제외)",
-          "description": "이 항목은 고객과의 계약에서 발생한 수익을 세금 제외하고 표시하며, 이는 기업의 실제 수익성을 평가하는 데 중요한 정보를 제공합니다. 계약 수익의 변화는 기업 성장의 중요한 지표입니다.",
+          "description": "고객과의 계약에 따라 발생한 수익에서 부가세와 같은 세금을 제외한 금액을 나타냅니다. 이는 기업이 고객에게 제공한 상품이나 서비스에 대한 실제 수익을 보여주는 지표입니다.",
           "category": "수익"
         },
         "data": [
           {
-            "value": 61564000000.0,
-            "display_value": "61,564,000,000",
-            "context": "c-12",
+            "value": "61564000000",
+            "display_value": "61564000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "61564000000",
+            "context": "c-12",
             "source": "xbrl",
+            "axis": [
+              "ProductOrServiceAxis"
+            ],
+            "member": [
+              "ProductMember"
+            ],
+            "explicit_members": [
+              "ProductMember"
+            ],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-12",
               "id": ""
-            }
+            },
+            "specific_name": "제품 고객과의 계약에서 발생한 수익(세금 제외)"
+          },
+          {
+            "value": "24213000000",
+            "display_value": "24213000000",
+            "unit": "usd",
+            "decimals": "-6",
+            "raw_value": "24213000000",
+            "context": "c-16",
+            "source": "xbrl",
+            "axis": [
+              "ProductOrServiceAxis"
+            ],
+            "member": [
+              "ServiceMember"
+            ],
+            "explicit_members": [
+              "ServiceMember"
+            ],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
+            "attributes": {
+              "contextref": "c-16",
+              "id": ""
+            },
+            "specific_name": "서비스 고객과의 계약에서 발생한 수익(세금 제외)"
+          },
+          {
+            "value": "85777000000",
+            "display_value": "85777000000",
+            "unit": "usd",
+            "decimals": "-6",
+            "raw_value": "85777000000",
+            "context": "c-20",
+            "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
+            "attributes": {
+              "contextref": "c-20",
+              "id": ""
+            },
+            "specific_name": "총 고객과의 계약에서 발생한 수익(세금 제외)"
           }
         ]
       },
       {
         "tag": "us-gaap_CostOfGoodsAndServicesSold",
         "translation": {
-          "korean_name": "판매된 상품 및 서비스의 원가",
-          "description": "판매된 상품 및 서비스의 생산 또는 구매에 소요된 총 비용을 나타냅니다. 이는 기업의 수익성 분석에 있어 중요한 지표입니다.",
+          "korean_name": "매출원가",
+          "description": "매출원가는 기업이 제품이나 서비스를 판매하기 위해 직접적으로 소요된 비용을 나타냅니다. 이는 원자재비, 인건비, 제조비용 등으로 구성되며, 매출액을 계산할 때 매출원가를 차감하여 총 이익을 산출하는 데 사용됩니다.",
           "category": "비용"
         },
         "data": [
           {
-            "value": 39803000000.0,
-            "display_value": "39,803,000,000",
-            "context": "c-12",
+            "value": "39803000000",
+            "display_value": "39803000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "39803000000",
+            "context": "c-12",
             "source": "xbrl",
+            "axis": [
+              "ProductOrServiceAxis"
+            ],
+            "member": [
+              "ProductMember"
+            ],
+            "explicit_members": [
+              "ProductMember"
+            ],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-12",
               "id": ""
-            }
+            },
+            "specific_name": "제품 매출원가"
+          },
+          {
+            "value": "6296000000",
+            "display_value": "6296000000",
+            "unit": "usd",
+            "decimals": "-6",
+            "raw_value": "6296000000",
+            "context": "c-16",
+            "source": "xbrl",
+            "axis": [
+              "ProductOrServiceAxis"
+            ],
+            "member": [
+              "ServiceMember"
+            ],
+            "explicit_members": [
+              "ServiceMember"
+            ],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
+            "attributes": {
+              "contextref": "c-16",
+              "id": ""
+            },
+            "specific_name": "서비스 매출원가"
+          },
+          {
+            "value": "46099000000",
+            "display_value": "46099000000",
+            "unit": "usd",
+            "decimals": "-6",
+            "raw_value": "46099000000",
+            "context": "c-20",
+            "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
+            "attributes": {
+              "contextref": "c-20",
+              "id": ""
+            },
+            "specific_name": "총 매출원가"
           }
         ]
       },
       {
         "tag": "us-gaap_GrossProfit",
         "translation": {
-          "korean_name": "총 이익",
-          "description": "총 이익은 매출에서 매출원가를 차감한 금액으로, 기업의 기본적인 수익성을 평가하는 데 중요한 지표입니다.",
+          "korean_name": "매출총이익",
+          "description": "매출총이익은 기업의 총 매출액에서 매출원가를 차감한 금액으로, 기업의 기본적인 영업활동에서 발생한 이익을 나타냅니다. 이는 기업의 수익성을 평가하는 중요한 지표로 사용됩니다.",
           "category": "수익"
         },
         "data": [
           {
-            "value": 39678000000.0,
-            "display_value": "39,678,000,000",
-            "context": "c-20",
+            "value": "39678000000",
+            "display_value": "39678000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "39678000000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 매출총이익"
           }
         ]
       },
       {
         "tag": "us-gaap_OperatingIncomeLoss",
         "translation": {
-          "korean_name": "영업 이익/손실",
-          "description": "영업 이익/손실은 기업의 본업에서 발생한 수익과 비용의 차이를 나타내며, 이는 기업의 운영 성과를 평가하는 핵심 지표입니다. 긍정적인 영업 이익은 기업의 지속 가능성을 시사합니다.",
-          "category": "수익"
+          "korean_name": "영업이익(손실)",
+          "description": "기업의 주요 영업 활동에서 발생한 수익에서 영업 비용을 차감한 금액으로, 기업의 본업에서 얼마나 효율적으로 수익을 창출하고 있는지를 나타냅니다. 영업이익이 양수일 경우 영업이익, 음수일 경우 영업손실로 표현됩니다.",
+          "category": "수익/비용"
         },
         "data": [
           {
-            "value": 25352000000.0,
-            "display_value": "25,352,000,000",
-            "context": "c-20",
+            "value": "25352000000",
+            "display_value": "25352000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "25352000000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 영업이익(손실)"
           }
         ]
       },
       {
         "tag": "us-gaap_NonoperatingIncomeExpense",
         "translation": {
-          "korean_name": "비운영 수익/비용",
-          "description": "비운영 수익과 비용은 주 운영 활동 외의 수익과 비용을 반영하며, 기업의 전체적인 재무 성과를 이해하는 데 중요합니다.",
+          "korean_name": "비영업수익비용",
+          "description": "비영업수익비용은 기업의 주된 영업활동 이외에서 발생하는 수익과 비용을 포함합니다. 여기에는 이자 수익, 투자 수익, 외환 차익 또는 손실, 자산 매각에 따른 수익 등이 포함될 수 있습니다.",
           "category": "기타"
         },
         "data": [
           {
-            "value": 142000000.0,
-            "display_value": "142,000,000",
-            "context": "c-20",
+            "value": "142000000",
+            "display_value": "142000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "142000000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 비영업수익비용"
           }
         ]
       },
       {
         "tag": "us-gaap_IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
         "translation": {
-          "korean_name": "세전 계속 운영에서의 손익",
-          "description": "세전 계속 운영에서의 손익은 기업의 정상 운영에서 발생한 손익을 나타내며, 이를 통해 기업의 지속 가능성을 평가할 수 있습니다.",
-          "category": "기타"
+          "korean_name": "계속영업손실(법인세, 특별항목, 비지배지분 제외)",
+          "description": "이 항목은 법인세, 특별항목 및 비지배지분을 제외한 계속 영업에서 발생한 손실을 나타냅니다. 즉, 기업의 지속적인 운영에서 발생한 손실을 보여주며, 비정상적인 항목이나 세금 영향을 제외하여 기업의 기본적인 영업 성과를 평가하는 데 도움을 줍니다.",
+          "category": "비용"
         },
         "data": [
           {
-            "value": 25494000000.0,
-            "display_value": "25,494,000,000",
-            "context": "c-20",
+            "value": "25494000000",
+            "display_value": "25494000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "25494000000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 계속영업손실(법인세, 특별항목, 비지배지분 제외)"
           }
         ]
       },
       {
         "tag": "us-gaap_IncomeTaxExpenseBenefit",
         "translation": {
-          "korean_name": "법인세 비용(이익)",
-          "description": "이 항목은 기업의 법인세 관련 비용 또는 이익을 나타냅니다. 세무 계획 및 재무 성과 분석에 필수적입니다.",
+          "korean_name": "법인세비용",
+          "description": "기업이 발생한 소득에 대해 납부해야 하는 법인세의 비용을 나타냅니다. 이는 기업의 세전 이익에 기반하여 계산되며, 손익계산서에서 비용 항목으로 포함됩니다.",
           "category": "비용"
         },
         "data": [
           {
-            "value": 4046000000.0,
-            "display_value": "4,046,000,000",
-            "context": "c-20",
+            "value": "4046000000",
+            "display_value": "4046000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "4046000000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 법인세비용"
           }
         ]
       },
       {
         "tag": "us-gaap_NetIncomeLoss",
         "translation": {
-          "korean_name": "순이익(손실)",
-          "description": "회계 기간 동안의 순이익 또는 손실을 나타내며, 이는 기업의 전반적인 수익성을 평가하는 가장 중요한 지표 중 하나입니다.",
-          "category": "수익"
+          "korean_name": "순손익",
+          "description": "기업의 일정 기간 동안 발생한 총 수익에서 총 비용을 차감한 후의 결과로, 기업의 경영 성과를 나타내는 지표입니다. 순손익이 양수일 경우 이익을, 음수일 경우 손실을 의미합니다.",
+          "category": "기타"
         },
         "data": [
           {
-            "value": 21448000000.0,
-            "display_value": "21,448,000,000",
-            "context": "c-20",
+            "value": "21448000000",
+            "display_value": "21448000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "21448000000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 순손익"
           }
         ]
       }
@@ -190,69 +374,96 @@
       {
         "tag": "us-gaap_ResearchAndDevelopmentExpense",
         "translation": {
-          "korean_name": "연구 개발 비용",
-          "description": "연구 개발 비용은 새로운 제품이나 기술 개발에 투자한 비용을 의미하며, 이는 기업의 혁신 능력과 미래 성장 가능성을 평가하는 데 중요한 지표입니다. 높은 연구 개발 비용은 미래 수익 창출의 잠재력을 나타냅니다.",
+          "korean_name": "연구개발비용",
+          "description": "기업이 새로운 제품이나 서비스의 개발, 개선, 또는 기술 혁신을 위해 지출한 비용을 나타냅니다. 이 비용은 연구 및 개발 활동에 직접적으로 관련된 인건비, 재료비, 외주비용 등을 포함합니다.",
           "category": "비용"
         },
         "data": [
           {
-            "value": 8006000000.0,
-            "display_value": "8,006,000,000",
-            "context": "c-20",
+            "value": "8006000000",
+            "display_value": "8006000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "8006000000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 연구개발비용"
           }
         ]
       },
       {
         "tag": "us-gaap_SellingGeneralAndAdministrativeExpense",
         "translation": {
-          "korean_name": "판매, 일반 및 관리 비용",
-          "description": "판매, 일반 및 관리 비용은 기업의 운영에 필요한 모든 비용을 포함하며, 이는 기업의 수익성 분석에 중요한 요소입니다. 이러한 비용의 효율적인 관리는 기업의 재무 성과에 직접적인 영향을 미칩니다.",
+          "korean_name": "판매비와 관리비",
+          "description": "기업의 제품 판매 및 운영을 위해 발생하는 비용으로, 판매 활동과 관련된 비용(예: 광고비, 판매 인력 급여)과 일반 관리 활동에 소요되는 비용(예: 사무실 임대료, 관리직 급여)을 포함합니다.",
           "category": "비용"
         },
         "data": [
           {
-            "value": 6320000000.0,
-            "display_value": "6,320,000,000",
-            "context": "c-20",
+            "value": "6320000000",
+            "display_value": "6320000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "6320000000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 판매비와 관리비"
           }
         ]
       },
       {
         "tag": "us-gaap_OperatingExpenses",
         "translation": {
-          "korean_name": "영업 비용",
-          "description": "영업 비용은 기업의 주된 영업 활동에서 발생하는 비용을 포함하며, 이는 기업의 수익성과 효율성을 평가하는 데 필수적인 지표입니다. 영업 비용의 변화는 기업의 운영 전략을 반영합니다.",
+          "korean_name": "운영비용",
+          "description": "기업의 운영과 관련하여 발생하는 비용으로, 판매비와 관리비를 포함합니다. 이는 제품이나 서비스의 생산 및 판매를 위해 필요한 경비로, 인건비, 임대료, 광고비, 공과금 등이 포함됩니다.",
           "category": "비용"
         },
         "data": [
           {
-            "value": 14326000000.0,
-            "display_value": "14,326,000,000",
-            "context": "c-20",
+            "value": "14326000000",
+            "display_value": "14326000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "14326000000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 운영비용"
           }
         ]
       }
@@ -261,46 +472,64 @@
       {
         "tag": "us-gaap_EarningsPerShareBasic",
         "translation": {
-          "korean_name": "기본 주당 순이익",
-          "description": "기본 주당 순이익은 기업의 순이익을 발행된 보통주 수로 나눈 값으로, 이는 투자자가 기업의 수익성을 평가하는 데 중요한 지표입니다. 주당 순이익의 증가는 기업의 재무 성과 개선을 나타냅니다.",
+          "korean_name": "기본주당순이익",
+          "description": "기본주당순이익은 회사의 순이익을 발행된 보통주식 수로 나눈 값으로, 주주가 보유한 주식 1주당 얼마의 순이익이 발생했는지를 나타냅니다. 이는 기업의 수익성을 평가하는 중요한 지표로 사용됩니다.",
           "category": "수익"
         },
         "data": [
           {
-            "value": 1.4,
-            "display_value": "1",
-            "context": "c-20",
+            "value": "1.40",
+            "display_value": "1.40",
             "unit": "usdPerShare",
             "decimals": "2",
             "raw_value": "1.40",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 기본주당순이익"
           }
         ]
       },
       {
         "tag": "us-gaap_EarningsPerShareDiluted",
         "translation": {
-          "korean_name": "희석 주당순이익",
-          "description": "희석 주당순이익은 모든 잠재적 주식 변환을 고려한 주당 이익을 나타내며, 투자자에게 기업의 수익성을 보다 정확히 평가할 수 있게 합니다.",
-          "category": "수익"
+          "korean_name": "희석주당순이익",
+          "description": "희석주당순이익은 기업의 순이익을 발행된 주식 수와 잠재적으로 발행될 수 있는 주식 수(예: 전환사채, 스톡옵션 등)를 고려하여 계산한 지표로, 주주가 실제로 받을 수 있는 이익을 나타냅니다. 이는 기업의 수익성을 평가하는 데 중요한 지표로 사용됩니다.",
+          "category": "기타"
         },
         "data": [
           {
-            "value": 1.4,
-            "display_value": "1",
-            "context": "c-20",
+            "value": "1.40",
+            "display_value": "1.40",
             "unit": "usdPerShare",
             "decimals": "2",
             "raw_value": "1.40",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 희석주당순이익"
           }
         ]
       }
@@ -309,96 +538,132 @@
       {
         "tag": "us-gaap_WeightedAverageNumberOfSharesOutstandingBasic",
         "translation": {
-          "korean_name": "기본 주당 가중 평균 주식 수",
-          "description": "기본 주당 가중 평균 주식 수는 특정 기간 동안 발행된 주식의 평균 수를 계산하여 주당 순이익(EPS)을 산출하는 데 사용됩니다.",
+          "korean_name": "기본주식의 가중평균발행주식수",
+          "description": "특정 회계 기간 동안 회사가 발행한 기본 주식의 가중 평균 수를 나타냅니다. 이 수치는 주식의 발행 및 매입이 이루어진 시점에 따라 가중치를 부여하여 계산되며, 주당순이익(EPS) 계산에 사용됩니다.",
           "category": "기타"
         },
         "data": [
           {
-            "value": 15287521000.0,
-            "display_value": "15,287,521,000",
-            "context": "c-20",
+            "value": "15287521000",
+            "display_value": "15287521000",
             "unit": "shares",
             "decimals": "-3",
             "raw_value": "15287521000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 기본주식의 가중평균발행주식수"
           }
         ]
       },
       {
         "tag": "us-gaap_WeightedAverageNumberOfDilutedSharesOutstanding",
         "translation": {
-          "korean_name": "희석주당 평균 발행 주식 수",
-          "description": "희석 효과를 고려한 평균 발행 주식 수를 나타내며, 이는 주당 순이익 계산에 필수적인 요소입니다.",
-          "category": "수익"
+          "korean_name": "희석주식의 가중평균수",
+          "description": "희석주식의 가중평균수는 기업의 주식이 희석될 경우, 즉 주식 옵션, 전환사채 등으로 인해 발행될 수 있는 추가 주식 수를 포함하여 계산된 평균 주식 수를 의미합니다. 이 수치는 주당순이익(EPS) 계산 시 사용되며, 투자자에게 기업의 실제 가치를 보다 정확하게 전달하는 데 도움을 줍니다.",
+          "category": "기타"
         },
         "data": [
           {
-            "value": 15348175000.0,
-            "display_value": "15,348,175,000",
-            "context": "c-20",
+            "value": "15348175000",
+            "display_value": "15348175000",
             "unit": "shares",
             "decimals": "-3",
             "raw_value": "15348175000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 희석주식의 가중평균수"
           }
         ]
       }
     ]
   },
-  "C O N D E N S E D C O N S O L I D A T E D S T A T E M E N T S O F C O M P R E H E N S I V E I N C O M E Unaudited": {
+  "Apple - 응축된 연결 포괄 손익계산서 (감사받지 않음)": {
     "us-gaap_StatementOfIncomeAndComprehensiveIncomeAbstract": [
       {
         "tag": "us-gaap_NetIncomeLoss",
         "translation": {
-          "korean_name": "순이익(손실)",
-          "description": "회계 기간 동안의 순이익 또는 손실을 나타내며, 이는 기업의 전반적인 수익성을 평가하는 가장 중요한 지표 중 하나입니다.",
-          "category": "수익"
+          "korean_name": "순손익",
+          "description": "기업의 총 수익에서 총 비용을 차감한 후의 결과로, 기업의 경영 성과를 나타내는 지표입니다. 순손익이 양수일 경우 이익을 의미하며, 음수일 경우 손실을 의미합니다.",
+          "category": "기타"
         },
         "data": [
           {
-            "value": 21448000000.0,
-            "display_value": "21,448,000,000",
-            "context": "c-20",
+            "value": "21448000000",
+            "display_value": "21448000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "21448000000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 순손익"
           }
         ]
       },
       {
         "tag": "us-gaap_ComprehensiveIncomeNetOfTax",
         "translation": {
-          "korean_name": "세후 포괄 손익",
-          "description": "세후 포괄 손익은 기업의 모든 수익과 비용을 포함한 총 체적 재무 성과를 나타내며, 이는 투자자에게 기업의 전체적인 재무 상태를 보여줍니다.",
+          "korean_name": "세금에 대한 포괄손익",
+          "description": "세금과 관련된 포괄손익 항목으로, 기업이 세금으로 인해 발생하는 포괄적인 수익 또는 손실을 나타냅니다. 이는 세금 효과를 반영한 전체적인 손익을 보여주며, 기업의 재무 상태를 평가하는 데 중요한 지표입니다.",
           "category": "기타"
         },
         "data": [
           {
-            "value": 21992000000.0,
-            "display_value": "21,992,000,000",
-            "context": "c-20",
+            "value": "21992000000",
+            "display_value": "21992000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "21992000000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 세금에 대한 포괄손익"
           }
         ]
       }
@@ -407,46 +672,64 @@
       {
         "tag": "us-gaap_OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax",
         "translation": {
-          "korean_name": "기타 포괄 손익 외환 거래 및 번역 조정 세후",
-          "description": "외환 거래 및 번역 조정으로 인한 기타 포괄 손익을 나타내며, 이는 기업의 국제적 활동에 따른 재무 성과를 반영합니다.",
+          "korean_name": "외화 거래 및 환산 조정으로 인한 기타 포괄손익(세후)",
+          "description": "외화 거래에서 발생한 손익과 외화 환산으로 인한 조정액을 세금을 차감한 후의 금액을 나타냅니다. 이는 외화로 표시된 자산이나 부채의 가치 변동에 따른 손익을 포함하며, 재무제표의 기타 포괄손익 항목으로 분류됩니다.",
           "category": "기타"
         },
         "data": [
           {
-            "value": -73000000.0,
-            "display_value": "-73,000,000",
-            "context": "c-20",
+            "value": "-73000000",
+            "display_value": "-73000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "-73000000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 외화 거래 및 환산 조정으로 인한 기타 포괄손익(세후)"
           }
         ]
       },
       {
         "tag": "us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent",
         "translation": {
-          "korean_name": "세후 기타 포괄 손익 중 모회사 귀속 부분",
-          "description": "이 항목은 세후 기타 포괄 손익 중 모회사에 귀속되는 부분을 나타내며, 이는 투자자에게 기업의 총체적인 재무 성과를 이해하는 데 도움이 됩니다.",
+          "korean_name": "기타포괄손익(세금비용 차감 후) - 모회사 귀속",
+          "description": "모회사에 귀속되는 기타포괄손익으로, 세금 비용을 차감한 후의 순손익을 나타냅니다. 이는 재무제표에서 순이익 외에 기업의 재무상태에 영향을 미치는 다양한 요소들을 포함하여, 주로 외환차익, 재평가잉여금, 기타 포괄손익 항목을 포함합니다.",
           "category": "기타"
         },
         "data": [
           {
-            "value": 544000000.0,
-            "display_value": "544,000,000",
-            "context": "c-20",
+            "value": "544000000",
+            "display_value": "544000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "544000000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 기타포괄손익(세금비용 차감 후) - 모회사 귀속"
           }
         ]
       }
@@ -455,344 +738,430 @@
       {
         "tag": "us-gaap_OtherComprehensiveIncomeUnrealizedHoldingGainLossOnSecuritiesArisingDuringPeriodNetOfTax",
         "translation": {
-          "korean_name": "세후 발생한 증권의 미실현 보유 손익",
-          "description": "세후 발생한 증권의 미실현 보유 손익은 기업이 보유한 증권의 가치 변화로 인한 손익을 나타내며, 이는 기타 포괄손익에 포함되어 기업의 전체적인 재무 성과를 반영합니다.",
+          "korean_name": "기타포괄손익 - 세후 미실현 보유증권 평가손익",
+          "description": "이 항목은 특정 기간 동안 발생한 미실현 보유증권의 평가손익을 나타내며, 세금을 차감한 후의 금액입니다. 즉, 보유하고 있는 증권의 시장 가치가 변동하여 발생한 손익을 반영하지만, 실제로 매각하지 않았기 때문에 실현된 수익이나 손실은 아닙니다.",
           "category": "기타"
         },
         "data": [
           {
-            "value": 268000000.0,
-            "display_value": "268,000,000",
-            "context": "c-20",
+            "value": "268000000",
+            "display_value": "268000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "268000000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 기타포괄손익 - 세후 미실현 보유증권 평가손익"
           }
         ]
       },
       {
         "tag": "us-gaap_OtherComprehensiveIncomeLossReclassificationAdjustmentFromAOCIForSaleOfSecuritiesNetOfTax",
         "translation": {
-          "korean_name": "기타 포괄 손익 재분류 조정 세후 증권 매각",
-          "description": "증권 매각에 따른 재분류 조정은 기업의 포괄 손익을 이해하는 데 중요한 요소입니다.",
+          "korean_name": "기타포괄손익 재분류조정(세후)",
+          "description": "매도가능증권의 처분으로 인한 기타포괄손익의 재분류 조정액을 세후 기준으로 나타냅니다. 이는 매도가능증권의 처분 시 발생하는 손익을 포괄손익계산서에서 자본으로 재분류하는 과정에서 발생하는 조정액을 의미합니다.",
           "category": "기타"
         },
         "data": [
           {
-            "value": -30000000.0,
-            "display_value": "-30,000,000",
-            "context": "c-20",
+            "value": "-30000000",
+            "display_value": "-30000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "-30000000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 기타포괄손익 재분류조정(세후)"
           }
         ]
       },
       {
         "tag": "us-gaap_OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentNetOfTax",
         "translation": {
-          "korean_name": "매도가능증권 조정세금 차감 기타포괄손익",
-          "description": "매도가능증권에서 발생한 기타포괄손익을 조정한 후의 세금 차감 금액을 나타내며, 이는 기업의 재무 상태를 종합적으로 평가하는 데 중요합니다.",
+          "korean_name": "매도가능증권 조정 후 기타포괄손익",
+          "description": "매도가능증권의 공정가치 변동에 따른 조정액을 세금 효과를 반영하여 나타낸 항목으로, 기타포괄손익에 포함됩니다. 이는 기업이 보유한 매도가능증권의 가치가 상승하거나 하락할 때 발생하는 손익을 의미합니다.",
           "category": "기타"
         },
         "data": [
           {
-            "value": 298000000.0,
-            "display_value": "298,000,000",
-            "context": "c-20",
+            "value": "298000000",
+            "display_value": "298000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "298000000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 매도가능증권 조정 후 기타포괄손익"
           }
         ]
       }
     ]
   },
-  "C O N D E N S E D C O N S O L I D A T E D S T A T E M E N T S O F S H A R E H O L D E R S E Q U I T Y Unaudited": {
+  "Apple - 응축된 연결 주주 자본 변동표 (감사 미포함)": {
     "us-gaap_StatementLineItems": [
       {
         "tag": "us-gaap_CommonStockDividendsPerShareDeclared",
         "translation": {
-          "korean_name": "선언된 보통주 배당금 주당 금액",
-          "description": "선언된 보통주 배당금 주당 금액은 주주에게 지급될 배당금의 금액을 주당으로 나타내며, 기업의 수익성과 주주 환원 정책을 평가하는 중요한 지표입니다.",
+          "korean_name": "주당 선언된 보통주 배당금",
+          "description": "회사가 주주에게 지급하기로 선언한 보통주 배당금의 금액을 주당으로 나타낸 것입니다. 이는 주주에게 지급될 배당금의 규모를 나타내며, 주주가 보유한 주식 수에 따라 실제 지급받는 금액이 결정됩니다.",
           "category": "자본"
         },
         "data": [
           {
             "value": "0.25",
             "display_value": "0.25",
-            "context": "c-20",
             "unit": "usdPerShare",
             "decimals": "INF",
             "raw_value": "0.25",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 주당 선언된 보통주 배당금"
           }
         ]
       }
     ],
     "us-gaap_IncreaseDecreaseInStockholdersEquityRollForward": [
       {
-        "tag": "us-gaap_AdjustmentsRelatedToTaxWithholdingForShareBasedCompensation",
-        "translation": {
-          "korean_name": "주식 기반 보상에 대한 세금 원천징수 관련 조정",
-          "description": "주식 기반 보상에 대한 세금 원천징수와 관련된 조정을 나타내며, 이는 기업의 세금 효율성을 이해하는 데 도움이 됩니다.",
-          "category": "비용"
-        },
-        "data": [
-          {
-            "value": 1920000000.0,
-            "display_value": "1,920,000,000",
-            "context": "c-32",
-            "unit": "usd",
-            "decimals": "-6",
-            "raw_value": "1920000000",
-            "source": "xbrl",
-            "attributes": {
-              "contextref": "",
-              "id": ""
-            }
-          }
-        ]
-      },
-      {
         "tag": "us-gaap_NetIncomeLoss",
         "translation": {
-          "korean_name": "순이익(손실)",
-          "description": "회계 기간 동안의 순이익 또는 손실을 나타내며, 이는 기업의 전반적인 수익성을 평가하는 가장 중요한 지표 중 하나입니다.",
-          "category": "수익"
+          "korean_name": "순손익",
+          "description": "기업의 총 수익에서 총 비용을 차감한 후의 결과로, 기업의 경영 성과를 나타내는 지표입니다. 순손익은 긍정적일 경우 이익을, 부정적일 경우 손실을 의미합니다.",
+          "category": "기타"
         },
         "data": [
           {
-            "value": 21448000000.0,
-            "display_value": "21,448,000,000",
-            "context": "c-20",
+            "value": "21448000000",
+            "display_value": "21448000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "21448000000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
-          }
-        ]
-      },
-      {
-        "tag": "us-gaap_Dividends",
-        "translation": {
-          "korean_name": "배당금",
-          "description": "주주에게 지급되는 배당금의 총액을 나타내며, 기업의 수익 분배 및 주주에 대한 책임을 이해하는 데 중요한 요소입니다.",
-          "category": "자본"
-        },
-        "data": [
-          {
-            "value": 3864000000.0,
-            "display_value": "3,864,000,000",
-            "context": "c-42",
-            "unit": "usd",
-            "decimals": "-6",
-            "raw_value": "3864000000",
-            "source": "xbrl",
-            "attributes": {
-              "contextref": "",
-              "id": ""
-            }
-          }
-        ]
-      },
-      {
-        "tag": "us-gaap_StockRepurchasedAndRetiredDuringPeriodValue",
-        "translation": {
-          "korean_name": "기간 동안 자사주 매입 및 반환 가치",
-          "description": "기업이 자사주를 매입하고 이를 퇴출시킨 총 가치를 나타냅니다. 이는 기업의 자본 구조 조정 및 주주 가치를 위한 전략을 반영합니다.",
-          "category": "자본"
-        },
-        "data": [
-          {
-            "value": 26221000000.0,
-            "display_value": "26,221,000,000",
-            "context": "c-42",
-            "unit": "usd",
-            "decimals": "-6",
-            "raw_value": "26221000000",
-            "source": "xbrl",
-            "attributes": {
-              "contextref": "",
-              "id": ""
-            }
+            },
+            "specific_name": "총 순손익"
           }
         ]
       },
       {
         "tag": "us-gaap_OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent",
         "translation": {
-          "korean_name": "세후 기타 포괄 손익 중 모회사 귀속 부분",
-          "description": "이 항목은 세후 기타 포괄 손익 중 모회사에 귀속되는 부분을 나타내며, 이는 투자자에게 기업의 총체적인 재무 성과를 이해하는 데 도움이 됩니다.",
+          "korean_name": "기타포괄손익(세금비용차감후) - 모회사 귀속",
+          "description": "모회사에 귀속되는 기타포괄손익을 세금 비용을 차감한 후의 금액을 나타냅니다. 이는 손익계산서에 포함되지 않는 항목으로, 자산 재평가, 외화환산차이 등과 같은 항목에서 발생하는 손익을 포함합니다.",
           "category": "기타"
         },
         "data": [
           {
-            "value": 544000000.0,
-            "display_value": "544,000,000",
-            "context": "c-20",
+            "value": "544000000",
+            "display_value": "544000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "544000000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 기타포괄손익(세금비용차감후) - 모회사 귀속"
           }
         ]
       }
     ]
   },
-  "C O N D E N S E D C O N S O L I D A T E D S T A T E M E N T S O F C A S H F L O W S Unaudited": {
+  "C O N D E N S E D C O N S O L I D A T E D S T A T E M E N T S O F C A S H F L O W S Unaudited -> 응축 연결 현금 흐름표 (감사 미포함)": {
     "us-gaap_NetCashProvidedByUsedInOperatingActivitiesContinuingOperationsAbstract": [
       {
         "tag": "us-gaap_NetIncomeLoss",
         "translation": {
-          "korean_name": "순이익(손실)",
-          "description": "회계 기간 동안의 순이익 또는 손실을 나타내며, 이는 기업의 전반적인 수익성을 평가하는 가장 중요한 지표 중 하나입니다.",
-          "category": "수익"
+          "korean_name": "순손익",
+          "description": "기업의 총 수익에서 총 비용을 차감한 후의 결과로, 기업의 경영 성과를 나타내는 지표입니다. 순손익은 긍정적일 경우 이익을 의미하고, 부정적일 경우 손실을 의미합니다.",
+          "category": "기타"
         },
         "data": [
           {
-            "value": 21448000000.0,
-            "display_value": "21,448,000,000",
-            "context": "c-20",
+            "value": "21448000000",
+            "display_value": "21448000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "21448000000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 순손익"
           }
         ]
       }
     ]
   },
-  "Revenue Net Sales Disaggregatedby Significant Productsand Services": {
+  "Apple - 수익 순매출 주요 제품 및 서비스별 분류": {
     "us-gaap_DisaggregationOfRevenueLineItems": [
       {
         "tag": "us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax",
         "translation": {
           "korean_name": "고객과의 계약에서 발생한 수익(세금 제외)",
-          "description": "이 항목은 고객과의 계약에서 발생한 수익을 세금 제외하고 표시하며, 이는 기업의 실제 수익성을 평가하는 데 중요한 정보를 제공합니다. 계약 수익의 변화는 기업 성장의 중요한 지표입니다.",
+          "description": "고객과의 계약에 따라 발생한 수익에서 부가세와 같은 세금을 제외한 금액을 나타냅니다. 이는 기업이 고객에게 제공한 상품이나 서비스에 대한 순수한 매출액을 의미합니다.",
           "category": "수익"
         },
         "data": [
           {
-            "value": 61564000000.0,
-            "display_value": "61,564,000,000",
-            "context": "c-12",
+            "value": "61564000000",
+            "display_value": "61564000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "61564000000",
+            "context": "c-12",
             "source": "xbrl",
+            "axis": [
+              "ProductOrServiceAxis"
+            ],
+            "member": [
+              "ProductMember"
+            ],
+            "explicit_members": [
+              "ProductMember"
+            ],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-12",
               "id": ""
-            }
+            },
+            "specific_name": "제품 고객과의 계약에서 발생한 수익(세금 제외)"
+          },
+          {
+            "value": "24213000000",
+            "display_value": "24213000000",
+            "unit": "usd",
+            "decimals": "-6",
+            "raw_value": "24213000000",
+            "context": "c-16",
+            "source": "xbrl",
+            "axis": [
+              "ProductOrServiceAxis"
+            ],
+            "member": [
+              "ServiceMember"
+            ],
+            "explicit_members": [
+              "ServiceMember"
+            ],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
+            "attributes": {
+              "contextref": "c-16",
+              "id": ""
+            },
+            "specific_name": "서비스 고객과의 계약에서 발생한 수익(세금 제외)"
+          },
+          {
+            "value": "85777000000",
+            "display_value": "85777000000",
+            "unit": "usd",
+            "decimals": "-6",
+            "raw_value": "85777000000",
+            "context": "c-20",
+            "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
+            "attributes": {
+              "contextref": "c-20",
+              "id": ""
+            },
+            "specific_name": "총 고객과의 계약에서 발생한 수익(세금 제외)"
           }
         ]
       }
     ]
   },
-  "Revenue Additional": {
+  "Apple - Revenue Additional -> 애플 - 수익 추가": {
     "us-gaap_RevenueFromContractWithCustomerAbstract": [
       {
         "tag": "us-gaap_ContractWithCustomerLiabilityRevenueRecognized",
         "translation": {
-          "korean_name": "고객 계약 부채 수익 인식",
-          "description": "이 항목은 고객 계약에 따른 부채와 인식된 수익을 나타냅니다. 이는 수익 인식의 투명성을 높이는 데 중요합니다.",
-          "category": "부채"
+          "korean_name": "고객과의 계약에 따른 수익 인식",
+          "description": "고객과의 계약에서 발생한 수익이 인식된 금액을 나타냅니다. 이는 고객에게 제공한 상품이나 서비스에 대한 대가로 수익이 발생했음을 의미하며, 회계 기간 동안 실제로 수익으로 인식된 금액을 포함합니다.",
+          "category": "수익"
         },
         "data": [
           {
-            "value": 3400000000.0,
-            "display_value": "3,400,000,000",
-            "context": "c-20",
+            "value": "3400000000",
+            "display_value": "3400000000",
             "unit": "usd",
             "decimals": "-8",
             "raw_value": "3400000000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 고객과의 계약에 따른 수익 인식"
           }
         ]
       }
     ]
   },
-  "Earnings Per Share Computationof Basicand Diluted Earnings Per Share": {
+  "Apple - 기본 및 희석 주당순이익 계산 -> Apple - Earnings Per Share Computation of Basic and Diluted Earnings Per Share": {
     "us-gaap_EarningsPerShareAbstract": [
       {
         "tag": "us-gaap_EarningsPerShareBasic",
         "translation": {
-          "korean_name": "기본 주당 순이익",
-          "description": "기본 주당 순이익은 기업의 순이익을 발행된 보통주 수로 나눈 값으로, 이는 투자자가 기업의 수익성을 평가하는 데 중요한 지표입니다. 주당 순이익의 증가는 기업의 재무 성과 개선을 나타냅니다.",
+          "korean_name": "기본주당순이익",
+          "description": "기본주당순이익은 회사의 순이익을 발행된 보통주식 수로 나눈 값으로, 주주가 보유한 주식 1주당 얼마나 많은 순이익이 발생했는지를 나타냅니다. 이는 기업의 수익성을 평가하는 중요한 지표로 사용됩니다.",
           "category": "수익"
         },
         "data": [
           {
-            "value": 1.4,
-            "display_value": "1",
-            "context": "c-20",
+            "value": "1.40",
+            "display_value": "1.40",
             "unit": "usdPerShare",
             "decimals": "2",
             "raw_value": "1.40",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 기본주당순이익"
           }
         ]
       },
       {
         "tag": "us-gaap_EarningsPerShareDiluted",
         "translation": {
-          "korean_name": "희석 주당순이익",
-          "description": "희석 주당순이익은 모든 잠재적 주식 변환을 고려한 주당 이익을 나타내며, 투자자에게 기업의 수익성을 보다 정확히 평가할 수 있게 합니다.",
-          "category": "수익"
+          "korean_name": "희석주당순이익",
+          "description": "희석주당순이익은 기업의 순이익을 발행된 주식 수와 잠재적으로 발행될 수 있는 주식 수(예: 전환사채, 스톡옵션 등)를 고려하여 계산한 지표로, 주주가 보유한 주식 한 주당 얼마의 순이익이 발생했는지를 나타냅니다. 이는 기업의 수익성을 평가하는 데 중요한 지표로 사용됩니다.",
+          "category": "기타"
         },
         "data": [
           {
-            "value": 1.4,
-            "display_value": "1",
-            "context": "c-20",
+            "value": "1.40",
+            "display_value": "1.40",
             "unit": "usdPerShare",
             "decimals": "2",
             "raw_value": "1.40",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 희석주당순이익"
           }
         ]
       }
@@ -801,23 +1170,32 @@
       {
         "tag": "us-gaap_NetIncomeLoss",
         "translation": {
-          "korean_name": "순이익(손실)",
-          "description": "회계 기간 동안의 순이익 또는 손실을 나타내며, 이는 기업의 전반적인 수익성을 평가하는 가장 중요한 지표 중 하나입니다.",
-          "category": "수익"
+          "korean_name": "순손익",
+          "description": "기업의 총 수익에서 총 비용을 차감한 후의 결과로, 기업의 경영 성과를 나타내는 지표입니다. 순손익이 양수일 경우 이익을 의미하며, 음수일 경우 손실을 의미합니다.",
+          "category": "기타"
         },
         "data": [
           {
-            "value": 21448000000.0,
-            "display_value": "21,448,000,000",
-            "context": "c-20",
+            "value": "21448000000",
+            "display_value": "21448000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "21448000000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 순손익"
           }
         ]
       }
@@ -826,296 +1204,392 @@
       {
         "tag": "us-gaap_WeightedAverageNumberOfSharesOutstandingBasic",
         "translation": {
-          "korean_name": "기본 주당 가중 평균 주식 수",
-          "description": "기본 주당 가중 평균 주식 수는 특정 기간 동안 발행된 주식의 평균 수를 계산하여 주당 순이익(EPS)을 산출하는 데 사용됩니다.",
+          "korean_name": "기본주식의 가중평균발행주식수",
+          "description": "기본주식의 가중평균발행주식수는 특정 회계 기간 동안 회사가 발행한 기본주식의 평균 수를 나타냅니다. 이 수치는 주당순이익(EPS) 계산에 사용되며, 주식의 발행 및 매입이 이루어진 경우 이를 반영하여 가중 평균을 산출합니다.",
           "category": "기타"
         },
         "data": [
           {
-            "value": 15287521000.0,
-            "display_value": "15,287,521,000",
-            "context": "c-20",
+            "value": "15287521000",
+            "display_value": "15287521000",
             "unit": "shares",
             "decimals": "-3",
             "raw_value": "15287521000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 기본주식의 가중평균발행주식수"
           }
         ]
       },
       {
         "tag": "us-gaap_IncrementalCommonSharesAttributableToShareBasedPaymentArrangements",
         "translation": {
-          "korean_name": "주식 기반 지급 약정에 따른 증가분 보통주",
-          "description": "주식 기반 지급 약정에서 발생하는 추가적인 보통주 수를 나타내며, 이는 주주 가치를 희석시키는 요소가 될 수 있습니다. 이러한 정보는 투자자에게 주식의 가치 변동성을 이해하는 데 도움이 됩니다.",
+          "korean_name": "주식기반 보상에 귀속되는 증가된 보통주 수",
+          "description": "주식기반 보상 계획에 따라 발행된 추가 보통주의 수를 나타냅니다. 이는 회사가 직원이나 경영진에게 주식 보상을 제공할 때 발생하는 주식의 증가를 반영합니다. 이러한 주식은 보통주로서 회사의 자본 구조에 영향을 미치며, 주식 보상 계획의 효과를 평가하는 데 중요한 지표입니다.",
           "category": "자본"
         },
         "data": [
           {
-            "value": 60654000.0,
-            "display_value": "60,654,000",
-            "context": "c-20",
+            "value": "60654000",
+            "display_value": "60654000",
             "unit": "shares",
             "decimals": "-3",
             "raw_value": "60654000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 주식기반 보상에 귀속되는 증가된 보통주 수"
           }
         ]
       },
       {
         "tag": "us-gaap_WeightedAverageNumberOfDilutedSharesOutstanding",
         "translation": {
-          "korean_name": "희석주당 평균 발행 주식 수",
-          "description": "희석 효과를 고려한 평균 발행 주식 수를 나타내며, 이는 주당 순이익 계산에 필수적인 요소입니다.",
-          "category": "수익"
+          "korean_name": "희석주식의 가중평균수",
+          "description": "희석주식의 가중평균수는 기업이 발행한 주식 중에서 잠재적으로 희석될 수 있는 주식(예: 전환사채, 스톡옵션 등)을 포함하여 계산한 주식의 평균 수를 의미합니다. 이 수치는 주당순이익(EPS) 계산 시 사용되며, 기업의 주식이 희석될 경우 주당순이익이 어떻게 변할지를 보여줍니다.",
+          "category": "기타"
         },
         "data": [
           {
-            "value": 15348175000.0,
-            "display_value": "15,348,175,000",
-            "context": "c-20",
+            "value": "15348175000",
+            "display_value": "15348175000",
             "unit": "shares",
             "decimals": "-3",
             "raw_value": "15348175000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 희석주식의 가중평균수"
           }
         ]
       }
     ]
   },
-  "Shareholders Equity Additional": {
-    "us-gaap_StockholdersEquityNoteAbstract": [
-      {
-        "tag": "us-gaap_StockRepurchasedAndRetiredDuringPeriodValue",
-        "translation": {
-          "korean_name": "기간 동안 자사주 매입 및 반환 가치",
-          "description": "기업이 자사주를 매입하고 이를 퇴출시킨 총 가치를 나타냅니다. 이는 기업의 자본 구조 조정 및 주주 가치를 위한 전략을 반영합니다.",
-          "category": "자본"
-        },
-        "data": [
-          {
-            "value": 26221000000.0,
-            "display_value": "26,221,000,000",
-            "context": "c-42",
-            "unit": "usd",
-            "decimals": "-6",
-            "raw_value": "26221000000",
-            "source": "xbrl",
-            "attributes": {
-              "contextref": "",
-              "id": ""
-            }
-          }
-        ]
-      }
-    ]
-  },
-  "Share Based Compensation Summaryof Share Based Compensation Expenseandthe Related Income Tax Benefit": {
+  "Apple - 주식 기반 보상 요약 및 관련 소득세 혜택의 주식 기반 보상 비용": {
     "us-gaap_DisclosureOfCompensationRelatedCostsSharebasedPaymentsAbstract": [
       {
         "tag": "us-gaap_AllocatedShareBasedCompensationExpense",
         "translation": {
-          "korean_name": "배분된 주식 기반 보상 비용",
-          "description": "주식 기반 보상 비용은 기업이 종업원에게 지급한 보상의 비용을 반영하며, 기업의 총 비용 구조에 중요한 영향을 미칩니다.",
+          "korean_name": "배분된 주식기반 보상비용",
+          "description": "회사가 임직원에게 주식이나 주식 옵션 등의 형태로 지급하는 보상 비용을 나타냅니다. 이 비용은 주식의 공정가치에 기반하여 계산되며, 직원의 근무 기간에 따라 배분됩니다.",
           "category": "비용"
         },
         "data": [
           {
-            "value": 2869000000.0,
-            "display_value": "2,869,000,000",
-            "context": "c-20",
+            "value": "2869000000",
+            "display_value": "2869000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "2869000000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 배분된 주식기반 보상비용"
           }
         ]
       },
       {
         "tag": "us-gaap_EmployeeServiceShareBasedCompensationTaxBenefitFromCompensationExpense",
         "translation": {
-          "korean_name": "종업원 서비스 주식 기반 보상 세금 혜택",
-          "description": "주식 기반 보상에 따른 세금 혜택은 기업의 세금 부담을 줄이는 데 기여하며, 이는 재무제표에 긍정적인 영향을 미칩니다.",
+          "korean_name": "직원 주식 기반 보상 비용의 세금 혜택",
+          "description": "직원에게 제공되는 주식 기반 보상에 대한 비용에서 발생하는 세금 혜택을 나타냅니다. 이는 기업이 직원에게 주식이나 주식 옵션을 제공할 때 발생하는 비용을 세금 측면에서 어떻게 처리하는지를 보여줍니다.",
           "category": "기타"
         },
         "data": [
           {
-            "value": 764000000.0,
-            "display_value": "764,000,000",
-            "context": "c-20",
+            "value": "764000000",
+            "display_value": "764000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "764000000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 직원 주식 기반 보상 비용의 세금 혜택"
           }
         ]
       }
     ]
   },
-  "Segment Informationand Geographic Data Informationby Reportable Segment": {
+  "Apple - 보고able 세그먼트별 세그먼트 정보 및 지리적 데이터 정보": {
     "us-gaap_SegmentReportingInformationLineItems": [
       {
         "tag": "us-gaap_RevenueFromContractWithCustomerExcludingAssessedTax",
         "translation": {
           "korean_name": "고객과의 계약에서 발생한 수익(세금 제외)",
-          "description": "이 항목은 고객과의 계약에서 발생한 수익을 세금 제외하고 표시하며, 이는 기업의 실제 수익성을 평가하는 데 중요한 정보를 제공합니다. 계약 수익의 변화는 기업 성장의 중요한 지표입니다.",
+          "description": "고객과의 계약에 따라 발생한 수익에서 세금(부가가치세 등)을 제외한 금액을 나타냅니다. 이는 기업이 고객에게 제공한 상품이나 서비스에 대한 실제 수익을 반영하며, 세금이 포함되지 않은 순수한 매출액을 의미합니다.",
           "category": "수익"
         },
         "data": [
           {
-            "value": 61564000000.0,
-            "display_value": "61,564,000,000",
-            "context": "c-12",
+            "value": "61564000000",
+            "display_value": "61564000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "61564000000",
+            "context": "c-12",
             "source": "xbrl",
+            "axis": [
+              "ProductOrServiceAxis"
+            ],
+            "member": [
+              "ProductMember"
+            ],
+            "explicit_members": [
+              "ProductMember"
+            ],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-12",
               "id": ""
-            }
+            },
+            "specific_name": "제품 고객과의 계약에서 발생한 수익(세금 제외)"
+          },
+          {
+            "value": "24213000000",
+            "display_value": "24213000000",
+            "unit": "usd",
+            "decimals": "-6",
+            "raw_value": "24213000000",
+            "context": "c-16",
+            "source": "xbrl",
+            "axis": [
+              "ProductOrServiceAxis"
+            ],
+            "member": [
+              "ServiceMember"
+            ],
+            "explicit_members": [
+              "ServiceMember"
+            ],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
+            "attributes": {
+              "contextref": "c-16",
+              "id": ""
+            },
+            "specific_name": "서비스 고객과의 계약에서 발생한 수익(세금 제외)"
+          },
+          {
+            "value": "85777000000",
+            "display_value": "85777000000",
+            "unit": "usd",
+            "decimals": "-6",
+            "raw_value": "85777000000",
+            "context": "c-20",
+            "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
+            "attributes": {
+              "contextref": "c-20",
+              "id": ""
+            },
+            "specific_name": "총 고객과의 계약에서 발생한 수익(세금 제외)"
           }
         ]
       },
       {
         "tag": "us-gaap_OperatingIncomeLoss",
         "translation": {
-          "korean_name": "영업 이익/손실",
-          "description": "영업 이익/손실은 기업의 본업에서 발생한 수익과 비용의 차이를 나타내며, 이는 기업의 운영 성과를 평가하는 핵심 지표입니다. 긍정적인 영업 이익은 기업의 지속 가능성을 시사합니다.",
+          "korean_name": "영업이익(손실)",
+          "description": "기업의 주요 영업 활동에서 발생한 수익에서 영업 비용을 차감한 금액으로, 기업의 본업에서 얼마나 효율적으로 수익을 창출하고 있는지를 나타냅니다. 영업이익이 양수일 경우 영업이익, 음수일 경우 영업손실로 표현됩니다.",
           "category": "수익"
         },
         "data": [
           {
-            "value": 25352000000.0,
-            "display_value": "25,352,000,000",
-            "context": "c-20",
+            "value": "25352000000",
+            "display_value": "25352000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "25352000000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 영업이익(손실)"
           }
         ]
       }
     ]
   },
-  "Segment Informationand Geographic Data Reconciliationof Segment Operating Incometothe Condensed Consolidated Statementsof Operations": {
+  "Apple - 세그먼트 정보 및 지리적 데이터 세그먼트 운영 수익의 응축된 연결 손익 계산서 조정": {
     "us-gaap_SegmentReportingReconcilingItemForOperatingProfitLossFromSegmentToConsolidatedLineItems": [
       {
         "tag": "us-gaap_OperatingIncomeLoss",
         "translation": {
-          "korean_name": "영업 이익/손실",
-          "description": "영업 이익/손실은 기업의 본업에서 발생한 수익과 비용의 차이를 나타내며, 이는 기업의 운영 성과를 평가하는 핵심 지표입니다. 긍정적인 영업 이익은 기업의 지속 가능성을 시사합니다.",
-          "category": "수익"
+          "korean_name": "영업이익(손실)",
+          "description": "기업의 주요 영업 활동에서 발생한 수익에서 영업 비용을 차감한 금액으로, 기업의 본업에서 얼마나 효율적으로 수익을 창출하고 있는지를 나타냅니다. 영업이익이 양수일 경우 영업이익, 음수일 경우 영업손실로 표현됩니다.",
+          "category": "수익/비용"
         },
         "data": [
           {
-            "value": 25352000000.0,
-            "display_value": "25,352,000,000",
-            "context": "c-20",
+            "value": "25352000000",
+            "display_value": "25352000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "25352000000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 영업이익(손실)"
           }
         ]
       },
       {
         "tag": "us-gaap_ResearchAndDevelopmentExpense",
         "translation": {
-          "korean_name": "연구 개발 비용",
-          "description": "연구 개발 비용은 새로운 제품이나 기술 개발에 투자한 비용을 의미하며, 이는 기업의 혁신 능력과 미래 성장 가능성을 평가하는 데 중요한 지표입니다. 높은 연구 개발 비용은 미래 수익 창출의 잠재력을 나타냅니다.",
+          "korean_name": "연구개발비용",
+          "description": "기업이 새로운 제품이나 서비스의 개발, 개선 또는 혁신을 위해 지출한 비용을 나타냅니다. 이는 연구 및 개발 활동에 직접적으로 관련된 인건비, 재료비, 외주비용 등을 포함합니다.",
           "category": "비용"
         },
         "data": [
           {
-            "value": 8006000000.0,
-            "display_value": "8,006,000,000",
-            "context": "c-20",
+            "value": "8006000000",
+            "display_value": "8006000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "8006000000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
-          }
-        ]
-      },
-      {
-        "tag": "us-gaap_OtherGeneralAndAdministrativeExpense",
-        "translation": {
-          "korean_name": "기타 일반 및 관리 비용",
-          "description": "기타 일반 및 관리 비용은 기업 운영에 필요한 다양한 비용을 포함하며, 총 비용 구조를 평가하는 데 중요합니다.",
-          "category": "비용"
-        },
-        "data": [
-          {
-            "value": 1737000000.0,
-            "display_value": "1,737,000,000",
-            "context": "c-159",
-            "unit": "usd",
-            "decimals": "-6",
-            "raw_value": "1737000000",
-            "source": "xbrl",
-            "attributes": {
-              "contextref": "",
-              "id": ""
-            }
+            },
+            "specific_name": "총 연구개발비용"
           }
         ]
       }
     ]
   },
-  "Pvp": {
+  "Pvp -> Pvp (해당 용어는 특정한 의미가 없거나 일반적으로 사용되지 않는 약어로 보입니다. 추가적인 맥락이 필요할 수 있습니다.)": {
     "ecd_PayVsPerformanceDisclosureLineItems": [
       {
         "tag": "us-gaap_NetIncomeLoss",
         "translation": {
-          "korean_name": "순이익(손실)",
-          "description": "회계 기간 동안의 순이익 또는 손실을 나타내며, 이는 기업의 전반적인 수익성을 평가하는 가장 중요한 지표 중 하나입니다.",
-          "category": "수익"
+          "korean_name": "순손익",
+          "description": "기업의 총 수익에서 총 비용을 차감한 후의 결과로, 기업의 경영 성과를 나타내는 지표입니다. 순손익은 기업이 일정 기간 동안 얼마나 이익을 냈는지를 보여주며, 긍정적인 값은 이익을, 부정적인 값은 손실을 의미합니다.",
+          "category": "기타"
         },
         "data": [
           {
-            "value": 21448000000.0,
-            "display_value": "21,448,000,000",
-            "context": "c-20",
+            "value": "21448000000",
+            "display_value": "21448000000",
             "unit": "usd",
             "decimals": "-6",
             "raw_value": "21448000000",
+            "context": "c-20",
             "source": "xbrl",
+            "axis": [],
+            "member": [],
+            "explicit_members": [],
+            "period": {
+              "type": "period",
+              "start_date": "2024-03-31",
+              "end_date": "2024-06-29"
+            },
             "attributes": {
-              "contextref": "",
+              "contextref": "c-20",
               "id": ""
-            }
+            },
+            "specific_name": "총 순손익"
           }
         ]
       }
