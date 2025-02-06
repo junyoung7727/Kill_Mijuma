@@ -25,7 +25,7 @@ def main():
     fetcher = SECFetcher('junghae2017@gmail.com', data_dir)
     
     # Apple의 CIK
-    ticker = 'aapl'
+    ticker = 'JPM'
     cik = get_cik_from_ticker(ticker.upper())
     
     # 최신 10-Q URL 가져오기

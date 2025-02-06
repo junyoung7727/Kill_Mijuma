@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class FinancialTranslator:
-    def __init__(self, data_dir: str, model: str = "gpt-4o-mini"):
+    def __init__(self, data_dir: str, model: str = "gpt-4o"):
         self.data_dir = data_dir
         self.model = model
         self.hierarchy_data = None
@@ -128,15 +128,13 @@ class FinancialTranslator:
             with open(context_file, 'r', encoding='utf-8') as f:
                 context_data = json.load(f)
             
-            # 디버깅을 위한 출력
-            print("\nContext 데이터 구조:")
-            print(json.dumps(dict(list(context_data.items())[:2]), indent=2))
+            print("\n컨텍스트 데이터 처리 시작")
+            print(f"총 컨텍스트 수: {len(context_data)}")
             
             # 기간 정보가 있는 컨텍스트만 필터링
             period_contexts = []
             for context_id, context_info in context_data.items():
                 try:
-                    # type이 period이고 start_date, end_date가 있는 경우만 처리
                     if (context_info.get('type') == 'period' and 
                         'start_date' in context_info and 
                         'end_date' in context_info):
@@ -150,23 +148,21 @@ class FinancialTranslator:
                         print(f"  종료일: {end_date}")
                         print(f"  기간: {duration}일")
                         
-                        # 약 3개월(90일) 기간의 컨텍스트만 선택
-                        if 85 <= duration <= 95:
-                            period_contexts.append({
-                                'context_id': context_id,
-                                'end_date': end_date,
-                                'duration': duration
-                            })
+                        period_contexts.append({
+                            'context_id': context_id,
+                            'end_date': end_date,
+                            'duration': duration
+                        })
                 except Exception as e:
                     print(f"컨텍스트 {context_id} 처리 중 오류: {str(e)}")
                     continue
             
-            # end_date 기준으로 정렬하고 가장 최근 컨텍스트 선택
-            period_contexts.sort(key=lambda x: x['end_date'], reverse=True)
-            latest_contexts = [ctx['context_id'] for ctx in period_contexts[:3]]
+            print(f"\n처리된 기간 컨텍스트 수: {len(period_contexts)}")
+            if not period_contexts:
+                print("경고: 처리된 컨텍스트가 없습니다!")
+                return []
             
-            print(f"\n선택된 최근 컨텍스트: {latest_contexts}")
-            return latest_contexts
+            return [ctx['context_id'] for ctx in period_contexts]
             
         except Exception as e:
             print(f"컨텍스트 파일 처리 중 오류: {str(e)}")
@@ -328,7 +324,7 @@ class FinancialTranslator:
         except Exception as e:
             print(f"필터링 및 번역 중 오류: {str(e)}")
             traceback.print_exc()
-        
+        print(filtered_data)
         return filtered_data
 
     def translate_recent_statements(self) -> None:
@@ -350,6 +346,15 @@ class FinancialTranslator:
             
             # 3. 결과 저장
             output_file = os.path.join(self.data_dir, 'structured_kr_data.json')
+
+            if os.path.exists(output_file):
+                print(f"기존 파일을 찾았습니다: {output_file}")
+            else:
+                print(f"새로운 파일을 생성합니다: {output_file}")
+            # 빈 파일 생성
+            with open(output_file, 'w', encoding='utf-8') as f:
+                json.dump({}, f, ensure_ascii=False, indent=2)
+        
             with open(output_file, 'w', encoding='utf-8') as f:
                 json.dump(self.translated_data, f, ensure_ascii=False, indent=2)
             
