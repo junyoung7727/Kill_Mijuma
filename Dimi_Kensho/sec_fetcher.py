@@ -633,49 +633,6 @@ class SECFetcher:
         
         return tag.lower()
 
-    def llm_request(self, prompt, model="gpt-4o-mini"):
-        """LLM API 요청 처리
-        
-        Args:
-            prompt (str): LLM에 전달할 프롬프트
-            model (str): 사용할 LLM 모델
-            
-        Returns:
-            str: LLM 응답 또는 None (오류 발생 시)
-        """
-        try:
-            # API 요청 횟수 제한 처리
-            current_time = time.time()
-            if hasattr(self, 'last_llm_request'):
-                time_since_last_request = current_time - self.last_llm_request
-                if time_since_last_request < 1.0:  # 1초 대기
-                    time.sleep(1.0 - time_since_last_request)
-            
-            messages = [
-                {"role": "system", "content": """
-                당신은 XBRL 태그와 재무 데이터를 한국어로 번역하는 전문가입니다.
-                다음 규칙을 따라 번역해주세요:
-                1. 전문 용어는 정확하게 번역
-                2. 축과 멤버 정보는 맥락을 고려하여 번역
-                3. 설명은 간단명료하게 작성
-                4. 번역이 모호한 경우 원문을 괄호로 병기
-                """},
-                {"role": "user", "content": prompt}
-            ]
-            
-            response = openai.ChatCompletion.create(
-                model=model,
-                messages=messages,
-                temperature=0.3,  # 일관성을 위해 낮은 temperature 사용
-                max_tokens=500
-            )
-            
-            self.last_llm_request = time.time()
-            return response.choices[0].message.content.strip()
-            
-        except Exception as e:
-            print(f"LLM 요청 중 오류 발생: {str(e)}")
-            return None
     
     def process_translation(self, data):
         """번역 결과 처리 및 정제
