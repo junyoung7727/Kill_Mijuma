@@ -5,6 +5,7 @@ from create_html import create_html_report
 from setup import setup_project_structure
 from utils import get_cik_from_ticker
 from financial_translator import FinancialTranslator
+from utils import create_context_period_mapping
 
 
 def ensure_data_directory():
@@ -25,11 +26,14 @@ def main():
     fetcher = SECFetcher('junghae2017@gmail.com', data_dir)
     
     # Apple의 CIK
-    ticker = 'JPM'
+    ticker = 'nvda'
     cik = get_cik_from_ticker(ticker.upper())
     
     # 최신 10-Q URL 가져오기
     url = fetcher.get_latest_10q_url(cik)
+
+    # 컨텍스트 기간 매핑 생성
+    create_context_period_mapping(url, data_dir)
 
     if url:
         # URL에서 분기 정보 추출 (예: aapl-20240629.htm)
@@ -37,7 +41,7 @@ def main():
         year = filing_date[:4]
         month = filing_date[4:6]
         
-        print(f"\n=== Apple(AAPL)의 {year}년 {month}월 분기 보고서 ===")
+        print(f"\n=== 의 {year}년 {month}월 분기 보고서 ===")
         print(f"10-Q URL: {url}")
         
         # XBRL 데이터 가져오기

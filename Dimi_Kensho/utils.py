@@ -4,6 +4,8 @@ import re
 from bs4 import BeautifulSoup
 from collections import defaultdict
 import traceback
+import os
+from datetime import datetime
 
 def get_cik_from_ticker(ticker):
     """
@@ -312,6 +314,165 @@ def test_hierarchy_dimensions(def_url, headers):
         traceback.print_exc()
         return None
 
+def get_xbrl_xml_url(sec_report_url: str) -> str:
+    """
+    SEC 보고서 URL을 원본 XBRL XML 파일 URL로 변환합니다.
+    
+    예시:
+    Input: https://www.sec.gov/ix?doc=/Archives/edgar/data/0001045810/000104581024000316/nvda-20241027.htm
+    Output: https://www.sec.gov/Archives/edgar/data/0001045810/000104581024000316/nvda-20241027.xml
+    """
+    try:
+        # ix?doc= 부분 제거
+        if 'ix?doc=' in sec_report_url:
+            base_url = sec_report_url.split('ix?doc=')[0] + sec_report_url.split('ix?doc=')[1]
+        else:
+            base_url = sec_report_url
+        print(base_url)
+
+        # .htm 확장자를 .xml로 변경
+        if base_url.endswith('.htm'):
+            xml_url = base_url[:-4] + '_htm.xml'
+        elif base_url.endswith('.html'):
+            xml_url = base_url[:-5] + '_html.xml'
+        else:
+
+            xml_url = base_url
+            
+        return xml_url
+    except Exception as e:
+        print(f"URL 변환 중 오류 발생: {str(e)}")
+        return ""
+
+def create_context_period_mapping(sec_report_url: str, data_dir: str, output_file: str = "context_data.json") -> dict:
+    """
+    SEC 보고서에서 각 컨텍스트 ID에 대한 정확한 기간 정보를 추출하여 JSON으로 저장합니다.
+    
+    생성되는 JSON 형식:
+    {
+        "c-121": {
+            "type": "period",
+            "start_date": "2022-09-25",
+            "end_date": "2023-09-30"
+        },
+        "c-124": {
+            "type": "instant",
+            "date": "2023-09-30"
+        }
+    }
+    """
+    # URL을 XBRL XML 파일 URL로 변환
+    xml_url = get_xbrl_xml_url(sec_report_url)
+    if not xml_url:
+        print("XML URL 생성 실패")
+        return {}
+        
+    print(f"XML 파일 URL: {xml_url}")
+    
+    headers = {
+        "User-Agent": "junghae2017@gmail.com"
+    }
+
+    try:
+        response = requests.get(xml_url, headers=headers)
+        if response.status_code != 200:
+            print(f"문서 다운로드 실패: {response.status_code}")
+            return {}
+
+        soup = BeautifulSoup(response.content, "lxml")
+        contexts = soup.find_all(lambda tag: tag.name and tag.name.lower().endswith('context'))
+        
+        context_periods = {}
+        
+        for ctx in contexts:
+            ctx_id = ctx.get('id', '')
+            # c-숫자 형식의 컨텍스트 ID만 처리
+            if not re.match(r'^c-\d+$', ctx_id):
+                continue
+                
+            period = ctx.find(lambda tag: tag.name and tag.name.lower().endswith('period'))
+            if not period:
+                continue
+                
+            # instant 타입 처리
+            instant = period.find(lambda tag: tag.name and tag.name.lower().endswith('instant'))
+            if instant:
+                context_periods[ctx_id] = {
+                    "type": "instant",
+                    "date": instant.get_text().strip()
+                }
+                continue
+                
+            # duration 타입 처리 (period로 표시)
+            start = period.find(lambda tag: tag.name and tag.name.lower().endswith('startdate'))
+            end = period.find(lambda tag: tag.name and tag.name.lower().endswith('enddate'))
+            if start and end:
+                context_periods[ctx_id] = {
+                    "type": "period",
+                    "start_date": start.get_text().strip(),
+                    "end_date": end.get_text().strip()
+                }
+
+        if not context_periods:
+            print("경고: 추출된 컨텍스트가 없습니다. HTML 형식으로 다시 시도합니다.")
+            # HTML 형식으로 다시 시도
+            soup = BeautifulSoup(response.content, "lxml")
+            contexts = soup.find_all(lambda tag: tag.get('id', '').startswith('c-'))
+            
+            for ctx in contexts:
+                ctx_id = ctx.get('id', '')
+                if not re.match(r'^c-\d+$', ctx_id):
+                    continue
+                    
+                period = ctx.find(class_='period')
+                if not period:
+                    continue
+                    
+                # instant 타입 처리
+                instant = period.find(class_='instant')
+                if instant:
+                    context_periods[ctx_id] = {
+                        "type": "instant",
+                        "date": instant.get_text().strip()
+                    }
+                    continue
+                    
+                # period 타입 처리
+                start = period.find(class_='startDate')
+                end = period.find(class_='endDate')
+                if start and end:
+                    context_periods[ctx_id] = {
+                        "type": "period",
+                        "start_date": start.get_text().strip(),
+                        "end_date": end.get_text().strip()
+                    }
+
+        # 결과를 컨텍스트 ID 순서로 정렬
+        sorted_contexts = dict(sorted(context_periods.items(), key=lambda x: int(x[0].split('-')[1])))
+        
+        # JSON 파일로 저장
+        os.makedirs(data_dir, exist_ok=True)
+        output_path = os.path.join(data_dir, output_file)
+        with open(output_path, 'w', encoding='utf-8') as f:
+            json.dump(sorted_contexts, f, ensure_ascii=False, indent=2)
+            
+        print(f"\n컨텍스트 기간 정보가 저장되었습니다: {output_path}")
+        print(f"총 {len(sorted_contexts)}개의 컨텍스트 기간 정보가 추출되었습니다.")
+        
+        # 샘플 출력
+        print("\n처음 5개 컨텍스트 기간 정보:")
+        for i, (ctx_id, period_info) in enumerate(list(sorted_contexts.items())[:5]):
+            if period_info["type"] == "instant":
+                print(f"{ctx_id}: {period_info['date']}")
+            else:
+                print(f"{ctx_id}: {period_info['start_date']} ~ {period_info['end_date']}")
+                
+        return sorted_contexts
+
+    except Exception as e:
+        print(f"오류 발생: {str(e)}")
+        return {}
+
 # 사용 예시
 if __name__ == "__main__":
     test_tickers = ['AAPL', 'MSFT', 'GOOGL', 'AMZN']
@@ -323,7 +484,7 @@ if __name__ == "__main__":
             print(f"{ticker}: {cik}") 
 
     # 테스트용 URL (예: 애플의 최신 10-Q)
-    url = "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/aapl-20230930_htm.xml"
+    url = "https://www.sec.gov/ix?doc=/Archives/edgar/data/0001045810/000104581024000316/nvda-20241027.htm"
     headers = {
         'User-Agent': 'junghae2017@gmail.com'
     }
@@ -339,5 +500,9 @@ if __name__ == "__main__":
         print(f"Error: 테스트 실행 중 오류 발생 - {str(e)}") 
 
     # 계층 구조 테스트
-    def_url = "https://www.sec.gov/Archives/edgar/data/320193/000032019323000106/aapl-20230930_def.xml"
-    test_hierarchy_dimensions(def_url, headers) 
+    # 예시 SEC 보고서 링크 (사용 환경에 맞게 변경)
+    sec_url = "https://www.sec.gov/ix?doc=/Archives/edgar/data/0001045810/000104581024000316/nvda-20241027.htm"
+    context_periods = create_context_period_mapping(
+        sec_report_url=sec_url,
+        data_dir="data"
+    ) 
