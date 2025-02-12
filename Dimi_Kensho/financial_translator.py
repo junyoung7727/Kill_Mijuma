@@ -2,13 +2,14 @@ import json
 import os
 from typing import Dict, List, Optional
 import openai
-from datetime import datetime
+from datetime import datetime, timedelta
 import traceback
 import os
 from dotenv import load_dotenv
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
 import re
+from collections import Counter
 
 load_dotenv()
 
@@ -79,47 +80,45 @@ class FinancialTranslator:
         """최신 openai API 인터페이스를 사용하여 LLM을 호출합니다."""
         try:
             from openai import OpenAI
-            client = OpenAI()
+            client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
             messages = [
                 {"role": "system", "content": system_msg},
                 {"role": "user", "content": prompt}
             ]
+            
+            print(f"LLM 요청 - System: {system_msg}")  # 디버깅용
+            print(f"LLM 요청 - Prompt: {prompt}")  # 디버깅용
+            
             response = client.chat.completions.create(
                 model=self.model,
                 messages=messages,
-                temperature=0.1
+                temperature=0.1,
+                response_format={"type": "json_object"}  # JSON 응답 형식 강제
             )
             content = response.choices[0].message.content
+            print(f"LLM 원본 응답: {content}")  # 디버깅용
 
-            # <json> 태그로 감싸진 부분을 추출합니다.
-            match = re.search(r'<json>\s*(.*?)\s*</json>', content, re.DOTALL)
-            if match:
-                json_str = match.group(1)
-                return json.loads(json_str)
-            return {}
+            try:
+                # JSON 파싱 시도
+                return json.loads(content)
+            except json.JSONDecodeError as e:
+                print(f"JSON 파싱 오류: {str(e)}")
+                # JSON 형식이 아닌 경우, <json> 태그 찾기 시도
+                match = re.search(r'<json>\s*(.*?)\s*</json>', content, re.DOTALL)
+                if match:
+                    try:
+                        return json.loads(match.group(1))
+                    except json.JSONDecodeError:
+                        print("JSON 태그 내용 파싱 실패")
+                
+                print("기본 번역으로 대체됩니다.")
+                return {}
+            
         except Exception as e:
             print(f"LLM 호출 중 오류: {str(e)}")
+            traceback.print_exc()
             return {}
-
-    def _translate_tags(self, tags: list) -> dict:
-        """태그들을 배치 처리하여 번역합니다."""
-        uncached_tags = [tag for tag in tags if tag not in self.tag_translations_cache]
-        if uncached_tags:
-            prompt = (
-                "다음 재무제표 태그들을 한국어로 번역해주세요.\n"
-                "응답은 반드시 아래 JSON 형식으로 작성해주세요:\n\n"
-                "<json>\n"
-                '{ "translations": { "tag1": {"translation": "번역1", "importance_score": 5} } }\n'
-                "</json>\n\n"
-                f"태그들:\n{json.dumps(uncached_tags, ensure_ascii=False, indent=2)}"
-            )
-            system_msg = "재무제표 태그를 번역하는 전문가입니다."
-            result = self._call_llm(prompt, system_msg)
-            new_translations = result.get('translations', {})
-            self.tag_translations_cache.update(new_translations)
-            print(f"태그 번역 완료: {len(uncached_tags)}개 처리 (배치 처리)")
-        return {tag: self.tag_translations_cache.get(tag, {}) for tag in tags}
 
     def _translate_member_names_batch(self, all_members: list) -> dict:
         """멤버 이름들을 배치 처리하여 번역합니다."""
@@ -134,7 +133,7 @@ class FinancialTranslator:
             for i in range(0, len(unique_members), batch_size):
                 batch = unique_members[i:i+batch_size]
                 prompt = (
-                    "다음 재무제표 멤버 이름들을 한국어로 번역해주세요.\n"
+                    "다음 재무제표 멤버 이름들을 한국어로 번역해주세요. 한국 K-IFRS 기준의 직관적인 용어를 사용합니다. 뒤에 멤버라는 것은 제외하고 앞의 이름만 한국어로 쉽게 바꿔주세요.\n"
                     "응답은 반드시 아래 JSON 형식으로 작성해주세요:\n\n"
                     "<json>\n"
                     '{ "translations": { "member1": "번역1" } }\n'
@@ -178,121 +177,303 @@ class FinancialTranslator:
             print(f"맥락 분석 완료: {len(uncached_tags)}개 태그 (배치 처리)")
         return {tag: self.context_categories_cache.get(tag, "") for tag in tag_members_map.keys()}
 
+    def _translate_members(self, members: list, tag_name: str, tag_translation: str) -> dict:
+        """
+        멤버 리스트를 번역합니다.
+        태그 이름과 번역을 컨텍스트로 제공하여 더 자연스러운 번역을 유도합니다.
+        """
+        if not members:
+            return {}
+
+        members_prompt = f"""다음 재무제표 항목의 멤버들을 한국어로 번역해주세요.
+        
+        항목 정보:
+        - 태그 이름: {tag_name}
+        - 태그 번역: {tag_translation}
+        
+        다음 규칙을 반드시 따라주세요:
+        1. 위 태그의 맥락을 고려하여 자연스러운 한국어 용어로 번역
+        2. 한국 재무제표에서 일반적으로 사용되는 용어를 사용
+        3. 직관적이고 이해하기 쉬운 용어로 번역
+        4. 불필요한 설명이나 수식어는 제외
+        5. 기술적인 용어는 한국 투자자들이 이해하기 쉬운 용어로 번역
+        
+        번역할 멤버:
+        {members}
+        """
+        
+        translations = self._translate_text_batch(members_prompt)
+        return dict(zip(members, translations))
+
+    def _translate_members_batch(self, members_info: list) -> dict:
+        """멤버 이름들을 배치로 번역합니다."""
+        translations = {}
+        
+        # 입력이 딕셔너리인 경우 처리
+        if isinstance(members_info, dict):
+            members_info = [members_info]
+        
+        # 배치 크기 설정
+        BATCH_SIZE = 50
+        
+        # 멤버와 태그 정보를 함께 모음
+        all_members_with_context = []
+        for member_dict in members_info:
+            try:
+                if not isinstance(member_dict, dict):
+                    print(f"잘못된 입력 형식 무시: {member_dict}")
+                    continue
+                    
+                tag_name = member_dict.get('tag_name', '')
+                tag_translation = member_dict.get('tag_translation', '')
+                members = member_dict.get('members', [])
+                
+                if not isinstance(members, list):
+                    print(f"잘못된 members 형식 무시: {members}")
+                    continue
+
+                for member in members:
+                    if isinstance(member, str):
+                        all_members_with_context.append({
+                            'member': member,
+                            'tag': tag_name,
+                            'tag_translation': tag_translation
+                        })
+                    else:
+                        print(f"잘못된 멤버 형식 무시: {member}")
+            
+            except Exception as e:
+                print(f"멤버 정보 수집 중 오류: {str(e)}")
+                continue
+        
+        # 배치 단위로 처리
+        for i in range(0, len(all_members_with_context), BATCH_SIZE):
+            batch = all_members_with_context[i:i + BATCH_SIZE]
+            
+            members_prompt = """다음 재무제표의 세그먼트(부문) 및 멤버 이름들을 한국어로 번역해주세요.
+
+응답은 반드시 아래 JSON 형식으로 작성해주세요:
+
+<json>
+{
+    "translations": {
+        "member1": "번역1",
+        "member2": "번역2"
+    }
+}
+</json>
+
+번역 규칙:
+1. 세그먼트/부문 관련:
+   - XXXSegmentMember → "XX 부문"으로 번역 (예: AsiaSegmentMember → "아시아 부문")
+   - 지역 세그먼트는 일반적인 한국어 지역명 사용 (예: GreaterChina → "대중화권")
+   - Product/Service는 "제품"/"서비스"로 번역
+
+2. 일반 멤버 관련:
+   - Member 접미사는 번역하지 않고 제외
+   - 일반적인 재무용어는 한국 회계기준 용어 사용
+   - 제품명이나 브랜드명은 한국에서 통용되는 명칭 사용
+
+3. 맥락 고려:
+   - 태그: {tag_name}
+   - 태그 번역: {tag_translation}
+   이 태그의 맥락을 고려하여 자연스러운 번역
+
+번역할 멤버 목록:
+"""
+            
+            # 각 멤버의 상세 정보 추가
+            for item in batch:
+                members_prompt += f"\n- {item['member']}"
+                members_prompt += f"\n  (태그: {item['tag']} → {item['tag_translation']})"
+            
+            # LLM을 통한 번역 수행
+            system_msg = "재무제표 세그먼트와 멤버 이름을 번역하는 전문가입니다. 한국 K-IFRS 기준의 용어를 사용합니다."
+            result = self._call_llm(members_prompt, system_msg)
+            
+            # 번역 결과 처리
+            if isinstance(result, dict) and 'translations' in result:
+                translations.update(result['translations'])
+            
+            print(f"배치 처리 완료: {len(batch)}개 멤버")
+        
+        print(f"전체 멤버 번역 완료: {len(translations)}개")
+        return translations
+
     def _translate_batch(self, items: list) -> list:
-        """단위 항목들을 배치 처리하여 번역합니다."""
         try:
-            # 1. 태그 번역
+            # 태그 번역
             tags = [item['concept'] for item in items]
-            tag_translations = self._translate_tags(tags)
+            tags_prompt = f"""다음 재무제표 항목들을 한국어로 번역하고 중요도 점수를 매겨주세요.
 
-            # 2. 태그별 멤버 수집 (최신 컨텍스트 데이터만)
-            tag_members_map = {}
-            all_members = []
+응답은 반드시 아래 JSON 형식으로 작성해주세요:
+
+<json>
+{{
+    "translations": {{
+        "tag1": {{
+            "korean_name": "번역1",
+            "importance": 5  // 1-5 점수
+        }},
+        "tag2": {{
+            "korean_name": "번역2",
+            "importance": 3
+        }}
+    }}
+}}
+</json>
+투자자에게 중요한 정보가 될수록 높은 점수를 매겨겨 1~5점까지 중요도 점수를 메겨주세요.
+
+
+다음 규칙을 반드시 따라주세요:
+1. 한국 K-IFRS 기준의 공식 용어를 우선적으로 사용
+2. 공식 용어가 없는 경우, 한국 재무제표에서 일반적으로 사용되는 직관적인 용어로 번역
+3. 번역시 다음 용어들은 일관되게 사용:
+   - Revenue → 매출액
+   - Cost of Revenue/Sales → 매출원가
+   - Gross Profit → 매출총이익
+   - Operating Income/Loss → 영업이익/손실
+   - Net Income/Loss → 당기순이익/손실
+4. 번역문은 간단명료하게, 불필요한 설명이나 수식어 제외
+5. 기술적인 용어는 한국 투자자들이 이해하기 쉬운 용어로 번역
+
+번역할 태그:
+{', '.join(tags)}
+"""
+            
+            system_msg = "재무제표 용어를 번역하는 전문가입니다."
+            tag_translations_result = self._call_llm(tags_prompt, system_msg)
+            
+            # 응답 형식 검증 및 처리
+            tag_translations_dict = {}
+            if isinstance(tag_translations_result, dict):
+                translations = tag_translations_result.get('translations', {})
+                if isinstance(translations, dict):
+                    tag_translations_dict = translations
+            
+            # 태그별로 멤버 정보 수집
+            members_info = []
             for item in items:
-                tag = item['concept']
-                if 'data' in item:
-                    members_lists = []
-                    for data_point in item['data']:
-                        members = data_point.get('멤버', [])
-                        if members:
-                            members_lists.append(members)
-                            all_members.extend(members)
-                    if members_lists:
-                        tag_members_map[tag] = members_lists
-
-            # 3. 멤버 번역
-            member_translations = self._translate_member_names_batch(all_members)
-
-            # 4. 맥락 분석
-            context_categories = self._analyze_data_contexts_batch(tag_members_map)
-
-            # 5. 최종 결과 조합
+                tag_name = item['concept']
+                tag_translation = tag_translations_dict.get(tag_name, '')
+                
+                # 해당 태그의 모든 멤버 수집
+                members_set = set()
+                for data_point in item['data']:
+                    if data_point.get('멤버'):
+                        members_set.update(data_point['멤버'])
+                
+                if members_set:
+                    members_info.append({
+                        'tag_name': tag_name,
+                        'tag_translation': tag_translation,
+                        'members': list(members_set)
+                    })
+            
+            # 멤버 배치 번역 수행
+            member_translations = {}
+            if members_info:
+                member_translations = self._translate_members_batch(members_info)
+                print(f"멤버 번역 완료: {len(member_translations)}개")
+            
+            # 번역 결과 적용
             translated_items = []
             for item in items:
-                tag = item['concept']
-                new_item = {
+                tag_name = item['concept']
+                translation_info = tag_translations_dict.get(tag_name, {})
+                
+                translated_item = {
                     'section': item['section'],
-                    'subsection': item['subsection'],
-                    'tag': tag,
-                    'translation': tag_translations.get(tag, {}),
-                    'importance_score': tag_translations.get(tag, {}).get('importance_score', 5),
+                    'subsection': item.get('subsection', ''),
+                    'tag': tag_name,
+                    'translation': {
+                        'korean_name': translation_info.get('korean_name', ''),
+                        'importance': translation_info.get('importance', 1)  # 기본값 1
+                    },
                     'data': []
                 }
-
-                if 'data' in item:
-                    for data_point in item['data']:
-                        new_dp = data_point.copy()
-                        members = data_point.get('멤버', [])
-                        new_dp['원본_멤버'] = members
-                        new_dp['번역된_멤버'] = [member_translations.get(m, m) for m in members]
-                        new_dp['맥락_분류'] = context_categories.get(tag, "")
-                        new_item['data'].append(new_dp)
-
-                translated_items.append(new_item)
-
+                
+                # 데이터 포인트 복사 및 멤버 번역 적용
+                for data_point in item['data']:
+                    translated_point = data_point.copy()
+                    if data_point.get('멤버'):
+                        translated_point['멤버_번역'] = [
+                            member_translations.get(member, member)
+                            for member in data_point['멤버']
+                        ]
+                    translated_item['data'].append(translated_point)
+                
+                translated_items.append(translated_item)
+            
             return translated_items
+        
         except Exception as e:
             print(f"배치 번역 중 오류: {str(e)}")
+            traceback.print_exc()
             return []
 
     def _translate_section_names_batch(self, sections: list) -> dict:
-        """섹션 이름을 배치 처리하여 번역합니다.
+        """섹션 이름을 배치로 번역합니다."""
+        if not sections:
+            return {}
         
-        동일한 섹션 이름은 캐시된 결과를 사용하며, 새로운 섹션은 한 번의 LLM 호출로 번역합니다.
-        """
-        result = {}
-        unique_sections_to_translate = set()
-        # 표준 재무제표 용어 매핑 (해당하는 섹션은 미리 정해진 번역 사용)
-        standard_statements = {
-            "balance sheet": "재무상태표",
-            "income statement": "포괄손익계산서",
-            "cash flow": "현금흐름표",
-            "statement of cash flows": "현금흐름표"
+        # 표준 섹션 매핑 (소문자로 통일)
+        standard_sections = {
+            'balance sheet': '재무상태표',
+            'statement of financial position': '재무상태표',
+            'income statement': '포괄손익계산서',
+            'statement of comprehensive income': '포괄손익계산서',
+            'profit and loss': '포괄손익계산서',
+            'cash flow': '현금흐름표',
+            'statement of cash flows': '현금흐름표'
         }
-
+        
+        # 먼저 표준 섹션 매핑 확인
+        result = {}
+        sections_to_translate = []
         for section in sections:
-            # cover나 first page는 번역하지 않음
-            if any(keyword in section.lower() for keyword in ["cover", "first page"]):
-                result[section] = section
-                continue
-            lower_sec = section.lower()
-            standard_found = False
-            for eng, kor in standard_statements.items():
-                if eng in lower_sec:
-                    result[section] = kor
-                    standard_found = True
-                    break
-            if standard_found:
-                continue
-            # 이미 캐시되어 있다면 재사용
-            if section in self.section_translations_cache:
-                result[section] = self.section_translations_cache[section]
+            section_lower = section.lower()
+            if section_lower in standard_sections:
+                result[section] = {'korean_name': standard_sections[section_lower]}
             else:
-                unique_sections_to_translate.add(section)
+                sections_to_translate.append(section)
+        
+        # 나머지 섹션만 LLM으로 번역
+        if sections_to_translate:
+            prompt = f"""재무제표 섹션 이름을 한국어로 번역해주세요. 
+            응답은 반드시 아래 JSON 형식으로 작성해주세요:
+            
+            <json>
+            {{
+                "translations": {{
+                    "section1": "번역1",
+                    "section2": "번역2"
+                }}
+            }}
+            </json>
+            
+            다음 규칙을 반드시 따라주세요:
+            1. 한국 재무제표에서 일반적으로 사용되는 용어를 사용하여 번역
+            2. 번역문은 간단명료하게 작성
+            3. 불필요한 설명이나 수식어는 제외
 
-        if unique_sections_to_translate:
-            prompt = (
-                "다음 재무제표 섹션 이름들을 한 번에 한국어로 번역해주세요.\n"
-                "응답은 반드시 아래 JSON 형식으로 작성해주세요:\n\n"
-                "<json>\n"
-                "{\n"
-                '  "translations": {\n'
-                '    "Section1": "번역된 이름1",\n'
-                '    "Section2": "번역된 이름2"\n'
-                "  }\n"
-                "}\n"
-                "</json>\n\n"
-                "섹션 이름들:\n" + json.dumps(list(unique_sections_to_translate), ensure_ascii=False, indent=2)
-            )
+            번역할 섹션 이름:
+            {', '.join(sections_to_translate)}
+            """
+            
             system_msg = "재무제표 섹션 이름을 한국어로 번역하는 전문가입니다."
             response = self._call_llm(prompt, system_msg)
-            translations = response.get("translations", {})
-            for sec in unique_sections_to_translate:
-                translated = translations.get(sec, sec)
-                self.section_translations_cache[sec] = translated
-                result[sec] = translated
-            print(f"섹션 이름 번역 완료: {len(unique_sections_to_translate)}개 처리 (배치 처리)")
-        return {section: result.get(section, section) for section in sections}
+            
+            # 응답 형식 검증 및 처리
+            if isinstance(response, dict):
+                translations = response.get('translations', {})
+                if isinstance(translations, dict):
+                    for section in sections_to_translate:
+                        result[section] = {
+                            'korean_name': translations.get(section, section)
+                        }
+        
+        return result
 
     def _translate_section_name(self, section: str) -> str:
         """섹션 이름 번역
@@ -337,96 +518,99 @@ class FinancialTranslator:
         return result.get('translation', section)
 
     def _filter_and_translate(self) -> dict:
-        """
-        최신 컨텍스트 ID를 가진 태그와, 해당 태그 내에서 데이터의 값들 중 최신 컨텍스트에 해당하는
-        데이터 포인트만을 대상으로 번역을 진행합니다.
-        또한, 번역 시 해당 데이터 포인트의 "멤버" 값도 번역 대상에 포함됩니다.
-        
-        hierarchy.json의 구조:
-          - 최상위 키: ex) "dei_CoverAbstract"
-          - 값: 리스트 또는 딕셔너리(딕셔너리인 경우 첫번째 요소에 실제 리스트가 있는 구조)
-          - 각 리스트 항목: { "concept": "태그명", "data": [ { "컨텍스트": "c-문자열", ... }, ... ] }
-        """
         filtered_data = {}
         if not self.hierarchy_data:
             print("계층 데이터가 없습니다.")
             return filtered_data
 
-        # 최신 컨텍스트 추출 (ID 정규화 포함)
+        # 최신 컨텍스트 추출
         latest_contexts = self._extract_latest_context()
         latest_context_ids = {ctx['id'].strip().lower() for ctx in latest_contexts}
         print(f"최신 컨텍스트 ID: {latest_context_ids}")
 
         items_to_translate = []
         
-        # 각 섹션을 순회 (section_key는 ex) 'dei_CoverAbstract')
+        # 각 섹션을 순회
         for section_key, section_value in self.hierarchy_data.items():
-            # 만약 section_value가 리스트가 아니라면, 첫번째 딕셔너리의 원소(리스트)를 선택
-            if not isinstance(section_value, list):
-                # 딕셔너리 형태: 예) { "어떤키": [ ... ] }
-                section_items = list(section_value.values())[0] if section_value else []
-            else:
-                section_items = section_value
+            section_lists = list(section_value.values())
+            if not section_lists:
+                continue
             
-            # section_items는 리스트라고 가정
-            for item in section_items:
-                tag = item.get('concept')
-                # tag가 없거나 Abstract 관련 태그는 건너뜁니다.
-                if not tag or 'Abstract' in tag:
-                    continue
+            for section_list in section_lists:
+                for item in section_list:
+                    tag = item.get('concept')
+                    if not tag or 'Abstract' in tag:
+                        continue
 
-                filtered_data_points = []
-                # 해당 아이템의 data 배열 순회
-                for data_point in item.get('data', []):
-                    # hierarchy.json에서는 '컨텍스트' 키에 컨텍스트 ID가 있음.
-                    context_ref = data_point.get('컨텍스트', '').strip().lower()
-                    # 디버깅: 매칭 여부 출력
-                    if context_ref in latest_context_ids:
-                        print(f"매칭 성공: data_point 컨텍스트 '{context_ref}' ∈ 최신 컨텍스트")
-                        filtered_data_points.append(data_point)
-                    else:
-                        print(f"매칭 실패: data_point 컨텍스트 '{context_ref}' NOT ∈ 최신 컨텍스트")
-                
-                # 만약 하나라도 최신 컨텍스트를 가진 데이터 포인트가 있다면,
-                # 이 컨셉(태그)는 번역 대상에 포함.
-                if filtered_data_points:
-                    items_to_translate.append({
-                        'section': section_key,
-                        'subsection': "",  # 하위 섹션 정보가 없으면 빈 문자열 사용
-                        'concept': tag,
-                        'data': filtered_data_points  # 최신 컨텍스트에 해당하는 데이터 포인트만 포함
-                    })
+                    # 중복 제거를 위한 데이터 포인트 해시 세트
+                    unique_data_points = set()
+                    filtered_data_points = []
+                    
+                    for data_point in item.get('data', []):
+                        context_ref = data_point.get('컨텍스트', '').strip().lower()
+                        if context_ref in latest_context_ids:
+                            # 데이터 포인트를 해시 가능한 형태로 변환
+                            data_point_key = (
+                                data_point.get('값'),
+                                data_point.get('단위'),
+                                data_point.get('소수점'),
+                                data_point.get('컨텍스트'),
+                                tuple(data_point.get('축', [])),
+                                tuple(data_point.get('멤버', [])),
+                                data_point.get('기간', {}).get('start_date'),
+                                data_point.get('기간', {}).get('end_date')
+                            )
+                            
+                            # 중복되지 않은 데이터 포인트만 추가
+                            if data_point_key not in unique_data_points:
+                                unique_data_points.add(data_point_key)
+                                filtered_data_points.append(data_point)
+
+                    if filtered_data_points:
+                        items_to_translate.append({
+                            'section': section_key,
+                            'subsection': "",
+                            'concept': tag,
+                            'data': filtered_data_points
+                        })
 
         print(f"번역 대상 태그 수: {len(items_to_translate)}")
         if not items_to_translate:
-            print("현재 조건에 맞는 번역 대상이 없습니다. 최신 컨텍스트 조건이나 hierarchy.json 데이터를 확인하세요.")
+            print("현재 조건에 맞는 번역 대상이 없습니다.")
             return filtered_data
 
-        # 섹션 이름 번역 처리 (필요한 경우)
+        # 섹션 이름 번역
         sections = list({item['section'] for item in items_to_translate})
         section_translations = self._translate_section_names_batch(sections)
-
+        
+        # 배치 처리로 번역 수행
         batch_size = 200
         for i in range(0, len(items_to_translate), batch_size):
             batch = items_to_translate[i:i + batch_size]
             translated_batch = self._translate_batch(batch)
             
             for item in translated_batch:
-                section = section_translations.get(item['section'], item['section'])
+                # 섹션 이름 번역 적용
+                original_section = item['section']
+                translated_section = section_translations.get(original_section, {
+                    'korean_name': original_section
+                })
+                
+                section_key = translated_section['korean_name']
+                
+                if section_key not in filtered_data:
+                    filtered_data[section_key] = {}
+                    
                 subsection = item.get('subsection', "")
-                if section not in filtered_data:
-                    filtered_data[section] = {}
-                if subsection not in filtered_data[section]:
-                    filtered_data[section][subsection] = []
-                filtered_data[section][subsection].append({
+                if subsection not in filtered_data[section_key]:
+                    filtered_data[section_key][subsection] = []
+                    
+                filtered_data[section_key][subsection].append({
                     'tag': item['tag'],
                     'translation': item['translation'],
-                    'importance_score': item.get('importance_score', 5),
-                    'data': item['data']  # 이 data 안에는 최신 컨텍스트에 해당하는 데이터 포인트들만 들어있음
+                    'data': item['data']
                 })
-            
-            print(f"번역 완료: {len(batch)}개 항목 배치 처리")
-
+        
         return filtered_data
 
     def translate_recent_statements(self) -> None:
@@ -462,13 +646,17 @@ class FinancialTranslator:
 
     def _extract_latest_context(self, context_file: str = "context_data.json") -> list:
         """
-        context.json에서 최신 분기 컨텍스트와 관련 instant 컨텍스트를 추출합니다.
+        context.json에서 '최신' 컨텍스트를 추출합니다.
         
-        조건:
-        1. period 타입 중 기간이 85~93일 사이인 컨텍스트를 찾음
-        2. 그 중 가장 최근 end_date를 가진 컨텍스트들을 선택
-        3. 선택된 컨텍스트들과 start_date가 최대 10일 차이 나는 컨텍스트도 포함
-        4. 최신 분기의 end_date와 최대 10일 차이 나는 instant 타입 컨텍스트도 포함
+        새로운 규칙:
+          1) period 타입의 start_date를 전부 집계하여, 등장 횟수가 10번 이상인 start_date만 후보로 삼습니다.
+          2) 해당 후보 중 가장 늦은 날짜(최대값)를 가진 start_date를 '기준 start_date'로 선택합니다.
+          3) 이 '기준 start_date'를 가진 period 컨텍스트들 중에서 (가장 end_date가 늦은) 하나를 '기준 컨텍스트'로 삼습니다.
+          4) 기준 컨텍스트의 start_date부터 end_date + 10일까지를 '기준 구간'으로 잡습니다.
+          5) 기준 구간에 포함되는 instant 타입(date가 [start_date, end_date+10일] 범위)에 해당하면 함께 포함합니다.
+          6) 또한, 기준 구간 안에 start_date나 end_date가 걸치는 다른 period 컨텍스트도 포함합니다.
+          
+        반환값: 위 규칙에 따라 선정된 컨텍스트들의 목록(딕셔너리 형태)입니다.
         """
         try:
             file_path = os.path.join(self.data_dir, context_file)
@@ -478,72 +666,104 @@ class FinancialTranslator:
             print(f"컨텍스트 파일 로드 오류: {str(e)}")
             return []
 
-        quarter_contexts = []
-        instant_contexts = []
-        
-        # 모든 컨텍스트를 타입별로 분류하고 날짜 파싱
+        # period와 instant를 분류
+        period_contexts = {}
+        instant_contexts = {}
         for ctx_id, ctx_data in contexts.items():
-            try:
-                if ctx_data["type"] == "period":
-                    start_date = datetime.strptime(ctx_data["start_date"], "%Y-%m-%d")
-                    end_date = datetime.strptime(ctx_data["end_date"], "%Y-%m-%d")
-                    duration = (end_date - start_date).days + 1
-                    
-                    if 85 <= duration <= 93:  # 분기 기간 조건 확인
-                        quarter_contexts.append({
-                            "id": ctx_id,
-                            **ctx_data,
-                            "_parsed_start": start_date,
-                            "_parsed_end": end_date
-                        })
-                elif ctx_data["type"] == "instant":
-                    instant_date = datetime.strptime(ctx_data["date"], "%Y-%m-%d")
-                    instant_contexts.append({
-                        "id": ctx_id,
-                        **ctx_data,
-                        "_parsed_date": instant_date
-                    })
-            except Exception as e:
-                print(f"날짜 파싱 오류 (컨텍스트 {ctx_id}): {str(e)}")
-                continue
-        
-        if not quarter_contexts:
-            print("적절한 분기 기간을 가진 컨텍스트를 찾을 수 없습니다.")
+            ctype = ctx_data.get("type", "")
+            if ctype == "period":
+                period_contexts[ctx_id] = ctx_data
+            elif ctype == "instant":
+                instant_contexts[ctx_id] = ctx_data
+
+        # 1) period 컨텍스트에서 start_date 집계
+        start_date_counter = Counter()
+        for ctx_id, data in period_contexts.items():
+            start_date_str = data.get("start_date")
+            if start_date_str:
+                start_date_counter[start_date_str] += 1
+
+        # 10번 이상 등장한 start_date만 추출
+        candidate_dates = [sd for sd, count in start_date_counter.items() if count >= 10]
+        if not candidate_dates:
+            print("start_date가 10번 이상 반복되는 케이스가 없습니다.")
             return []
+
+        # 2) 가장 늦은 날짜(가장 뒤) start_date를 선택
+        candidate_dates_dt = [datetime.strptime(sd, "%Y-%m-%d") for sd in candidate_dates]
+        baseline_start_date_dt = max(candidate_dates_dt)  # 가장 늦은 start_date
+        baseline_start_date_str = baseline_start_date_dt.strftime("%Y-%m-%d")
+
+        # 3) 이 날짜를 가진 period 중 end_date가 가장 늦은 컨텍스트 찾기
+        baseline_periods = []
+        for ctx_id, data in period_contexts.items():
+            if data.get("start_date") == baseline_start_date_str:
+                baseline_periods.append((ctx_id, data))
+
+        if not baseline_periods:
+            print("해당 기준 start_date를 가진 period 컨텍스트가 없습니다.")
+            return []
+
+        # 여러 개일 경우 end_date가 가장 늦은 것을 기준으로 선택
+        def parse_end_date(ctx_data):
+            return datetime.strptime(ctx_data.get("end_date"), "%Y-%m-%d")
         
-        # 가장 최근 end_date 찾기
-        latest_end_date = max(ctx["_parsed_end"] for ctx in quarter_contexts)
-        
-        # 최신 분기 컨텍스트와 관련된 모든 컨텍스트 선택
+        baseline_period_id, baseline_period_data = max(
+            baseline_periods,
+            key=lambda x: parse_end_date(x[1])
+        )
+
+        # 기준 구간 설정: [base_start, base_end + 10일]
+        base_start_dt = datetime.strptime(baseline_period_data["start_date"], "%Y-%m-%d")
+        base_end_dt = datetime.strptime(baseline_period_data["end_date"], "%Y-%m-%d")
+        extended_end_dt = base_end_dt + timedelta(days=10)
+
+        # 4) instant 타입 중 날짜가 위 구간 [base_start_dt, base_end_dt+10]에 포함되는 것 추출
+        included_instants = []
+        for ctx_id, data in instant_contexts.items():
+            try:
+                inst_dt = datetime.strptime(data["date"], "%Y-%m-%d")
+                if base_start_dt <= inst_dt <= extended_end_dt:
+                    included_instants.append(ctx_id)
+            except Exception as e:
+                print(f"instant 날짜 파싱 오류(컨텍스트 {ctx_id}): {str(e)}")
+                continue
+
+        # 5) 기준 구간 안에 start_date 혹은 end_date가 걸치는 period 컨텍스트도 포함
+        included_periods = []
+        for ctx_id, data in period_contexts.items():
+            try:
+                sd_dt = datetime.strptime(data["start_date"], "%Y-%m-%d")
+                ed_dt = datetime.strptime(data["end_date"], "%Y-%m-%d")
+                # start_date나 end_date 중 하나라도 [base_start_dt, extended_end_dt]에 걸치면 포함
+                if (base_start_dt <= sd_dt <= extended_end_dt) or (base_start_dt <= ed_dt <= extended_end_dt):
+                    included_periods.append(ctx_id)
+            except Exception as e:
+                print(f"period 날짜 파싱 오류(컨텍스트 {ctx_id}): {str(e)}")
+                continue
+
+        # 6) 최종 결과(중복 제거) -> dict 형태로 반환
+        final_ids = set()
+        # 기준 period 컨텍스트
+        final_ids.add(baseline_period_id)
+        # 포함된 instant
+        final_ids.update(included_instants)
+        # 포함된 period
+        final_ids.update(included_periods)
+
         latest_contexts = []
-        
-        # 1. 최신 분기의 start_date들 수집
-        latest_start_dates = {
-            ctx["_parsed_start"] 
-            for ctx in quarter_contexts 
-            if ctx["_parsed_end"] == latest_end_date
-        }
-        
-        # 2. period 타입 컨텍스트 선택 (start_date 기준)
-        for ctx in quarter_contexts:
-            for latest_start in latest_start_dates:
-                date_diff = abs((ctx["_parsed_start"] - latest_start).days)
-                if date_diff <= 10:
-                    clean_ctx = {k: v for k, v in ctx.items() if not k.startswith('_')}
-                    if clean_ctx not in latest_contexts:
-                        latest_contexts.append(clean_ctx)
-        
-        # 3. instant 타입 컨텍스트 선택 (end_date와의 차이 기준)
-        for ctx in instant_contexts:
-            date_diff = abs((ctx["_parsed_date"] - latest_end_date).days)
-            if date_diff <= 10:
-                clean_ctx = {k: v for k, v in ctx.items() if not k.startswith('_')}
-                if clean_ctx not in latest_contexts:
-                    latest_contexts.append(clean_ctx)
-        
-        print(f"선택된 컨텍스트 수: {len(latest_contexts)}")
-        print("최신 컨텍스트 (분기 + instant):", latest_contexts)
-        
+        for cid in final_ids:
+            # 원본 딕셔너리에서 그대로 가져오되, 필요한 필드만 정리 가능
+            ctx_copy = contexts[cid].copy()
+            ctx_copy["id"] = cid
+            latest_contexts.append(ctx_copy)
+
+        print(f"[새로운 알고리즘] 선택된 컨텍스트 수: {len(latest_contexts)}")
+        print(f"기준 start_date: {baseline_start_date_str} (id: {baseline_period_id})")
+        print(f"기준 end_date: {baseline_period_data['end_date']} (+10일 확장)")
+        print(f"포함된 instant {len(included_instants)}개, period {len(included_periods)}개")
+        print(f"최종 포함된 ID들: {[c['id'] for c in latest_contexts]}")
+
         return latest_contexts
 
 if __name__ == "__main__":
